@@ -33,7 +33,7 @@ public class InputVariableExito extends InputVariablesUtils{
 	
 	public InputVariableExito(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 				
-		
+		//prueba
 		this.exitoMetric = SedcatMetrics.EXITO;
 		
 		
