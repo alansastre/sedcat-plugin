@@ -23,7 +23,7 @@ public class InputVariableExito extends InputVariablesUtils{
 	private static final Logger LOG = LoggerFactory.getLogger(InputVariableExito.class);
 
 
-	private static final String DEFAULT_PATH_SUCCESS = "/target/";
+	private static final String DEFAULT_PATH_SUCCESS = "/target/exito.txt";
 
 	
 	public Metric exitoMetric;
@@ -32,8 +32,7 @@ public class InputVariableExito extends InputVariablesUtils{
 	
 	
 	public InputVariableExito(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
-				
-		//prueba33333xcxcx
+
 		this.exitoMetric = SedcatMetrics.EXITO;
 		
 		

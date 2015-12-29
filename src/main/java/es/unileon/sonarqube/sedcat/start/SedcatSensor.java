@@ -22,8 +22,10 @@ import org.sonar.api.measures.Measure;
 import org.sonar.api.resources.Project;
 
 import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
+import es.unileon.sonarqube.sedcat.results.ResultsManager;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatPlugin;
+import es.unileon.sonarqube.sedcat.strategies.StrategiesManager;
 
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
@@ -93,7 +95,10 @@ public class SedcatSensor implements Sensor {
 	 *     1-Obtener variables de entrada
 	 *     		InputVariablesGeneral
 	 *     			InputVariableExito
-	 *     2-
+	 *     2 - Obtener variables de salida a partir de las variables de entrada:
+	 *     		Uso de estrategias que se corresponden con diferentes sistemas expertos
+	 *     3 - Gestionar los resultados 
+	 *     		Los resultados obtenidos son almacenados en forma de medidas y representados en el widget dinámicamente.
 	 *     
 	 *     
 	 *     	
@@ -101,8 +106,10 @@ public class SedcatSensor implements Sensor {
     	
 //    	1- Obtener variables de entrada
     	InputVariablesGeneral inputVariables = new InputVariablesGeneral(sensorContext, fileSystem, settings);
-   
-    	
+//    	2 - gestionar sistema experto difuso para obtener los resultados
+    	StrategiesManager outputVariables = new StrategiesManager(inputVariables);
+//    	3 - Gestionar resultados
+    	ResultsManager manageVariables = new ResultsManager(sensorContext, outputVariables);
     	
 
     	java.io.File projectDirectory = fileSystem.baseDir();
