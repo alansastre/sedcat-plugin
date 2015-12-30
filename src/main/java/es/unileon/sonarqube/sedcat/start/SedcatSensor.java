@@ -99,6 +99,9 @@ public class SedcatSensor implements Sensor {
 	 *     		Uso de estrategias que se corresponden con diferentes sistemas expertos
 	 *     3 - Gestionar los resultados 
 	 *     		Los resultados obtenidos son almacenados en forma de medidas y representados en el widget dinámicamente.
+	 *     		Los resultados a gestionar son:
+	 *     		a. medida de calidad
+	 *     		b. acciones a tomar 
 	 *     
 	 *     
 	 *     	

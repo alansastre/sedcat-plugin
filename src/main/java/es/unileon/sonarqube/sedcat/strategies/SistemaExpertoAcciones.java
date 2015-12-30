@@ -2,15 +2,14 @@
  * 
  */
 package es.unileon.sonarqube.sedcat.strategies;
-
 import es.unileon.sonarqube.sedcat.xfuzzy.pruebaCALIDAD2;
 
 /**
- *  Sistema experto A que define el primer sistema experto creado con xfuzzy para sedcat
+ *  Sistema experto que obtiene las acciones a realizar buscadas
  *	@author alan.sastre
  *	@version 1.0
  */
-public class SistemaExpertoA extends AbstractSistemaExperto{
+public class SistemaExpertoAcciones extends AbstractSistemaExperto{
 
 	
 	private double[] variablesEntrada; 
@@ -18,15 +17,18 @@ public class SistemaExpertoA extends AbstractSistemaExperto{
 	 * @param variablesEntrada 
 	 * 
 	 */
-	public SistemaExpertoA(double[] variablesEntrada) {
+	public SistemaExpertoAcciones(double[] variablesEntrada) {
 		// TODO Auto-generated constructor stub.
-		super("sistema experto 2 variables");
+		super("Sistema experto encargado de obtener las acciones a realizar buscadas"
+				+ "dedicadas a mejorar la metrica de calidad");
 		this.variablesEntrada = variablesEntrada;
 	}
 
 	@Override
 	public double[] xfuzzyProcess() {
 		
+		
+		//FIXME cambiar por el sistema experto en cuestion 
 		pruebaCALIDAD2 prueba = new pruebaCALIDAD2();
 
 

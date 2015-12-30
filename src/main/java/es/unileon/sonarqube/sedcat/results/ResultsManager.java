@@ -21,8 +21,8 @@ public class ResultsManager {
 	public ResultsManager(SensorContext sensorContext, StrategiesManager outputVariables) {
 		
 		
-		// 1- Gestionar medida de calidad
-		QualityMeasure gestionarMedidaCalidad = new QualityMeasure(sensorContext,outputVariables.outputVariables[0]);
+		// 1- Gestionar metrica de calidad
+		QualityMeasure gestionarMedidaCalidad = new QualityMeasure(sensorContext,outputVariables.qualityMetric[0]);
 		
 		
 //		2 - Gestionar acciones

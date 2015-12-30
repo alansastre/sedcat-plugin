@@ -39,6 +39,24 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
+	public static final Metric QUALITY_MEASURE = new Metric.Builder(QUALITY_MEASURE_KEY, "Medida Calidad", Metric.ValueType.PERCENT)
+		    .setDescription("Métrica de calidad para las pruebas de testing")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
+	
+	public static final Metric ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Acciones para mejora", Metric.ValueType.STRING)
+		    .setDescription("Acciones a realizar para mejorar la metrica de calidad")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
+	
+	
+	
+	
+	//metricas de prueba
 	public static final Metric<String> MESSAGE = new Metric.Builder(MESSAGE_KEY_1, "mensaje1", Metric.ValueType.STRING)
 		    .setDescription("This is a metric to store a well known message")
 		    .setDirection(Metric.DIRECTION_WORST)

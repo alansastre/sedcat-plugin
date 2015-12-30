@@ -18,7 +18,7 @@ import java.util.Properties;
 import org.sonar.api.Extension;
 
 import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
-import es.unileon.sonarqube.sedcat.strategies.SistemaExpertoA;
+import es.unileon.sonarqube.sedcat.strategies.SistemaExpertoCalidad;
 import es.unileon.sonarqube.sedcat.xfuzzy.MembershipFunction;
 import es.unileon.sonarqube.sedcat.xfuzzy.pruebaCALIDAD2;
 
@@ -55,7 +55,7 @@ public class App implements Extension{
  	
 //    	double[] variablesEntrada = arrayListToArray(inputVariables.metricsValues);
 		
-		SistemaExpertoA procesado = new SistemaExpertoA(variables);
+		SistemaExpertoCalidad procesado = new SistemaExpertoCalidad(variables);
 		double[] outputVariables = procesado.xfuzzyProcess();
 		System.out.println(outputVariables[0]);
  	

@@ -51,10 +51,12 @@ public class InputVariableExito extends InputVariablesUtils{
 			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.SUCCESS_KEY);
 		}
 		
-		
+		//FIXME meter validacion de ruta
 		//2 - Extraemos el valor del fichero
 		this.exitoValue = InputVariablesUtils.obtenerValorDesdeRuta(rutaVariable);
+		
 		//3 - Guardamos la variable en forma de medida para representarla en el widget
+		//FIXME meter validacion de variable obtenida
 		InputVariablesUtils.guardarVariableMedida(sensorContext, this.exitoMetric, this.exitoValue);
 		
 		

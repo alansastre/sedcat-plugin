@@ -48,10 +48,12 @@ public class InputVariableCoverage {
 			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.COVERAGE_KEY);
 		}
 		
-		
+		//FIXME meter validacion de ruta
 		//2 - Extraemos el valor del fichero
 		this.coverageValue = InputVariablesUtils.obtenerValorDesdeRuta(rutaVariable);
+		
 		//3 - Guardamos la variable en forma de medida para representarla en el widget
+		//FIXME meter validacion de variable obtenida
 		InputVariablesUtils.guardarVariableMedida(sensorContext, this.coverageMetric, this.coverageValue);
 		
 		
