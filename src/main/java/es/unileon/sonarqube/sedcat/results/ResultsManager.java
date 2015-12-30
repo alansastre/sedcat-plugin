@@ -26,7 +26,7 @@ public class ResultsManager {
 		
 		
 //		2 - Gestionar acciones
-		//haciendo pruebas de git 
+		//haciendo pruebas de gitaverquepasa
 	}
 
 }
