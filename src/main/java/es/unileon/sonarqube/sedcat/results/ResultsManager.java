@@ -26,7 +26,7 @@ public class ResultsManager {
 		
 		
 //		2 - Gestionar acciones
-		//prueba push
+		//haciendo pruebas de git 
 	}
 
 }
