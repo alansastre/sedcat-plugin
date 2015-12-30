@@ -26,7 +26,9 @@ public class ResultsManager {
 		
 		
 //		2 - Gestionar acciones
-		//haciendo pruebas de gitaverquepasa
+		
+		
+		//pruebagitconfifg
 	}
 
 }
