@@ -8,7 +8,7 @@
 //                                                      //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-package es.unileon.sonarqube.sedcat.xfuzzy;
+package es.unileon.sonarqube.sedcat.xfuzzy.actions;
 
 public abstract class OperatorSet {
  public abstract double and(double a, double b);

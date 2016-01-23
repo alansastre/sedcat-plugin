@@ -9,7 +9,7 @@
 //                                                      //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-package es.unileon.sonarqube.sedcat.xfuzzy;
+package es.unileon.sonarqube.sedcat.xfuzzy.quality;
 
 public class FamiliarMembershipFunction extends InputMembershipFunction {
  double min;

@@ -5,8 +5,8 @@ package es.unileon.sonarqube.sedcat.strategies;
 
 import org.sonar.api.batch.SensorContext;
 
-import es.unileon.sonarqube.sedcat.results.QualityMeasureStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.pruebaCALIDAD2;
+import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
+import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
 
 /**
  *  Sistema experto que obtiene la metrica de calidad buscada
@@ -18,7 +18,7 @@ public class ExpertSystemQuality implements IExpertSystemStrategy{
 	
 	public void xfuzzyProcess(double[] inputVariables, SensorContext sensorContext) {
 		
-		pruebaCALIDAD2 prueba = new pruebaCALIDAD2();
+		Calidad_1 prueba = new Calidad_1();
 
     	QualityMeasureStore metricToStore = new QualityMeasureStore(prueba.crispInference(inputVariables), sensorContext);
 	}

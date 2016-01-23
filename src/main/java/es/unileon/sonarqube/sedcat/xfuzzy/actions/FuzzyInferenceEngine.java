@@ -6,7 +6,7 @@
 //                                                      //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-package es.unileon.sonarqube.sedcat.xfuzzy;
+package es.unileon.sonarqube.sedcat.xfuzzy.actions;
 
 public interface FuzzyInferenceEngine {
  public double[] crispInference(double[] input);

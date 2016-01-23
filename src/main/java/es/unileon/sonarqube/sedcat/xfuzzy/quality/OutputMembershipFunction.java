@@ -9,7 +9,7 @@
 //                                                      //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-package es.unileon.sonarqube.sedcat.xfuzzy;
+package es.unileon.sonarqube.sedcat.xfuzzy.quality;
 
 public class OutputMembershipFunction implements MembershipFunction {
  public Conclusion[] conc;

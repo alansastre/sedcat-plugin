@@ -8,7 +8,7 @@
 //                                                      //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-package es.unileon.sonarqube.sedcat.xfuzzy;
+package es.unileon.sonarqube.sedcat.xfuzzy.actions;
 
 public class Conclusion {
  private double degree;

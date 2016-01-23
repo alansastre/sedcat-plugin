@@ -66,12 +66,6 @@ public class SedcatMetrics implements Metrics {
 		    .create();
 	
 	
-	
-	
-	
-	
-	
-	
 	//METRICAS SALIDA
 		//MEDIDA CALIDAD
 	public static final Metric QUALITY_MEASURE = new Metric.Builder(QUALITY_MEASURE_KEY, "Medida Calidad", Metric.ValueType.PERCENT)
@@ -81,7 +75,7 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 		//ACCIONES
-	public static final Metric ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Acciones para mejora", Metric.ValueType.STRING)
+	public static final Metric<String> ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Acciones para mejora", Metric.ValueType.STRING)
 		    .setDescription("Métrica de salida: Acciones a realizar para mejorar la metrica de calidad")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)

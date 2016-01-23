@@ -4,8 +4,8 @@
 package es.unileon.sonarqube.sedcat.strategies;
 import org.sonar.api.batch.SensorContext;
 
-import es.unileon.sonarqube.sedcat.results.ActionsToPerformStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.pruebaCALIDAD2;
+import es.unileon.sonarqube.sedcat.storage.ActionsToPerformStore;
+import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
 
 /**
  *  Sistema experto que obtiene las acciones a realizar buscadas
@@ -19,7 +19,7 @@ public class ExpertSystemActions implements IExpertSystemStrategy{
 
 	public void xfuzzyProcess(double[] inputVariables, SensorContext sensorContext) {
 		
-		pruebaCALIDAD2 prueba = new pruebaCALIDAD2();
+		Acciones_1 prueba = new Acciones_1();
 		
 		ActionsToPerformStore metricToStore = new ActionsToPerformStore(prueba.crispInference(inputVariables), sensorContext);
 
