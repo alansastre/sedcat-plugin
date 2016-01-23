@@ -3,12 +3,10 @@
  */
 package es.unileon.sonarqube.sedcat.analyzers;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.config.Settings;
-import org.sonar.api.measures.Metric;
 
 import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
@@ -17,38 +15,41 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
  *	@author alan.sastre
  *	@version 1.0
  */
-public class InputVariableCoverage extends InputVariable{
+public class InputVariableNumberTests extends InputVariable{
 
+	
+	
+	
+	public InputVariableNumberTests(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
-	public InputVariableCoverage(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
-
-		this.LOG = LoggerFactory.getLogger(InputVariableCoverage.class);
-		this.DEFAULT_PATH_VARIABLE = "/target/cobertura.txt";
-		this.concreteMetric = SedcatMetrics.COBERTURA;
+		this.LOG = LoggerFactory.getLogger(InputVariableNumberTests.class);
+		this.DEFAULT_PATH_VARIABLE = "/target/numerodetest.txt";
+		this.concreteMetric = SedcatMetrics.NUMBER_TESTS;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
 		this.fileSystem = fileSystem;
 		this.settings = settings;
-	}
 
+	}
+	
+	
 	@Override
 	public double obtainInputVariable() {
 
 		
-		
-		LOG.info("InputVariableCoverage: extrayendo variable de entrada COBERTURA");
+		LOG.info("InputVariableNumberTests: extrayendo variable de entrada NUMEROTEST");
 
 		//1 - Extraemos la ruta
 			//a- comprobamos si hay datos en configuracion para esta variable
 		
-		String rutaVariable = settings.getString(SedcatConstants.COVERAGE_KEY);
+		String rutaVariable = settings.getString(SedcatConstants.NUMBER_TESTS_KEY);
 		if(rutaVariable.length() == 0){
-			LOG.warn("InputVariablesUtils: no hay ruta en configuracion para la variable COBERTURA. Se procede a buscar"
+			LOG.warn("InputVariableNumberTests: no hay ruta en configuracion para la variable NUMEROTEST. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
-			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, DEFAULT_PATH_VARIABLE);
+			rutaVariable = InputVariablesUtils.obtenerRutaVariablePorDefecto(fileSystem, settings, DEFAULT_PATH_VARIABLE);
 		}else{
-			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.COVERAGE_KEY);
+			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.NUMBER_TESTS_KEY);
 		}
 		
 //		validamos que la ruta cumpla con el formato adecuado:
@@ -63,7 +64,7 @@ public class InputVariableCoverage extends InputVariable{
 		
 		
 		
-		LOG.info("InputVariableCoverage: variable de entrada COBERTURA extraida con exito");
+		LOG.info("InputVariableNumberTests: variable de entrada NUMEROTEST extraida con exito");
 		
 		return this.metricValue;
 		

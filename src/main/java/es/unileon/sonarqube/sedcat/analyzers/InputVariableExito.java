@@ -18,24 +18,26 @@ import es.unileon.sonarqube.sedcat.start.SedcatSensor;
  *	@author alan.sastre
  *	@version 1.0
  */
-public class InputVariableExito extends InputVariablesUtils{
-
-	private static final Logger LOG = LoggerFactory.getLogger(InputVariableExito.class);
+public class InputVariableExito extends InputVariable{
 
 
-	private static final String DEFAULT_PATH_SUCCESS = "/target/exito.txt";
-
-	
-	public Metric exitoMetric;
-	public double exitoValue;
-	
-	
-	
 	public InputVariableExito(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
-		this.exitoMetric = SedcatMetrics.EXITO;
+		this.LOG = LoggerFactory.getLogger(InputVariableExito.class);
+		this.DEFAULT_PATH_VARIABLE = "/target/exito.txt";
+		this.concreteMetric = SedcatMetrics.EXITO;
+		//especificas de sonar
+		this.sensorContext = sensorContext;
+		this.fileSystem = fileSystem;
+		this.settings = settings;
 		
-		
+	}
+
+
+
+	@Override
+	public double obtainInputVariable() {
+
 		LOG.info("InputVariableExito: extrayendo variable de entrada EXITO");
 
 		//1 - Extraemos la ruta
@@ -46,22 +48,26 @@ public class InputVariableExito extends InputVariablesUtils{
 			LOG.warn("InputVariablesUtils: no hay ruta en configuracion para la variable EXITO. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
-			rutaVariable = InputVariablesUtils.obtenerRutaVariablePorDefecto(fileSystem, settings, DEFAULT_PATH_SUCCESS);
+			rutaVariable = InputVariablesUtils.obtenerRutaVariablePorDefecto(fileSystem, settings, DEFAULT_PATH_VARIABLE);
 		}else{
 			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.SUCCESS_KEY);
 		}
 		
-		//FIXME meter validacion de ruta
+//		validamos que la ruta cumpla con el formato adecuado:
+		InputVariablesUtils.checkVariablePath(rutaVariable);
 		//2 - Extraemos el valor del fichero
-		this.exitoValue = InputVariablesUtils.obtenerValorDesdeRuta(rutaVariable);
+		this.metricValue = InputVariablesUtils.obtenerValorDesdeRuta(rutaVariable);
 		
+//		comprobamos que el valor de la variable esta en los rangos permitidos y se adecua al formato
+		InputVariablesUtils.checkInputVariableValue(this.metricValue);
 		//3 - Guardamos la variable en forma de medida para representarla en el widget
-		//FIXME meter validacion de variable obtenida
-		InputVariablesUtils.guardarVariableMedida(sensorContext, this.exitoMetric, this.exitoValue);
+		InputVariablesUtils.guardarVariableMedida(this.sensorContext, this.concreteMetric, this.metricValue);
 		
 		
 		
 		LOG.info("InputVariableExito: variable de entrada EXITO extraida con exito");
+		
+		return this.metricValue;
 		
 		
 	}

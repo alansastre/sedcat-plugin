@@ -21,27 +21,65 @@ import es.unileon.sonarqube.sedcat.start.SedcatSensor;
  */
 public class InputVariablesGeneral {
 
+	
 	private static final Logger LOG = LoggerFactory.getLogger(InputVariablesGeneral.class);
-
-
 	public ArrayList<Double> metricsValues;
 
+	
+	
+	
 	public InputVariablesGeneral(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 		
 
 		LOG.info("InputVariablesGeneral: extrayendo variables de entrada");
-		//Llamar a los analizadores
+		//Crear variables de entrada
+		
+			//EXITO
 		InputVariableExito exito = new InputVariableExito(sensorContext, fileSystem, settings);
+
+			//COBERTURA
 		InputVariableCoverage coverage = new InputVariableCoverage(sensorContext, fileSystem, settings);
+
+			//MUTANTES
+		InputVariableMutants mutants = new InputVariableMutants(sensorContext, fileSystem, settings);
+
+			//NUMEROTEST
+		InputVariableNumberTests numbertests = new InputVariableNumberTests(sensorContext, fileSystem, settings);
+
+			//NUMBER OF CODE LINES
+		InputVariableCodeLines numbercode_lines = new InputVariableCodeLines(sensorContext, fileSystem, settings);
+
 		
 		
-    	//Almacenar los datos de cada variable obtenida
-		metricsValues.add(exito.exitoValue);
-		metricsValues.add(coverage.coverageValue);
+    	//Ejecutar, almacenar y obtener variables de entrada
+		metricsValues.add(exito.obtainInputVariable());
+		metricsValues.add(coverage.obtainInputVariable());
+		metricsValues.add(mutants.obtainInputVariable());
+		metricsValues.add(numbertests.obtainInputVariable());
+		metricsValues.add(numbercode_lines.obtainInputVariable());
 		
 		
 	}
 
+	
+	/**
+	 * Metodo que devuelve las variables de entrada adecuadas al formato array que exige la logica xfuzzy (vector double)
+	 * @return 
+	 */
+	public double[] getInputVariables(){
+		
+		//adecuamos las variables al formato array 
+		double[] inputVariables = InputVariablesUtils.arrayListToArray(this.metricsValues);
+		
+		//Comprobamos que las variables se han obtenido cumplen las precondiciones
+		InputVariablesUtils.checkInputValues(inputVariables);
+		
+		//devolvemos las variables de entrada
+		return inputVariables;
+		
+		
+		
+	}
 	
 	
 }

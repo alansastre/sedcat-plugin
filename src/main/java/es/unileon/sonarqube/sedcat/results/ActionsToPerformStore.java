@@ -12,10 +12,10 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
  *	@author alan.sastre
  *	@version 1.0
  */
-public class ActionsToPerform {
+public class ActionsToPerformStore {
 
 	
-	public ActionsToPerform(SensorContext sensorContext, double qualityMeasure){
+	public ActionsToPerformStore(double[] qualityMeasure, SensorContext sensorContext){
 		
 		/*
 		 * 1- determinar cual ha sido el escenario de acciones y localizar la propiedad

@@ -21,10 +21,11 @@ import org.sonar.api.measures.Metrics;
  */
 public class SedcatMetrics implements Metrics {
 
-//prueba
 	private static final List<Metric> METRICS = new ArrayList<Metric>();
 	private static final List<Metric> QUANTITATIVE_METRICS = new ArrayList<Metric>();
 	
+	//METRICAS ENTRADA
+	//Metrica EXITO
 	public static final Metric EXITO = new Metric.Builder(EXITO_COVERAGE_KEY, "Exito", Metric.ValueType.PERCENT)
 		    .setDescription("Exito en porcentaje de los test")
 		    .setDirection(Metric.DIRECTION_BETTER)
@@ -32,6 +33,7 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
+	//Metrica COBERTURA
 	public static final Metric COBERTURA = new Metric.Builder(COBERTURA_COVERAGE_KEY, "Cobertura", Metric.ValueType.PERCENT)
 		    .setDescription("Cobertura en porcentaje de los test")
 		    .setDirection(Metric.DIRECTION_BETTER)
@@ -39,15 +41,48 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
+	//Metrica MUTANTES
+	public static final Metric MUTANTS = new Metric.Builder(MUTANTS_KEY, "Mutantes", Metric.ValueType.PERCENT)
+		    .setDescription("Mutantes en porcentaje de los test")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
+	
+	//Metrica NUMEROTESTS
+	public static final Metric NUMBER_TESTS = new Metric.Builder(NUMBERTESTS_KEY, "Numero de tests", Metric.ValueType.INT)
+		    .setDescription("Numero total de tests unitarios en el proyecto")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
+	
+	//Metrica CODELINES
+	public static final Metric CODE_LINES = new Metric.Builder(CODE_LINES_KEY, "Numero de lineas de codigo", Metric.ValueType.INT)
+		    .setDescription("Numero total de lineas de codigo en el proyecto (sin contar los test)")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
+	
+	
+	
+	
+	
+	
+	
+	
+	//METRICAS SALIDA
+		//MEDIDA CALIDAD
 	public static final Metric QUALITY_MEASURE = new Metric.Builder(QUALITY_MEASURE_KEY, "Medida Calidad", Metric.ValueType.PERCENT)
-		    .setDescription("Métrica de calidad para las pruebas de testing")
+		    .setDescription("Métrica de salida: calidad para las pruebas de testing")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
-	
+		//ACCIONES
 	public static final Metric ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Acciones para mejora", Metric.ValueType.STRING)
-		    .setDescription("Acciones a realizar para mejorar la metrica de calidad")
+		    .setDescription("Métrica de salida: Acciones a realizar para mejorar la metrica de calidad")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
@@ -56,7 +91,7 @@ public class SedcatMetrics implements Metrics {
 	
 	
 	
-	//metricas de prueba
+	//METRICAS DE PRUEBA
 	public static final Metric<String> MESSAGE = new Metric.Builder(MESSAGE_KEY_1, "mensaje1", Metric.ValueType.STRING)
 		    .setDescription("This is a metric to store a well known message")
 		    .setDirection(Metric.DIRECTION_WORST)
@@ -73,7 +108,7 @@ public class SedcatMetrics implements Metrics {
 	
 	// getMetrics() method is defined in the Metrics interface and is used by
 	  public List<Metric> getMetrics() {
-	    return Arrays.<Metric>asList(EXITO, COBERTURA, MESSAGE, MESSAGE_2);
+	    return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, MESSAGE, MESSAGE_2);
 	  }
 	
 	

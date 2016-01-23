@@ -7,21 +7,21 @@ import org.sonar.api.batch.SensorContext;
 import org.sonar.api.measures.Measure;
 
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
-import es.unileon.sonarqube.sedcat.strategies.StrategiesManager;
+
 
 /**
  *  Clase encargada de almacenar la metrica calidad obtenida en forma de medida
  *	@author alan.sastre
  *	@version 1.0
  */
-public class QualityMeasure {
+public class QualityMeasureStore {
 
 	
 	
-	public QualityMeasure(SensorContext sensorContext, double qualityMeasure){
+	public QualityMeasureStore(double[] qualityMeasure, SensorContext sensorContext){
 		
 		
-		Measure measure = new Measure(SedcatMetrics.QUALITY_MEASURE, qualityMeasure);
+		Measure measure = new Measure(SedcatMetrics.QUALITY_MEASURE, qualityMeasure[0]);
 		sensorContext.saveMeasure(measure);
 	}
 	

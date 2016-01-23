@@ -17,6 +17,11 @@ public class SedcatMetricsKeys {
 
 	public static final String EXITO_COVERAGE_KEY = "exito_tests";
 	public static final String COBERTURA_COVERAGE_KEY = "cobertura_tests";
+	public static final String MUTANTS_KEY = "mutantes_tests";
+	public static final String NUMBERTESTS_KEY = "numero_tests";
+	public static final String CODE_LINES_KEY = "numero_lineascodigo_tests";
+	
+	
 	public static final String QUALITY_MEASURE_KEY = "quality_measure";
 	public static final String ACTIONS_TO_PERFORM_KEY = "actions_to_realize";	
 	

@@ -3,12 +3,10 @@
  */
 package es.unileon.sonarqube.sedcat.analyzers;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.config.Settings;
-import org.sonar.api.measures.Metric;
 
 import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
@@ -17,38 +15,40 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
  *	@author alan.sastre
  *	@version 1.0
  */
-public class InputVariableCoverage extends InputVariable{
+public class InputVariableCodeLines extends InputVariable{
 
+	
+	
+	public InputVariableCodeLines(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
-	public InputVariableCoverage(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
-
-		this.LOG = LoggerFactory.getLogger(InputVariableCoverage.class);
-		this.DEFAULT_PATH_VARIABLE = "/target/cobertura.txt";
-		this.concreteMetric = SedcatMetrics.COBERTURA;
+		this.LOG = LoggerFactory.getLogger(InputVariableCodeLines.class);
+		this.DEFAULT_PATH_VARIABLE = "/target/numerolineascodigo.txt";
+		this.concreteMetric = SedcatMetrics.CODE_LINES;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
 		this.fileSystem = fileSystem;
 		this.settings = settings;
+		
 	}
 
+	
 	@Override
 	public double obtainInputVariable() {
-
 		
 		
-		LOG.info("InputVariableCoverage: extrayendo variable de entrada COBERTURA");
+		LOG.info("InputVariableCodeLines: extrayendo variable de entrada CODE_LINES");
 
 		//1 - Extraemos la ruta
 			//a- comprobamos si hay datos en configuracion para esta variable
 		
-		String rutaVariable = settings.getString(SedcatConstants.COVERAGE_KEY);
+		String rutaVariable = settings.getString(SedcatConstants.NUMBER_CODE_LINES_KEY);
 		if(rutaVariable.length() == 0){
-			LOG.warn("InputVariablesUtils: no hay ruta en configuracion para la variable COBERTURA. Se procede a buscar"
+			LOG.warn("InputVariableCodeLines: no hay ruta en configuracion para la variable CODE_LINES. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
-			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, DEFAULT_PATH_VARIABLE);
+			rutaVariable = InputVariablesUtils.obtenerRutaVariablePorDefecto(fileSystem, settings, DEFAULT_PATH_VARIABLE);
 		}else{
-			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.COVERAGE_KEY);
+			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.NUMBER_CODE_LINES_KEY);
 		}
 		
 //		validamos que la ruta cumpla con el formato adecuado:
@@ -63,10 +63,9 @@ public class InputVariableCoverage extends InputVariable{
 		
 		
 		
-		LOG.info("InputVariableCoverage: variable de entrada COBERTURA extraida con exito");
+		LOG.info("InputVariableCodeLines: variable de entrada CODE_LINES extraida con exito");
 		
 		return this.metricValue;
-		
 	}
 
 }

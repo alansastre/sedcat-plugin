@@ -22,10 +22,10 @@ import org.sonar.api.measures.Measure;
 import org.sonar.api.resources.Project;
 
 import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
-import es.unileon.sonarqube.sedcat.results.ResultsManager;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatPlugin;
-import es.unileon.sonarqube.sedcat.strategies.StrategiesManager;
+import es.unileon.sonarqube.sedcat.strategies.IExpertSystemStrategy;
+import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
@@ -43,11 +43,10 @@ import org.sonar.api.resources.Project;
  */
 public class SedcatSensor implements Sensor {
 
-
-
-
-	
+	private double[] inputVariablesValues;
 	private Settings settings;
+	//estrategia para los sistemas expertos
+	private IExpertSystemStrategy expertSystem;
 
     /**
      * The file system object for the project being analysed.
@@ -57,7 +56,6 @@ public class SedcatSensor implements Sensor {
     /**
      * The logger object for the sensor.
      */
-//    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	private static final Logger LOG = LoggerFactory.getLogger(SedcatSensor.class);
 
     /**
@@ -81,6 +79,16 @@ public class SedcatSensor implements Sensor {
         // this sensor is executed on any type of project
         return true;
     }
+    
+ 
+  public void setExpertSystem(IExpertSystemStrategy ExpertSystem){
+		this.expertSystem = ExpertSystem;
+	}
+  
+  public void performExpertSystem(double[] inputVariables, SensorContext sensorContext){
+	  
+	  this.expertSystem.xfuzzyProcess(inputVariables, sensorContext);
+	}
 
     /**
      *
@@ -95,24 +103,28 @@ public class SedcatSensor implements Sensor {
 	 *     1-Obtener variables de entrada
 	 *     		InputVariablesGeneral
 	 *     			InputVariableExito
-	 *     2 - Obtener variables de salida a partir de las variables de entrada:
-	 *     		Uso de estrategias que se corresponden con diferentes sistemas expertos
-	 *     3 - Gestionar los resultados 
-	 *     		Los resultados obtenidos son almacenados en forma de medidas y representados en el widget dinámicamente.
-	 *     		Los resultados a gestionar son:
-	 *     		a. medida de calidad
-	 *     		b. acciones a tomar 
-	 *     
-	 *     
-	 *     	
+	 *     2 - Ejecutar sistemas expertos y almacenar variables de salida
+	 *     		Se ejecutan las estrategias correspondientes a cada sistema experto
+	 *     		y cada una delega en otra clase el almacenamiento de su resultado.
+	 *     		
 	 */
     	
 //    	1- Obtener variables de entrada
     	InputVariablesGeneral inputVariables = new InputVariablesGeneral(sensorContext, fileSystem, settings);
+    	this.inputVariablesValues = inputVariables.getInputVariables();
+    	
 //    	2 - gestionar sistema experto difuso para obtener los resultados
-    	StrategiesManager outputVariables = new StrategiesManager(inputVariables);
+    	
+    	//Estrategia para el sistema experto que procesa la calidad
+    	this.setExpertSystem(new ExpertSystemQuality());
+    	this.performExpertSystem(this.inputVariablesValues, sensorContext);
+    	
+    	
+    	
+    	
+    	
 //    	3 - Gestionar resultados
-    	ResultsManager manageVariables = new ResultsManager(sensorContext, outputVariables);
+//    	ResultsManager manageVariables = new ResultsManager(sensorContext, outputVariables);
     	
 
     	java.io.File projectDirectory = fileSystem.baseDir();

@@ -21,7 +21,17 @@ import org.sonar.api.SonarPlugin;
     project = true),
   @Property(key = SedcatConstants.COVERAGE_KEY, defaultValue = "true",
     name = "Metrica de entrada cobertura", description = "Indicar la ruta en la que se hallan los reportes de cobertura generados por jacoco", global = true,
-    project = true)
+    project = true),
+  @Property(key = SedcatConstants.MUTANTS_KEY, defaultValue = "true",
+  name = "Metrica de entrada mutantes", description = "Indicar la ruta en la que se hallan los reportes generados por el plugin mutantes (pitest)", global = true,
+  project = true),
+  @Property(key = SedcatConstants.NUMBER_TESTS_KEY, defaultValue = "true",
+  name = "Metrica numero de tests unitarios", description = "Indicar la ruta en la que se halla el numero de tests unitarios que tiene en total el proyecto", global = true,
+  project = true),
+  @Property(key = SedcatConstants.NUMBER_CODE_LINES_KEY, defaultValue = "true",
+  name = "Metrica numero de lineas de codigo", description = "Indicar la ruta en la que se halla el numero de lineas de codigo que tiene en total el proyecto", global = true,
+  project = true),
+  
 })
 public class SedcatPlugin extends SonarPlugin {
 	
@@ -34,8 +44,6 @@ public class SedcatPlugin extends SonarPlugin {
         		SedcatMetrics.class,
         		SedcatSensor.class,
         		ExampleSedcatHtml.class,
-//        		SedcatCoverageDecorator.class,
-//        		App.class,
         		SedcatDashboardWidget.class
         		
         		);
