@@ -16,7 +16,9 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 
 /**
- *	@author alan.sastre
+ * Clase encargada de hacer la correspondencia del resultado acciones con los conjuntos acciones
+ * predefinidos, una vez encontrado el conjunto lo almacena en forma de metrica.
+ *	@author alan.jesus
  *	@version 1.0
  */
 public class ActionsToPerformStore {

@@ -12,8 +12,8 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 
 
 /**
- *  Clase encargada de almacenar la metrica calidad obtenida en forma de medida
- *	@author alan.sastre
+ *  Clase encargada de almacenar el resultado calidad en forma de metrica.
+ *	@author alan.jesus
  *	@version 1.0
  */
 public class QualityMeasureStore {

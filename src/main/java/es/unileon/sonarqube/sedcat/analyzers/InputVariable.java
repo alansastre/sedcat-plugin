@@ -11,7 +11,7 @@ import org.sonar.api.config.Settings;
 import org.sonar.api.measures.Metric;
 
 /**
- *	@author alan.sastre
+ *	@author alan.jesus
  *	@version 1.0
  */
 public abstract class InputVariable {

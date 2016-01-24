@@ -15,7 +15,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatSensor;
 
 /**
- *	@author alan.sastre
+ *	@author alan.jesus
  *	@version 1.0
  */
 public class InputVariableExito extends InputVariable{

@@ -16,11 +16,13 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatSensor;
 
 /**
- * @author alan.sastre
+ * @author alan.jesus
  *
  */
 public class InputVariablesGeneral {
 
+	//variable que define el numero total de variables de entrada
+	private static final int VARIABLES_NUMBER = 5;
 	
 	private static final Logger LOG = LoggerFactory.getLogger(InputVariablesGeneral.class);
 	public ArrayList<Double> metricsValues;
@@ -35,7 +37,7 @@ public class InputVariablesGeneral {
 		//Crear variables de entrada
 		
 			//EXITO
-		InputVariableExito exito = new InputVariableExito(sensorContext, fileSystem, settings);
+		InputVariableExito success = new InputVariableExito(sensorContext, fileSystem, settings);
 
 			//COBERTURA
 		InputVariableCoverage coverage = new InputVariableCoverage(sensorContext, fileSystem, settings);
@@ -52,7 +54,7 @@ public class InputVariablesGeneral {
 		
 		
     	//Ejecutar, almacenar y obtener variables de entrada
-		metricsValues.add(exito.obtainInputVariable());
+		metricsValues.add(success.obtainInputVariable());
 		metricsValues.add(coverage.obtainInputVariable());
 		metricsValues.add(mutants.obtainInputVariable());
 		metricsValues.add(numbertests.obtainInputVariable());
@@ -72,7 +74,7 @@ public class InputVariablesGeneral {
 		double[] inputVariables = InputVariablesUtils.arrayListToArray(this.metricsValues);
 		
 		//Comprobamos que las variables se han obtenido cumplen las precondiciones
-		InputVariablesUtils.checkInputValues(inputVariables);
+		InputVariablesUtils.checkInputValues(inputVariables, VARIABLES_NUMBER);
 		
 		//devolvemos las variables de entrada
 		return inputVariables;

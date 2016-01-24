@@ -10,7 +10,7 @@ import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
 
 /**
  *  Sistema experto que obtiene la metrica de calidad buscada
- *	@author alan.sastre
+ *	@author alan.jesus
  *	@version 1.0
  */
 public class ExpertSystemQuality implements IExpertSystemStrategy{

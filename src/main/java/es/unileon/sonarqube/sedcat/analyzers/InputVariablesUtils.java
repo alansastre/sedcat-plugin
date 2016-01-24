@@ -20,8 +20,8 @@ import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 
 /**
- * 	Clase de utilidad para los analizadores de variables de entrada
- *	@author alan.sastre
+ * 	Clase de utilidad para la obtencion de variables de entrada
+ *	@author alan.jesus
  *	@version 1.0
  */
 public final class InputVariablesUtils {
@@ -151,18 +151,47 @@ public final class InputVariablesUtils {
 	 *  los requisitos de formato, caracteres especiales etc
 	 * @param variablesEntrada
 	 */
-	public static void checkInputValues(double[] variablesEntrada) {
-		// TODO Auto-generated method stub
+	public static void checkInputValues(double[] inputVariables, int numberVariables) {
+
+		
+		//1a comprobacion: el array tiene el numero de variables correcto
+		if(inputVariables.length!=numberVariables){
+			LOG.error("El numero de variables de entrada no se corresponde con el preestablecido por el sistema experto.");
+			System.exit(-1);
+		}
+		
+		//2a comprobacion: rango de los valores, comprobar que ninguno sea menor que cero
+	
+		for(int i = 0; i<inputVariables.length; i++){
+			if(inputVariables[i] < 0){
+				LOG.error("El formato de variables de entrada no se corresponde con el preestablecido por el sistema experto.");
+				System.exit(-1);
+			}
+		}
+
 		
 	}
 
 	/**
-	 * Metodo encargado de validar la ruta de que indica donde se encuentra el fichero con los valores 
+	 * Metodo encargado de validar la ruta que indica donde se encuentra el fichero con los valores 
 	 * para una determinada variable de entrada
 	 * @param rutaVariable
 	 */
-	public static void checkVariablePath(String rutaVariable) {
-		// TODO Auto-generated method stub
+	public static void checkVariablePath(String variablePath) {
+
+		
+		//1a comprobacion: que la ruta no es nula o vacia
+		if(variablePath==null || variablePath.trim().isEmpty()){
+			LOG.error("El formato de variables de entrada no se corresponde con el preestablecido por el sistema experto.");
+			System.exit(-1);
+		}
+		
+		//2a comprobacion: el archivo al que indica es procesable (existe y se puede leer)
+		File file=new File(variablePath);
+		if(!file.exists() || !file.canRead()){
+			LOG.error("El archivo al que apunta la ruta de la variable de entrada no existe o no se puede leer.");
+			System.exit(-1);
+		}
 		
 	}
 
@@ -171,7 +200,13 @@ public final class InputVariablesUtils {
 	 * @param metricValue
 	 */
 	public static void checkInputVariableValue(double metricValue) {
-		// TODO Auto-generated method stub
+
+		//1a comprobacion: que no sea un valor menor que cero
+		if(metricValue < 0){
+			LOG.error("El formato de variables de entrada no se corresponde con el preestablecido por el sistema experto.");
+			System.exit(-1);
+		}
+		
 		
 	}
 	

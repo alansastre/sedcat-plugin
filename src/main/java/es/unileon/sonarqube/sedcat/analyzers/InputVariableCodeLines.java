@@ -12,7 +12,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 
 /**
- *	@author alan.sastre
+ *	@author alan.jesus
  *	@version 1.0
  */
 public class InputVariableCodeLines extends InputVariable{

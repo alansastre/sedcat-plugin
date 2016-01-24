@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.unileon.sedcat</groupId>
+  <groupId>es.unileon.sedcat</groupId>
   <artifactId>tools.sonarqube.sedcat</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 <!--   <packaging>jar</packaging> -->
@@ -96,7 +96,7 @@
 		      <extensions>true</extensions>
 			      <configuration>
 			        <pluginKey>sedcat</pluginKey>
-	                    <pluginClass>com.unileon.sonarqube.sedcat.start.SedcatPlugin</pluginClass>
+	                    <pluginClass>es.unileon.sonarqube.sedcat.start.SedcatPlugin</pluginClass>
 	                    <pluginName>Sonar SEDCAT  plugin</pluginName>
 	                    <pluginDescription>Show quality measures of testing software.</pluginDescription>
 			      </configuration>

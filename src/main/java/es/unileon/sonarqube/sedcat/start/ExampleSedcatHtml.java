@@ -1,7 +1,11 @@
 package es.unileon.sonarqube.sedcat.start;
 import org.sonar.api.web.Footer;
 
-
+/**
+ * Clase que muestra un pie de pagina personalizado en el centro de configuracion sonarqube
+ *	@author alan.sastre
+ *	@version 1.0
+ */
 public class ExampleSedcatHtml implements Footer {
 
 	  public String getHtml() {

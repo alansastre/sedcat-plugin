@@ -38,26 +38,27 @@ import org.sonar.api.web.WidgetPropertyType;
 //})
 public class SedcatDashboardWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
+
+	private static final String TEMPLATE_PATH = "/root/workspace/tools.sonarqube.sedcat/src/main/resources";
+	private static final String TEMPLATE_PATH_FILE = "/sedcat_widget.html.erb";
+	
+
 	public String getId() {
-		// TODO Auto-generated method stub
+
 		return "sedcatPlugin";
 	}
 
 	public String getTitle() {
-		// TODO Auto-generated method stub
+
 		return "Sedcat Plugin";
 	}
 
 	@Override
 	protected String getTemplatePath() {
-		// TODO Auto-generated method stub
-		
-		
-//		"/resources/example_widget.html.erb"
-//		"/deors/plugins/sonarqube/idemetadata/idemetadata_widget.html.erb"
-		String templatePath = "/example2_widget.html.erb";
+
+
         // uncomment next line to enable change reloading during development
-        templatePath = "/root/workspace/tools.sonarqube.sedcat/src/main/resources" + templatePath;
+        String templatePath = TEMPLATE_PATH + TEMPLATE_PATH_FILE;
         return templatePath;
 
 	}

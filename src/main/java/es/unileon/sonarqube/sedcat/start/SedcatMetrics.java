@@ -17,7 +17,7 @@ import org.sonar.api.measures.Metrics;
 /**
  * Metrics for the sonar SEDCAT plugin.
  * 
- * @author alan.sastre
+ * @author alan.jesus
  */
 public class SedcatMetrics implements Metrics {
 
@@ -144,8 +144,8 @@ public class SedcatMetrics implements Metrics {
 //	}
 
 	/**
-	 * Returns the pitest quantitative metrics list.
-	 * @return {@link List<Metric>} The pitest quantitative metrics list.
+	 * Returns the sedcat quantitative metrics list.
+	 * @return {@link List<Metric>} The sedcat quantitative metrics list.
 	 */
 	public static List<Metric> getQuantitativeMetrics() {
 		return QUANTITATIVE_METRICS;

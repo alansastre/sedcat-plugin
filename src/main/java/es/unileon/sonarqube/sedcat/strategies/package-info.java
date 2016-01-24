@@ -4,7 +4,7 @@
  * 
  */
 /**
- *	@author alan.sastre
+ *	@author alan.jesus
  *	@version 1.0
  */
 package es.unileon.sonarqube.sedcat.strategies;

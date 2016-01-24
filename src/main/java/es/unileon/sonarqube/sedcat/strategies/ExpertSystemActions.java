@@ -9,7 +9,7 @@ import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
 
 /**
  *  Sistema experto que obtiene las acciones a realizar buscadas
- *	@author alan.sastre
+ *	@author alan.jesus
  *	@version 1.0
  */
 public class ExpertSystemActions implements IExpertSystemStrategy{
