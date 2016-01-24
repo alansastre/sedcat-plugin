@@ -1,25 +1,29 @@
 <div class="dashbox">
-  <h1>SEDCAT</h1>
-	<br>
+  <h1>Sedcat Plugin for Quality Testing</h1>
 	<h3><strong>Metrica calidad:</strong></h3>
-<%= format_measure('quality_measure', :suffix => '%') %>
+<%= format_measure('quality_measure') %>
+	<br>
 	<br>
 	<h3><strong>Acciones recomendadas:</strong></h3>
 <%= format_measure('actions_to_realize') %>
 	<br>
-	
+	<br>
 	<table>
 	<h3><strong>Variables de entrada usadas:</strong></h3>
 		<tr>
 		  <td>Exito: <strong><%= format_measure('exito_tests') %></strong></td>
-		  <br>
-		  <td>Cobertura: <strong><%= format_measure('cobertura_tests', :suffix => '%') %></strong></td>
-		  <br>
-		  <td>Mutantes: <strong><%= format_measure('mutantes_tests', :suffix => '%') %></strong></td>
-		  <br>
-		  <td>Numero de tests: <strong><%= format_measure('numero_tests', :suffix => ' numero de test') %></strong></td>
-		  <br>
-		  <td>Numero de lineas de codigo: <strong><%= format_measure('numero_lineascodigo_tests', :suffix => ' numero de lineas de codigo') %></strong></td>
+		</tr>
+		<tr>
+		  <td>Cobertura: <strong><%= format_measure('cobertura_tests') %></strong></td>
+		</tr>
+		<tr>
+		  <td>Mutantes: <strong><%= format_measure('mutantes_tests') %></strong></td>
+		</tr>
+		<tr>
+		  <td>Numero de tests: <strong><%= format_measure('numero_tests') %></strong></td>
+		</tr>
+		<tr>
+		  <td>Numero de lineas de codigo: <strong><%= format_measure('numero_lineascodigo_tests') %></strong></td>
 		</tr>
 	</table>
 	<br>

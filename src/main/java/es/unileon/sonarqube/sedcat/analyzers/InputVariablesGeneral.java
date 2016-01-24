@@ -46,6 +46,7 @@ public class InputVariablesGeneral {
 		InputVariableCoverage coverage = new InputVariableCoverage(sensorContext, fileSystem, settings);
 		metricsValues.add(coverage.obtainInputVariable());
 		
+	
 			//MUTANTES
 		InputVariableMutants mutants = new InputVariableMutants(sensorContext, fileSystem, settings);
 		metricsValues.add(mutants.obtainInputVariable());
@@ -53,7 +54,7 @@ public class InputVariablesGeneral {
 			//NUMEROTEST
 		InputVariableNumberTests numbertests = new InputVariableNumberTests(sensorContext, fileSystem, settings);
 		metricsValues.add(numbertests.obtainInputVariable());
-		
+	
 			//NUMBER OF CODE LINES
 		InputVariableCodeLines numbercode_lines = new InputVariableCodeLines(sensorContext, fileSystem, settings);
 		metricsValues.add(numbercode_lines.obtainInputVariable());

@@ -99,6 +99,8 @@ public class SedcatSensor implements Sensor {
     	this.performExpertSystem(this.inputVariablesValues, sensorContext);
     	
     	//Estrategia para el sistema experto que procesa las acciones
+    		//reordenar variables
+    	this.prepareInputVariablesActions();
     	this.setExpertSystem(new ExpertSystemActions());
     	this.performExpertSystem(this.inputVariablesValues, sensorContext);
   
@@ -107,6 +109,17 @@ public class SedcatSensor implements Sensor {
     }
 
     /**
+     * Reordenar variables para las acciones
+     */
+    private void prepareInputVariablesActions() {
+
+    	double aux = this.inputVariablesValues[2];
+    	this.inputVariablesValues[2] =  this.inputVariablesValues[3];
+    	this.inputVariablesValues[3] = aux;
+		
+	}
+
+	/**
      * Returns the name of the sensor as it will be used in logs during analysis.
      *
      * @return the name of the sensor

@@ -30,7 +30,8 @@ public class ActionsToPerformStore {
 	private static final Logger LOG = LoggerFactory.getLogger(ActionsToPerformStore.class);
 	private static final long ACTION_SET_MIN = 0;
 	private static final long ACTION_SET_MAX = 32;
-	private Properties propertyAction;
+	private static final String ACTIONS_PROPERTIES_PATH = "/root/workspace/tools.sonarqube.sedcat/src/main/resources/org/sonar/l10n/expertSystemActions.properties";
+
 
 
 
@@ -43,10 +44,11 @@ public class ActionsToPerformStore {
 		 * en el widget
 		 */
 		double actionSetDouble = qualityMeasure[0];
+		LOG.info("actionset sin redondear: "+ actionSetDouble);
 		long actionSet = Math.round(actionSetDouble);
 		
 		this.checkValue(actionSet);
-		
+
 		LOG.info("conjunto de acciones: "+ actionSet);
 		
 		
@@ -76,11 +78,11 @@ public class ActionsToPerformStore {
 	private Properties loadProperties() {
 
 	    Properties propiedades = new Properties();
-	    InputStream entrada = null;
+	    FileInputStream entrada = null;
 
 	    try {
 
-	        entrada = new FileInputStream("/root/workspace/tools.sonarqube.sedcat/expertSystemActions.properties");
+	        entrada = new FileInputStream(ACTIONS_PROPERTIES_PATH);
 
 	        // cargamos el archivo de propiedades
 	        propiedades.load(entrada);
