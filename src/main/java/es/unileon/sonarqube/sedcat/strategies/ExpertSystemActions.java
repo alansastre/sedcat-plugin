@@ -2,6 +2,8 @@
  * 
  */
 package es.unileon.sonarqube.sedcat.strategies;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.SensorContext;
 
 import es.unileon.sonarqube.sedcat.storage.ActionsToPerformStore;
@@ -15,13 +17,14 @@ import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
 public class ExpertSystemActions implements IExpertSystemStrategy{
 
 	
-	
+	private static final Logger LOG = LoggerFactory.getLogger(ExpertSystemActions.class);
 
 	public void xfuzzyProcess(double[] inputVariables, SensorContext sensorContext) {
 		
-		Acciones_1 prueba = new Acciones_1();
+		LOG.info("Ejecutando sistema experto para acciones.");
 		
-		ActionsToPerformStore metricToStore = new ActionsToPerformStore(prueba.crispInference(inputVariables), sensorContext);
+		Acciones_1 actions = new Acciones_1();
+		ActionsToPerformStore metricToStore = new ActionsToPerformStore(actions.crispInference(inputVariables), sensorContext);
 
 	}
 

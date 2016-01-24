@@ -18,12 +18,12 @@ import es.unileon.sonarqube.sedcat.start.SedcatSensor;
  *	@author alan.jesus
  *	@version 1.0
  */
-public class InputVariableExito extends InputVariable{
+public class InputVariableSuccess extends InputVariable{
 
 
-	public InputVariableExito(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
+	public InputVariableSuccess(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
-		this.LOG = LoggerFactory.getLogger(InputVariableExito.class);
+		this.LOG = LoggerFactory.getLogger(InputVariableSuccess.class);
 		this.DEFAULT_PATH_VARIABLE = "/target/exito.txt";
 		this.concreteMetric = SedcatMetrics.EXITO;
 		//especificas de sonar
@@ -44,11 +44,13 @@ public class InputVariableExito extends InputVariable{
 			//a- comprobamos si hay datos en configuracion para esta variable
 		
 		String rutaVariable = settings.getString(SedcatConstants.SUCCESS_KEY);
-		if(rutaVariable.length() == 0){
+		LOG.info("SEDCAT: rutavariable es " + rutaVariable);
+		
+		if(rutaVariable == null){
 			LOG.warn("InputVariablesUtils: no hay ruta en configuracion para la variable EXITO. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
-			rutaVariable = InputVariablesUtils.obtenerRutaVariablePorDefecto(fileSystem, settings, DEFAULT_PATH_VARIABLE);
+			rutaVariable = InputVariablesUtils.obtenerRutaVariablePorDefecto(fileSystem, settings, this.DEFAULT_PATH_VARIABLE);
 		}else{
 			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.SUCCESS_KEY);
 		}
@@ -66,7 +68,7 @@ public class InputVariableExito extends InputVariable{
 		
 		
 		LOG.info("InputVariableExito: variable de entrada EXITO extraida con exito");
-		
+		LOG.info("SEDCAT: el valor obtenido ha sido: " +  this.metricValue);
 		return this.metricValue;
 		
 		

@@ -42,11 +42,11 @@ public class InputVariableMutants extends InputVariable{
 			//a- comprobamos si hay datos en configuracion para esta variable
 		
 		String rutaVariable = settings.getString(SedcatConstants.MUTANTS_KEY);
-		if(rutaVariable.length() == 0){
+		if(rutaVariable == null){
 			LOG.warn("InputVariablesUtils: no hay ruta en configuracion para la variable MUTANTES. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
-			rutaVariable = InputVariablesUtils.obtenerRutaVariablePorDefecto(fileSystem, settings, DEFAULT_PATH_VARIABLE);
+			rutaVariable = InputVariablesUtils.obtenerRutaVariablePorDefecto(fileSystem, settings, this.DEFAULT_PATH_VARIABLE);
 		}else{
 			rutaVariable = InputVariablesUtils.obtenerRutaVariable(fileSystem, settings, SedcatConstants.MUTANTS_KEY);
 		}

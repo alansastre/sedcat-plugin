@@ -32,35 +32,34 @@ public class InputVariablesGeneral {
 	
 	public InputVariablesGeneral(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 		
+		//inicializar arraylist
+		metricsValues = new ArrayList<Double>();
 
 		LOG.info("InputVariablesGeneral: extrayendo variables de entrada");
 		//Crear variables de entrada
 		
 			//EXITO
-		InputVariableExito success = new InputVariableExito(sensorContext, fileSystem, settings);
-
+		InputVariableSuccess success = new InputVariableSuccess(sensorContext, fileSystem, settings);
+		metricsValues.add(success.obtainInputVariable());
+		
 			//COBERTURA
 		InputVariableCoverage coverage = new InputVariableCoverage(sensorContext, fileSystem, settings);
-
+		metricsValues.add(coverage.obtainInputVariable());
+		
 			//MUTANTES
 		InputVariableMutants mutants = new InputVariableMutants(sensorContext, fileSystem, settings);
-
+		metricsValues.add(mutants.obtainInputVariable());
+		
 			//NUMEROTEST
 		InputVariableNumberTests numbertests = new InputVariableNumberTests(sensorContext, fileSystem, settings);
-
+		metricsValues.add(numbertests.obtainInputVariable());
+		
 			//NUMBER OF CODE LINES
 		InputVariableCodeLines numbercode_lines = new InputVariableCodeLines(sensorContext, fileSystem, settings);
-
-		
-		
-    	//Ejecutar, almacenar y obtener variables de entrada
-		metricsValues.add(success.obtainInputVariable());
-		metricsValues.add(coverage.obtainInputVariable());
-		metricsValues.add(mutants.obtainInputVariable());
-		metricsValues.add(numbertests.obtainInputVariable());
 		metricsValues.add(numbercode_lines.obtainInputVariable());
 		
-		
+		LOG.info("InputVariablesGeneral: variables de entrada extraidas");
+
 	}
 
 	

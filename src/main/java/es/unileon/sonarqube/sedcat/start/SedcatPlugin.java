@@ -16,19 +16,19 @@ import org.sonar.api.SonarPlugin;
  */
 @SuppressWarnings("unchecked")
 @Properties({
-  @Property(key = SedcatConstants.SUCCESS_KEY, defaultValue = "true",
+  @Property(key = SedcatConstants.SUCCESS_KEY, defaultValue = "",
     name = "Metrica de entrada exito", description = "Indicar la ruta donde se hallan los reportes de exito", global = true,
     project = true),
-  @Property(key = SedcatConstants.COVERAGE_KEY, defaultValue = "true",
+  @Property(key = SedcatConstants.COVERAGE_KEY, defaultValue = "",
     name = "Metrica de entrada cobertura", description = "Indicar la ruta en la que se hallan los reportes de cobertura generados por jacoco", global = true,
     project = true),
-  @Property(key = SedcatConstants.MUTANTS_KEY, defaultValue = "true",
+  @Property(key = SedcatConstants.MUTANTS_KEY, defaultValue = "",
   name = "Metrica de entrada mutantes", description = "Indicar la ruta en la que se hallan los reportes generados por el plugin mutantes (pitest)", global = true,
   project = true),
-  @Property(key = SedcatConstants.NUMBER_TESTS_KEY, defaultValue = "true",
+  @Property(key = SedcatConstants.NUMBER_TESTS_KEY, defaultValue = "",
   name = "Metrica numero de tests unitarios", description = "Indicar la ruta en la que se halla el numero de tests unitarios que tiene en total el proyecto", global = true,
   project = true),
-  @Property(key = SedcatConstants.NUMBER_CODE_LINES_KEY, defaultValue = "true",
+  @Property(key = SedcatConstants.NUMBER_CODE_LINES_KEY, defaultValue = "",
   name = "Metrica numero de lineas de codigo", description = "Indicar la ruta en la que se halla el numero de lineas de codigo que tiene en total el proyecto", global = true,
   project = true),
   

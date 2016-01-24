@@ -44,6 +44,7 @@ public final class InputVariablesUtils {
 		String rutaVariable = settings.getString(claveVariable);
 		rutaProyecto = rutaProyecto + rutaVariable;
 
+		LOG.info("InputVariablesUtils: se ha empleado la siguiente ruta para buscar una variable de entrada " + rutaProyecto);
 		return rutaProyecto;
 	}
 	
@@ -120,7 +121,8 @@ public final class InputVariablesUtils {
 		java.io.File projectDirectory = fileSystem.baseDir();
     	String rutaProyecto = projectDirectory.getAbsolutePath();
 		rutaProyecto = rutaProyecto + defaultPathVariable;
-
+		
+		LOG.info("InputVariablesUtils: se ha empleado la siguiente ruta para buscar una variable de entrada " + rutaProyecto);
 		return rutaProyecto;
 	}
 	
@@ -179,7 +181,7 @@ public final class InputVariablesUtils {
 	 */
 	public static void checkVariablePath(String variablePath) {
 
-		
+		LOG.info("InputVariablesUtils: se procede a comprobar la siguiente ruta para variable de entrada " + variablePath);
 		//1a comprobacion: que la ruta no es nula o vacia
 		if(variablePath==null || variablePath.trim().isEmpty()){
 			LOG.error("El formato de variables de entrada no se corresponde con el preestablecido por el sistema experto.");

@@ -3,6 +3,9 @@
  */
 package es.unileon.sonarqube.sedcat.storage;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -33,6 +36,7 @@ public class ActionsToPerformStore {
 
 	public ActionsToPerformStore(double[] qualityMeasure, SensorContext sensorContext){
 		
+		LOG.info("Almacenando conjunto de acciones.");
 		/*
 		 * 1- determinar cual ha sido el escenario de acciones y localizar la propiedad
 		 * que lo define dentro de los ficheros properties. Esta propiedad contendra el texto que aparecera 
@@ -43,18 +47,22 @@ public class ActionsToPerformStore {
 		
 		this.checkValue(actionSet);
 		
+		LOG.info("conjunto de acciones: "+ actionSet);
 		
-		String actionsValueProperty = null;
+		
+		//cargamos propiedades
+		Properties propiedades = this.loadProperties();
+		
+		String actionsValueProperty = "";
 		for(int i=0; i<=ACTION_SET_MAX; i++){
 			if(actionSet==i){
 				actionsValueProperty = "sedcat.actions.set" + i;
 			}
 		}
+
+		String actionValue = propiedades.getProperty(actionsValueProperty);
+		LOG.info("ACCIONES: "+ actionValue);
 	
-		propertyAction= new Properties();
-		String actionValue = propertyAction.getProperty(actionsValueProperty);
-		
-		
 		
 		//2 - Almacenar el mensaje del conjunto de acciones en forma de String
 		Measure measure = new Measure(SedcatMetrics.ACTIONS_TO_PERFORM, actionValue);
@@ -65,6 +73,38 @@ public class ActionsToPerformStore {
 
 	
 	
+	private Properties loadProperties() {
+
+	    Properties propiedades = new Properties();
+	    InputStream entrada = null;
+
+	    try {
+
+	        entrada = new FileInputStream("/root/workspace/tools.sonarqube.sedcat/expertSystemActions.properties");
+
+	        // cargamos el archivo de propiedades
+	        propiedades.load(entrada);
+
+
+	    } catch (IOException ex) {
+	        ex.printStackTrace();
+	    } finally {
+	        if (entrada != null) {
+	            try {
+	                entrada.close();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	            
+	            
+	        }
+	    }
+	    
+	    return propiedades;
+	}
+
+
+
 	/**
 	 * Metodo encargado de verificar que el conjunto de acciones obtenido es coherente
 	 * y se encuentra dentro del rango de acciones predefinido

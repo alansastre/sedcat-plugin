@@ -102,7 +102,7 @@ public class SedcatMetrics implements Metrics {
 	
 	// getMetrics() method is defined in the Metrics interface and is used by
 	  public List<Metric> getMetrics() {
-	    return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, MESSAGE, MESSAGE_2);
+	    return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM);
 	  }
 	
 	

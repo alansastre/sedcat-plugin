@@ -91,6 +91,7 @@ public class SedcatSensor implements Sensor {
     	InputVariablesGeneral inputVariables = new InputVariablesGeneral(sensorContext, fileSystem, settings);
     	this.inputVariablesValues = inputVariables.getInputVariables();
     	
+    	LOG.info("Sensor: variables de entrada extraidas");
 //    	2 - gestionar sistemas expertos para obtener los resultados
     	
     	//Estrategia para el sistema experto que procesa la calidad

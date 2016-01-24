@@ -3,8 +3,11 @@
  */
 package es.unileon.sonarqube.sedcat.strategies;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.SensorContext;
 
+import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
 import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
 import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
 
@@ -15,12 +18,16 @@ import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
  */
 public class ExpertSystemQuality implements IExpertSystemStrategy{
 
+
+	private static final Logger LOG = LoggerFactory.getLogger(ExpertSystemQuality.class);
 	
 	public void xfuzzyProcess(double[] inputVariables, SensorContext sensorContext) {
 		
-		Calidad_1 prueba = new Calidad_1();
+		LOG.info("Ejecutando sistema experto para calidad.");
+		Calidad_1 quality = new Calidad_1();
 
-    	QualityMeasureStore metricToStore = new QualityMeasureStore(prueba.crispInference(inputVariables), sensorContext);
+    	QualityMeasureStore metricToStore = new QualityMeasureStore(quality.crispInference(inputVariables), sensorContext);
+
 	}
 
 }
