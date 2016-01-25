@@ -25,6 +25,7 @@ public class QualityMeasureStore {
 	public QualityMeasureStore(double[] qualityMeasure, SensorContext sensorContext){
 		
 		double qualityValue = qualityMeasure[0];
+		LOG.info("Metrica calidad es:" + qualityValue );
 		this.checkValue(qualityValue);
 		
 		Measure measure = new Measure(SedcatMetrics.QUALITY_MEASURE, qualityValue);
