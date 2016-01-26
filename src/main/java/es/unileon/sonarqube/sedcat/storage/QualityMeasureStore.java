@@ -24,10 +24,12 @@ public class QualityMeasureStore {
 	
 	public QualityMeasureStore(double[] qualityMeasure, SensorContext sensorContext){
 		
+		//comprobar resultado
 		double qualityValue = qualityMeasure[0];
 		LOG.info("Metrica calidad es:" + qualityValue );
 		this.checkValue(qualityValue);
 		
+		//de ser correcto, almacenarlo
 		Measure measure = new Measure(SedcatMetrics.QUALITY_MEASURE, qualityValue);
 		sensorContext.saveMeasure(measure);
 		
@@ -37,7 +39,7 @@ public class QualityMeasureStore {
 	
 	/**
 	 * Metodo encargado de verificar que el conjunto de acciones obtenido es coherente
-	 * y se encuentra dentro del rango de acciones predefinido
+	 * y se encuentra dentro del rango de acciones predefinido (0-100)
 	 * @param actionSet
 	 */
 	private void checkValue(double qualityValue) {

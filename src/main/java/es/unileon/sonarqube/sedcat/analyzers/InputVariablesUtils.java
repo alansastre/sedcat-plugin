@@ -78,6 +78,7 @@ public final class InputVariablesUtils {
         } catch(Exception e){
         	LOG.error("InputVariablesUtils: fallo al obtener valor desde ruta");
             e.printStackTrace();
+            System.exit(-1);
         }finally{
            // En el finally cerramos el fichero, para asegurarnos
            // que se cierra tanto si todo va bien como si salta 
@@ -87,7 +88,9 @@ public final class InputVariablesUtils {
                  fr.close();     
               }                  
            }catch (Exception e2){ 
+        	  LOG.error("InputVariablesUtils: No se ha podido cerrar la ruta correctamente");
               e2.printStackTrace();
+              System.exit(-1);
            }
         }
         
@@ -184,7 +187,7 @@ public final class InputVariablesUtils {
 		LOG.info("InputVariablesUtils: se procede a comprobar la siguiente ruta para variable de entrada " + variablePath);
 		//1a comprobacion: que la ruta no es nula o vacia
 		if(variablePath==null || variablePath.trim().isEmpty()){
-			LOG.error("El formato de variables de entrada no se corresponde con el preestablecido por el sistema experto.");
+			LOG.error("La ruta proporcionada es nula o esta vacia");
 			System.exit(-1);
 		}
 		
@@ -202,6 +205,9 @@ public final class InputVariablesUtils {
 	 * @param metricValue
 	 */
 	public static void checkInputVariableValue(double metricValue) {
+
+		
+		//comprobamos que el valor no es nulo
 
 		//1a comprobacion: que no sea un valor menor que cero
 		if(metricValue < 0){

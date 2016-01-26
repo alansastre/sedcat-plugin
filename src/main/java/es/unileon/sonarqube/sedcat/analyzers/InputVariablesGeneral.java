@@ -36,6 +36,7 @@ public class InputVariablesGeneral {
 		metricsValues = new ArrayList<Double>();
 
 		LOG.info("InputVariablesGeneral: extrayendo variables de entrada");
+		
 		//Crear variables de entrada
 		
 			//EXITO

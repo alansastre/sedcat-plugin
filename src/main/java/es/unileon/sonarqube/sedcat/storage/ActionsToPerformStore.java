@@ -30,6 +30,7 @@ public class ActionsToPerformStore {
 	private static final Logger LOG = LoggerFactory.getLogger(ActionsToPerformStore.class);
 	private static final long ACTION_SET_MIN = 0;
 	private static final long ACTION_SET_MAX = 32;
+	//variable que almacena la ruta donde se encuentran las propiedades que definen los conjuntos de acciones
 	private static final String ACTIONS_PROPERTIES_PATH = "/root/workspace/tools.sonarqube.sedcat/src/main/resources/org/sonar/l10n/expertSystemActions.properties";
 
 
@@ -45,8 +46,11 @@ public class ActionsToPerformStore {
 		 */
 		double actionSetDouble = qualityMeasure[0];
 		LOG.info("actionset sin redondear: "+ actionSetDouble);
+		
+		//Redondeamos, pues necesitamos localizar un conjunto discreto
 		long actionSet = Math.round(actionSetDouble);
 		
+		//comprobamos que el valor es el correcto
 		this.checkValue(actionSet);
 
 		LOG.info("conjunto de acciones: "+ actionSet);
@@ -63,7 +67,7 @@ public class ActionsToPerformStore {
 		}
 
 		String actionValue = propiedades.getProperty(actionsValueProperty);
-		LOG.info("ACCIONES: "+ actionValue);
+		LOG.info("Resultado acciones: "+ actionValue);
 	
 		
 		//2 - Almacenar el mensaje del conjunto de acciones en forma de String
@@ -89,13 +93,17 @@ public class ActionsToPerformStore {
 
 
 	    } catch (IOException ex) {
+	    	LOG.error("InputVariablesUtils: fallo al obtener las propiedades de los conjuntos de acciones");
 	        ex.printStackTrace();
+	        System.exit(-1);
 	    } finally {
 	        if (entrada != null) {
 	            try {
 	                entrada.close();
 	            } catch (IOException e) {
+	            	LOG.error("InputVariablesUtils: fallo al cerrar la ruta propiedades de los conjuntos de acciones");
 	                e.printStackTrace();
+	                System.exit(-1);
 	            }
 	            
 	            

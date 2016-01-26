@@ -1,29 +1,28 @@
 <div class="dashbox">
   <h1>Sedcat Plugin for Quality Testing</h1>
   	<br>
-	<h3>M&eacute;trica calidad:</h3>
+	<h3>Quality Measure:</h3>
 	<p><span class="big"><%= format_measure('quality_measure', :url => url_for_drilldown('')) %></span></p>
 	<br>
-	<h3>Acciones recomendadas:</h3>
-	<%= format_measure('actions_to_realize', :url => url_for_drilldown('')) %>
-	<br>
+	<h3>Recommended actions:</h3>
+	<p><%= format_measure('actions_to_realize', :url => url_for_drilldown('')) %></p>
 	<br>
 	<table>
-	<h3>Variables de entrada usadas:</h3>
+	<h3>Input variables used:</h3>
 		<tr>
-		  <td>&Eacute;xito: <%= format_measure('exito_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Unit Test Success: <%= format_measure('exito_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 		<tr>
-		  <td>Cobertura: <%= format_measure('cobertura_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Unit Test Coverage: <%= format_measure('cobertura_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 		<tr>
-		  <td>Mutantes: <%= format_measure('mutantes_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Mutations Coverage: <%= format_measure('mutantes_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 		<tr>
-		  <td>N&uacute;mero de tests: <%= format_measure('numero_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Number Of Tests: <%= format_measure('numero_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 		<tr>
-		  <td>N&uacute;mero de l&iacute;neas de c&oacute;digo: <%= format_measure('numero_lineascodigo_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Lines Of Code: <%= format_measure('numero_lineascodigo_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 	</table>
 	<br>

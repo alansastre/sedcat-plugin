@@ -4,12 +4,12 @@
 
   <groupId>es.unileon.sedcat</groupId>
   <artifactId>tools.sonarqube.sedcat</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
 <!--   <packaging>jar</packaging> -->
    <packaging>sonar-plugin</packaging>
 
   <name>tools.sonarqube.sedcat</name>
-  <description>plugin for quality code testing</description>
+  <description>Plugin to measure the quality of software testing</description>
   
   <url>http://maven.apache.org</url>
 
@@ -97,8 +97,8 @@
 			      <configuration>
 			        <pluginKey>sedcat</pluginKey>
 	                    <pluginClass>es.unileon.sonarqube.sedcat.start.SedcatPlugin</pluginClass>
-	                    <pluginName>Sonar SEDCAT  plugin</pluginName>
-	                    <pluginDescription>Show quality measures of testing software.</pluginDescription>
+	                    <pluginName>Sedcat plugin</pluginName>
+	                    <pluginDescription>Plugin to measure the quality of software testing.</pluginDescription>
 			      </configuration>
 		    </plugin>
         </plugins>

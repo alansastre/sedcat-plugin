@@ -79,8 +79,7 @@ public class SedcatSensor implements Sensor {
     	
 	/*
 	 *     1-Obtener variables de entrada: exito, cobertura, mutantes, numero de test, numero de lineas de codigo
-	 *     		gestionadas por InputVariablesGeneral que nos devuelve un array de double en donde esta 
-	 *     		el valor de cada una
+	 *     		gestionadas por InputVariablesGeneral que nos devuelve un array de double con el valor de cada una
 	 *     2 - Ejecutar sistemas expertos y almacenar variables de salida
 	 *     		Se ejecutan las estrategias correspondientes a cada sistema experto pasandoles las variables
 	 *     		de entrada como parametro.
@@ -98,9 +97,10 @@ public class SedcatSensor implements Sensor {
     	this.setExpertSystem(new ExpertSystemQuality());
     	this.performExpertSystem(this.inputVariablesValues, sensorContext);
     	
-    	//Estrategia para el sistema experto que procesa las acciones
-    		//reordenar variables
+    		//reordenar variables de entrada para el sistema experto acciones
     	this.prepareInputVariablesActions();
+    	
+    	//Estrategia para el sistema experto que procesa las acciones
     	this.setExpertSystem(new ExpertSystemActions());
     	this.performExpertSystem(this.inputVariablesValues, sensorContext);
   
