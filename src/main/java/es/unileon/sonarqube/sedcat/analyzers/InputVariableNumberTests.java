@@ -23,7 +23,7 @@ public class InputVariableNumberTests extends InputVariable{
 	public InputVariableNumberTests(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
 		this.LOG = LoggerFactory.getLogger(InputVariableNumberTests.class);
-		this.DEFAULT_PATH_VARIABLE = "/target/numerodetest.txt";
+		this.DEFAULT_PATH_VARIABLE = "/target/numbertests.txt";
 		this.concreteMetric = SedcatMetrics.NUMBER_TESTS;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
@@ -43,7 +43,7 @@ public class InputVariableNumberTests extends InputVariable{
 			//a- comprobamos si hay datos en configuracion para esta variable
 		
 		String rutaVariable = settings.getString(SedcatConstants.NUMBER_TESTS_KEY);
-		if(rutaVariable == null){
+		if(rutaVariable.equalsIgnoreCase(this.DEFAULT_PATH_VARIABLE)){
 			LOG.warn("InputVariableNumberTests: no hay ruta en configuracion para la variable NUMEROTEST. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
@@ -65,7 +65,7 @@ public class InputVariableNumberTests extends InputVariable{
 		
 		
 		LOG.info("InputVariableNumberTests: variable de entrada NUMEROTEST extraida con exito");
-		
+		LOG.info("SEDCAT: el valor obtenido ha sido: " +  this.metricValue);
 		return this.metricValue;
 		
 	}

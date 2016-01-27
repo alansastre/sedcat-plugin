@@ -21,7 +21,7 @@ public class InputVariableMutants extends InputVariable{
 	public InputVariableMutants(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
 		this.LOG = LoggerFactory.getLogger(InputVariableMutants.class);
-		this.DEFAULT_PATH_VARIABLE = "/target/mutantes.txt";
+		this.DEFAULT_PATH_VARIABLE = "/target/mutations.txt";
 		this.concreteMetric = SedcatMetrics.MUTANTS;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
@@ -42,7 +42,7 @@ public class InputVariableMutants extends InputVariable{
 			//a- comprobamos si hay datos en configuracion para esta variable
 		
 		String rutaVariable = settings.getString(SedcatConstants.MUTANTS_KEY);
-		if(rutaVariable == null){
+		if(rutaVariable.equalsIgnoreCase(this.DEFAULT_PATH_VARIABLE)){
 			LOG.warn("InputVariablesUtils: no hay ruta en configuracion para la variable MUTANTES. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
@@ -63,7 +63,7 @@ public class InputVariableMutants extends InputVariable{
 		
 		
 		LOG.info("InputVariableMutants: variable de entrada MUTANTES extraida con exito");
-		
+		LOG.info("SEDCAT: el valor obtenido ha sido: " +  this.metricValue);
 		return this.metricValue;
 		
 	}

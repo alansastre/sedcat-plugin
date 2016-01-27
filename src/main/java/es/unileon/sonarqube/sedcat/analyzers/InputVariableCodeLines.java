@@ -22,7 +22,7 @@ public class InputVariableCodeLines extends InputVariable{
 	public InputVariableCodeLines(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
 		this.LOG = LoggerFactory.getLogger(InputVariableCodeLines.class);
-		this.DEFAULT_PATH_VARIABLE = "/target/numerolineascodigo.txt";
+		this.DEFAULT_PATH_VARIABLE = "/target/numbercodelines.txt";
 		this.concreteMetric = SedcatMetrics.CODE_LINES;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
@@ -42,7 +42,7 @@ public class InputVariableCodeLines extends InputVariable{
 			//a- comprobamos si hay datos en configuracion para esta variable
 		
 		String rutaVariable = settings.getString(SedcatConstants.NUMBER_CODE_LINES_KEY);
-		if(rutaVariable == null){
+		if(rutaVariable.equalsIgnoreCase(this.DEFAULT_PATH_VARIABLE)){
 			LOG.warn("InputVariableCodeLines: no hay ruta en configuracion para la variable CODE_LINES. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
@@ -64,7 +64,7 @@ public class InputVariableCodeLines extends InputVariable{
 		
 		
 		LOG.info("InputVariableCodeLines: variable de entrada CODE_LINES extraida con exito");
-		
+		LOG.info("SEDCAT: el valor obtenido ha sido: " +  this.metricValue);
 		return this.metricValue;
 	}
 

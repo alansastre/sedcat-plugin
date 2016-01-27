@@ -15,9 +15,9 @@ public class SedcatConstants {
 
   }
 
-  public static final String SUCCESS_KEY = "exito";
+  public static final String SUCCESS_KEY = "success";
   public static final String COVERAGE_KEY = "coverage";
-  public static final String MUTANTS_KEY = "mutants";
+  public static final String MUTANTS_KEY = "mutations";
   public static final String NUMBER_TESTS_KEY = "numbertests";
   public static final String NUMBER_CODE_LINES_KEY = "numbercodelines";
   

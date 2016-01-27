@@ -24,7 +24,7 @@ public class InputVariableSuccess extends InputVariable{
 	public InputVariableSuccess(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
 		this.LOG = LoggerFactory.getLogger(InputVariableSuccess.class);
-		this.DEFAULT_PATH_VARIABLE = "/target/exito.txt";
+		this.DEFAULT_PATH_VARIABLE = "/target/success.txt";
 		this.concreteMetric = SedcatMetrics.EXITO;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
@@ -46,7 +46,7 @@ public class InputVariableSuccess extends InputVariable{
 		String rutaVariable = settings.getString(SedcatConstants.SUCCESS_KEY);
 		LOG.info("SEDCAT: rutavariable es " + rutaVariable);
 		
-		if(rutaVariable == null){
+		if(rutaVariable.equalsIgnoreCase(this.DEFAULT_PATH_VARIABLE)){
 			LOG.warn("InputVariablesUtils: no hay ruta en configuracion para la variable EXITO. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			

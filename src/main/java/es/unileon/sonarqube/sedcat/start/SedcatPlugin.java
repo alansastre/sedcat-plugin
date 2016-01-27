@@ -16,20 +16,20 @@ import org.sonar.api.SonarPlugin;
  */
 @SuppressWarnings("unchecked")
 @Properties({
-  @Property(key = SedcatConstants.SUCCESS_KEY, defaultValue = "",
-    name = "Metrica de entrada exito", description = "Indicar la ruta donde se hallan los reportes de exito", global = true,
+  @Property(key = SedcatConstants.SUCCESS_KEY, defaultValue = "/target/success.txt",
+    name = "Input variable Unit Tests Success", description = "Indicate path to reports of Unit Tests Success.", global = true,
     project = true),
-  @Property(key = SedcatConstants.COVERAGE_KEY, defaultValue = "",
-    name = "Metrica de entrada cobertura", description = "Indicar la ruta en la que se hallan los reportes de cobertura generados por jacoco", global = true,
+  @Property(key = SedcatConstants.COVERAGE_KEY, defaultValue = "/target/coverage.txt",
+    name = "Input variable Unit Tests Coverage", description = "Indicate path to reports of Unit Tests Coverage.", global = true,
     project = true),
-  @Property(key = SedcatConstants.MUTANTS_KEY, defaultValue = "",
-  name = "Metrica de entrada mutantes", description = "Indicar la ruta en la que se hallan los reportes generados por el plugin mutantes (pitest)", global = true,
+  @Property(key = SedcatConstants.MUTANTS_KEY, defaultValue = "/target/mutations.txt",
+  name = "Input variable Mutations Coverage", description = "Indicate path to reports of Mutations Coverage.", global = true,
   project = true),
-  @Property(key = SedcatConstants.NUMBER_TESTS_KEY, defaultValue = "",
-  name = "Metrica numero de tests unitarios", description = "Indicar la ruta en la que se halla el numero de tests unitarios que tiene en total el proyecto", global = true,
+  @Property(key = SedcatConstants.NUMBER_TESTS_KEY, defaultValue = "/target/numbertests.txt",
+  name = "Input variable Number Of Tests", description = "Indicate path to reports of Number Of Tests.", global = true,
   project = true),
-  @Property(key = SedcatConstants.NUMBER_CODE_LINES_KEY, defaultValue = "",
-  name = "Metrica numero de lineas de codigo", description = "Indicar la ruta en la que se halla el numero de lineas de codigo que tiene en total el proyecto", global = true,
+  @Property(key = SedcatConstants.NUMBER_CODE_LINES_KEY, defaultValue = "/target/numbercodelines.txt",
+  name = "Input variable Lines Of Code", description = "Indicate path to reports of Lines Of Code.", global = true,
   project = true),
   
 })

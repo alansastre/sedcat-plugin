@@ -23,7 +23,7 @@ public class InputVariableCoverage extends InputVariable{
 	public InputVariableCoverage(SensorContext sensorContext, FileSystem fileSystem, Settings settings) {
 
 		this.LOG = LoggerFactory.getLogger(InputVariableCoverage.class);
-		this.DEFAULT_PATH_VARIABLE = "/target/cobertura.txt";
+		this.DEFAULT_PATH_VARIABLE = "/target/coverage.txt";
 		this.concreteMetric = SedcatMetrics.COBERTURA;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
@@ -42,7 +42,7 @@ public class InputVariableCoverage extends InputVariable{
 			//a- comprobamos si hay datos en configuracion para esta variable
 		
 		String rutaVariable = settings.getString(SedcatConstants.COVERAGE_KEY);
-		if(rutaVariable == null){
+		if(rutaVariable.equalsIgnoreCase(this.DEFAULT_PATH_VARIABLE)){
 			LOG.warn("InputVariablesUtils: no hay ruta en configuracion para la variable COBERTURA. Se procede a buscar"
 					+ "el valor de esta variable en la ruta por defecto.");
 			
@@ -64,7 +64,7 @@ public class InputVariableCoverage extends InputVariable{
 		
 		
 		LOG.info("InputVariableCoverage: variable de entrada COBERTURA extraida con exito");
-		
+		LOG.info("SEDCAT: el valor obtenido ha sido: " +  this.metricValue);
 		return this.metricValue;
 		
 	}

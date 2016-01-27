@@ -97,7 +97,7 @@
 			      <configuration>
 			        <pluginKey>sedcat</pluginKey>
 	                    <pluginClass>es.unileon.sonarqube.sedcat.start.SedcatPlugin</pluginClass>
-	                    <pluginName>Sedcat plugin</pluginName>
+	                    <pluginName>Sedcat</pluginName>
 	                    <pluginDescription>Plugin to measure the quality of software testing.</pluginDescription>
 			      </configuration>
 		    </plugin>
