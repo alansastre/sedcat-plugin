@@ -16,11 +16,11 @@ public class SedcatMetricsKeys {
 	}
 
 	//variables entrada
-	public static final String EXITO_COVERAGE_KEY = "exito_tests";
-	public static final String COBERTURA_COVERAGE_KEY = "cobertura_tests";
-	public static final String MUTANTS_KEY = "mutantes_tests";
-	public static final String NUMBERTESTS_KEY = "numero_tests";
-	public static final String CODE_LINES_KEY = "numero_lineascodigo_tests";
+	public static final String EXITO_COVERAGE_KEY = "success_unit_tests";
+	public static final String COBERTURA_COVERAGE_KEY = "coverage_unit_tests";
+	public static final String MUTANTS_KEY = "mutations_coverage_tests";
+	public static final String NUMBERTESTS_KEY = "number_tests";
+	public static final String CODE_LINES_KEY = "number_code_lines";
 	
 	
 	//variables salida
@@ -30,8 +30,9 @@ public class SedcatMetricsKeys {
 	//variables de prueba
 	public static final String MESSAGE_KEY_1 = "message_key_1";
 	public static final String MESSAGE_KEY_2 = "message_key_2";
-	
-	
+	public static final String LINESOFCODE_COMPUTER = "computer_codelines";
+	public static final String NUMBERTESTS_COMPUTER = "computer_numbertests";
+	public static final String GENERAL_COMPUTER_RESULT = "computer_general_result";
 	
 	
 }

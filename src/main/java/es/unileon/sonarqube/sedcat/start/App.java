@@ -1,16 +1,14 @@
 package es.unileon.sonarqube.sedcat.start;
 
-import org.sonar.api.Extension;
 
+//pruebas en local
+public class App{
 
-
-public class App implements Extension{
-
-    public static void main( String[] args ){
-
-    	//Pruebas en local
-
+    public static void main( String[] args ) {
+    	
+    
 
 }
+
 }
 

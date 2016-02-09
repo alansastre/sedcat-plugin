@@ -2,13 +2,21 @@ package es.unileon.sonarqube.sedcat.start;
 
 
 
+import java.util.ArrayList;
+import static java.util.Arrays.asList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.sonar.api.Extension;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
+
+import es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer;
+import es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputer;
+import es.unileon.sonarqube.sedcat.scanners.NumberTestsComputer;
+import es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputer;
 
 
 /**
@@ -36,16 +44,40 @@ import org.sonar.api.SonarPlugin;
 public class SedcatPlugin extends SonarPlugin {
 	
 	
+//	public List<Class<? extends Extension>> getExtensions() {
+    public List<Class<? extends Object>> getExtensions() {
+//        return Arrays.asList(
+//        		
+//        		
+//        		SedcatMetrics.class,
+////        		DecoratorLinesCode.class,
+////        		DecoratorNumberTest.class,
+//        		SedcatSensor.class,
+//        		MyMeasureComputer.class,
+//        		ExampleSedcatHtml.class,
+//        		SedcatDashboardWidget.class
+//        		
+//        		);
+    	  List extensions = new ArrayList();
+//    	    extensions.addAll(ExampleProperties.definitions());
+//    	    extensions.add(FooLanguage.class);
+    	    extensions.add(SedcatMetrics.class);
 
-    public List<Class<? extends Extension>> getExtensions() {
-        return Arrays.asList(
-        		
-        		
-        		SedcatMetrics.class,
-        		SedcatSensor.class,
-        		ExampleSedcatHtml.class,
-        		SedcatDashboardWidget.class
-        		
-        		);
+    	    // Rules, Quality Profile
+//    	    extensions.addAll(asList(FooLintRulesDefinition.class, FooLintProfile.class, MyCustomJavaRulesDefinition.class));
+
+    	    // Scanners - first level
+//    	    extensions.addAll(asList(SedcatSensor.class, NumberCodeLinesComputer.class, NumberTestsComputer.class));
+    	    extensions.addAll(asList(NumberCodeLinesComputer.class, NumberTestsComputer.class, SuccessUnitTestsComputer.class, CoverageUnitTestsComputer.class));
+ 	    
+    	    //Scanner - Second level 
+    	    extensions.add(GeneralComputer.class);
+    	    
+    	    // UI
+    	    extensions.addAll(asList(ExampleSedcatHtml.class, SedcatDashboardWidget.class));
+    	    return extensions;
+    	    
     }
+
+
 }

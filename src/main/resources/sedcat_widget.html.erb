@@ -10,19 +10,19 @@
 	<table>
 	<h3>Input variables used:</h3>
 		<tr>
-		  <td>Unit Test Success: <%= format_measure('exito_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Unit Test Success: <%= format_measure('success_unit_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 		<tr>
-		  <td>Unit Test Coverage: <%= format_measure('cobertura_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Unit Test Coverage: <%= format_measure('coverage_unit_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 		<tr>
-		  <td>Mutations Coverage: <%= format_measure('mutantes_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Mutations Coverage: <%= format_measure('mutations_coverage_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 		<tr>
-		  <td>Number Of Tests: <%= format_measure('numero_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Number Of Tests: <%= format_measure('number_tests', :url => url_for_drilldown('')) %></td>
 		</tr>
 		<tr>
-		  <td>Lines Of Code: <%= format_measure('numero_lineascodigo_tests', :url => url_for_drilldown('')) %></td>
+		  <td>Lines Of Code: <%= format_measure('number_code_lines', :url => url_for_drilldown('')) %></td>
 		</tr>
 	</table>
 	<br>

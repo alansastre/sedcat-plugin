@@ -2,15 +2,23 @@ package es.unileon.sonarqube.sedcat.start;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.batch.DecoratorContext;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
+import org.sonar.api.batch.measure.Metric;
 import org.sonar.api.resources.Project;
+//import org.sonar.squid.measures.Measures;
+
 import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
 import es.unileon.sonarqube.sedcat.strategies.IExpertSystemStrategy;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 import org.sonar.api.config.Settings;
+import org.sonar.api.measures.CoreMetrics;
+import org.sonar.api.measures.Formula;
+import org.sonar.api.measures.Measure;
+import org.sonar.api.measures.MeasureUtils;
 
 
 /**
@@ -24,6 +32,9 @@ public class SedcatSensor implements Sensor {
 
 	private double[] inputVariablesValues;
 	private Settings settings;
+
+	
+	protected static double valorENTRADA;
 	//estrategia para los sistemas expertos
 	private IExpertSystemStrategy expertSystem;
 
@@ -85,7 +96,19 @@ public class SedcatSensor implements Sensor {
 	 *     		de entrada como parametro.
 	 *     		Cada estrategia delega en otra clase el almacenamiento de su resultado.	
 	 */
+
     	
+//   	 Measure prpr=  context.getMeasure(CoreMetrics.NCLOC);
+//  	  double pp = MeasureUtils.getValue(prpr, 25.36);
+//  	  System.out.println("PRUEBITA: "+pp);
+    	
+//    	if (test_value != null) { 
+//    		context.saveMeasure(CodeQualityMetrics.TEST, test_value.getValue()); 
+//    		} else { 
+//    			double value2 = 8000; context.saveMeasure(CodeQualityMetrics.TEST, value2);
+//    			} 
+//    	System.out.println("PRUEBITA"+valorENTRADA);
+    	System.out.println("EJECUTANDO SENSOR");
 //    	1- Obtener variables de entrada
     	InputVariablesGeneral inputVariables = new InputVariablesGeneral(sensorContext, fileSystem, settings);
     	this.inputVariablesValues = inputVariables.getInputVariables();

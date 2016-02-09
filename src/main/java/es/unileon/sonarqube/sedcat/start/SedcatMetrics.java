@@ -100,9 +100,35 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
+	//Metrica CODELINES - computers
+	public static final Metric CODE_LINES_COMPUTERS = new Metric.Builder(LINESOFCODE_COMPUTER, "Numero de lineas de codigo computadas", Metric.ValueType.INT)
+		    .setDescription("Numero total de lineas de codigo en el proyecto (sin contar los test) computadas")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
+	//Metrica numbertests - computers
+	public static final Metric NUMBERTESTS_COMPUTERS = new Metric.Builder(NUMBERTESTS_COMPUTER, "Numero de tests computados", Metric.ValueType.INT)
+		    .setDescription("Numero total de tests en el proyecto ")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
+	//Metrica general - computers
+	public static final Metric GENERAL_RESULT_COMPUTERS = new Metric.Builder(GENERAL_COMPUTER_RESULT, "Numero de tests computados", Metric.ValueType.INT)
+		    .setDescription("Numero total de tests en el proyecto ")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
+	
+	
+	
 	// getMetrics() method is defined in the Metrics interface and is used by
 	  public List<Metric> getMetrics() {
-	    return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM);
+//	    return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM, CODE_LINES_COMPUTERS,NUMBERTESTS_COMPUTERS, GENERAL_RESULT_COMPUTERS);
+		return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, GENERAL_RESULT_COMPUTERS);
+
 	  }
 	
 	
