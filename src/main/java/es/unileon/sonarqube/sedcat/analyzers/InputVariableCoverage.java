@@ -24,7 +24,7 @@ public class InputVariableCoverage extends InputVariable{
 
 		this.LOG = LoggerFactory.getLogger(InputVariableCoverage.class);
 		this.DEFAULT_PATH_VARIABLE = "/target/coverage.txt";
-		this.concreteMetric = SedcatMetrics.COBERTURA;
+		this.concreteMetric = SedcatMetrics.UNIT_TESTS_COVERAGE;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
 		this.fileSystem = fileSystem;

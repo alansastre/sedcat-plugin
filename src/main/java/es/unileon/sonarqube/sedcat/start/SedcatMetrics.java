@@ -2,10 +2,8 @@ package es.unileon.sonarqube.sedcat.start;
 
 import static es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metric.Builder;
@@ -21,12 +19,12 @@ import org.sonar.api.measures.Metrics;
  */
 public class SedcatMetrics implements Metrics {
 
-	private static final List<Metric> METRICS = new ArrayList<Metric>();
-	private static final List<Metric> QUANTITATIVE_METRICS = new ArrayList<Metric>();
+//	private static final List<Metric> METRICS = new ArrayList<Metric>();
+//	private static final List<Metric> QUANTITATIVE_METRICS = new ArrayList<Metric>();
 	
 	//METRICAS ENTRADA
 	//Metrica EXITO
-	public static final Metric EXITO = new Metric.Builder(EXITO_COVERAGE_KEY, "Exito", Metric.ValueType.PERCENT)
+	public static final Metric UNIT_TESTS_SUCCESS = new Metric.Builder(SUCCESS_UNIT_TESTS_KEY, "Exito", Metric.ValueType.PERCENT)
 		    .setDescription("Exito en porcentaje de los test")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
@@ -34,7 +32,7 @@ public class SedcatMetrics implements Metrics {
 		    .create();
 	
 	//Metrica COBERTURA
-	public static final Metric COBERTURA = new Metric.Builder(COBERTURA_COVERAGE_KEY, "Cobertura", Metric.ValueType.PERCENT)
+	public static final Metric UNIT_TESTS_COVERAGE = new Metric.Builder(COVERAGE_UNIT_TESTS_KEY, "Cobertura", Metric.ValueType.PERCENT)
 		    .setDescription("Cobertura en porcentaje de los test")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
@@ -122,58 +120,54 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
-	
-	
 	// getMetrics() method is defined in the Metrics interface and is used by
 	  public List<Metric> getMetrics() {
 //	    return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM, CODE_LINES_COMPUTERS,NUMBERTESTS_COMPUTERS, GENERAL_RESULT_COMPUTERS);
-		return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, GENERAL_RESULT_COMPUTERS);
+		return Arrays.<Metric>asList(UNIT_TESTS_SUCCESS, UNIT_TESTS_COVERAGE, MUTANTS, NUMBER_TESTS, CODE_LINES, GENERAL_RESULT_COMPUTERS);
 
 	  }
 	
-	
-
-	private static Metric buildMetric(String key, String name, String description, ValueType valueType, Integer direction, Boolean qualitative, String domain) {
-		return buildMetric(instanceBuilder(key, name, description, valueType, direction, qualitative, domain), qualitative);
-	}
-	
-	private static Metric buildMetric(String key, String name, String description, ValueType valueType, Integer direction, Boolean qualitative, String domain, Double best, Double worst) {
-		Builder builder = instanceBuilder(key, name, description, valueType, direction, qualitative, domain);
-		builder.setBestValue(best);
-		builder.setWorstValue(worst);
-		return buildMetric(builder, qualitative);
-	}
-	
-	private static Metric buildMetric(Builder builder, boolean qualitative) {
-		Metric metric = builder.create();
-		METRICS.add(metric);
-		if (!qualitative) {
-			QUANTITATIVE_METRICS.add(metric);
-		}
-		return metric;
-	}
-	
-	private static Builder instanceBuilder(String key, String name, String description, ValueType valueType, Integer direction, Boolean quailitative, String domain) {
-		Builder builder = new Builder(key, name, valueType);
-		builder.setDescription(description);
-		builder.setDirection(direction);
-		builder.setQualitative(quailitative);
-		builder.setDomain(domain);
-		return builder;
-	}
-
-//	/**
-//	 * @see Metrics#getMetrics()
-//	 */
-//	public List<Metric> getMetrics() {
-//		return METRICS;
+//	private static Metric buildMetric(String key, String name, String description, ValueType valueType, Integer direction, Boolean qualitative, String domain) {
+//		return buildMetric(instanceBuilder(key, name, description, valueType, direction, qualitative, domain), qualitative);
 //	}
-
-	/**
-	 * Returns the sedcat quantitative metrics list.
-	 * @return {@link List<Metric>} The sedcat quantitative metrics list.
-	 */
-	public static List<Metric> getQuantitativeMetrics() {
-		return QUANTITATIVE_METRICS;
-	}
+//	
+//	private static Metric buildMetric(String key, String name, String description, ValueType valueType, Integer direction, Boolean qualitative, String domain, Double best, Double worst) {
+//		Builder builder = instanceBuilder(key, name, description, valueType, direction, qualitative, domain);
+//		builder.setBestValue(best);
+//		builder.setWorstValue(worst);
+//		return buildMetric(builder, qualitative);
+//	}
+//	
+//	private static Metric buildMetric(Builder builder, boolean qualitative) {
+//		Metric metric = builder.create();
+//		METRICS.add(metric);
+//		if (!qualitative) {
+//			QUANTITATIVE_METRICS.add(metric);
+//		}
+//		return metric;
+//	}
+	
+//	private static Builder instanceBuilder(String key, String name, String description, ValueType valueType, Integer direction, Boolean quailitative, String domain) {
+//		Builder builder = new Builder(key, name, valueType);
+//		builder.setDescription(description);
+//		builder.setDirection(direction);
+//		builder.setQualitative(quailitative);
+//		builder.setDomain(domain);
+//		return builder;
+//	}
+//
+////	/**
+////	 * @see Metrics#getMetrics()
+////	 */
+////	public List<Metric> getMetrics() {
+////		return METRICS;
+////	}
+//
+//	/**
+//	 * Returns the sedcat quantitative metrics list.
+//	 * @return {@link List<Metric>} The sedcat quantitative metrics list.
+//	 */
+//	public static List<Metric> getQuantitativeMetrics() {
+//		return QUANTITATIVE_METRICS;
+//	}
 }

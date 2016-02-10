@@ -32,7 +32,7 @@ public class SuccessUnitTestsComputer implements MeasureComputer {
 	    	 success_tests += childMeasure.getDoubleValue();
 	       }
 	     
-	     context.addMeasure(SedcatMetricsKeys.EXITO_COVERAGE_KEY, success_tests);
+	     context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, success_tests);
 	     
 
 	}
@@ -46,7 +46,7 @@ public class SuccessUnitTestsComputer implements MeasureComputer {
 	    	     .setInputMetrics(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)
 
 	    	     // Output metrics must contains at least one metric
-	    	     .setOutputMetrics(SedcatMetricsKeys.EXITO_COVERAGE_KEY)
+	    	     .setOutputMetrics(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY)
 
 	    	     .build();
 	    

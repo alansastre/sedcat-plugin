@@ -25,7 +25,7 @@ public class InputVariableSuccess extends InputVariable{
 
 		this.LOG = LoggerFactory.getLogger(InputVariableSuccess.class);
 		this.DEFAULT_PATH_VARIABLE = "/target/success.txt";
-		this.concreteMetric = SedcatMetrics.EXITO;
+		this.concreteMetric = SedcatMetrics.UNIT_TESTS_SUCCESS;
 		//especificas de sonar
 		this.sensorContext = sensorContext;
 		this.fileSystem = fileSystem;

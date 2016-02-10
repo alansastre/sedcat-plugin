@@ -20,7 +20,7 @@ import es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputer;
 
 
 /**
- * This class is the entry point for all Sedcat extensions
+ * This class is the entry point for all extensions. It must be referenced from pom.xml.
  */
 @SuppressWarnings("unchecked")
 @Properties({
@@ -45,7 +45,11 @@ public class SedcatPlugin extends SonarPlugin {
 	
 	
 //	public List<Class<? extends Extension>> getExtensions() {
-    public List<Class<? extends Object>> getExtensions() {
+	/**
+	   * Returns the list of the extensions to be available at runtime.
+	   */
+	@Override
+	  public List getExtensions() {
 //        return Arrays.asList(
 //        		
 //        		

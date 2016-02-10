@@ -16,8 +16,8 @@ public class SedcatMetricsKeys {
 	}
 
 	//variables entrada
-	public static final String EXITO_COVERAGE_KEY = "success_unit_tests";
-	public static final String COBERTURA_COVERAGE_KEY = "coverage_unit_tests";
+	public static final String SUCCESS_UNIT_TESTS_KEY = "success_unit_tests";
+	public static final String COVERAGE_UNIT_TESTS_KEY = "coverage_unit_tests";
 	public static final String MUTANTS_KEY = "mutations_coverage_tests";
 	public static final String NUMBERTESTS_KEY = "number_tests";
 	public static final String CODE_LINES_KEY = "number_code_lines";
