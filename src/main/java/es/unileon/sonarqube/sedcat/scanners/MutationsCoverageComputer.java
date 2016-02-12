@@ -2,6 +2,9 @@
  * 
  */
 package es.unileon.sonarqube.sedcat.scanners;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.Measure;
@@ -13,40 +16,38 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
  *	@author alan.sastre
  *	@version 1.0
  */
-public class SuccessUnitTestsComputer implements MeasureComputer {
-
+public class MutationsCoverageComputer implements MeasureComputer {
 
     /**
      * The logger object for the sensor.
      */
-	private static final Logger LOG = LoggerFactory.getLogger(SuccessUnitTestsComputer.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MutationsCoverageComputer.class);
 	
 	
 	public void compute(MeasureComputerContext context) {
 		
-		LOG.info("Computer: SUCCESS TEST");
-
-	     Double success_tests = 0.0;
+//		LOG.info("Computer: MUTATIONS");
+//
+//	     int num_linesCode = 0;
+//	     for (Measure childMeasure : context.getChildrenMeasures(PitestMetrics.)) {
+//	    	 num_linesCode += childMeasure.getIntValue();
+//	       }
+//     
+//	     context.addMeasure(SedcatMetricsKeys.MUTANTS_KEY, 100);
 	     
-	     for (Measure childMeasure : context.getChildrenMeasures(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)) {
-	    	 success_tests += childMeasure.getDoubleValue();
-	       }
-	     
-	     context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, success_tests);
-	     LOG.info("Computer: SUCCESS TEST guardada");
 
 	}
 
 	public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext) {
 
-		LOG.info("Computers on definition: SUCCESS TESTS");
+		LOG.info("Computers on definition: MUTATIONS");
 	    return defContext.newDefinitionBuilder()
 
 	    	     // Input metrics can be empty, for instance if only issues will be read
-	    	     .setInputMetrics(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)
+	    	     .setInputMetrics()
 
 	    	     // Output metrics must contains at least one metric
-	    	     .setOutputMetrics(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY)
+	    	     .setOutputMetrics(SedcatMetricsKeys.MUTANTS_KEY)
 
 	    	     .build();
 	    
@@ -56,6 +57,6 @@ public class SuccessUnitTestsComputer implements MeasureComputer {
 	  public String toString() {
 	    return getClass().getSimpleName();
 	  }
-	
+
 }
 

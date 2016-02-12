@@ -14,7 +14,7 @@ import org.sonar.api.batch.SensorContext;
 public interface IExpertSystemStrategy {
 
 	
-	public void xfuzzyProcess(double[] inputVariables, SensorContext sensorContext);
+	public double[] xfuzzyProcess(double[] inputMetrics);
 	
 	
 }

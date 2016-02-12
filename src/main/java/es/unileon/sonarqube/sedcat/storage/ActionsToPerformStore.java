@@ -11,11 +11,13 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.SensorContext;
+import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.measures.PropertiesBuilder;
 
 import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
+import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 
 /**
@@ -36,7 +38,7 @@ public class ActionsToPerformStore {
 
 
 
-	public ActionsToPerformStore(double[] qualityMeasure, SensorContext sensorContext){
+	public ActionsToPerformStore(double[] qualityMeasure, MeasureComputerContext context){
 		
 		LOG.info("Almacenando conjunto de acciones.");
 		/*
@@ -71,9 +73,8 @@ public class ActionsToPerformStore {
 	
 		
 		//2 - Almacenar el mensaje del conjunto de acciones en forma de String
-		Measure measure = new Measure(SedcatMetrics.ACTIONS_TO_PERFORM, actionValue);
-		sensorContext.saveMeasure(measure);
-		
+		context.addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, actionValue);
+
 		LOG.info("Conjunto de acciones almacenado correctamente");
 	}
 

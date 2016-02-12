@@ -14,6 +14,7 @@ import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
 
 import es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer;
+import es.unileon.sonarqube.sedcat.scanners.MutationsCoverageComputer;
 import es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputer;
 import es.unileon.sonarqube.sedcat.scanners.NumberTestsComputer;
 import es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputer;
@@ -72,7 +73,13 @@ public class SedcatPlugin extends SonarPlugin {
 
     	    // Scanners - first level
 //    	    extensions.addAll(asList(SedcatSensor.class, NumberCodeLinesComputer.class, NumberTestsComputer.class));
-    	    extensions.addAll(asList(NumberCodeLinesComputer.class, NumberTestsComputer.class, SuccessUnitTestsComputer.class, CoverageUnitTestsComputer.class));
+    	    extensions.addAll(asList(
+    	    		NumberCodeLinesComputer.class,
+    	    		NumberTestsComputer.class,
+    	    		SuccessUnitTestsComputer.class,
+    	    		CoverageUnitTestsComputer.class
+//    	    		MutationsCoverageComputer.class
+    	    ));
  	    
     	    //Scanner - Second level 
     	    extensions.add(GeneralComputer.class);

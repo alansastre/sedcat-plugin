@@ -19,12 +19,15 @@ public class ExpertSystemActions implements IExpertSystemStrategy{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ExpertSystemActions.class);
 
-	public void xfuzzyProcess(double[] inputVariables, SensorContext sensorContext) {
+	public double[] xfuzzyProcess(double[] inputMetrics) {
 		
 		LOG.info("Ejecutando sistema experto para acciones.");
 		
 		Acciones_1 actions = new Acciones_1();
-		ActionsToPerformStore metricToStore = new ActionsToPerformStore(actions.crispInference(inputVariables), sensorContext);
+		return actions.crispInference(inputMetrics);
+		
+		
+//		ActionsToPerformStore metricToStore = new ActionsToPerformStore(actions.crispInference(inputVariables), sensorContext);
 
 	}
 

@@ -21,12 +21,15 @@ public class ExpertSystemQuality implements IExpertSystemStrategy{
 
 	private static final Logger LOG = LoggerFactory.getLogger(ExpertSystemQuality.class);
 	
-	public void xfuzzyProcess(double[] inputVariables, SensorContext sensorContext) {
+	public double[] xfuzzyProcess(double[] inputMetrics) {
 		
 		LOG.info("Ejecutando sistema experto para calidad.");
+		
 		Calidad_1 quality = new Calidad_1();
-
-    	QualityMeasureStore metricToStore = new QualityMeasureStore(quality.crispInference(inputVariables), sensorContext);
+		return quality.crispInference(inputMetrics);
+				
+				
+//    	QualityMeasureStore metricToStore = new QualityMeasureStore(quality.crispInference(inputVariables), sensorContext);
 
 	}
 

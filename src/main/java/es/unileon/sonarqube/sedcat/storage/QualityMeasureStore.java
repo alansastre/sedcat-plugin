@@ -6,9 +6,11 @@ package es.unileon.sonarqube.sedcat.storage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.SensorContext;
+import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import org.sonar.api.measures.Measure;
 
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
+import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 
 
 /**
@@ -22,7 +24,7 @@ public class QualityMeasureStore {
 	private static final long QUALITY_VALUE_MIN = 0;
 	private static final long QUALITY_VALUE_MAX = 100;
 	
-	public QualityMeasureStore(double[] qualityMeasure, SensorContext sensorContext){
+	public QualityMeasureStore(double[] qualityMeasure, MeasureComputerContext context){
 		
 		//comprobar resultado
 		double qualityValue = qualityMeasure[0];
@@ -30,8 +32,7 @@ public class QualityMeasureStore {
 		this.checkValue(qualityValue);
 		
 		//de ser correcto, almacenarlo
-		Measure measure = new Measure(SedcatMetrics.QUALITY_MEASURE, qualityValue);
-		sensorContext.saveMeasure(measure);
+		context.addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, qualityValue);
 		
 		LOG.info("Metrica calidad almacenada correctamente.");
 		

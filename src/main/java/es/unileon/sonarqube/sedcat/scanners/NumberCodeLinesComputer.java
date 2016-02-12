@@ -29,15 +29,7 @@ public class NumberCodeLinesComputer implements MeasureComputer {
 	public void compute(MeasureComputerContext context) {
 		
 		LOG.info("Computer: CODE LINES");
-//	     Measure ncloc = context.getMeasure("ncloc");
-////	     List<? extends Issue> issues = context.getIssues();
-//	     if (ncloc != null) {
-////	       double value = issues.size() / ncloc;
-//	       context.addMeasure("computer_codelines", ncloc.getIntValue());
-//	       System.out.println("NUMEROTESTSSSSS: "+ncloc.getIntValue());
-//	     }
-//		context.addMeasure(ExampleMetrics.RANDOM.getKey(), value);
-	     
+
 	     int num_linesCode = 0;
 	     
 	     for (Measure childMeasure : context.getChildrenMeasures(CoreMetrics.NCLOC_KEY)) {
@@ -45,7 +37,7 @@ public class NumberCodeLinesComputer implements MeasureComputer {
 	       }
 	     
 	     context.addMeasure(SedcatMetricsKeys.CODE_LINES_KEY, num_linesCode);
-	     
+	     LOG.info("Computer: CODE LINES metrica guardada");
 
 	}
 

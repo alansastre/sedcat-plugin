@@ -13,7 +13,7 @@ import org.sonar.api.config.Settings;
 
 import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
-import es.unileon.sonarqube.sedcat.start.SedcatSensor;
+//import es.unileon.sonarqube.sedcat.start.SedcatSensor;
 
 /**
  * @author alan.jesus

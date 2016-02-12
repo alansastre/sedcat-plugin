@@ -21,7 +21,7 @@ public class SedcatMetrics implements Metrics {
 
 //	private static final List<Metric> METRICS = new ArrayList<Metric>();
 //	private static final List<Metric> QUANTITATIVE_METRICS = new ArrayList<Metric>();
-	
+//	public static final String DOMAIN_SEDCAT = "Quality Testing Measuring";
 	//METRICAS ENTRADA
 	//Metrica EXITO
 	public static final Metric UNIT_TESTS_SUCCESS = new Metric.Builder(SUCCESS_UNIT_TESTS_KEY, "Exito", Metric.ValueType.PERCENT)
@@ -123,7 +123,8 @@ public class SedcatMetrics implements Metrics {
 	// getMetrics() method is defined in the Metrics interface and is used by
 	  public List<Metric> getMetrics() {
 //	    return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM, CODE_LINES_COMPUTERS,NUMBERTESTS_COMPUTERS, GENERAL_RESULT_COMPUTERS);
-		return Arrays.<Metric>asList(UNIT_TESTS_SUCCESS, UNIT_TESTS_COVERAGE, MUTANTS, NUMBER_TESTS, CODE_LINES, GENERAL_RESULT_COMPUTERS);
+//		return Arrays.<Metric>asList(UNIT_TESTS_SUCCESS, UNIT_TESTS_COVERAGE, MUTANTS, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM);
+		return Arrays.<Metric>asList(UNIT_TESTS_SUCCESS, UNIT_TESTS_COVERAGE, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM);
 
 	  }
 	

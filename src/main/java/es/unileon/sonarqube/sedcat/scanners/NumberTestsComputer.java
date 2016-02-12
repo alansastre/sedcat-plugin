@@ -33,7 +33,7 @@ public class NumberTestsComputer implements MeasureComputer {
 	       }
 	     
 	     context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, num_tests);
-	     
+	     LOG.info("Computer: NUMBER TEST metrica guardada");
 
 	}
 

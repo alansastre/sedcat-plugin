@@ -34,7 +34,7 @@ public class CoverageUnitTestsComputer implements MeasureComputer {
 	       }
 	     
 	     context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, success_tests);
-	     
+	     LOG.info("Computer: COVERAGE TESTS guardada");
 
 	}
 
