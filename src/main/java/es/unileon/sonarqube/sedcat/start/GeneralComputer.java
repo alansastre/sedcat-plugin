@@ -5,8 +5,10 @@ package es.unileon.sonarqube.sedcat.start;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.SensorContext;
+import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer;
+import org.sonar.api.config.Settings;
 import org.sonar.api.measures.CoreMetrics;
 
 import es.unileon.sonarqube.sedcat.storage.ActionsToPerformStore;
@@ -20,34 +22,24 @@ import es.unileon.sonarqube.sedcat.strategies.IExpertSystemStrategy;
  */
 public class GeneralComputer implements MeasureComputer {
 
-    /**
-     * The logger object for the sensor.
-     */
+	/**
+	 * The logger object for the sensor.
+	 */
 	private static final Logger LOG = LoggerFactory.getLogger(GeneralComputer.class);
 	private IExpertSystemStrategy strategy;
-	
-	
-	  public void setExpertSystemStrategy(IExpertSystemStrategy strategy){
-			this.strategy = strategy;
-		}
-	  
-	  public double[] performExpertSystemStrategy(double[] inputMetrics){
-		  
-		 return this.strategy.xfuzzyProcess(inputMetrics);
-		}
+
+	  /*
+	   * (non-Javadoc)
+	   * @see org.sonar.api.ce.measure.MeasureComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)
+	   */
 	public void compute(MeasureComputerContext context) {
 		
 		LOG.info("General computer compute: inicio");
-//	     Measure numbertest = context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY);
-//	     int numbertest_value = numbertest.getIntValue();
-//	     LOG.info("General computer compute: numer test value is -->"+numbertest_value);
-//	     
-//	     Measure numbercodelines = context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY);
-//	     int numbercodelines_value = numbercodelines.getIntValue();
-//	     LOG.info("General computer compute: numer code lines value is -->"+numbercodelines_value);
-//	     
-//	     context.addMeasure(SedcatMetricsKeys.GENERAL_COMPUTER_RESULT, numbertest_value+numbercodelines_value);
-	     
+		LOG.info("getComponent(): "+context.getComponent());
+		LOG.info("getComponent(): "+context.getComponent().getType());
+		LOG.info("getComponent(): "+context.getComponent().getType().toString());
+
+		
 		double success = context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue();
 		LOG.info("General computer compute: exito");
 		double coverage = context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue();
@@ -59,6 +51,7 @@ public class GeneralComputer implements MeasureComputer {
 		double codelines = context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue();
 		LOG.info("General computer compute: lineascodigo");
 		
+
 	     //Obtener valores de entrada
 //		double[] qualityInputMetrics = new double[]{
 //				context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
@@ -101,7 +94,7 @@ public class GeneralComputer implements MeasureComputer {
 	    	this.setExpertSystemStrategy(new ExpertSystemQuality());
 	    	double[] quality = this.performExpertSystemStrategy(qualityInputMetrics);
 	    	QualityMeasureStore metricToStore = new QualityMeasureStore(quality, context);
-	    	LOG.info("General computer compute: sistema expero calidad");
+	    	LOG.info("General computer compute: sistema experto calidad");
 		     	//actions
 			this.setExpertSystemStrategy(new ExpertSystemActions());
 			double[] actions = this.performExpertSystemStrategy(actionsInputMetrics);
@@ -142,6 +135,23 @@ public class GeneralComputer implements MeasureComputer {
 	@Override
 	  public String toString() {
 	    return getClass().getSimpleName();
+	  }
+	
+	/**
+	 * @param strategy
+	 */
+	  public void setExpertSystemStrategy(IExpertSystemStrategy strategy){
+			this.strategy = strategy;
+		}
+	  
+	  /**
+	   * 
+	   * @param inputMetrics
+	   * @return
+	   */
+	  public double[] performExpertSystemStrategy(double[] inputMetrics){
+		  
+		 return this.strategy.xfuzzyProcess(inputMetrics);
 	  }
 	
 }
