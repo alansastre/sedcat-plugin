@@ -15,6 +15,7 @@ import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.measures.PropertiesBuilder;
 
+import es.unileon.sonarqube.sedcat.analyzers.InputVariableCoverage;
 import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
@@ -26,43 +27,34 @@ import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
  *	@author alan.jesus
  *	@version 1.0
  */
-public class ActionsToPerformStore {
+public class ActionsMeasureStore extends AbstractOutputMeasureStore{
 
-	
-	private static final Logger LOG = LoggerFactory.getLogger(ActionsToPerformStore.class);
-	private static final long ACTION_SET_MIN = 0;
-	private static final long ACTION_SET_MAX = 32;
 	//variable que almacena la ruta donde se encuentran las propiedades que definen los conjuntos de acciones
 	private static final String ACTIONS_PROPERTIES_PATH = "/root/workspace/tools.sonarqube.sedcat/src/main/resources/org/sonar/l10n/expertSystemActions.properties";
-
-
-
-
-	public ActionsToPerformStore(double[] qualityMeasure, MeasureComputerContext context){
+	
+	public ActionsMeasureStore(double[] outputMeasureValues, MeasureComputerContext context) {
 		
-		LOG.info("Almacenando conjunto de acciones.");
-		/*
-		 * 1- determinar cual ha sido el escenario de acciones y localizar la propiedad
-		 * que lo define dentro de los ficheros properties. Esta propiedad contendra el texto que aparecera 
-		 * en el widget
-		 */
-		double actionSetDouble = qualityMeasure[0];
-		LOG.info("actionset sin redondear: "+ actionSetDouble);
+		this.outputMeasureValues=outputMeasureValues;
+		this.context=context;
 		
+		this.LOG = LoggerFactory.getLogger(ActionsMeasureStore.class);
+		this.MIN_VALUE=0;
+		this.MAX_VALUE=32;
+		this.MEASURE_KEY=SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY;
+		this.ERROR_MESSAGE="Error, el conjunto de acciones obtenido esta fuera del rango permitido";
+	
+	}
+
+	@Override
+	protected void saveMeasure(double measureValue) {
 		//Redondeamos, pues necesitamos localizar un conjunto discreto
-		long actionSet = Math.round(actionSetDouble);
-		
-		//comprobamos que el valor es el correcto
-		this.checkValue(actionSet);
-
-		LOG.info("conjunto de acciones: "+ actionSet);
-		
+		long actionSet = Math.round(measureValue);
 		
 		//cargamos propiedades
 		Properties propiedades = this.loadProperties();
 		
 		String actionsValueProperty = "";
-		for(int i=0; i<=ACTION_SET_MAX; i++){
+		for(int i=0; i<=this.MAX_VALUE; i++){
 			if(actionSet==i){
 				actionsValueProperty = "sedcat.actions.set" + i;
 			}
@@ -73,11 +65,11 @@ public class ActionsToPerformStore {
 	
 		
 		//2 - Almacenar el mensaje del conjunto de acciones en forma de String
-		context.addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, actionValue);
-
+		this.context.addMeasure(this.MEASURE_KEY, actionValue);
+	
 		LOG.info("Conjunto de acciones almacenado correctamente");
 	}
-
+	
 	
 	
 	private Properties loadProperties() {
@@ -112,23 +104,6 @@ public class ActionsToPerformStore {
 	    }
 	    
 	    return propiedades;
-	}
-
-
-
-	/**
-	 * Metodo encargado de verificar que el conjunto de acciones obtenido es coherente
-	 * y se encuentra dentro del rango de acciones predefinido
-	 * @param actionSet
-	 */
-	private void checkValue(long actionSet) {
-		
-		if(actionSet < ACTION_SET_MIN || actionSet> ACTION_SET_MAX){
-			//El conjunto de acciones no entra en el rango permitido
-			LOG.error("El conjunto de acciones resultado no esta dentro del rango predefinido");
-			System.exit(-1);
-		}
-		
 	}
 
 }

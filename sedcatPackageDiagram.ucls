@@ -185,9 +185,9 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="es.unileon.sonarqube.sedcat.storage.ActionsToPerformStore" 
+  <class id="18" language="java" name="es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore" 
     project="tools.sonarqube.sedcat" 
-    file="/tools.sonarqube.sedcat/src/main/java/es/unileon/sonarqube/sedcat/storage/ActionsToPerformStore.java" 
+    file="/tools.sonarqube.sedcat/src/main/java/es/unileon/sonarqube/sedcat/storage/ActionsMeasureStore.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="177" y="1143"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

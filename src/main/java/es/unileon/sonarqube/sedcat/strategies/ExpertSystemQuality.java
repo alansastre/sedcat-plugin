@@ -27,10 +27,6 @@ public class ExpertSystemQuality implements IExpertSystemStrategy{
 		
 		Calidad_1 quality = new Calidad_1();
 		return quality.crispInference(inputMetrics);
-				
-				
-//    	QualityMeasureStore metricToStore = new QualityMeasureStore(quality.crispInference(inputVariables), sensorContext);
-
 	}
 
 }

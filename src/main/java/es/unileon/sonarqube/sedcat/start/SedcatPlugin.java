@@ -1,25 +1,16 @@
 package es.unileon.sonarqube.sedcat.start;
-
-
-
 import java.util.ArrayList;
 import static java.util.Arrays.asList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-
-import org.sonar.api.Extension;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
+import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 
 import es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer;
-import es.unileon.sonarqube.sedcat.scanners.MutationsCoverageComputer;
 import es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputer;
 import es.unileon.sonarqube.sedcat.scanners.NumberTestsComputer;
 import es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputer;
-
-
 /**
  * This class is the entry point for all extensions. It must be referenced from pom.xml.
  */
@@ -43,45 +34,29 @@ import es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputer;
   
 })
 public class SedcatPlugin extends SonarPlugin {
-	
-	
-//	public List<Class<? extends Extension>> getExtensions() {
+
 	/**
 	   * Returns the list of the extensions to be available at runtime.
 	   */
 	@Override
 	  public List getExtensions() {
-//        return Arrays.asList(
-//        		
-//        		
-//        		SedcatMetrics.class,
-////        		DecoratorLinesCode.class,
-////        		DecoratorNumberTest.class,
-//        		SedcatSensor.class,
-//        		MyMeasureComputer.class,
-//        		ExampleSedcatHtml.class,
-//        		SedcatDashboardWidget.class
-//        		
-//        		);
+
     	  List extensions = new ArrayList();
-//    	    extensions.addAll(ExampleProperties.definitions());
-//    	    extensions.add(FooLanguage.class);
+
     	    extensions.add(SedcatMetrics.class);
 
-    	    // Rules, Quality Profile
-//    	    extensions.addAll(asList(FooLintRulesDefinition.class, FooLintProfile.class, MyCustomJavaRulesDefinition.class));
-
-    	    // Scanners - first level
+    	    // Scanners - first level sensors
 //    	    extensions.addAll(asList(SedcatSensor.class, NumberCodeLinesComputer.class, NumberTestsComputer.class));
+    	    
+    	    //Scanner - Second level computers
     	    extensions.addAll(asList(
     	    		NumberCodeLinesComputer.class,
     	    		NumberTestsComputer.class,
     	    		SuccessUnitTestsComputer.class,
     	    		CoverageUnitTestsComputer.class
-//    	    		MutationsCoverageComputer.class
+
     	    ));
- 	    
-    	    //Scanner - Second level 
+    	    //Scanner - manage sensor and computer metrics
     	    extensions.add(GeneralComputer.class);
     	    
     	    // UI

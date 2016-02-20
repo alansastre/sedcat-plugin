@@ -18,40 +18,30 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
  *	@author alan.jesus
  *	@version 1.0
  */
-public class QualityMeasureStore {
+public class QualityMeasureStore extends AbstractOutputMeasureStore{
 
-	private static final Logger LOG = LoggerFactory.getLogger(QualityMeasureStore.class);
-	private static final long QUALITY_VALUE_MIN = 0;
-	private static final long QUALITY_VALUE_MAX = 100;
-	
-	public QualityMeasureStore(double[] qualityMeasure, MeasureComputerContext context){
+
+	public QualityMeasureStore(double[] outputMeasureValues, MeasureComputerContext context) {
 		
-		//comprobar resultado
-		double qualityValue = qualityMeasure[0];
-		LOG.info("Metrica calidad es:" + qualityValue );
-		this.checkValue(qualityValue);
+		this.outputMeasureValues=outputMeasureValues;
+		this.context=context;
 		
-		//de ser correcto, almacenarlo
-		context.addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, qualityValue);
-		
-		LOG.info("Metrica calidad almacenada correctamente.");
+		this.LOG = LoggerFactory.getLogger(QualityMeasureStore.class);
+		this.MIN_VALUE=0;
+		this.MAX_VALUE=100;
+		this.MEASURE_KEY=SedcatMetricsKeys.QUALITY_MEASURE_KEY;
+		this.ERROR_MESSAGE="Error, la metrica calidad obtenida esta fuera del limite permitido";
 		
 	}
-	
-	/**
-	 * Metodo encargado de verificar que el conjunto de acciones obtenido es coherente
-	 * y se encuentra dentro del rango de acciones predefinido (0-100)
-	 * @param actionSet
-	 */
-	private void checkValue(double qualityValue) {
 
-		if(qualityValue < QUALITY_VALUE_MIN || qualityValue> QUALITY_VALUE_MAX){
-			
-			//El conjunto de acciones no entra en el rango permitido
-			LOG.error("La metrica calidad obtenida no entra en el rango especificado 0-100.");
-			System.exit(-1);
-		}
-		
-	}
+@Override
+protected void saveMeasure(double measureValue) {
+
+	//de ser correcto, almacenarlo
+	this.context.addMeasure(this.MEASURE_KEY, measureValue);
+	
+	LOG.info("Metrica calidad almacenada correctamente, ha sido: "+measureValue);
+	
+}
 	
 }
