@@ -34,14 +34,14 @@ public class QualityMeasureStore extends AbstractOutputMeasureStore{
 		
 	}
 
-@Override
-protected void saveMeasure(double measureValue) {
-
-	//de ser correcto, almacenarlo
-	this.context.addMeasure(this.MEASURE_KEY, measureValue);
+	@Override
+	protected void saveMeasure(double measureValue) {
 	
-	LOG.info("Metrica calidad almacenada correctamente, ha sido: "+measureValue);
-	
-}
+		//de ser correcto, almacenarlo
+		this.context.addMeasure(this.MEASURE_KEY, measureValue);
+		
+		LOG.info("Metrica calidad almacenada correctamente, ha sido: "+measureValue);
+		
+	}
 	
 }

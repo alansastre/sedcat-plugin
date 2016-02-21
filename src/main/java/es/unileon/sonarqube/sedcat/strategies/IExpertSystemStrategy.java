@@ -3,7 +3,7 @@
  */
 package es.unileon.sonarqube.sedcat.strategies;
 
-import org.sonar.api.batch.SensorContext;
+import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 
 /**
  * Interfaz que especifica el metodo que implementaran las estrategias referentes a la utilizacion de sistemas expertos. 
@@ -14,7 +14,7 @@ import org.sonar.api.batch.SensorContext;
 public interface IExpertSystemStrategy {
 
 	
-	public double[] xfuzzyProcess(double[] inputMetrics);
+	public void xfuzzyProcess(MeasureComputerContext context);
 	
 	
 }

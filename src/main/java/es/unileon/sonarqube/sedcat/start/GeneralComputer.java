@@ -36,9 +36,8 @@ public class GeneralComputer implements MeasureComputer {
 	};
 	
 
-	  /*
-	   * (non-Javadoc)
-	   * @see org.sonar.api.ce.measure.MeasureComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)
+	  /**
+	   * 
 	   */
 	public void compute(MeasureComputerContext context) {
 		
@@ -48,82 +47,22 @@ public class GeneralComputer implements MeasureComputer {
 		LOG.info("getComponent(): "+context.getComponent().getType());
 		LOG.info("getComponent(): "+context.getComponent().getType().toString());
 
+		
 		if(!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")){
 			return;
 		}
 
-		double success = context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue();
-		LOG.info("General computer compute: exito");
-		double coverage = context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue();
-		LOG.info("General computer compute: cobertura");
-		double mutants = 100.0;
-		LOG.info("General computer compute: mutantes");
-		double numbertest = context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue();
-		LOG.info("General computer compute: numerotest");
-		double codelines = context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue();
-		LOG.info("General computer compute: lineascodigo");
 		
+		//Ejecutar sistemas expertos
+	     	//quality
+		this.setExpertSystemStrategy(new ExpertSystemQuality());
+		this.performExpertSystemStrategy(context);
+	     	//actions
+		this.setExpertSystemStrategy(new ExpertSystemActions());
+		this.performExpertSystemStrategy(context);
 
-	     //Obtener valores de entrada
-//		double[] qualityInputMetrics = new double[]{
-//				context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
-//				context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
-////				context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
-//				100.0,
-//				context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(),
-//				context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(),
-//	
-//		};
-		double[] qualityInputMetrics = new double[]{
-				success,coverage,mutants,numbertest,codelines
 
-		};
-		LOG.info("General computer compute: quality input metrics");
-//		double[] actionsInputMetrics = new double[]{
-//				context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
-//				context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
-//				context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(),
-////				context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
-//				100.0,
-//				context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(),
-//		};
-		double[] actionsInputMetrics = new double[]{
-				success,coverage,numbertest,mutants,codelines
-		};
-		
-		
-		
-		if(success!=0 && coverage!=0 && numbertest!=0 && mutants!=0 && codelines!=0){
 			
-			LOG.info("if: entrada a los s e");
-			LOG.info("success: "+success);
-			LOG.info("coverage: "+coverage);
-			LOG.info("numbertest: "+numbertest);
-			LOG.info("mutants: "+mutants);
-			LOG.info("codelines: "+codelines);
-		     //Ejecutar sistemas expertos
-			
-		     	//quality
-	    	this.setExpertSystemStrategy(new ExpertSystemQuality());
-	    	double[] quality = this.performExpertSystemStrategy(qualityInputMetrics);
-	    	QualityMeasureStore metricToStore = new QualityMeasureStore(quality, context);
-	    	metricToStore.outputMeasureStore();
-	    	LOG.info("General computer compute: sistema experto calidad");
-		     	//actions
-			this.setExpertSystemStrategy(new ExpertSystemActions());
-			double[] actions = this.performExpertSystemStrategy(actionsInputMetrics);
-			ActionsMeasureStore actionsToStore = new ActionsMeasureStore(actions, context);
-			actionsToStore.outputMeasureStore();
-			LOG.info("General computer compute: sistema experto acciones");
-		
-		}else{
-			LOG.info("else que no hace nada");
-		}
-		
-    	
-//		context.addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, 45.56);
-//		context.addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, "prueba");
-	    	
 	}
 
 	public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext) {
@@ -165,9 +104,9 @@ public class GeneralComputer implements MeasureComputer {
 	   * @param inputMetrics
 	   * @return
 	   */
-	  public double[] performExpertSystemStrategy(double[] inputMetrics){
+	  public void performExpertSystemStrategy(MeasureComputerContext context){
 		  
-		 return this.strategy.xfuzzyProcess(inputMetrics);
+		  this.strategy.xfuzzyProcess(context);
 	  }
 	
 }
