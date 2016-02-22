@@ -29,16 +29,7 @@ public class GeneralComputer implements MeasureComputer {
 	 */
 	private static final Logger LOG = LoggerFactory.getLogger(GeneralComputer.class);
 	private IExpertSystemStrategy strategy;
-	
-	private static final String[] INPUT_METRICS_KEYS = new String[]{
-			SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY,
-			
-	};
-	
 
-	  /**
-	   * 
-	   */
 	public void compute(MeasureComputerContext context) {
 		
 
@@ -47,12 +38,10 @@ public class GeneralComputer implements MeasureComputer {
 		LOG.info("getComponent(): "+context.getComponent().getType());
 		LOG.info("getComponent(): "+context.getComponent().getType().toString());
 
-		
 		if(!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")){
 			return;
 		}
 
-		
 		//Ejecutar sistemas expertos
 	     	//quality
 		this.setExpertSystemStrategy(new ExpertSystemQuality());
@@ -60,9 +49,7 @@ public class GeneralComputer implements MeasureComputer {
 	     	//actions
 		this.setExpertSystemStrategy(new ExpertSystemActions());
 		this.performExpertSystemStrategy(context);
-
-
-			
+	
 	}
 
 	public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext) {
@@ -76,8 +63,8 @@ public class GeneralComputer implements MeasureComputer {
 	    	    		 SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY,
 	    	    		 SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY,
 	    	    		 SedcatMetricsKeys.NUMBERTESTS_KEY,
-	    	    		 SedcatMetricsKeys.CODE_LINES_KEY
-//	    	    		 SedcatMetricsKeys.MUTANTS_KEY,
+	    	    		 SedcatMetricsKeys.CODE_LINES_KEY,
+	    	    		 SedcatMetricsKeys.MUTANTS_KEY
 	    	    		 )
 	    	     
 	    	     // Output metrics must contains at least one metric

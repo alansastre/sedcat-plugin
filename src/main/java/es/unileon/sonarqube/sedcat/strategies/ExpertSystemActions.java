@@ -45,8 +45,7 @@ public class ExpertSystemActions implements IExpertSystemStrategy{
 			context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
 			context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
 			context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(),
-	//		context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
-			100.0,
+			context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
 			context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(),
 		};
 		

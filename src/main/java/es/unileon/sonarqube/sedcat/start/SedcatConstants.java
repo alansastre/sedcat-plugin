@@ -21,6 +21,8 @@ public class SedcatConstants {
   public static final String NUMBER_TESTS_KEY = "numbertests";
   public static final String NUMBER_CODE_LINES_KEY = "numbercodelines";
   
+  public static final String REPORT_DIRECTORY_DEF = "target/pit-reports";
+  
   
   
  

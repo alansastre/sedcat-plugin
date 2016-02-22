@@ -4,28 +4,17 @@
 package es.unileon.sonarqube.sedcat.scanners;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.batch.DecoratorContext;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
-import org.sonar.api.batch.measure.Metric;
-import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
-import org.sonar.api.ce.measure.MeasureComputer;
 import org.sonar.api.resources.Project;
-//import org.sonar.squid.measures.Measures;
-//import org.sonar.plugins.pitest.PitestMetrics;
-import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
-import es.unileon.sonarqube.sedcat.strategies.IExpertSystemStrategy;
-import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
-import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
+import es.unileon.sonarqube.sedcat.start.SedcatConstants;
+import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import org.sonar.api.config.Settings;
-import org.sonar.api.measures.CoreMetrics;
-import org.sonar.api.measures.Formula;
-import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.MeasureUtils;
-import org.sonar.api.batch.*;
-import org.sonar.xoo.coverage.*;
-import org.sonar.api.batch.postjob.*;
+import java.io.IOException;
+
+
+
 /**
  *	@author alan.sastre
  *	@version 1.0
@@ -33,10 +22,11 @@ import org.sonar.api.batch.postjob.*;
 public class MutationsCoverageSensor implements Sensor {
 
 
-
+	private static final Logger LOG = LoggerFactory.getLogger(MutationsCoverageSensor.class);
 	private Settings settings;
     private final FileSystem fileSystem;
-	private static final Logger LOG = LoggerFactory.getLogger(MutationsCoverageSensor.class);
+    private final MutationsReportFinder mutationsFinder;
+    private final MutationsReportParser mutationsParser;
 
     /**
      * Constructor that sets the file system object for the
@@ -45,9 +35,12 @@ public class MutationsCoverageSensor implements Sensor {
      * @param fileSystem the project file system
      * settings fileSystem the project file system
      */
-    public MutationsCoverageSensor(FileSystem fileSystem, Settings settings) {
+    public MutationsCoverageSensor(FileSystem fileSystem, Settings settings, MutationsReportFinder mutationsFinder, MutationsReportParser mutationsParser) {
         this.fileSystem = fileSystem;
         this.settings = settings;
+        this.mutationsFinder = mutationsFinder;
+        this.mutationsParser = mutationsParser;
+  
     }
 
     /**
@@ -67,11 +60,32 @@ public class MutationsCoverageSensor implements Sensor {
      * @param sensorContext the sensor context
      */
     public void analyse(Project project, SensorContext sensorContext) {
+    	
+		LOG.info("Calculando metrica mutantes");
+    	//1 - Encontrar el reporte de mutantes
+	    java.io.File projectDirectory = fileSystem.baseDir();
+	    java.io.File reportDirectory = new java.io.File(projectDirectory, SedcatConstants.REPORT_DIRECTORY_DEF);
+	    java.io.File htmlReport = this.mutationsFinder.findReport(reportDirectory);
+      //2 - Obtener la cobertura de mutantes
+	    if (htmlReport == null) {
+	      LOG.error("No HTML PIT report found in directory {} !", reportDirectory);
+	      System.exit(-1);
+	    } else {
+	    	double mutationsCoverage = 0;
+			try {
+				LOG.info("HTML REPORTE ENCONTRADO: "+htmlReport);
+				mutationsCoverage = this.mutationsParser.parseReport(htmlReport);
+				LOG.info("VALOR MUTANTES EXTRAIDO: "+mutationsCoverage);
+				 //3 - Almacenar la cobertura de mutantes
+				sensorContext.saveMeasure(SedcatMetrics.MUTANTS, mutationsCoverage);
+			} catch (IOException e) {
 
-        
+				e.printStackTrace();
+			}
+	    	
+	    }
 
     }
-
 
 	/**
      * Returns the name of the sensor as it will be used in logs during analysis.
