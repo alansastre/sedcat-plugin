@@ -24,22 +24,35 @@ public class NumberTestsComputer implements MeasureComputer {
 	
 	public void compute(MeasureComputerContext context) {
 		
-		LOG.info("Computer: NUMBER TEST");
-
-	     int num_tests = 0;
-	     
-	     for (Measure childMeasure : context.getChildrenMeasures(CoreMetrics.TESTS_KEY)) {
-	    	 num_tests += childMeasure.getIntValue();
-	       }
-	     
-	     context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, num_tests);
-	     LOG.info("Computer: NUMBER TEST metrica guardada");
+		
+		
+		LOG.info("tipo: "+context.getComponent().getType());
+		
+		
+		Measure num_tests = context.getMeasure(CoreMetrics.TESTS_KEY);
+		if (num_tests!=null) {
+			LOG.info("tipo: "+num_tests.getIntValue());
+			context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, num_tests.getIntValue());
+		}else{
+			LOG.info("Esta metrica ha sido nula, el sistema la considerara como cero. ");
+			context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 0);
+		}
+		
+//		LOG.info("Computer: NUMBER TEST");
+//
+//	     int num_tests = 0;
+//	     
+//	     for (Measure childMeasure : context.getChildrenMeasures(CoreMetrics.TESTS_KEY)) {
+//	    	 num_tests += childMeasure.getIntValue();
+//	       }
+//	     
+//	     context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, num_tests);
+//	     LOG.info("Computer: NUMBER TEST metrica guardada");
 
 	}
 
 	public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext) {
 
-		LOG.info("Computers on definition: NUMBER TESTS");
 	    return defContext.newDefinitionBuilder()
 
 	    	     // Input metrics can be empty, for instance if only issues will be read

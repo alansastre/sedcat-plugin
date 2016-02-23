@@ -23,6 +23,7 @@ public class MutationsCoverageSensor implements Sensor {
 
 
 	private static final Logger LOG = LoggerFactory.getLogger(MutationsCoverageSensor.class);
+	
 	private Settings settings;
     private final FileSystem fileSystem;
     private final MutationsReportFinder mutationsFinder;
@@ -68,8 +69,10 @@ public class MutationsCoverageSensor implements Sensor {
 	    java.io.File htmlReport = this.mutationsFinder.findReport(reportDirectory);
       //2 - Obtener la cobertura de mutantes
 	    if (htmlReport == null) {
-	      LOG.error("No HTML PIT report found in directory {} !", reportDirectory);
-	      System.exit(-1);
+	      LOG.warn("No HTML PIT report found in directory {} !", reportDirectory);
+	      LOG.warn("Mutations is considered to be zero.");
+	      sensorContext.saveMeasure(SedcatMetrics.MUTANTS, 0.0);
+//	      System.exit(-1);
 	    } else {
 	    	double mutationsCoverage = 0;
 			try {

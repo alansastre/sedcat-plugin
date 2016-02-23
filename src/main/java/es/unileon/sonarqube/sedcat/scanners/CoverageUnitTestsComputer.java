@@ -25,22 +25,36 @@ public class CoverageUnitTestsComputer implements MeasureComputer {
 	
 	public void compute(MeasureComputerContext context) {
 		
-		LOG.info("Computer: COVERAGE TESTS");
+//		LOG.info("tipo: "+context.getComponent().getType());
+//		LOG.info("Computer: COVERAGE TESTS atributos: "+context.getComponent().getFileAttributes());
+//		if(!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")){
+//			return;
+//		}
+		LOG.info("tipo: "+context.getComponent().getType());
+		
+		
+		Measure success = context.getMeasure(CoreMetrics.COVERAGE_KEY);
+		if (success!=null) {
+			LOG.info("valor: "+success.getDoubleValue());
+			context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, success.getDoubleValue());
+		}else{
+			LOG.info("Esta metrica ha sido nula, el sistema la considerara como cero. ");
+			context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 0.0);
+		}
 
-	     Double success_tests = 0.0;
-	     
-	     for (Measure childMeasure : context.getChildrenMeasures(CoreMetrics.COVERAGE_KEY)) {
-	    	 success_tests += childMeasure.getDoubleValue();
-	       }
-	     
-	     context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, success_tests);
-	     LOG.info("Computer: COVERAGE TESTS guardada");
+//	     Double success_tests = 0.0;
+//	     
+//	     for (Measure childMeasure : context.getChildrenMeasures(CoreMetrics.COVERAGE_KEY)) {
+//	    	 success_tests += childMeasure.getDoubleValue();
+//	       }
+//	     
+//	     context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, success_tests);
+//	     LOG.info("Computer: COVERAGE TESTS guardada ha sido: "+success_tests);
 
 	}
 
 	public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext) {
 
-		LOG.info("Computers on definition: COVERAGE TESTS");
 	    return defContext.newDefinitionBuilder()
 
 	    	     // Input metrics can be empty, for instance if only issues will be read

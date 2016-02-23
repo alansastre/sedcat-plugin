@@ -39,7 +39,7 @@ import org.sonar.api.web.WidgetPropertyType;
 public class SedcatDashboardWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
 
-	private static final String TEMPLATE_PATH = "/root/workspace/tools.sonarqube.sedcat/src/main/resources";
+	private static final String TEMPLATE_PATH = "/root/workspace/sonar-sedcat-plugin/src/main/resources";
 	private static final String TEMPLATE_PATH_FILE = "/sedcat_widget.html.erb";
 	
 

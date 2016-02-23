@@ -33,11 +33,9 @@ public class GeneralComputer implements MeasureComputer {
 	public void compute(MeasureComputerContext context) {
 		
 
-		LOG.info("General computer compute: inicio");
-		LOG.info("getComponent(): "+context.getComponent());
-		LOG.info("getComponent(): "+context.getComponent().getType());
-		LOG.info("getComponent(): "+context.getComponent().getType().toString());
-
+		/*
+		 * Este computer solo se ejecuta a nivel de proyecto
+		 */
 		if(!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")){
 			return;
 		}
@@ -54,8 +52,6 @@ public class GeneralComputer implements MeasureComputer {
 
 	public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext) {
 		
-		
-		LOG.info("General computer definition");
 	    return defContext.newDefinitionBuilder()
 
 	    	     // Input metrics can be empty, for instance if only issues will be read

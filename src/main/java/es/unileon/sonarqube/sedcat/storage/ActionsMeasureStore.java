@@ -30,7 +30,7 @@ import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 public class ActionsMeasureStore extends AbstractOutputMeasureStore{
 
 	//variable que almacena la ruta donde se encuentran las propiedades que definen los conjuntos de acciones
-	private static final String ACTIONS_PROPERTIES_PATH = "/root/workspace/tools.sonarqube.sedcat/src/main/resources/org/sonar/l10n/expertSystemActions.properties";
+	private static final String ACTIONS_PROPERTIES_PATH = "/root/workspace/sonar-sedcat-plugin/src/main/resources/org/sonar/l10n/expertSystemActions.properties";
 	
 	public ActionsMeasureStore(double[] outputMeasureValues, MeasureComputerContext context) {
 		
@@ -86,7 +86,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore{
 
 
 	    } catch (IOException ex) {
-	    	LOG.error("InputVariablesUtils: fallo al obtener las propiedades de los conjuntos de acciones");
+	    	LOG.error("fallo al obtener las propiedades de los conjuntos de acciones");
 	        ex.printStackTrace();
 	        System.exit(-1);
 	    } finally {
@@ -94,7 +94,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore{
 	            try {
 	                entrada.close();
 	            } catch (IOException e) {
-	            	LOG.error("InputVariablesUtils: fallo al cerrar la ruta propiedades de los conjuntos de acciones");
+	            	LOG.error("fallo al cerrar la ruta propiedades de los conjuntos de acciones");
 	                e.printStackTrace();
 	                System.exit(-1);
 	            }

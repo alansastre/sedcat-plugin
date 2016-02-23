@@ -19,7 +19,7 @@ import org.sonar.api.batch.BatchSide;
 public class MutationsReportParser {
 
 
-	protected double parseReport(File reportPath) throws IOException{
+	public double parseReport(File reportPath) throws IOException{
 		
 		
 		Document doc = Jsoup.parse(reportPath, null);

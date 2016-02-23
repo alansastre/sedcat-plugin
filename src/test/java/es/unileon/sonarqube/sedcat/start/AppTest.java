@@ -1,4 +1,4 @@
-package com.unileon.sonarqube.sedcat.start;
+package es.unileon.sonarqube.sedcat.start;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

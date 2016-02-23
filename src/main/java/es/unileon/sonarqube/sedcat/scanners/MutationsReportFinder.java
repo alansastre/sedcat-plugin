@@ -18,7 +18,7 @@ import org.sonar.api.batch.BatchSide;
 public class MutationsReportFinder{
 	
 
-	protected File findReport(File reportDirectory){
+	public File findReport(File reportDirectory){
 		
 	    if (reportDirectory== null || !reportDirectory.exists() || !reportDirectory.isDirectory()) {
 	        return null;
