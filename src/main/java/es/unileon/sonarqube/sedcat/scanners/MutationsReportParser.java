@@ -8,6 +8,8 @@ import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.BatchSide;
 
 
@@ -18,15 +20,28 @@ import org.sonar.api.batch.BatchSide;
 @BatchSide
 public class MutationsReportParser {
 
+	private static final Logger LOG = LoggerFactory.getLogger(MutationsReportParser.class);
+
 
 	public double parseReport(File reportPath) throws IOException{
 		
 		
 		Document doc = Jsoup.parse(reportPath, null);
 		Elements content = doc.getElementsByTag("td");
-		String value = content.get(2).ownText();
-		double valueMutation = Double.parseDouble(value.substring(0, value.length()-1));
-		return valueMutation;
+		if(content!= null){
+			LOG.info("hay mutantes");
+			String value = content.get(2).ownText();
+			LOG.info("valor mutantes extraido: "+value);
+			if(value.length()>0){
+				double valueMutation = Double.parseDouble(value.substring(0, value.length()-1));
+				return valueMutation;
+			}else{
+				return 0;
+			}
+		}else{
+			LOG.info("No hay mutantes, se considera esta media como cero.");
+			return 0;
+		}
 		
 	}
 }
