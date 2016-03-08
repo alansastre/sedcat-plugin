@@ -29,7 +29,7 @@ public class MutationsReportFinder{
 		//TODO - arreglar
 		File[] reports = reportDirectory.listFiles(new FilenameFilter() {
 		    public boolean accept(File dir, String name) {
-		        return name.startsWith("index") && name.endsWith("html");
+		        return name.startsWith("index") && name.endsWith(".html");
 		    }
 		});
 
