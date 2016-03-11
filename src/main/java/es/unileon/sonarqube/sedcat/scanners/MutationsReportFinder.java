@@ -26,7 +26,7 @@ public class MutationsReportFinder{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MutationsReportFinder.class);
 	
-	
+
 	public File findReport(File reportDirectory){
 		
 		LOG.info("target pit reports path: "+reportDirectory.getAbsolutePath());
@@ -41,6 +41,10 @@ public class MutationsReportFinder{
 			  }
 			});
 		LOG.info("total report directories: "+directoriesPaths.length);
+		
+		if(directoriesPaths.length==0){
+			return null;
+		}
 		for (int i = 0; i < directoriesPaths.length; i++) {
 			LOG.info("directory : "+directoriesPaths[i].toString());
 		}
@@ -59,19 +63,19 @@ public class MutationsReportFinder{
 		LOG.info("latest directory: "+latestReport.getAbsolutePath());
 		
 		File indexReportSearched = null;
-		String nuevoReporte = latestReport.getAbsolutePath()+"/";
-		File reporteFile = new File(nuevoReporte);
+		String indexReportSearchedPath = latestReport.getAbsolutePath()+"/";
+		File indexReportDirectory = new File(indexReportSearchedPath);
 		
-		
-		Collection<File> indexReport = FileUtils.listFiles(reporteFile, new String[]{"html"}, false);
-		
-		if (indexReport!=null) {
-			indexReportSearched= (File) indexReport.toArray()[0];
+		if(indexReportDirectory.list().length>0){
+			
+			Collection<File> indexReport = FileUtils.listFiles(indexReportDirectory, new String[]{"html"}, false);
+			
+			if (indexReport!=null && !indexReport.isEmpty()) {
+				indexReportSearched= (File) indexReport.toArray()[0];
+			}
 		}
 		
 		return indexReportSearched;
-
-
 	}
 	
 }

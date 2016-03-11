@@ -29,13 +29,19 @@ public class MutationsReportParser {
 		Document doc = Jsoup.parse(reportPath, null);
 		Elements content = doc.getElementsByTag("td");
 		if(content!= null){
-			LOG.info("hay mutantes");
-			String value = content.get(2).ownText();
-			LOG.info("valor mutantes extraido: "+value);
-			if(value.length()>0){
-				double valueMutation = Double.parseDouble(value.substring(0, value.length()-1));
-				return valueMutation;
+			if (content.size()>1) {
+				LOG.info("hay mutantes");
+				String value = content.get(2).ownText();
+				LOG.info("valor mutantes extraido: "+value);
+				if(value.length()>0){
+					double valueMutation = Double.parseDouble(value.substring(0, value.length()-1));
+					return valueMutation;
+				}else{
+					LOG.info("No hay mutantes, se considera esta media como cero.");
+					return 0;
+				}
 			}else{
+				LOG.info("No hay mutantes, se considera esta media como cero.");
 				return 0;
 			}
 		}else{
