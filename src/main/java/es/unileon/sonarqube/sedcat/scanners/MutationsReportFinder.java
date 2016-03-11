@@ -29,37 +29,44 @@ public class MutationsReportFinder{
 	
 	public File findReport(File reportDirectory){
 		
+		LOG.info("target pit reports path: "+reportDirectory.getAbsolutePath());
 		
-		//TODO - DIRECTORIOS
-//		String[] directories = file.list(new FilenameFilter() {
-//			  @Override
-//			  public boolean accept(File current, String name) {
-//			    return new File(current, name).isDirectory();
-//			  }
-//			});
-
 		if (reportDirectory== null || !reportDirectory.exists() || !reportDirectory.isDirectory()) {
 		    return null;
 		}
-		Collection<File> reports = FileUtils.listFiles(reportDirectory, null, false);
-		
-		if (reports!=null) {
-			LOG.info("Reportes encontrados: "+reports.size());
+
+		String[] directoriesPaths = reportDirectory.list(new FilenameFilter() {
+			  public boolean accept(File current, String name) {
+			    return new File(current, name).isDirectory();
+			  }
+			});
+		LOG.info("total report directories: "+directoriesPaths.length);
+		for (int i = 0; i < directoriesPaths.length; i++) {
+			LOG.info("directory : "+directoriesPaths[i].toString());
 		}
-				File latestReport = null;
-		for (File report : reports) {
-			  if (latestReport == null || FileUtils.isFileNewer(report, latestReport)) {
+		ArrayList<File> directories  = new ArrayList<File>();
+		for (int i = 0; i < directoriesPaths.length; i++) {
+			//Unimos la ruta del directorio de reportes mas cada uno de los directorioss
+			directories.add(new File(reportDirectory.getAbsolutePath()+ "/" + directoriesPaths[i]));
+		}
+
+		File latestReport = null;
+		for (File report : directories) {
+			if (latestReport == null || report.lastModified() > latestReport.lastModified()) {
 			    latestReport = report;
 			  }
 		}
+		LOG.info("latest directory: "+latestReport.getAbsolutePath());
 		
 		File indexReportSearched = null;
+		String nuevoReporte = latestReport.getAbsolutePath()+"/";
+		File reporteFile = new File(nuevoReporte);
 		
-		Collection<File> indexReport = FileUtils.listFiles(latestReport, new String[]{"html"}, false);
+		
+		Collection<File> indexReport = FileUtils.listFiles(reporteFile, new String[]{"html"}, false);
 		
 		if (indexReport!=null) {
 			indexReportSearched= (File) indexReport.toArray()[0];
-			LOG.info("Reportes encontrados: "+indexReport.size());
 		}
 		
 		return indexReportSearched;
