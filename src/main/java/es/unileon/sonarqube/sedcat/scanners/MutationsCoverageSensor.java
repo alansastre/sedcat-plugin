@@ -65,14 +65,14 @@ public class MutationsCoverageSensor implements Sensor {
 		LOG.info("Calculando metrica mutantes");
     	//1 - Encontrar el reporte de mutantes
 	    java.io.File projectDirectory = fileSystem.baseDir();
-	    java.io.File reportDirectory = new java.io.File(projectDirectory, SedcatConstants.REPORT_DIRECTORY_DEF);
+	    java.io.File reportDirectory = new java.io.File(projectDirectory, settings.getString(SedcatConstants.REPORT_DIRECTORY_DEF));
 	    java.io.File htmlReport = this.mutationsFinder.findReport(reportDirectory);
       //2 - Obtener la cobertura de mutantes
 	    if (htmlReport == null) {
 	      LOG.warn("No HTML PIT report found in directory {} !", reportDirectory);
 	      LOG.warn("Mutations is considered to be zero.");
 	      sensorContext.saveMeasure(SedcatMetrics.MUTANTS, 0.0);
-//	      System.exit(-1);
+	      
 	    } else {
 	    	double mutationsCoverage = 0;
 			try {
