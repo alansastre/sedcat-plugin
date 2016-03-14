@@ -15,16 +15,14 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 
 /**
  *  Clase encargada de almacenar el resultado calidad en forma de metrica.
- *	@author alan.jesus
+ *	@author alan.sastre
  *	@version 1.0
  */
 public class QualityMeasureStore extends AbstractOutputMeasureStore{
 
 
-	public QualityMeasureStore(double[] outputMeasureValues, MeasureComputerContext context) {
+	public QualityMeasureStore() {
 		
-		this.outputMeasureValues=outputMeasureValues;
-		this.context=context;
 		
 		this.LOG = LoggerFactory.getLogger(QualityMeasureStore.class);
 		this.MIN_VALUE=0;
@@ -35,10 +33,10 @@ public class QualityMeasureStore extends AbstractOutputMeasureStore{
 	}
 
 	@Override
-	protected void saveMeasure(double measureValue) {
+	protected void saveMeasure(double measureValue, MeasureComputerContext context) {
 	
 		//de ser correcto, almacenarlo
-		this.context.addMeasure(this.MEASURE_KEY, measureValue);
+		context.addMeasure(this.MEASURE_KEY, measureValue);
 		
 		LOG.info("Metrica calidad almacenada correctamente, ha sido: "+measureValue);
 		

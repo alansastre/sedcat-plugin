@@ -8,6 +8,8 @@
 
 package es.unileon.sonarqube.sedcat.xfuzzy.quality;
 
+import es.unileon.sonarqube.sedcat.strategies.MembershipFunction;
+
 public class FuzzySingleton implements MembershipFunction {
  private double value;
 

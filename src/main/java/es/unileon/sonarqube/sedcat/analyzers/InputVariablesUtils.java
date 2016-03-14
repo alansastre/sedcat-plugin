@@ -21,7 +21,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 
 /**
  * 	Clase de utilidad para la obtencion de variables de entrada
- *	@author alan.jesus
+ *	@author alan.sastre
  *	@version 1.0
  */
 public final class InputVariablesUtils {

@@ -31,7 +31,7 @@ import org.sonar.api.batch.postjob.*;
  *
  * Clase sensor que contiene el metodo analyse principal desde el que se gestiona
  * la aplicacion
- * @author alan.jesus
+ * @author alan.sastre
  * @version 1.0
  */
 public class SedcatSensor implements Sensor {

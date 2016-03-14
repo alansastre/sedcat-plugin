@@ -6,7 +6,7 @@ package es.unileon.sonarqube.sedcat.start;
  * Most of thoses configuration keys, and the javadoc comments are
  * strongly inspired by the maven PIT plugin
  *
- * @author alan.jesus
+ * @author alan.sastre
  */
 public class SedcatConstants {
 

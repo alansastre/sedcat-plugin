@@ -8,9 +8,10 @@ import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 /**
  * Interfaz que especifica el metodo que implementaran las estrategias referentes a la utilizacion de sistemas expertos. 
  * 
- *	@author alan.jesus
+ *	@author alan.sastre
  *	@version 1.0
  */
+@Deprecated
 public interface IExpertSystemStrategy {
 
 	

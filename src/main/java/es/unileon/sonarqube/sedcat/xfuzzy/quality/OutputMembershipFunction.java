@@ -11,6 +11,8 @@
 
 package es.unileon.sonarqube.sedcat.xfuzzy.quality;
 
+import es.unileon.sonarqube.sedcat.strategies.MembershipFunction;
+
 public class OutputMembershipFunction implements MembershipFunction {
  public Conclusion[] conc;
  public double[] input;

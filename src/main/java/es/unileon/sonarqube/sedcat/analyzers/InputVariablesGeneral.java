@@ -16,7 +16,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 //import es.unileon.sonarqube.sedcat.start.SedcatSensor;
 
 /**
- * @author alan.jesus
+ * @author alan.sastre
  *
  */
 public class InputVariablesGeneral {

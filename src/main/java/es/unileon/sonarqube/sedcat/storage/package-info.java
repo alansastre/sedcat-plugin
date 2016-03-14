@@ -7,7 +7,7 @@
  * 
  */
 /**
- *	@author alan.jesus
+ *	@author alan.sastre
  *	@version 1.0
  */
 package es.unileon.sonarqube.sedcat.storage;

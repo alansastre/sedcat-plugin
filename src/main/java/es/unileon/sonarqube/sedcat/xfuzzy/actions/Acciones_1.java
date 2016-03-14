@@ -10,6 +10,9 @@
 
 package es.unileon.sonarqube.sedcat.xfuzzy.actions;
 
+import es.unileon.sonarqube.sedcat.strategies.FuzzyInferenceEngine;
+import es.unileon.sonarqube.sedcat.strategies.MembershipFunction;
+
 public class Acciones_1 implements FuzzyInferenceEngine {
 
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//

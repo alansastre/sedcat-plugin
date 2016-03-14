@@ -24,7 +24,7 @@ import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 /**
  * Clase encargada de hacer la correspondencia del resultado acciones con los conjuntos acciones
  * predefinidos, una vez encontrado el conjunto lo almacena en forma de metrica.
- *	@author alan.jesus
+ *	@author alan.sastre
  *	@version 1.0
  */
 public class ActionsMeasureStore extends AbstractOutputMeasureStore{
@@ -32,10 +32,8 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore{
 	//variable que almacena la ruta donde se encuentran las propiedades que definen los conjuntos de acciones
 	private static final String ACTIONS_PROPERTIES_PATH = "/root/workspace/sonar-sedcat-plugin/src/main/resources/org/sonar/l10n/expertSystemActions.properties";
 	
-	public ActionsMeasureStore(double[] outputMeasureValues, MeasureComputerContext context) {
+	public ActionsMeasureStore() {
 		
-		this.outputMeasureValues=outputMeasureValues;
-		this.context=context;
 		
 		this.LOG = LoggerFactory.getLogger(ActionsMeasureStore.class);
 		this.MIN_VALUE=0;
@@ -46,7 +44,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore{
 	}
 
 	@Override
-	protected void saveMeasure(double measureValue) {
+	protected void saveMeasure(double measureValue, MeasureComputerContext context) {
 		//Redondeamos, pues necesitamos localizar un conjunto discreto
 		long actionSet = Math.round(measureValue);
 		
@@ -65,7 +63,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore{
 	
 		
 		//2 - Almacenar el mensaje del conjunto de acciones en forma de String
-		this.context.addMeasure(this.MEASURE_KEY, actionValue);
+		context.addMeasure(this.MEASURE_KEY, actionValue);
 	
 		LOG.info("Conjunto de acciones almacenado correctamente");
 	}

@@ -2,44 +2,38 @@
  * 
  */
 package es.unileon.sonarqube.sedcat.strategies;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.batch.SensorContext;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
-
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
-import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
 import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
-import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
 
 /**
  *  Sistema experto que obtiene las acciones a realizar buscadas
- *	@author alan.jesus
+ *	@author alan.sastre
  *	@version 1.0
  */
-public class ExpertSystemActions implements IExpertSystemStrategy{
+public class ExpertSystemActions extends AbstractInferenceProcess{
 
 	
-	private static final Logger LOG = LoggerFactory.getLogger(ExpertSystemActions.class);
-
-	public void xfuzzyProcess(MeasureComputerContext context) {
+	public ExpertSystemActions(MeasureComputerContext context) {
 		
-		LOG.info("Ejecutando sistema experto para acciones.");
-
-		//1 - extraer metricas de entrada
-		double[] inputMetricValues = this.extractValues(context);
+		//logs
+		this.LOG = LoggerFactory.getLogger(ExpertSystemActions.class);
+		this.START_SYSTEM_MESSAGE = "Ejecutando sistema experto para acciones.";
 		
-		//2- Ejecutar el sistema experto
-		Acciones_1 actions = new Acciones_1();
-		double[] outputMeasureValues = actions.crispInference(inputMetricValues);
+		//contexto para leer medidas
+		this.context = context;
 		
-		//3- Almacenar metricas de salida como medidas
-		ActionsMeasureStore actionsToStore = new ActionsMeasureStore(outputMeasureValues, context);
-		actionsToStore.outputMeasureStore();
-
+		//Clase particular que almacena los resultados
+		this.measureStorer= new ActionsMeasureStore();
+		
+		//sistema experto concreto
+		this.expertSystem = new Acciones_1();
+		
 	}
-	private double[] extractValues(MeasureComputerContext context) {
+
+	double[] extractValues(MeasureComputerContext context) {
 		
 		double[] actionsInputMetrics = new double[]{
 			context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),

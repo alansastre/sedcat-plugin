@@ -15,7 +15,7 @@ import org.sonar.api.measures.Metrics;
 /**
  * Metrics for the sonar SEDCAT plugin.
  * 
- * @author alan.jesus
+ * @author alan.sastre
  */
 public class SedcatMetrics implements Metrics {
 

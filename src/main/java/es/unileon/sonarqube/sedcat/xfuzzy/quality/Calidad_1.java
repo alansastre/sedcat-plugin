@@ -10,6 +10,9 @@
 
 package es.unileon.sonarqube.sedcat.xfuzzy.quality;
 
+import es.unileon.sonarqube.sedcat.strategies.FuzzyInferenceEngine;
+import es.unileon.sonarqube.sedcat.strategies.MembershipFunction;
+
 public class Calidad_1 implements FuzzyInferenceEngine {
 
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//

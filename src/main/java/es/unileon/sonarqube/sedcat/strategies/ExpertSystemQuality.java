@@ -3,45 +3,39 @@
  */
 package es.unileon.sonarqube.sedcat.strategies;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.batch.SensorContext;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
-
-import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
 import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
 
 /**
  *  Sistema experto que obtiene la metrica de calidad buscada
- *	@author alan.jesus
+ *	@author alan.sastre
  *	@version 1.0
  */
-public class ExpertSystemQuality implements IExpertSystemStrategy{
+public class ExpertSystemQuality extends AbstractInferenceProcess{
 
 
-	private static final Logger LOG = LoggerFactory.getLogger(ExpertSystemQuality.class);
-	
-	public void xfuzzyProcess(MeasureComputerContext context) {
+	public ExpertSystemQuality(MeasureComputerContext context) {
 		
-		LOG.info("Ejecutando sistema experto para calidad.");
+		//logs
+		this.LOG = LoggerFactory.getLogger(ExpertSystemQuality.class);
+		this.START_SYSTEM_MESSAGE = "Ejecutando sistema experto para calidad.";
 		
-		//1 - extraer metricas de entrada
-		double[] inputMetricValues = this.extractValues(context);
+		//contexto para leer medidas
+		this.context = context;
 		
-		//2- Ejecutar el sistema experto
-		Calidad_1 quality = new Calidad_1();
-		double[] outputMeasureValues = quality.crispInference(inputMetricValues);
+		//Clase particular que almacena los resultados
+		this.measureStorer= new QualityMeasureStore();
 		
-		//3- Almacenar metricas de salida como medidas
-    	QualityMeasureStore metricToStore = new QualityMeasureStore(outputMeasureValues, context);
-    	metricToStore.outputMeasureStore();
-
+		//sistema experto concreto
+		this.expertSystem = new Calidad_1();
+		
 	}
-
-
-	private double[] extractValues(MeasureComputerContext context) {
+	
+	
+	double[] extractValues(MeasureComputerContext context) {
 		
 		double[] qualityInputMetrics = new double[]{
 				

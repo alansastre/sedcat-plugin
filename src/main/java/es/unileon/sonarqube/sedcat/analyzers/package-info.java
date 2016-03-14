@@ -3,7 +3,7 @@
  * procesar una salida. 
  */
 /**
- * @author alan.jesus
+ * @author alan.sastre
  *
  */
 package es.unileon.sonarqube.sedcat.analyzers;

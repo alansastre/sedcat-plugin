@@ -14,7 +14,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 
 /**
- *	@author alan.jesus
+ *	@author alan.sastre
  *	@version 1.0
  */
 public class InputVariableCoverage extends InputVariable{

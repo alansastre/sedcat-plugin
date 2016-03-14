@@ -13,7 +13,7 @@ import org.sonar.api.web.WidgetPropertyType;
 /**
  * Sedcat plugin widget definition.
  *
- * @author alan.jesus	
+ * @author alan.sastre	
  * @version 1.0
  */
 @UserRole(UserRole.USER)

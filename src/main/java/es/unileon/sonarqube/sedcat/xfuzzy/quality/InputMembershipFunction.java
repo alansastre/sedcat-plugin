@@ -11,6 +11,8 @@
 
 package es.unileon.sonarqube.sedcat.xfuzzy.quality;
 
+import es.unileon.sonarqube.sedcat.strategies.MembershipFunction;
+
 public abstract class InputMembershipFunction {
  double min;
  double max;

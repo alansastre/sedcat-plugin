@@ -4,7 +4,7 @@ package es.unileon.sonarqube.sedcat.start;
  * 
  * Clase que contiene las claves para cada tipo de variable usada en la aplicacion
  * estas claves son las que se referencian desde el widget para obtener tales metricas
- * @author alan.jesus
+ * @author alan.sastre
  */
 
 

@@ -18,19 +18,20 @@ public abstract class AbstractOutputMeasureStore {
 	protected double MAX_VALUE;
 	protected String MEASURE_KEY;
 	protected String ERROR_MESSAGE;
-	protected MeasureComputerContext context;
-	protected double[] outputMeasureValues;
+
 	
-	/**
-	 * themplate method 
-	 */
-	public final void outputMeasureStore() {
+/**
+ * metodo encargado de realizar el proceso de almacenamiento de los resultados.
+ * @param outputMeasureValues - array donde esta los resultados a almacenar
+ * @param context - contexto necesario para poder almacenar los resultados en forma de medidas
+ */
+	public final void outputMeasureStore(double[] outputMeasureValues, MeasureComputerContext context) {
 		
 		//Invariant Part
 		double measureValue = outputMeasureValues[0];
 		this.checkValue(measureValue);
 		//Variant Part
-		this.saveMeasure(measureValue);
+		this.saveMeasure(measureValue, context);
 
 	}
 /**
@@ -38,7 +39,7 @@ public abstract class AbstractOutputMeasureStore {
  * @param measureValue
  * @param context
  */
-	abstract protected void saveMeasure(double measureValue);
+	abstract protected void saveMeasure(double measureValue, MeasureComputerContext context);
 	
 	/**
 	 * Checkea que el valor obtenido esta dentro de los limites

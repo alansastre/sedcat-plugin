@@ -4,16 +4,8 @@
 package es.unileon.sonarqube.sedcat.start;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.batch.InstantiationStrategy;
-import org.sonar.api.batch.SensorContext;
-import org.sonar.api.batch.fs.FileSystem;
-import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer;
-import org.sonar.api.config.Settings;
-import org.sonar.api.measures.CoreMetrics;
 
-import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
-import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 import es.unileon.sonarqube.sedcat.strategies.IExpertSystemStrategy;
@@ -28,7 +20,7 @@ public class GeneralComputer implements MeasureComputer {
 	 * The logger object for the sensor.
 	 */
 	private static final Logger LOG = LoggerFactory.getLogger(GeneralComputer.class);
-	private IExpertSystemStrategy strategy;
+//	private IExpertSystemStrategy strategy;
 
 	public void compute(MeasureComputerContext context) {
 		
@@ -42,11 +34,17 @@ public class GeneralComputer implements MeasureComputer {
 
 		//Ejecutar sistemas expertos
 	     	//quality
-		this.setExpertSystemStrategy(new ExpertSystemQuality());
-		this.performExpertSystemStrategy(context);
-	     	//actions
-		this.setExpertSystemStrategy(new ExpertSystemActions());
-		this.performExpertSystemStrategy(context);
+//		this.setExpertSystemStrategy(new ExpertSystemQuality());
+//		this.performExpertSystemStrategy(context);
+//	     	//actions
+//		this.setExpertSystemStrategy(new ExpertSystemActions());
+//		this.performExpertSystemStrategy(context);
+		
+		ExpertSystemQuality expertSystemQuality = new ExpertSystemQuality(context);
+		expertSystemQuality.xfuzzyProcess();
+		
+		ExpertSystemActions expertSystemActions = new ExpertSystemActions(context);
+		expertSystemActions.xfuzzyProcess();
 	
 	}
 
@@ -75,22 +73,22 @@ public class GeneralComputer implements MeasureComputer {
 	    return getClass().getSimpleName();
 	  }
 	
-	/**
-	 * @param strategy
-	 */
-	  public void setExpertSystemStrategy(IExpertSystemStrategy strategy){
-			this.strategy = strategy;
-		}
+//	/**
+//	 * @param strategy
+//	 */
+//	  public void setExpertSystemStrategy(IExpertSystemStrategy strategy){
+//			this.strategy = strategy;
+//		}
 	  
-	  /**
-	   * 
-	   * @param inputMetrics
-	   * @return
-	   */
-	  public void performExpertSystemStrategy(MeasureComputerContext context){
-		  
-		  this.strategy.xfuzzyProcess(context);
-	  }
+//	  /**
+//	   * 
+//	   * @param inputMetrics
+//	   * @return
+//	   */
+//	  public void performExpertSystemStrategy(MeasureComputerContext context){
+//		  
+//		  this.strategy.xfuzzyProcess(context);
+//	  }
 	
 }
 
