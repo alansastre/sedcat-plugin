@@ -24,6 +24,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
  *	@author alan.sastre
  *	@version 1.0
  */
+@Deprecated
 public final class InputVariablesUtils {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(InputVariablesUtils.class);

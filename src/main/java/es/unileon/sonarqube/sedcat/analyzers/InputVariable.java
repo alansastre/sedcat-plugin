@@ -14,6 +14,7 @@ import org.sonar.api.measures.Metric;
  *	@author alan.sastre
  *	@version 1.0
  */
+@Deprecated
 public abstract class InputVariable {
 
 	protected Logger LOG;

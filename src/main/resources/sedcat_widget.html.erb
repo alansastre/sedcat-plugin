@@ -1,30 +1,53 @@
 <div class="dashbox">
-  <h1>Sedcat Plugin for Quality Testing</h1>
-  	<br>
-	<h3>Quality Measure:</h3>
-	<p><span class="big"><%= format_measure('quality_measure', :url => url_for_drilldown('')) %></span></p>
-	<br>
-	<h3>Recommended actions:</h3>
-	<p><%= format_measure('actions_to_realize', :url => url_for_drilldown('')) %></p>
-	<br>
-	<table>
-	<h3>Input variables used:</h3>
-		<tr>
-		  <td>Unit Test Success: <%= format_measure('success_unit_tests', :url => url_for_drilldown('')) %></td>
-		</tr>
-		<tr>
-		  <td>Unit Test Coverage: <%= format_measure('coverage_unit_tests', :url => url_for_drilldown('')) %></td>
-		</tr>
-		<tr>
-		  <td>Mutations Coverage: <%= format_measure('mutations_coverage_tests', :url => url_for_drilldown('')) %></td>
-		</tr>
-		<tr>
-		  <td>Number Of Tests: <%= format_measure('number_tests', :url => url_for_drilldown('')) %></td>
-		</tr>
-		<tr>
-		  <td>Lines Of Code: <%= format_measure('number_code_lines', :url => url_for_drilldown('')) %></td>
-		</tr>
-	</table>
-	<br>
-</div>
+	<div class="widget-row widget-row-x">
+	
+	  	<div class="widget-span widget-span-3">
+		  	<div class="widget-measure-container">
+		    	<p class="widget-measure widget-measure-main">
+					<span class="widget-label">Overall Testing Quality</span>
+					<p><span class="big"><%= format_measure('quality_measure', :url => url_for_drilldown('')) %></span></p>
+					<br>
+				</p>
+			</div>
+		</div>
+		<div class="widget-span widget-span-4">
+			<div class="widget-measure-container">
+	    		<p class="widget-measure widget-measure-main">
+					<span class="widget-label">Recommended Actions</span>
+				</p>
 
+				<span><%= format_measure('actions_to_realize', :url => url_for_drilldown('')) %></span>
+
+		    </div>
+	  	</div>
+	  	
+		<div class="widget-span widget-span-4">
+			<div class="widget-measure-container">
+				<table>
+		    		<p class="widget-measure widget-measure-main">
+						<span class="widget-label">Input Metrics used</span>
+					</p>
+					<br>
+					<tr>
+					  <td>Unit Test Success: <%= format_measure('success_unit_tests', :url => url_for_drilldown('')) %></td>
+					</tr>
+					<tr>
+					  <td>Unit Test Coverage: <%= format_measure('coverage_unit_tests', :url => url_for_drilldown('')) %></td>
+					</tr>
+					<tr>
+					  <td>Mutations Coverage: <%= format_measure('mutations_coverage_tests', :url => url_for_drilldown('')) %></td>
+					</tr>
+					<tr>
+					  <td>Number Of Tests: <%= format_measure('number_tests', :url => url_for_drilldown('')) %></td>
+					</tr>
+					<tr>
+					  <td>Lines Of Code: <%= format_measure('number_code_lines', :url => url_for_drilldown('')) %></td>
+					</tr>
+				</table>
+				<br>
+		    </div>
+	  	</div>
+
+  	</div>
+
+</div>

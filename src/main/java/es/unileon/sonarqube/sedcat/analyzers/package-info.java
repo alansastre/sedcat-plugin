@@ -6,4 +6,5 @@
  * @author alan.sastre
  *
  */
+@Deprecated
 package es.unileon.sonarqube.sedcat.analyzers;

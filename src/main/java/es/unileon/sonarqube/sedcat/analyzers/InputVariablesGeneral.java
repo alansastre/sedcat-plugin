@@ -19,6 +19,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
  * @author alan.sastre
  *
  */
+@Deprecated
 public class InputVariablesGeneral {
 
 	//variable que define el numero total de variables de entrada

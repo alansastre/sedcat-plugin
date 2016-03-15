@@ -3,13 +3,8 @@
  */
 package es.unileon.sonarqube.sedcat.storage;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.batch.SensorContext;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
-import org.sonar.api.measures.Measure;
-
-import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 
 

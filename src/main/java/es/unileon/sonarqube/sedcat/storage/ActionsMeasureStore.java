@@ -5,21 +5,10 @@ package es.unileon.sonarqube.sedcat.storage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
-
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonar.api.batch.SensorContext;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
-import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.PropertiesBuilder;
-
-import es.unileon.sonarqube.sedcat.analyzers.InputVariableCoverage;
-import es.unileon.sonarqube.sedcat.analyzers.InputVariablesGeneral;
-import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
-import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 
 /**
  * Clase encargada de hacer la correspondencia del resultado acciones con los conjuntos acciones
