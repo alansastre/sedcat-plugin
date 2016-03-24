@@ -49,7 +49,7 @@ public class SedcatSensor implements Sensor {
     private final FileSystem fileSystem;
 
     /**
-     * The logger object for the sensor.
+     * The logger object.
      */
 	private static final Logger LOG = LoggerFactory.getLogger(SedcatSensor.class);
 

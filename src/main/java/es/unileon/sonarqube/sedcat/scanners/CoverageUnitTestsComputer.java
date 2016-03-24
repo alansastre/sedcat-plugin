@@ -16,20 +16,12 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 public class CoverageUnitTestsComputer implements MeasureComputer {
 
 
-
-    /**
-     * The logger object for the sensor.
-     */
 	private static final Logger LOG = LoggerFactory.getLogger(CoverageUnitTestsComputer.class);
 	
 	
 	public void compute(MeasureComputerContext context) {
 		
-//		LOG.info("tipo: "+context.getComponent().getType());
-//		LOG.info("Computer: COVERAGE TESTS atributos: "+context.getComponent().getFileAttributes());
-//		if(!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")){
-//			return;
-//		}
+
 		LOG.info("tipo: "+context.getComponent().getType());
 		
 		
@@ -42,14 +34,6 @@ public class CoverageUnitTestsComputer implements MeasureComputer {
 			context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 0.0);
 		}
 
-//	     Double success_tests = 0.0;
-//	     
-//	     for (Measure childMeasure : context.getChildrenMeasures(CoreMetrics.COVERAGE_KEY)) {
-//	    	 success_tests += childMeasure.getDoubleValue();
-//	       }
-//	     
-//	     context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, success_tests);
-//	     LOG.info("Computer: COVERAGE TESTS guardada ha sido: "+success_tests);
 
 	}
 

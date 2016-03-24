@@ -25,13 +25,13 @@ import org.sonar.api.internal.apachecommons.io.filefilter.FileFilterUtils;
 public class MutationsReportFinder{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MutationsReportFinder.class);
-	
 
 	public File findReport(File reportDirectory){
 		
 		LOG.info("target pit reports path: "+reportDirectory.getAbsolutePath());
 		
 		if (reportDirectory== null || !reportDirectory.exists() || !reportDirectory.isDirectory()) {
+			LOG.info("Does not exists directory: " +reportDirectory.getAbsolutePath());
 		    return null;
 		}
 

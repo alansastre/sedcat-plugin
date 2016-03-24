@@ -5,8 +5,6 @@ import java.util.List;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
-import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
-
 import es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer;
 import es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensor;
 import es.unileon.sonarqube.sedcat.scanners.MutationsReportFinder;
@@ -59,6 +57,7 @@ public class SedcatPlugin extends SonarPlugin {
     	    		NumberTestsComputer.class,
     	    		SuccessUnitTestsComputer.class,
     	    		CoverageUnitTestsComputer.class
+    	    		
 
     	    ));
     	    //Scanner - manage sensor and computer metrics

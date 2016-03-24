@@ -23,6 +23,13 @@ public class SedcatMetricsKeys {
 	public static final String CODE_LINES_KEY = "number_code_lines";
 	
 	
+	public static final String LINESOFCODE_COMPUTER = "computer_codelines";
+	public static final String NUMBERTESTS_COMPUTER = "computer_numbertests";
+	public static final String GENERAL_COMPUTER_RESULT = "computer_general_result";
+	
+	
+	
+	
 	//variables salida
 	public static final String QUALITY_MEASURE_KEY = "quality_measure";
 	public static final String ACTIONS_TO_PERFORM_KEY = "actions_to_realize";	
@@ -30,9 +37,7 @@ public class SedcatMetricsKeys {
 	//variables de prueba
 	public static final String MESSAGE_KEY_1 = "message_key_1";
 	public static final String MESSAGE_KEY_2 = "message_key_2";
-	public static final String LINESOFCODE_COMPUTER = "computer_codelines";
-	public static final String NUMBERTESTS_COMPUTER = "computer_numbertests";
-	public static final String GENERAL_COMPUTER_RESULT = "computer_general_result";
+
 	
 	
 }

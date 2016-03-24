@@ -1,7 +1,6 @@
 package es.unileon.sonarqube.sedcat.start;
 
 import static es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys.*;
-
 import java.util.Arrays;
 import java.util.List;
 import org.sonar.api.measures.CoreMetrics;
@@ -39,8 +38,9 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
-	//Metrica MUTANTES
-	public static final Metric MUTANTS = new Metric.Builder(MUTANTS_KEY, "Mutantes", Metric.ValueType.PERCENT)
+	//Metricas para  MUTANTES
+		//cobertura mutantes
+	public static final Metric MUTANTS = new Metric.Builder(MUTANTS_KEY, "Cobertura Mutantes", Metric.ValueType.PERCENT)
 		    .setDescription("Mutantes en porcentaje de los test")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
@@ -122,9 +122,19 @@ public class SedcatMetrics implements Metrics {
 	
 	// getMetrics() method is defined in the Metrics interface and is used by
 	  public List<Metric> getMetrics() {
-//	    return Arrays.<Metric>asList(EXITO, COBERTURA, MUTANTS, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM, CODE_LINES_COMPUTERS,NUMBERTESTS_COMPUTERS, GENERAL_RESULT_COMPUTERS);
-		return Arrays.<Metric>asList(UNIT_TESTS_SUCCESS, UNIT_TESTS_COVERAGE, MUTANTS, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM);
-//		return Arrays.<Metric>asList(UNIT_TESTS_SUCCESS, UNIT_TESTS_COVERAGE, NUMBER_TESTS, CODE_LINES, QUALITY_MEASURE, ACTIONS_TO_PERFORM, GENERAL_RESULT_COMPUTERS);
+		  
+		return Arrays.<Metric>asList(
+				
+				UNIT_TESTS_SUCCESS,
+				UNIT_TESTS_COVERAGE,
+				MUTANTS,
+				NUMBER_TESTS,
+				CODE_LINES,
+				QUALITY_MEASURE,
+				ACTIONS_TO_PERFORM
+				
+				
+				);
 
 	  }
 	

@@ -16,11 +16,7 @@ import es.unileon.sonarqube.sedcat.strategies.IExpertSystemStrategy;
 //@InstantiationStrategy(InstantiationStrategy.PER_PROJECT)
 public class GeneralComputer implements MeasureComputer {
 
-	/**
-	 * The logger object for the sensor.
-	 */
 	private static final Logger LOG = LoggerFactory.getLogger(GeneralComputer.class);
-//	private IExpertSystemStrategy strategy;
 
 	public void compute(MeasureComputerContext context) {
 		
@@ -33,12 +29,6 @@ public class GeneralComputer implements MeasureComputer {
 		}
 
 		//Ejecutar sistemas expertos
-	     	//quality
-//		this.setExpertSystemStrategy(new ExpertSystemQuality());
-//		this.performExpertSystemStrategy(context);
-//	     	//actions
-//		this.setExpertSystemStrategy(new ExpertSystemActions());
-//		this.performExpertSystemStrategy(context);
 		
 		ExpertSystemQuality expertSystemQuality = new ExpertSystemQuality(context);
 		expertSystemQuality.xfuzzyProcess();
@@ -73,22 +63,6 @@ public class GeneralComputer implements MeasureComputer {
 	    return getClass().getSimpleName();
 	  }
 	
-//	/**
-//	 * @param strategy
-//	 */
-//	  public void setExpertSystemStrategy(IExpertSystemStrategy strategy){
-//			this.strategy = strategy;
-//		}
-	  
-//	  /**
-//	   * 
-//	   * @param inputMetrics
-//	   * @return
-//	   */
-//	  public void performExpertSystemStrategy(MeasureComputerContext context){
-//		  
-//		  this.strategy.xfuzzyProcess(context);
-//	  }
 	
 }
 

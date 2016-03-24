@@ -28,6 +28,8 @@ public class MutationsCoverageSensor implements Sensor {
     private final FileSystem fileSystem;
     private final MutationsReportFinder mutationsFinder;
     private final MutationsReportParser mutationsParser;
+    
+
 
     /**
      * Constructor that sets the file system object for the
@@ -71,22 +73,30 @@ public class MutationsCoverageSensor implements Sensor {
 	    if (htmlReport == null) {
 	      LOG.warn("No HTML PIT report found in directory {} !", reportDirectory);
 	      LOG.warn("Mutations is considered to be zero.");
-	      sensorContext.saveMeasure(SedcatMetrics.MUTANTS, 0.0);
+
 	      
 	    } else {
-	    	double mutationsCoverage = 0;
-			try {
-				LOG.info("HTML REPORTE ENCONTRADO: "+htmlReport);
-				mutationsCoverage = this.mutationsParser.parseReport(htmlReport);
-				LOG.info("VALOR MUTANTES EXTRAIDO: "+mutationsCoverage);
-				 //3 - Almacenar la cobertura de mutantes
-				sensorContext.saveMeasure(SedcatMetrics.MUTANTS, mutationsCoverage);
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
 	    	
+	    	double[] mutationsCoverage = new double[2];
+			LOG.info("HTML REPORTE ENCONTRADO: "+htmlReport);
+			mutationsCoverage = this.mutationsParser.parseReport(htmlReport);
+			LOG.info("VALOR MUTANTES EXTRAIDO: "+mutationsCoverage[0]+" / "+mutationsCoverage[1]);
+			//acumulamos valores
+			SedcatConstants.mutationsDetected+=mutationsCoverage[0];
+			SedcatConstants.mutationsTotal+=mutationsCoverage[1];
+			
+			LOG.info("mutationsDetected: "+SedcatConstants.mutationsDetected);
+			LOG.info("mutationsTotal: "+SedcatConstants.mutationsTotal);
+
 	    }
+	  //3 - Almacenar la cobertura de mutantes
+	    if (SedcatConstants.mutationsDetected>0 && SedcatConstants.mutationsTotal>0) {
+	    	 sensorContext.saveMeasure(SedcatMetrics.MUTANTS, (double) (100*SedcatConstants.mutationsDetected/SedcatConstants.mutationsTotal));
+		}else{
+			 sensorContext.saveMeasure(SedcatMetrics.MUTANTS, 0.0);
+		}
+	    
+	   
 
     }
 

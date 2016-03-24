@@ -16,9 +16,8 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
  *	@version 1.0
  */
 public class NumberCodeLinesComputer implements MeasureComputer {
-    /**
-     * The logger object for the sensor.
-     */
+
+	
 	private static final Logger LOG = LoggerFactory.getLogger(NumberCodeLinesComputer.class);
 	
 	
