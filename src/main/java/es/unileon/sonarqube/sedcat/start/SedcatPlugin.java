@@ -68,6 +68,12 @@ public class SedcatPlugin extends SonarPlugin {
     	    return extensions;
     	    
     }
+	
+	
+	@Override
+	  public String toString() {
+	    return getClass().getSimpleName();
+	  }
 
 
 }
