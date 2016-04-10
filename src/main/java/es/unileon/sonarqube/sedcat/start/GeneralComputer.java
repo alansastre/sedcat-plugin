@@ -17,6 +17,11 @@ import es.unileon.sonarqube.sedcat.strategies.IExpertSystemStrategy;
 public class GeneralComputer implements MeasureComputer {
 
 	private static final Logger LOG = LoggerFactory.getLogger(GeneralComputer.class);
+	private boolean isProject = true;
+
+	public boolean isProject() {
+		return isProject;
+	}
 
 	public void compute(MeasureComputerContext context) {
 		
@@ -25,8 +30,10 @@ public class GeneralComputer implements MeasureComputer {
 		 * Este computer solo se ejecuta a nivel de proyecto
 		 */
 		if(!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")){
+			isProject = false;
 			return;
 		}
+
 
 		//Ejecutar sistemas expertos
 		
