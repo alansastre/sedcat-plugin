@@ -4,6 +4,7 @@
 package es.unileon.sonarqube.sedcat.strategies;
 
 import org.slf4j.Logger;
+import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import es.unileon.sonarqube.sedcat.storage.AbstractOutputMeasureStore;
 
@@ -54,6 +55,20 @@ public abstract class AbstractInferenceProcess {
 	 */
 	abstract double[] extractValues(MeasureComputerContext context);
 	
-
+	/**
+	 *  Comprueba que las metricas de entrada no sean nulas antes de extraer sus valores.
+	 * @param inputMetrics
+	 */
+	protected void checkNotNullInputMetrics(Measure[] inputMetrics){
+		
+		for (int i = 0; i < inputMetrics.length; i++) {
+			
+			if (inputMetrics[i]==null) {
+				LOG.error("Input metrics can not be null.");
+				System.exit(-1);
+				
+			}
+}
+	}
 	
 }

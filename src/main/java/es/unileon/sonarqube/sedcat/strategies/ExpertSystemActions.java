@@ -3,6 +3,7 @@
  */
 package es.unileon.sonarqube.sedcat.strategies;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
@@ -35,7 +36,19 @@ public class ExpertSystemActions extends AbstractInferenceProcess{
 
 	double[] extractValues(MeasureComputerContext context) {
 		
-		double[] actionsInputMetrics = new double[]{
+		Measure[] actionsInputMetrics = new Measure[]{
+				
+				context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY),
+				context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY),
+				context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY),
+				context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY),
+				context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY),
+
+		};
+		
+		this.checkNotNullInputMetrics(actionsInputMetrics);
+		
+		double[] actionsInputMetricsValues = new double[]{
 			context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
 			context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
 			context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(),
@@ -43,7 +56,7 @@ public class ExpertSystemActions extends AbstractInferenceProcess{
 			context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(),
 		};
 		
-		return actionsInputMetrics;
+		return actionsInputMetricsValues;
 	}
 
 }

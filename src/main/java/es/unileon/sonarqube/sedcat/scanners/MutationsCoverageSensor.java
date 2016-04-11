@@ -11,13 +11,17 @@ import org.sonar.api.resources.Project;
 import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
 import org.sonar.api.config.Settings;
-import java.io.IOException;
-
-
 
 /**
  *	@author alan.sastre
  *	@version 1.0
+ *
+ *API:
+ *http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/sensor/Sensor.html
+ * http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/sensor/SensorContext.html
+ * 
+ * Tests with:
+ * http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/sensor/internal/SensorContextTester.html
  */
 public class MutationsCoverageSensor implements Sensor {
 

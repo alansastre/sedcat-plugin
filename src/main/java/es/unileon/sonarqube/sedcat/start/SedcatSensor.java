@@ -72,7 +72,7 @@ public class SedcatSensor implements Sensor {
      */
     public boolean shouldExecuteOnProject(Project project) {
         // this sensor is executed on any type of project
-        return true;
+        return false;
     }
     
  

@@ -4,6 +4,8 @@
 package es.unileon.sonarqube.sedcat.strategies;
 
 import org.slf4j.LoggerFactory;
+import org.sonar.api.batch.BatchSide;
+import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
@@ -37,7 +39,21 @@ public class ExpertSystemQuality extends AbstractInferenceProcess{
 	
 	double[] extractValues(MeasureComputerContext context) {
 		
-		double[] qualityInputMetrics = new double[]{
+
+		Measure[] qualityInputMetrics = new Measure[]{
+				
+				context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY),
+				context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY),
+				context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY),
+				context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY),
+				context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY),
+
+		};
+		
+		this.checkNotNullInputMetrics(qualityInputMetrics);
+
+
+		double[] qualityInputMetricsValues = new double[]{
 				
 			context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
 			context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
@@ -47,7 +63,7 @@ public class ExpertSystemQuality extends AbstractInferenceProcess{
 
 		};
 		
-		return qualityInputMetrics;
+		return qualityInputMetricsValues;
 	}
 
 }
