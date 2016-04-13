@@ -9,7 +9,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	
 	GeneralComputerTests.class,
-	SedcatPluginTests.class 
+	SedcatPluginTests.class,
+	CoverageUnitTestsComputerTests.class
 	
 })
 
