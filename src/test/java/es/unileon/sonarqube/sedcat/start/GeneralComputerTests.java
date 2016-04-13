@@ -8,15 +8,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
+import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
+import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 import java.util.Set;
 import org.sonar.api.ce.measure.Component.FileAttributes;
 import org.sonar.api.ce.measure.Component.Type;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
 import org.sonar.api.ce.measure.test.*;
+import org.powermock.api.mockito.*;
 
 /**
  *	@author alan.sastre
@@ -25,9 +31,14 @@ import org.sonar.api.ce.measure.test.*;
  *Tests with:
  *https://github.com/SonarSource/sonarqube/blob/master/sonar-plugin-api/src/main/java/org/sonar/api/ce/measure/test/TestMeasureComputerContext.java
  */
+@RunWith(PowerMockRunner.class) 
+@PrepareForTest( { GeneralComputer.class, ExpertSystemQuality.class, ExpertSystemActions.class})
 public class GeneralComputerTests{
 
-	GeneralComputer underTest = new GeneralComputer();
+	private GeneralComputer underTest = new GeneralComputer();
+	private TestMeasureComputerDefinitionContext defContext;
+	private MeasureComputerDefinition def;
+	
 	 
 	/**
 	 * @throws java.lang.Exception
@@ -48,6 +59,9 @@ public class GeneralComputerTests{
 	 */
 	@Before
 	public void setUp() throws Exception {
+		
+		defContext = new TestMeasureComputerDefinitionContext();
+		def = underTest.define(defContext);
 	}
 
 	/**
@@ -67,8 +81,6 @@ public class GeneralComputerTests{
 	@Test
 	public final void define_Correct_State() {
 
-	     TestMeasureComputerDefinitionContext defContext = new TestMeasureComputerDefinitionContext();
-	     MeasureComputerDefinition def = underTest.define(defContext);
 	     Assert.assertNotNull(def);
 	     
 	     //Probar metricas de entrada
@@ -107,9 +119,6 @@ public class GeneralComputerTests{
 	 */
 	@Test
 	public final void compute_File_noExecution() {
-
-	     TestMeasureComputerDefinitionContext defContext = new TestMeasureComputerDefinitionContext();
-	     MeasureComputerDefinition def = underTest.define(defContext);
 	     
 	     FileAttributes mockedFileAttributes = mock(FileAttributes.class);
 	     TestComponent component = new TestComponent("",Type.FILE, mockedFileAttributes );
@@ -127,8 +136,14 @@ public class GeneralComputerTests{
 	@Test
 	public final void compute_View_noExecution() {
 
-		fail("Not yet implemented");
-		//TODO
+	     TestSettings settings = new TestSettings();
+	     TestComponent mockedComponent = mock(TestComponent.class);
+	     when(mockedComponent.getType()).thenReturn(Type.VIEW);
+	     
+	     TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+	     underTest.compute(context);
+
+	     Assert.assertFalse(underTest.isProject());
 	}
 	
 	/**
@@ -137,8 +152,14 @@ public class GeneralComputerTests{
 	@Test
 	public final void compute_Subview_noExecution() {
 
-		fail("Not yet implemented");
-		//TODO
+	     TestSettings settings = new TestSettings();
+	     TestComponent mockedComponent = mock(TestComponent.class);
+	     when(mockedComponent.getType()).thenReturn(Type.SUBVIEW);
+	     
+	     TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+	     underTest.compute(context);
+
+	     Assert.assertFalse(underTest.isProject());
 	}
 	
 	/**
@@ -146,9 +167,15 @@ public class GeneralComputerTests{
 	 */
 	@Test
 	public final void compute_Directory_noExecution() {
+	     
+	     TestSettings settings = new TestSettings();
+	     TestComponent mockedComponent = mock(TestComponent.class);
+	     when(mockedComponent.getType()).thenReturn(Type.DIRECTORY);
+	     
+	     TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+	     underTest.compute(context);
 
-		fail("Not yet implemented");
-		//TODO
+	     Assert.assertFalse(underTest.isProject());
 	}
 	
 	/**
@@ -156,9 +183,15 @@ public class GeneralComputerTests{
 	 */
 	@Test
 	public final void compute_Module_noExecution() {
+		
+	     TestSettings settings = new TestSettings();
+	     TestComponent mockedComponent = mock(TestComponent.class);
+	     when(mockedComponent.getType()).thenReturn(Type.MODULE);
 
-		fail("Not yet implemented");
-		//TODO
+	     TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+	     underTest.compute(context);
+
+	     Assert.assertFalse(underTest.isProject());
 	}
 	
 	/**
@@ -166,11 +199,6 @@ public class GeneralComputerTests{
 	 */
 	@Test
 	public final void compute_Project_Execution() {
-
-
-	     TestMeasureComputerDefinitionContext defContext = new TestMeasureComputerDefinitionContext();
-	     MeasureComputerDefinition def = underTest.define(defContext);
-
 
 	     TestComponent mockedComponent = mock(TestComponent.class);
 	     TestSettings settings = new TestSettings();
@@ -203,12 +231,52 @@ public class GeneralComputerTests{
 	     Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue(),
 	    		 "Improve the following parameters in order: Number Of Tests",
 	    		 "Improve the following parameters in order: Number Of Tests");
- 
+	     
+
 	}
-	
 	
 /*
  * Tests for behaviour with mocks
  */
 
+	
+	/**
+	 * Test method for {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
+	 */
+	@Test
+	public final void compute_Project_Behaviour() {
+
+	     TestComponent mockedComponent = mock(TestComponent.class);
+	     TestSettings settings = new TestSettings();
+	     when(mockedComponent.getType()).thenReturn(Type.PROJECT);
+	     
+	     TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+
+
+
+		try {
+
+			ExpertSystemQuality expertSystemQuality = mock(ExpertSystemQuality.class);
+			PowerMockito.whenNew(ExpertSystemQuality.class).withArguments(context).thenReturn(expertSystemQuality);
+			
+			ExpertSystemActions expertSystemActions = mock(ExpertSystemActions.class);
+			PowerMockito.whenNew(ExpertSystemActions.class).withArguments(context).thenReturn(expertSystemActions);
+			
+			underTest.compute(context);
+			 
+			Assert.assertTrue(underTest.isProject());
+			 
+			PowerMockito.verifyNew(ExpertSystemQuality.class, times(1)).withArguments(context);
+			PowerMockito.verifyNew(ExpertSystemActions.class, times(1)).withArguments(context);
+			
+			Mockito.verify(expertSystemQuality, times(1)).xfuzzyProcess();
+			Mockito.verify(expertSystemActions, times(1)).xfuzzyProcess();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+
+		
+	}
 }
