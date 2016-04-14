@@ -1,12 +1,15 @@
 /**
  * 
  */
-package es.unileon.sonarqube.sedcat.start;
+package es.unileon.sonarqube.sedcat.scanners;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
+
 import java.util.Set;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -14,22 +17,23 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.sonar.api.ce.measure.Component.Type;
 import org.sonar.api.ce.measure.Measure;
+import org.sonar.api.ce.measure.Component.Type;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.measures.CoreMetrics;
-import es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer;
+
+import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 
 /**
  *	@author alan.sastre
  *	@version 1.0
  */
-public class CoverageUnitTestsComputerTests {
+public class SuccessUnitTestsComputerTests {
 
-	CoverageUnitTestsComputer underTest = new CoverageUnitTestsComputer();
+	SuccessUnitTestsComputer underTest = new SuccessUnitTestsComputer();
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -60,7 +64,7 @@ public class CoverageUnitTestsComputerTests {
 
 
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer#define(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinitionContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputer#define(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinitionContext)}.
 	 */
 	@Test
 	public final void define_Correct_State() {
@@ -74,19 +78,19 @@ public class CoverageUnitTestsComputerTests {
 	     Set<String> inputMetrics = def.getInputMetrics();
 	     Assert.assertEquals(inputMetrics.size(), 1);
 	     
-	     Assert.assertTrue(inputMetrics.contains(CoreMetrics.COVERAGE_KEY));
+	     Assert.assertTrue(inputMetrics.contains(CoreMetrics.TEST_SUCCESS_DENSITY_KEY));
 
 	     //Probar metricas de salida
 	     Set<String> ouputMetrics = def.getOutputMetrics();
 	     Assert.assertEquals(ouputMetrics.size(), 1);
 
-	     Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY));
+	     Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY));
 
 	}
 	
-	
+
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
 	 */
 	@Test
 	public final void compute_notNull_Measure() {
@@ -99,22 +103,21 @@ public class CoverageUnitTestsComputerTests {
 	     
 	     Measure measureMocked = mock(Measure.class);
 	     
-	     when(computerContextMocked.getMeasure(CoreMetrics.COVERAGE_KEY)).thenReturn(measureMocked);
+	     when(computerContextMocked.getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)).thenReturn(measureMocked);
 	     when(measureMocked.getDoubleValue()).thenReturn(100.0);
 
 	     underTest.compute(computerContextMocked);
 	     
-	     Mockito.verify(computerContextMocked, times(1)).getMeasure(CoreMetrics.COVERAGE_KEY);
+	     Mockito.verify(computerContextMocked, times(1)).getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY);
 	     Mockito.verify(measureMocked, times(2)).getDoubleValue();
-	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, measureMocked.getDoubleValue());
+	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, measureMocked.getDoubleValue());
 
 	     Assert.assertEquals(measureMocked.getDoubleValue(), 100.0, 0);
 	     
 	}
 	
-	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
 	 */
 	@Test
 	public final void compute_Null_Measure() {
@@ -128,14 +131,14 @@ public class CoverageUnitTestsComputerTests {
 	     
 	     Measure measureMocked = mock(Measure.class);
 	     
-	     when(computerContextMocked.getMeasure(CoreMetrics.COVERAGE_KEY)).thenReturn(null);
+	     when(computerContextMocked.getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)).thenReturn(null);
 
 
 	     underTest.compute(computerContextMocked);
 	     
-	     Mockito.verify(computerContextMocked, times(1)).getMeasure(CoreMetrics.COVERAGE_KEY);
+	     Mockito.verify(computerContextMocked, times(1)).getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY);
 	     Mockito.verify(measureMocked, times(0)).getDoubleValue();
-	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 0.0);
+	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 0.0);
 
 	     Assert.assertEquals(measureMocked.getDoubleValue(), 0.0, 0);
 

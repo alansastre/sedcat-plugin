@@ -6,6 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
+/*
+ *XXX
+ * Testing
+ */
+//import org.sonar.api.batch.sensor.SensorContext;
+//import org.sonar.api.batch.sensor.SensorDescriptor;
+//import org.sonar.api.batch.sensor.Sensor;
+//----------------------------
+
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.resources.Project;
 import es.unileon.sonarqube.sedcat.start.SedcatConstants;
@@ -17,8 +26,14 @@ import org.sonar.api.config.Settings;
  *	@version 1.0
  *
  *API:
- *http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/sensor/Sensor.html
+ *
+ * from 5.1
+ * http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/sensor/Sensor.html
  * http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/sensor/SensorContext.html
+ * 
+ * from 1.10
+ * http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/Sensor.html
+ * http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/SensorContext.html
  * 
  * Tests with:
  * http://javadocs.sonarsource.org/5.1/apidocs/org/sonar/api/batch/sensor/internal/SensorContextTester.html
@@ -71,14 +86,16 @@ public class MutationsCoverageSensor implements Sensor {
 		LOG.info("Calculando metrica mutantes");
     	//1 - Encontrar el reporte de mutantes
 	    java.io.File projectDirectory = fileSystem.baseDir();
+	    LOG.info("directorio base: "+projectDirectory);
 	    java.io.File reportDirectory = new java.io.File(projectDirectory, settings.getString(SedcatConstants.REPORT_DIRECTORY_DEF));
+	    LOG.info("ruta absoluta del directorio donde esta el reporte: "+reportDirectory);
+	    
 	    java.io.File htmlReport = this.mutationsFinder.findReport(reportDirectory);
       //2 - Obtener la cobertura de mutantes
 	    if (htmlReport == null) {
 	      LOG.warn("No HTML PIT report found in directory {} !", reportDirectory);
 	      LOG.warn("Mutations is considered to be zero.");
-
-	      
+  
 	    } else {
 	    	
 	    	double[] mutationsCoverage = new double[2];
@@ -100,7 +117,6 @@ public class MutationsCoverageSensor implements Sensor {
 			 sensorContext.saveMeasure(SedcatMetrics.MUTANTS, 0.0);
 		}
 	    
-	   
 
     }
 
@@ -112,6 +128,7 @@ public class MutationsCoverageSensor implements Sensor {
     public String toString() {
         return "MutationsSensor";
     }
+
 }
 
 
