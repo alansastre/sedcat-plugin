@@ -2,6 +2,8 @@
  * 
  */
 package es.unileon.sonarqube.sedcat.scanners;
+import java.io.File;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
@@ -47,10 +49,15 @@ public class MutationsCoverageSensor implements Sensor {
     private final FileSystem fileSystem;
     private final MutationsReportFinder mutationsFinder;
     private final MutationsReportParser mutationsParser;
+    private double mutationsValueFound;
     
 
 
-    /**
+    public double getMutationsValueFound() {
+		return mutationsValueFound;
+	}
+
+	/**
      * Constructor that sets the file system object for the
      * project being analysed.
      *
@@ -62,7 +69,7 @@ public class MutationsCoverageSensor implements Sensor {
         this.settings = settings;
         this.mutationsFinder = mutationsFinder;
         this.mutationsParser = mutationsParser;
-  
+        this.mutationsValueFound = 0.0;
     }
 
     /**
@@ -82,41 +89,42 @@ public class MutationsCoverageSensor implements Sensor {
      * @param sensorContext the sensor context
      */
     public void analyse(Project project, SensorContext sensorContext) {
-    	
-		LOG.info("Calculando metrica mutantes");
+
     	//1 - Encontrar el reporte de mutantes
-	    java.io.File projectDirectory = fileSystem.baseDir();
-	    LOG.info("directorio base: "+projectDirectory);
-	    java.io.File reportDirectory = new java.io.File(projectDirectory, settings.getString(SedcatConstants.REPORT_DIRECTORY_DEF));
+		File projectDirectory = fileSystem.baseDir();
+	    File reportDirectory = new File(projectDirectory, settings.getString(SedcatConstants.REPORT_DIRECTORY_DEF));
 	    LOG.info("ruta absoluta del directorio donde esta el reporte: "+reportDirectory);
+	    File htmlReport = this.mutationsFinder.findReport(reportDirectory);
 	    
-	    java.io.File htmlReport = this.mutationsFinder.findReport(reportDirectory);
-      //2 - Obtener la cobertura de mutantes
+      //2 - Obtener la cobertura de mutantes (si existe el reporte)
 	    if (htmlReport == null) {
+	    	
 	      LOG.warn("No HTML PIT report found in directory {} !", reportDirectory);
-	      LOG.warn("Mutations is considered to be zero.");
+	      LOG.warn("Mutation Metric is considered zero.");
   
 	    } else {
 	    	
-	    	double[] mutationsCoverage = new double[2];
-			LOG.info("HTML REPORTE ENCONTRADO: "+htmlReport);
+	    	LOG.info("HTML REPORTE ENCONTRADO: "+htmlReport);
+	    	double[] mutationsCoverage = null;
 			mutationsCoverage = this.mutationsParser.parseReport(htmlReport);
-			LOG.info("VALOR MUTANTES EXTRAIDO: "+mutationsCoverage[0]+" / "+mutationsCoverage[1]);
-			//acumulamos valores
-			SedcatConstants.mutationsDetected+=mutationsCoverage[0];
-			SedcatConstants.mutationsTotal+=mutationsCoverage[1];
 			
-			LOG.info("mutationsDetected: "+SedcatConstants.mutationsDetected);
-			LOG.info("mutationsTotal: "+SedcatConstants.mutationsTotal);
-
+			if (mutationsCoverage != null) {
+				
+				LOG.info("VALOR MUTANTES EXTRAIDO: "+mutationsCoverage[0]+" / "+mutationsCoverage[1]);
+				//acumulamos valores
+				SedcatConstants.mutationsDetected+=mutationsCoverage[0];
+				SedcatConstants.mutationsTotal+=mutationsCoverage[1];
+				
+				LOG.info("mutationsDetected: "+SedcatConstants.mutationsDetected);
+				LOG.info("mutationsTotal: "+SedcatConstants.mutationsTotal);
+			}
 	    }
-	  //3 - Almacenar la cobertura de mutantes
-	    if (SedcatConstants.mutationsDetected>0 && SedcatConstants.mutationsTotal>0) {
-	    	 sensorContext.saveMeasure(SedcatMetrics.MUTANTS, (double) (100*SedcatConstants.mutationsDetected/SedcatConstants.mutationsTotal));
-		}else{
-			 sensorContext.saveMeasure(SedcatMetrics.MUTANTS, 0.0);
-		}
 	    
+	  //3 - Calcular y almacenar la cobertura de mutantes
+	    if (SedcatConstants.mutationsDetected>0 && SedcatConstants.mutationsTotal>0) {
+	    	 mutationsValueFound =  (double) (100*SedcatConstants.mutationsDetected/SedcatConstants.mutationsTotal);
+	    }
+	    sensorContext.saveMeasure(SedcatMetrics.MUTANTS, mutationsValueFound);
 
     }
 

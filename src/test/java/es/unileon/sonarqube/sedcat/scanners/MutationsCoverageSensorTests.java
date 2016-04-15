@@ -3,10 +3,7 @@
  */
 package es.unileon.sonarqube.sedcat.scanners;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -14,30 +11,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
-import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.internal.DefaultFileSystem;
-import org.sonar.api.batch.fs.internal.DefaultInputFile;
-//import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.SensorContext;
-import org.sonar.api.batch.sensor.internal.SensorContextTester;
-import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
-import org.sonar.api.ce.measure.test.TestComponent;
-import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
-import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
-import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.api.config.PropertyDefinitions;
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Project;
-
-import es.unileon.sonarqube.sedcat.start.GeneralComputer;
 import es.unileon.sonarqube.sedcat.start.SedcatConstants;
-import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
-import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.start.SedcatPlugin;
-import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
-import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
@@ -48,6 +28,19 @@ import static org.mockito.Mockito.when;
  */
 public class MutationsCoverageSensorTests {
 
+	private Settings settings;
+	private File baseDirectoryPath;
+	private File reportDirectoryPath;
+	private File ficticiousReportPath;
+	private DefaultFileSystem fileSystem;
+	
+	//mocks
+	private MutationsReportFinder mutationsFinderMocked;
+	private MutationsReportParser mutationsParserMocked;
+	private Project mockedProject;
+	private MutationsCoverageSensor underTest;
+	private SensorContext mockedcontext;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -67,6 +60,21 @@ public class MutationsCoverageSensorTests {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		
+		//setup
+		settings = new Settings(new PropertyDefinitions(SedcatPlugin.class));
+		baseDirectoryPath = new File("/root/workspace/sonar-sedcat-plugin");
+		reportDirectoryPath = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports");
+		ficticiousReportPath = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports/index.html");
+		fileSystem = new DefaultFileSystem(baseDirectoryPath);
+		
+		//create mocks
+		mutationsFinderMocked = mock(MutationsReportFinder.class);
+		mutationsParserMocked = mock(MutationsReportParser.class);
+		mockedProject = mock(Project.class);
+		mockedcontext = mock(SensorContext.class);
+		
+		underTest = null;
 	}
 
 	/**
@@ -76,74 +84,126 @@ public class MutationsCoverageSensorTests {
 	public void tearDown() throws Exception {
 	}
 
-	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensor#MutationsCoverageSensor(org.sonar.api.batch.fs.FileSystem, org.sonar.api.config.Settings, es.unileon.sonarqube.sedcat.scanners.MutationsReportFinder, es.unileon.sonarqube.sedcat.scanners.MutationsReportParser)}.
-	 */
-	@Test
-	public final void testMutationsCoverageSensor() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensor#shouldExecuteOnProject(org.sonar.api.resources.Project)}.
-	 */
-	@Test
-	public final void testShouldExecuteOnProject() {
-		fail("Not yet implemented"); // TODO
-	}
 
 	/**
 	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
 	 * @throws Exception 
 	 */
 	@Test
-	public final void testAnalyse() throws Exception {
+	public final void testAnalyseWithReport() throws Exception {
 
-		//setup
-		Settings settings = new Settings(new PropertyDefinitions(SedcatPlugin.class));
-		File baseDirectoryPath = new File("/root/workspace/sonar-sedcat-plugin");
-		File reportDirectoryPath = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports");
-		File ficticiousReportPath = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports/index.html");
-		DefaultFileSystem fileSystem = new DefaultFileSystem(baseDirectoryPath);
-
-		//create mocks
-	    MutationsReportFinder mutationsFinderMocked = mock(MutationsReportFinder.class);
-	    MutationsReportParser mutationsParserMocked = mock(MutationsReportParser.class);
-	    Project mockedProject = mock(Project.class);
-	    
+		//Reset sedcat Constants
+		SedcatConstants.mutationsDetected = 0;
+		SedcatConstants.mutationsTotal = 0;
 
 	    //setup mocks
-
 	    when(mutationsFinderMocked.findReport(reportDirectoryPath)).thenReturn(ficticiousReportPath);
 	    when(mutationsParserMocked.parseReport(ficticiousReportPath)).thenReturn(new double[]{100.0, 100.0});
+	    
 	    //execute
-	    MutationsCoverageSensor mutsensor = new MutationsCoverageSensor(fileSystem, settings, mutationsFinderMocked, mutationsParserMocked);
-		SensorContext mockedcontext = mock(SensorContext.class);
-		mutsensor.analyse(mockedProject, mockedcontext);
+	    underTest = new MutationsCoverageSensor(fileSystem, settings, mutationsFinderMocked, mutationsParserMocked);
+		underTest.analyse(mockedProject, mockedcontext);
 
 	    //verify
-
-		PowerMockito.verifyNew(File.class, times(1)).withArguments(baseDirectoryPath);
-		PowerMockito.verifyNew(File.class, times(1)).withArguments(reportDirectoryPath);
-		PowerMockito.verifyNew(File.class, times(1)).withArguments(ficticiousReportPath);
-		
-	
 		Mockito.verify(mutationsFinderMocked, times(1)).findReport(reportDirectoryPath);
 		Mockito.verify(mutationsParserMocked, times(1)).parseReport(ficticiousReportPath);
 
-		//verificar valor de medida: mediante un computer 
-		GeneralComputer underTest = new GeneralComputer();
-		TestMeasureComputerDefinitionContext defContext = new TestMeasureComputerDefinitionContext();
-		MeasureComputerDefinition def = underTest.define(defContext);
-	    TestComponent mockedComponent = mock(TestComponent.class);
-	    TestSettings settingsComputer = new TestSettings();
-	    TestMeasureComputerContext contextComputer = new TestMeasureComputerContext(mockedComponent, settingsComputer, def);
-	    
-	    
-		Assert.assertEquals(contextComputer.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),100.0,0.0);
-		
+		//verificar valor de medida:
+		Assert.assertNotNull(underTest);
 		Assert.assertEquals(SedcatConstants.mutationsDetected, 100.0, 0.0);
 		Assert.assertEquals(SedcatConstants.mutationsTotal, 100.0, 0.0);
+		Assert.assertEquals(underTest.getMutationsValueFound(), 100.0, 0.0);
 	}
+	
+	/**
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
+	 * 
+	 * This case is only in multi-module projects
+	 * @throws Exception 
+	 */
+	@Test
+	public final void testAnalyseWithMultipleReport() throws Exception {
+
+		//Reset sedcat Constants
+		SedcatConstants.mutationsDetected = 0;
+		SedcatConstants.mutationsTotal = 0;
+
+	    //setup mocks
+	    when(mutationsFinderMocked.findReport(reportDirectoryPath)).thenReturn(ficticiousReportPath);
+	    when(mutationsParserMocked.parseReport(ficticiousReportPath)).thenReturn(new double[]{100.0, 100.0});
+	    
+	    //Cada iteración equivale a la ejecución del sensor sobre un módulo diferente
+	    for (int i = 0; i < 100; i++) {
+
+		    //execute
+		    underTest = new MutationsCoverageSensor(fileSystem, settings, mutationsFinderMocked, mutationsParserMocked);
+			underTest.analyse(mockedProject, mockedcontext);
+
+		}
+	    
+	    //verify
+		Mockito.verify(mutationsFinderMocked, times(100)).findReport(reportDirectoryPath);
+		Mockito.verify(mutationsParserMocked, times(100)).parseReport(ficticiousReportPath);
+	    
+		Assert.assertNotNull(underTest);
+		Assert.assertEquals(SedcatConstants.mutationsDetected, 10000.0, 0.0);
+		Assert.assertEquals(SedcatConstants.mutationsTotal, 10000.0, 0.0);
+		Assert.assertEquals(underTest.getMutationsValueFound(), 100.0, 0.0);
+
+	}
+	
+	/**
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
+	 * @throws Exception 
+	 */
+	@Test
+	public final void testAnalyseWithReportParserNull() throws Exception {
+
+	    //setup mocks
+	    when(mutationsFinderMocked.findReport(reportDirectoryPath)).thenReturn(ficticiousReportPath);
+	    when(mutationsParserMocked.parseReport(ficticiousReportPath)).thenReturn(null);
+	    
+	    //execute
+	    underTest = new MutationsCoverageSensor(fileSystem, settings, mutationsFinderMocked, mutationsParserMocked);
+		underTest.analyse(mockedProject, mockedcontext);
+
+	    //verify
+		Mockito.verify(mutationsFinderMocked, times(1)).findReport(reportDirectoryPath);
+		Mockito.verify(mutationsParserMocked, times(1)).parseReport(ficticiousReportPath);
+
+		//verificar valor de medida:
+		Assert.assertNotNull(underTest);
+		Assert.assertEquals(SedcatConstants.mutationsDetected, 0, 0.0);
+		Assert.assertEquals(SedcatConstants.mutationsTotal, 0, 0.0);
+		Assert.assertEquals(underTest.getMutationsValueFound(), 0.0, 0.0);
+	}
+	
+	
+	/**
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
+	 * @throws Exception 
+	 */
+	@Test
+	public final void testAnalyseWithNullReport() throws Exception {
+	    
+	    //setup mocks
+	    when(mutationsFinderMocked.findReport(reportDirectoryPath)).thenReturn(null);
+	    
+	    //execute
+	    underTest = new MutationsCoverageSensor(fileSystem, settings, mutationsFinderMocked, mutationsParserMocked);
+		underTest.analyse(mockedProject, mockedcontext);
+
+	    //verify
+		Mockito.verify(mutationsFinderMocked, times(1)).findReport(reportDirectoryPath);
+		
+		//verificar valor de medida:
+		Assert.assertNotNull(underTest);
+		Assert.assertEquals(SedcatConstants.mutationsDetected, 0, 0.0);
+		Assert.assertEquals(SedcatConstants.mutationsTotal, 0, 0.0);
+		Assert.assertEquals(underTest.getMutationsValueFound(), 0.0, 0.0);
+
+		
+	}
+	
 
 }
