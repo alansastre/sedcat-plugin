@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputerTests;
 import es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests;
+import es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests;
 import es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputerTests;
 import es.unileon.sonarqube.sedcat.scanners.NumberTestsComputerTests;
 import es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputerTests;
@@ -15,13 +16,17 @@ import es.unileon.sonarqube.sedcat.start.SedcatPluginTests;
 
 @SuiteClasses({
 	
+	//start 
 	GeneralComputerTests.class,
 	SedcatPluginTests.class,
+	
+	//scanners
 	CoverageUnitTestsComputerTests.class,
 	SuccessUnitTestsComputerTests.class,
 	NumberCodeLinesComputerTests.class,
 	NumberTestsComputerTests.class,
-	MutationsCoverageSensorTests.class
+	MutationsCoverageSensorTests.class,
+	MutationsReportFinderTests.class
 	
 })
 
