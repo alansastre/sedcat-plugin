@@ -63,16 +63,17 @@ public class MutationsReportFinder{
 		}
 
 		//Buscamos el ultimo directorio con reportes
-		File latestReport = null;
-		for (File report : directories) {
-			if (latestReport == null || report.lastModified() > latestReport.lastModified()) {
-			    latestReport = report;
+		File latestReportDirectory = null;
+		for (File directoryToExamine : directories) {
+			if (latestReportDirectory == null || directoryToExamine.lastModified() > latestReportDirectory.lastModified()) {
+			    latestReportDirectory = directoryToExamine;
 			  }
 		}
-		LOG.info("latest directory: "+latestReport.getAbsolutePath());
+		LOG.info("latest directory: "+latestReportDirectory.getAbsolutePath());
 		
+		//Extraemos el archivo index.html del directorio (es el que contiene los reportes totales del modulo)
 		File indexReportSearched = null;
-		String indexReportSearchedPath = latestReport.getAbsolutePath()+"/";
+		String indexReportSearchedPath = latestReportDirectory.getAbsolutePath()+"/";
 		File indexReportDirectory = new File(indexReportSearchedPath);
 		
 		if(indexReportDirectory.list().length>0){

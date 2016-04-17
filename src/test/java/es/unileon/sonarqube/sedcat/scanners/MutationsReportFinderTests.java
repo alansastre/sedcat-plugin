@@ -4,10 +4,8 @@
 package es.unileon.sonarqube.sedcat.scanners;
 
 import static org.junit.Assert.*;
-
 import java.io.File;
 import java.io.FilenameFilter;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -15,7 +13,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.powermock.api.mockito.PowerMockito;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
@@ -68,7 +65,7 @@ public class MutationsReportFinderTests {
 	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsReportFinder#findReport(java.io.File)}.
 	 */
 	@Test
-	public final void findReportNotExists() {
+	public final void findReportDirectoryNotExists() {
 		
 		MutationsReportFinder underTest = new MutationsReportFinder();
 		File fileMocked = mock(File.class);
@@ -148,9 +145,19 @@ public class MutationsReportFinderTests {
 	@Test
 	public final void findReportDirectoryWithDirectories() throws Exception {
 		
-		//TODO
+		/*
+		 * Test data manually created in /target/pit-reports
+		 * Last report directory is 20160417536
+		 */
 
+		MutationsReportFinder underTest = new MutationsReportFinder();
+		File reportDirectory  = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports");
+		File indexReportSearched = underTest.findReport(reportDirectory);
 		
+
+		Assert.assertNotNull(indexReportSearched);
+		Assert.assertEquals(indexReportSearched.getAbsolutePath(), "/root/workspace/sonar-sedcat-plugin/target/pit-reports/20160417536/index.html");
+
 	}
 	
 	
