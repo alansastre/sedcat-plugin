@@ -25,16 +25,30 @@ public class MutationsReportParser {
 	private static final Logger LOG = LoggerFactory.getLogger(MutationsReportParser.class);
 
 
-	public double[] parseReport(File reportPath) {
+	public double[] parseReport(File reportFile) {
 		
+		if (reportFile == null || !reportFile.exists() || reportFile.isDirectory()) {
+			LOG.info("El reporte de mutantes no existe, se considera esta medida como cero.");
+			return null;
+		}
 		
 		Document doc = new Document("");
+		
 		try {
-			doc = Jsoup.parse(reportPath, null);
+			
+			doc = Jsoup.parse(reportFile, null);
+			
 		} catch (IOException e1) {
 
 			e1.printStackTrace();
+			return null;
 		}
+		
+		if (!doc.hasText()) {
+			LOG.info("El reporte de mutantes no tiene contenido, se considera esta medida como cero.");
+			return null;
+		}
+		
 		Elements content = doc.getElementsByTag("td");
 
 		if(content!= null){

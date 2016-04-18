@@ -4,7 +4,10 @@
 package es.unileon.sonarqube.sedcat.scanners;
 
 import static org.junit.Assert.*;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FilenameFilter;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -23,6 +26,7 @@ import static org.mockito.Mockito.when;
  */
 public class MutationsReportFinderTests {
 
+	private MutationsReportFinder underTest;
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -42,6 +46,9 @@ public class MutationsReportFinderTests {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		
+		 underTest = new MutationsReportFinder();
+		 
 	}
 
 	/**
@@ -57,7 +64,6 @@ public class MutationsReportFinderTests {
 	@Test
 	public final void findReportNull() {
 		
-		MutationsReportFinder underTest = new MutationsReportFinder();
 		Assert.assertNull(underTest.findReport(null));
 
 	}
@@ -66,8 +72,7 @@ public class MutationsReportFinderTests {
 	 */
 	@Test
 	public final void findReportDirectoryNotExists() {
-		
-		MutationsReportFinder underTest = new MutationsReportFinder();
+
 		File fileMocked = mock(File.class);
 		
 		when(fileMocked.exists()).thenReturn(false);
@@ -80,7 +85,6 @@ public class MutationsReportFinderTests {
 	@Test
 	public final void findReportNotDirectory() {
 		
-		MutationsReportFinder underTest = new MutationsReportFinder();
 		File fileMocked = mock(File.class);
 		
 		when(fileMocked.exists()).thenReturn(true);
@@ -95,7 +99,6 @@ public class MutationsReportFinderTests {
 	@Test
 	public final void findReportNullDirectory() throws Exception {
 		
-		MutationsReportFinder underTest = new MutationsReportFinder();
 		File fileMocked = mock(File.class);
 		
 		when(fileMocked.exists()).thenReturn(true);
@@ -119,7 +122,6 @@ public class MutationsReportFinderTests {
 	@Test
 	public final void findReportEmptyDirectory() throws Exception {
 		
-		MutationsReportFinder underTest = new MutationsReportFinder();
 		File fileMocked = mock(File.class);
 		String[] dataTest = new String[0];
 		
@@ -143,14 +145,12 @@ public class MutationsReportFinderTests {
 	 * @throws Exception 
 	 */
 	@Test
-	public final void findReportDirectoryWithDirectories() throws Exception {
-		
+	public final void findReportDirectoryWithDirectoriesAndReport() throws Exception {
 		/*
 		 * Test data manually created in /target/pit-reports
 		 * Last report directory is 20160417536
 		 */
 
-		MutationsReportFinder underTest = new MutationsReportFinder();
 		File reportDirectory  = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports");
 		File indexReportSearched = underTest.findReport(reportDirectory);
 		
@@ -158,6 +158,44 @@ public class MutationsReportFinderTests {
 		Assert.assertNotNull(indexReportSearched);
 		Assert.assertEquals(indexReportSearched.getAbsolutePath(), "/root/workspace/sonar-sedcat-plugin/target/pit-reports/20160417536/index.html");
 
+	}
+	
+	/**
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsReportFinder#findReport(java.io.File)}.
+	 * @throws Exception 
+	 */
+	@Test
+	public final void findReportDirectoryWithDirectoriesAndEmptyReport() throws Exception {
+		/*
+		 * Test data manually created in /target/pit-reports2
+		 * Last report directory is 20160417536
+		 * In this case index.html report is empty
+		 */
+
+		File reportDirectory  = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports2");
+		File indexReportSearched = underTest.findReport(reportDirectory);
+		
+		BufferedReader br = new BufferedReader(new FileReader(indexReportSearched.getAbsolutePath()));  
+		Assert.assertNull(br.readLine());
+		br.close();
+		
+	}
+	
+	/**
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.MutationsReportFinder#findReport(java.io.File)}.
+	 * @throws Exception 
+	 */
+	@Test
+	public final void findReportDirectoryWithDirectoriesAndNoReport() throws Exception {
+		/*
+		 * Test data manually created in /target/pit-reports3
+		 * Last report directory is 20160417536
+		 * In this case index.html report not exists
+		 */
+
+		File reportDirectory  = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports3");
+		File indexReportSearched = underTest.findReport(reportDirectory);
+		Assert.assertNull(indexReportSearched);
 	}
 	
 	
