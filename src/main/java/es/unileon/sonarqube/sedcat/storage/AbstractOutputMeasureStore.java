@@ -4,7 +4,6 @@
 package es.unileon.sonarqube.sedcat.storage;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 
 /**

@@ -13,6 +13,10 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 /**
  * Clase encargada de hacer la correspondencia del resultado acciones con los conjuntos acciones
  * predefinidos, una vez encontrado el conjunto lo almacena en forma de metrica.
+ * 
+ * see:
+ *  org.sonar.api.ce.measure.test.TestMeasure
+ *  
  *	@author alan.sastre
  *	@version 1.0
  */

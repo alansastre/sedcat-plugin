@@ -11,7 +11,9 @@ import es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputerTests;
 import es.unileon.sonarqube.sedcat.scanners.NumberTestsComputerTests;
 import es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputerTests;
 import es.unileon.sonarqube.sedcat.start.GeneralComputerTests;
+import es.unileon.sonarqube.sedcat.start.SedcatMetricsTests;
 import es.unileon.sonarqube.sedcat.start.SedcatPluginTests;
+import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests;
 
 @RunWith(Suite.class)
 
@@ -20,6 +22,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatPluginTests;
 	//start 
 	GeneralComputerTests.class,
 	SedcatPluginTests.class,
+	SedcatMetricsTests.class,
 	
 	//scanners
 	CoverageUnitTestsComputerTests.class,
@@ -28,10 +31,24 @@ import es.unileon.sonarqube.sedcat.start.SedcatPluginTests;
 	NumberTestsComputerTests.class,
 	MutationsCoverageSensorTests.class,
 	MutationsReportFinderTests.class,
-	MutationsReportParserTests.class
+	MutationsReportParserTests.class,
+	
+	//storage
+	ActionsMeasureStoreTests.class
 	
 })
-
+/**
+ * Unit Test are FIRST:
+ * 
+ * - Fast
+ * - Independent or Isolated
+ * - Repeteable
+ * - Self-Validating
+ * - Timely
+ * 
+ *	@author alan.sastre
+ *	@version 1.0
+ */
 public class AllTests {
 	 // the class remains empty,
 	  // used only as a holder for the above annotations
