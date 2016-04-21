@@ -110,9 +110,9 @@ public class MutationsCoverageSensorTests {
 
 		//verificar valor de medida:
 		Assert.assertNotNull(underTest);
-		Assert.assertEquals(SedcatConstants.mutationsDetected, 100.0, 0.0);
-		Assert.assertEquals(SedcatConstants.mutationsTotal, 100.0, 0.0);
-		Assert.assertEquals(underTest.getMutationsValueFound(), 100.0, 0.0);
+		Assert.assertEquals(100.0, SedcatConstants.mutationsDetected, 0.0);
+		Assert.assertEquals(100.0, SedcatConstants.mutationsTotal, 0.0);
+		Assert.assertEquals(100.0, underTest.getMutationsValueFound(), 0.0);
 	}
 	
 	/**
@@ -146,9 +146,9 @@ public class MutationsCoverageSensorTests {
 		Mockito.verify(mutationsParserMocked, times(100)).parseReport(ficticiousReportPath);
 	    
 		Assert.assertNotNull(underTest);
-		Assert.assertEquals(SedcatConstants.mutationsDetected, 10000.0, 0.0);
-		Assert.assertEquals(SedcatConstants.mutationsTotal, 10000.0, 0.0);
-		Assert.assertEquals(underTest.getMutationsValueFound(), 100.0, 0.0);
+		Assert.assertEquals(10000.0, SedcatConstants.mutationsDetected, 0.0);
+		Assert.assertEquals(10000.0, SedcatConstants.mutationsTotal, 0.0);
+		Assert.assertEquals(100.0, underTest.getMutationsValueFound(), 0.0);
 
 	}
 	
@@ -173,9 +173,9 @@ public class MutationsCoverageSensorTests {
 
 		//verificar valor de medida:
 		Assert.assertNotNull(underTest);
-		Assert.assertEquals(SedcatConstants.mutationsDetected, 0, 0.0);
-		Assert.assertEquals(SedcatConstants.mutationsTotal, 0, 0.0);
-		Assert.assertEquals(underTest.getMutationsValueFound(), 0.0, 0.0);
+		Assert.assertEquals(0, SedcatConstants.mutationsDetected, 0.0);
+		Assert.assertEquals(0, SedcatConstants.mutationsTotal, 0.0);
+		Assert.assertEquals(0.0, underTest.getMutationsValueFound(), 0.0);
 	}
 	
 	
@@ -198,9 +198,9 @@ public class MutationsCoverageSensorTests {
 		
 		//verificar valor de medida:
 		Assert.assertNotNull(underTest);
-		Assert.assertEquals(SedcatConstants.mutationsDetected, 0, 0.0);
-		Assert.assertEquals(SedcatConstants.mutationsTotal, 0, 0.0);
-		Assert.assertEquals(underTest.getMutationsValueFound(), 0.0, 0.0);
+		Assert.assertEquals(0, SedcatConstants.mutationsDetected, 0.0);
+		Assert.assertEquals(0, SedcatConstants.mutationsTotal, 0.0);
+		Assert.assertEquals(0.0, underTest.getMutationsValueFound(), 0.0);
 
 		
 	}

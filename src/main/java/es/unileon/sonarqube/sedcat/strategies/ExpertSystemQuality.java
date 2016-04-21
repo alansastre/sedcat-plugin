@@ -4,7 +4,6 @@
 package es.unileon.sonarqube.sedcat.strategies;
 
 import org.slf4j.LoggerFactory;
-import org.sonar.api.batch.BatchSide;
 import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;

@@ -85,7 +85,7 @@ public class GeneralComputerTests{
 	     
 	     //Probar metricas de entrada
 	     Set<String> inputMetrics = def.getInputMetrics();
-	     Assert.assertEquals(inputMetrics.size(), 5);
+	     Assert.assertEquals(5, inputMetrics.size());
 	     
 	     Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY));
 	     Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY));
@@ -95,7 +95,7 @@ public class GeneralComputerTests{
 
 	     //Probar metricas de salida
 	     Set<String> ouputMetrics = def.getOutputMetrics();
-	     Assert.assertEquals(ouputMetrics.size(), 7);
+	     Assert.assertEquals(7, ouputMetrics.size());
 	     
 	     Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.QUALITY_MEASURE_KEY));
 	     Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY));
@@ -220,17 +220,16 @@ public class GeneralComputerTests{
 
 
 	     //Comprobamos la integridad de las metricas de entrada
-	     Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(), 100.0, 0.00);
-	     Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(), 100.0, 0.00);
-	     Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(), 100, 0.00);
-	     Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(), 100, 0.00);
-	     Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(), 100.0, 0.00);
+	     Assert.assertEquals(100.0, context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(), 0.00);
+	     Assert.assertEquals(100.0, context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(), 0.00);
+	     Assert.assertEquals(100, context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(), 0.00);
+	     Assert.assertEquals( 100, context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(), 0.00);
+	     Assert.assertEquals(100.0, context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(), 0.00);
 	     
 	     //Comprobamos metricas de salida
-	     Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY).getDoubleValue(),  73.55144775847887, 0.00);
-	     Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue(),
-	    		 "Improve the following parameters in order: Number Of Tests",
-	    		 "Improve the following parameters in order: Number Of Tests");
+	     Assert.assertEquals(73.55144775847887, context.getMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY).getDoubleValue(), 0.00);
+	     Assert.assertEquals( "Improve the following parameters in order: Number Of Tests",
+	    		 context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue());
 	     
 
 	}

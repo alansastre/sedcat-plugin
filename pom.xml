@@ -69,6 +69,14 @@
 	      <scope>test</scope>
 	   </dependency>
 	   
+<!-- 	   A collection of JUnit rules for testing code that uses java.lang.System. -->
+	   <dependency>
+		  <groupId>com.github.stefanbirkner</groupId>
+		  <artifactId>system-rules</artifactId>
+		  <version>1.16.0</version>
+		  <scope>test</scope>
+		</dependency>
+
 	   	<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>

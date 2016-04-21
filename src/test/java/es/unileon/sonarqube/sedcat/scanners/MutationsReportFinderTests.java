@@ -156,7 +156,8 @@ public class MutationsReportFinderTests {
 		
 
 		Assert.assertNotNull(indexReportSearched);
-		Assert.assertEquals(indexReportSearched.getAbsolutePath(), "/root/workspace/sonar-sedcat-plugin/target/pit-reports/20160417536/index.html");
+		Assert.assertEquals("/root/workspace/sonar-sedcat-plugin/target/pit-reports/20160417536/index.html", 
+				indexReportSearched.getAbsolutePath());
 
 	}
 	

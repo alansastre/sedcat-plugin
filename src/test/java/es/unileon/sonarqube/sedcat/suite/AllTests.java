@@ -14,6 +14,7 @@ import es.unileon.sonarqube.sedcat.start.GeneralComputerTests;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsTests;
 import es.unileon.sonarqube.sedcat.start.SedcatPluginTests;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests;
+import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests;
 
 @RunWith(Suite.class)
 
@@ -34,7 +35,10 @@ import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests;
 	MutationsReportParserTests.class,
 	
 	//storage
-	ActionsMeasureStoreTests.class
+	ActionsMeasureStoreTests.class,
+	
+	//strategies
+	ExpertSystemQualityTests.class
 	
 })
 /**

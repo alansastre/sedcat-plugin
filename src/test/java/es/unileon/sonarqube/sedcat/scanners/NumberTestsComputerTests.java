@@ -84,7 +84,7 @@ public class NumberTestsComputerTests {
 	     Mockito.verify(measureMocked, times(2)).getIntValue();
 	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, measureMocked.getIntValue());
 
-	     Assert.assertEquals(measureMocked.getIntValue(), 100, 0);
+	     Assert.assertEquals(100, measureMocked.getIntValue(), 0);
 	     
 	}
 
@@ -101,13 +101,13 @@ public class NumberTestsComputerTests {
 	     
 	     //Probar metricas de entrada
 	     Set<String> inputMetrics = def.getInputMetrics();
-	     Assert.assertEquals(inputMetrics.size(), 1);
+	     Assert.assertEquals(1, inputMetrics.size());
 	     
 	     Assert.assertTrue(inputMetrics.contains(CoreMetrics.TESTS_KEY));
 
 	     //Probar metricas de salida
 	     Set<String> ouputMetrics = def.getOutputMetrics();
-	     Assert.assertEquals(ouputMetrics.size(), 1);
+	     Assert.assertEquals(1, ouputMetrics.size());
 
 	     Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.NUMBERTESTS_KEY));
 
@@ -138,7 +138,7 @@ public class NumberTestsComputerTests {
 	     Mockito.verify(measureMocked, times(0)).getIntValue();
 	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 0);
 
-	     Assert.assertEquals(measureMocked.getIntValue(), 0, 0);
+	     Assert.assertEquals(0, measureMocked.getIntValue(), 0);
 
 	}
 

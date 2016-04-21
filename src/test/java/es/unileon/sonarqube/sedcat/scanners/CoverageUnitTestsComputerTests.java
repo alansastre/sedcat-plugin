@@ -74,13 +74,13 @@ public class CoverageUnitTestsComputerTests {
 	     
 	     //Probar metricas de entrada
 	     Set<String> inputMetrics = def.getInputMetrics();
-	     Assert.assertEquals(inputMetrics.size(), 1);
+	     Assert.assertEquals(1, inputMetrics.size());
 	     
 	     Assert.assertTrue(inputMetrics.contains(CoreMetrics.COVERAGE_KEY));
 
 	     //Probar metricas de salida
 	     Set<String> ouputMetrics = def.getOutputMetrics();
-	     Assert.assertEquals(ouputMetrics.size(), 1);
+	     Assert.assertEquals(1, ouputMetrics.size());
 
 	     Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY));
 
@@ -110,7 +110,7 @@ public class CoverageUnitTestsComputerTests {
 	     Mockito.verify(measureMocked, times(2)).getDoubleValue();
 	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, measureMocked.getDoubleValue());
 
-	     Assert.assertEquals(measureMocked.getDoubleValue(), 100.0, 0);
+	     Assert.assertEquals(100.0, measureMocked.getDoubleValue(), 0);
 	     
 	}
 	
@@ -139,7 +139,7 @@ public class CoverageUnitTestsComputerTests {
 	     Mockito.verify(measureMocked, times(0)).getDoubleValue();
 	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 0.0);
 
-	     Assert.assertEquals(measureMocked.getDoubleValue(), 0.0, 0);
+	     Assert.assertEquals(0.0, measureMocked.getDoubleValue(), 0);
 
 	}
 

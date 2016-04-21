@@ -145,8 +145,8 @@ public class MutationsReportParserTests {
 		double[] result = underTest.parseReport(report);
 		
 		Assert.assertNotNull(result);
-		Assert.assertEquals(result[0], 134.0, 0.0);
-		Assert.assertEquals(result[1], 469.0, 0.0);
+		Assert.assertEquals(134.0, result[0], 0.0);
+		Assert.assertEquals(469.0, result[1], 0.0);
 
 	}
 	
