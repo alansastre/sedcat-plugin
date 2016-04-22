@@ -38,7 +38,7 @@ public abstract class AbstractInferenceProcess {
 		LOG.info(this.START_SYSTEM_MESSAGE);
 		
 		//1 - extraer metricas de entrada
-		double[] inputMetricValues = this.extractValues(this.context);
+		double[] inputMetricValues = this.extractValues();
 		
 		//2- Ejecutar el sistema experto
 		double[] outputMeasureValues = this.expertSystem.crispInference(inputMetricValues);
@@ -53,7 +53,7 @@ public abstract class AbstractInferenceProcess {
 	 * @param context
 	 * @return
 	 */
-	abstract double[] extractValues(MeasureComputerContext context);
+	abstract double[] extractValues();
 	
 	/**
 	 *  Comprueba que las metricas de entrada no sean nulas antes de extraer sus valores.

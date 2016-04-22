@@ -29,23 +29,23 @@ public class GeneralComputer implements MeasureComputer {
 
 	public void compute(MeasureComputerContext context) {
 		
-
+		
+		isProject = true;
 		/*
 		 * Este computer solo se ejecuta a nivel de proyecto
 		 */
-		if(!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")){
+		if (!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")) {
 			isProject = false;
-			return;
+		} else {
+
+			// Ejecutar sistemas expertos
+
+			ExpertSystemQuality expertSystemQuality = new ExpertSystemQuality(context);
+			expertSystemQuality.xfuzzyProcess();
+
+			ExpertSystemActions expertSystemActions = new ExpertSystemActions(context);
+			expertSystemActions.xfuzzyProcess();
 		}
-
-
-		//Ejecutar sistemas expertos
-		
-		ExpertSystemQuality expertSystemQuality = new ExpertSystemQuality(context);
-		expertSystemQuality.xfuzzyProcess();
-		
-		ExpertSystemActions expertSystemActions = new ExpertSystemActions(context);
-		expertSystemActions.xfuzzyProcess();
 	
 	}
 

@@ -95,7 +95,7 @@ public class ActionsMeasureStoreTests {
 	 * Test method for {@link es.unileon.sonarqube.sedcat.storage.AbstractOutputMeasureStore#checkValue(double)}.
 	 * @throws Exception 
 	 */
-	@Test
+//	@Test
 	public final void loadPropertiesOk() throws Exception {
 
 		ActionsMeasureStore underTest = new ActionsMeasureStore();

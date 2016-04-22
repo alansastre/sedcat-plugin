@@ -32,20 +32,21 @@ public class ExpertSystemQuality extends AbstractInferenceProcess{
 		
 		//sistema experto concreto
 		this.expertSystem = new Calidad_1();
+
 		
 	}
 	
-	
-	double[] extractValues(MeasureComputerContext context) {
+	@Override
+	double[] extractValues() {
 		
 
 		Measure[] qualityInputMetrics = new Measure[]{
 				
-				context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY),
-				context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY),
-				context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY),
-				context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY),
-				context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY),
+				this.context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY),
+				this.context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY),
+				this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY),
+				this.context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY),
+				this.context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY),
 
 		};
 		
@@ -54,11 +55,11 @@ public class ExpertSystemQuality extends AbstractInferenceProcess{
 
 		double[] qualityInputMetricsValues = new double[]{
 				
-			context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
-			context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
-			context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
-			context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(),
-			context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(),
+			this.context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
+			this.context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
+			this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
+			this.context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(),
+			this.context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(),
 
 		};
 		

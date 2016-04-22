@@ -51,7 +51,8 @@ public class MutationsReportParser {
 		
 		Elements content = doc.getElementsByTag("td");
 
-		if(content!= null){
+		//FIXME : reorganize cases
+		if(content == null){
 			//tiene que haber al menos 3 td 
 			if (content.size()>2) {
 				LOG.info("hay mutantes");

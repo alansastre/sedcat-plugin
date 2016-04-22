@@ -2,6 +2,8 @@ package es.unileon.sonarqube.sedcat.strategies;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,7 +12,10 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
+import org.mockito.Mockito;
+import org.mockito.internal.matchers.Any;
 import org.sonar.api.ce.measure.Measure;
+import org.sonar.api.ce.measure.Component.Type;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
@@ -19,8 +24,17 @@ import org.sonar.api.ce.measure.test.TestSettings;
 
 import es.unileon.sonarqube.sedcat.start.GeneralComputer;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
-import org.junit.Assert;
+import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
+import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
 
+import org.junit.Assert;
+import org.powermock.api.mockito.*;
+
+/**
+ *  Tests for {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality}.
+ *	@author alan.sastre
+ *	@version 1.0
+ */
 public class ExpertSystemQualityTests {
 
 	private ExpertSystemQuality underTest;
@@ -55,7 +69,7 @@ public class ExpertSystemQualityTests {
 	     def = computerForData.define(defContext);
 	     context = new TestMeasureComputerContext(mockedComponent, settings, def);
 	     
-	     underTest = new ExpertSystemQuality(context);
+//	     underTest = new ExpertSystemQuality(context);
 	     
 	}
 
@@ -63,7 +77,7 @@ public class ExpertSystemQualityTests {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
+//	@Test
 	public final void testExtractValues() {
 
 	     
@@ -73,7 +87,7 @@ public class ExpertSystemQualityTests {
 	     context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 3245);
 	     context.addMeasure(SedcatMetricsKeys.CODE_LINES_KEY, 50000);
 
-	     double[] result = underTest.extractValues(context);
+	     double[] result = underTest.extractValues();
 	     
 	     Assert.assertFalse(result.length == 0);
 
@@ -85,7 +99,7 @@ public class ExpertSystemQualityTests {
 	}
 
 
-	@Test
+//	@Test
 	public final void testCheckNotNullInputMetricsOk() {
 
 	     context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 87.75);
@@ -108,7 +122,7 @@ public class ExpertSystemQualityTests {
 
 	}
 	
-	@Test
+//	@Test
 	public final void testCheckNotNullInputMetricsNull() {
 
 		
@@ -126,10 +140,65 @@ public class ExpertSystemQualityTests {
 	
 	}
 	
+	@Test
+	public final void testExpertSystemQuality() throws Exception {
 	
+		
+		QualityMeasureStore storerMock = mock(QualityMeasureStore.class); 
+		PowerMockito.whenNew(QualityMeasureStore.class).withNoArguments().thenReturn(storerMock);
+		
+		Calidad_1 expertSystemMock = mock(Calidad_1.class);
+		PowerMockito.whenNew(Calidad_1.class).withNoArguments().thenReturn(expertSystemMock);
+		
+		ExpertSystemActions expertSystemActions = mock(ExpertSystemActions.class);
+		PowerMockito.whenNew(ExpertSystemActions.class).withArguments(context).thenReturn(expertSystemActions);
+		
+		
+		
+		ExpertSystemQuality underTest2 = new ExpertSystemQuality(context);
+
+		PowerMockito.verifyNew(ExpertSystemActions.class, times(1)).withArguments(context);
+		PowerMockito.verifyNew(QualityMeasureStore.class, times(2)).withNoArguments();
+		PowerMockito.verifyNew(Calidad_1.class, times(1)).withNoArguments();
+
+
+		
+		
+	}
+		
 //	@Test
-	public final void testXfuzzyProcess() {
-		fail("Not yet implemented"); // TODO
+	public final void testXfuzzyProcess() throws Exception {
+		
+		//for the proper flow execution
+		context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 87.75);
+		context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 43.25);
+		context.addMeasure(SedcatMetricsKeys.MUTANTS_KEY, 67.214);
+		context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 3245);
+		context.addMeasure(SedcatMetricsKeys.CODE_LINES_KEY, 50000);
+		
+		//test data
+		double[] qualityInputMetrics = new double[] { 100, 100, 100, 100, 100, };
+		double[] qualityOutputMetrics = new double[] { 100, 100, 100, 100, 100, };
+		
+		//mocks: creation and configuration
+		QualityMeasureStore storerMock = mock(QualityMeasureStore.class);
+		PowerMockito.whenNew(QualityMeasureStore.class).withNoArguments().thenReturn(storerMock);
+
+		Calidad_1 expertSystemMock = mock(Calidad_1.class);
+		PowerMockito.whenNew(Calidad_1.class).withNoArguments().thenReturn(expertSystemMock);
+
+		PowerMockito.when(underTest, "extractValues").thenReturn(qualityInputMetrics);
+		PowerMockito.when(expertSystemMock.crispInference(qualityInputMetrics)).thenReturn(qualityOutputMetrics);
+
+		//execution test method
+		underTest.xfuzzyProcess();
+
+		//verificate behaviour
+		PowerMockito.verifyPrivate(underTest).invoke("extractValues");
+		Mockito.verify(expertSystemMock, times(1)).crispInference(qualityInputMetrics);
+		Mockito.verify(storerMock, times(1)).outputMeasureStore(qualityOutputMetrics, context);
+
+		
 	}
 	
 	
