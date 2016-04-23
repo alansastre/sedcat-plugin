@@ -2,6 +2,7 @@
  * 
  */
 package es.unileon.sonarqube.sedcat.strategies;
+
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
@@ -10,35 +11,35 @@ import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
 import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
 
 /**
- *  Sistema experto que obtiene las acciones a realizar buscadas
- *	@author alan.sastre
- *	@version 1.0
+ * Sistema experto que obtiene las acciones a realizar buscadas
+ * 
+ * @author alan.sastre
+ * @version 1.0
  */
-public class ExpertSystemActions extends AbstractInferenceProcess{
+public class ExpertSystemActions extends AbstractInferenceProcess {
 
-	
 	public ExpertSystemActions(MeasureComputerContext context) {
-		
-		//logs
+
+		// logs
 		this.LOG = LoggerFactory.getLogger(ExpertSystemActions.class);
 		this.START_SYSTEM_MESSAGE = "Ejecutando sistema experto para acciones.";
-		
-		//contexto para leer medidas
+
+		// contexto para leer medidas
 		this.context = context;
-		
-		//Clase particular que almacena los resultados
-		this.measureStorer= new ActionsMeasureStore();
-		
-		//sistema experto concreto
+
+		// Clase particular que almacena los resultados
+		this.measureStorer = new ActionsMeasureStore();
+
+		// sistema experto concreto
 		this.expertSystem = new Acciones_1();
-		
+
 	}
-	
+
 	@Override
 	double[] extractValues() {
-		
-		Measure[] actionsInputMetrics = new Measure[]{
-				
+
+		Measure[] actionsInputMetrics = new Measure[] {
+
 				this.context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY),
 				this.context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY),
 				this.context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY),
@@ -46,17 +47,16 @@ public class ExpertSystemActions extends AbstractInferenceProcess{
 				this.context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY),
 
 		};
-		
+
 		this.checkNotNullInputMetrics(actionsInputMetrics);
-		
-		double[] actionsInputMetricsValues = new double[]{
+
+		double[] actionsInputMetricsValues = new double[] {
 				this.context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
 				this.context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
 				this.context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(),
 				this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
-				this.context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(),
-		};
-		
+				this.context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(), };
+
 		return actionsInputMetricsValues;
 	}
 
