@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 
 /**
- *	@author alan.sastre
- *	@version 1.0
+ * @author alan.sastre
+ * @version 1.0
  */
 public abstract class AbstractOutputMeasureStore {
 
@@ -18,39 +18,55 @@ public abstract class AbstractOutputMeasureStore {
 	protected String MEASURE_KEY;
 	protected String ERROR_MESSAGE;
 
-	
-/**
- * metodo encargado de realizar el proceso de almacenamiento de los resultados.
- * @param outputMeasureValues - array donde esta los resultados a almacenar
- * @param context - contexto necesario para poder almacenar los resultados en forma de medidas
- */
+	/**
+	 * Template method - realiza el proceso de almacenamiento de los resultados.
+	 * 
+	 * @param outputMeasureValues
+	 *            - array donde esta los resultados a almacenar
+	 * @param context
+	 *            - contexto necesario para poder almacenar los resultados en
+	 *            forma de medidas
+	 */
 	public final void outputMeasureStore(double[] outputMeasureValues, MeasureComputerContext context) {
-		
-		//Invariant Part
-		double measureValue = outputMeasureValues[0];
-		this.checkValue(measureValue);
-		//Variant Part
-		this.saveMeasure(measureValue, context);
+
+		// Invariant Part
+		this.checkOutputDataSet(outputMeasureValues);
+
+		// Variant Part
+		this.saveMeasure(outputMeasureValues, context);
 
 	}
-/**
- *  interpretar el valor y almacenarlo segun el tipo de la medida a almacenar
- * @param measureValue
- * @param context
- */
-	abstract protected void saveMeasure(double measureValue, MeasureComputerContext context);
-	
+
+	/**
+	 * interpretar el valor y almacenarlo segun el tipo de la medida a almacenar
+	 * 
+	 * @param measureValue
+	 * @param context
+	 */
+	abstract protected void saveMeasure(double[] outputMeasureValues, MeasureComputerContext context);
+
 	/**
 	 * Checkea que el valor obtenido esta dentro de los limites
+	 * 
 	 * @param measureValue
 	 */
-	protected void checkValue(double measureValue){
-		if(measureValue < this.MIN_VALUE || measureValue> this.MAX_VALUE){
+	protected void checkOutputDataSet(double[] outputMeasureValues) {
 
-			LOG.error(this.ERROR_MESSAGE);
+		if (outputMeasureValues == null || !(outputMeasureValues.length > 0)) {
+			LOG.error("No hay resultados");
 			System.exit(-1);
 		}
-		
+
+		for (int i = 0; i < outputMeasureValues.length; i++) {
+
+			if (outputMeasureValues[i] < this.MIN_VALUE || outputMeasureValues[i] > this.MAX_VALUE) {
+
+				LOG.error(this.ERROR_MESSAGE);
+				System.exit(-1);
+			}
+
+		}
+
 	}
 
 }

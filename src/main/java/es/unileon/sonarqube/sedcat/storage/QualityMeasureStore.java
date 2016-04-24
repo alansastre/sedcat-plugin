@@ -26,9 +26,12 @@ public class QualityMeasureStore extends AbstractOutputMeasureStore {
 	}
 
 	@Override
-	protected void saveMeasure(double measureValue, MeasureComputerContext context) {
+	protected void saveMeasure(double[] outputMeasureValues, MeasureComputerContext context) {
 
-		// de ser correcto, almacenarlo
+		// Extraemos el resultado, en este caso esta en la primera posicion
+		double measureValue = outputMeasureValues[0];
+
+		// Almacenar el mensaje del conjunto de acciones en forma de double
 		context.addMeasure(this.MEASURE_KEY, measureValue);
 
 		LOG.info("Metrica calidad almacenada correctamente, ha sido: " + measureValue);

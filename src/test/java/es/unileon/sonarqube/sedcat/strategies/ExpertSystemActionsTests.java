@@ -34,21 +34,22 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
- *  Tests for {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions}.
- *	@author alan.sastre
- *	@version 1.0
+ * Tests for {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions}.
+ * 
+ * @author alan.sastre
+ * @version 1.0
  */
 /*
- * Bug in PowerMockRunner (JVM method size) https://github.com/jayway/powermock/pull/661
- * It affects Acciones_1.class
- *  http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.7.3
+ * Bug in PowerMockRunner (JVM method size)
+ * https://github.com/jayway/powermock/pull/661 It affects Acciones_1.class
+ * http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.7.3
  */
 
-//@RunWith(PowerMockRunner.class)
-@PrepareForTest({ ActionsMeasureStore.class, ExpertSystemActions.class, TestMeasureComputerContext.class, Acciones_1.class })
+// @RunWith(PowerMockRunner.class)
+@PrepareForTest({ ActionsMeasureStore.class, ExpertSystemActions.class, TestMeasureComputerContext.class,
+		Acciones_1.class })
 public class ExpertSystemActionsTests {
 
-	
 	private ExpertSystemActions underTest;
 
 	// data
@@ -61,6 +62,7 @@ public class ExpertSystemActionsTests {
 
 	@Rule
 	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -80,7 +82,7 @@ public class ExpertSystemActionsTests {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		
+
 		mockedComponent = mock(TestComponent.class);
 		settings = new TestSettings();
 		defContext = new TestMeasureComputerDefinitionContext();
@@ -99,7 +101,9 @@ public class ExpertSystemActionsTests {
 	}
 
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions#extractValues()}.
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions#extractValues()}
+	 * .
 	 */
 	@Test
 	public final void testExtractValues() {
@@ -122,7 +126,9 @@ public class ExpertSystemActionsTests {
 	}
 
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#checkNotNullInputMetrics(org.sonar.api.ce.measure.Measure[])}.
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#checkNotNullInputMetrics(org.sonar.api.ce.measure.Measure[])}
+	 * .
 	 */
 	@Test
 	public final void testCheckNotNullInputMetricsOk() {
@@ -146,9 +152,10 @@ public class ExpertSystemActionsTests {
 		underTest.checkNotNullInputMetrics(actionsInputMetrics);
 
 	}
-	
+
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#checkNotNullInputMetrics(org.sonar.api.ce.measure.Measure[])}.
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#checkNotNullInputMetrics(org.sonar.api.ce.measure.Measure[])}
 	 */
 	@Test
 	public final void testCheckNotNullInputMetricsNull() {
@@ -159,15 +166,17 @@ public class ExpertSystemActionsTests {
 		underTest.checkNotNullInputMetrics(actionsInputMetrics);
 
 	}
-	
-	
+
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions#ExpertSystemActions(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
-	 * @throws Exception 
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions#ExpertSystemActions(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}
+	 * .
+	 * 
+	 * @throws Exception
 	 */
-//	@Test
+	// @Test
 	public final void testExpertSystemActions() throws Exception {
-		
+
 		ActionsMeasureStore storerMock = mock(ActionsMeasureStore.class);
 		PowerMockito.whenNew(ActionsMeasureStore.class).withNoArguments().thenReturn(storerMock);
 
@@ -182,9 +191,11 @@ public class ExpertSystemActionsTests {
 	}
 
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#xfuzzyProcess()}.
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#xfuzzyProcess()}
+	 * .
 	 */
-//	@Test
+	// @Test
 	public final void testXfuzzyProcessBehaviour() throws Exception {
 
 		// test data
@@ -224,9 +235,11 @@ public class ExpertSystemActionsTests {
 	}
 
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#xfuzzyProcess()}.
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#xfuzzyProcess()}
+	 * .
 	 */
-//	@Test
+	// @Test
 	public final void testXfuzzyProcessState() throws Exception {
 
 		context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 87.75);
@@ -235,11 +248,10 @@ public class ExpertSystemActionsTests {
 		context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 3245);
 		context.addMeasure(SedcatMetricsKeys.CODE_LINES_KEY, 50000);
 		underTest.xfuzzyProcess();
-		
-		//FIXME - wait for bug fix in PowerMockRunner
+
+		// FIXME - wait for bug fix in PowerMockRunner
 		System.out.println(context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue());
-		
-		
+
 	}
 
 }
