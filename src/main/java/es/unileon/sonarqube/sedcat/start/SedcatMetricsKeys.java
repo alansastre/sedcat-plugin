@@ -5,6 +5,7 @@ package es.unileon.sonarqube.sedcat.start;
  * Clase que contiene las claves para cada tipo de variable usada en la aplicacion
  * estas claves son las que se referencian desde el widget para obtener tales metricas
  * @author alan.sastre
+ * @version 1.0
  */
 
 
@@ -26,8 +27,6 @@ public class SedcatMetricsKeys {
 	public static final String LINESOFCODE_COMPUTER = "computer_codelines";
 	public static final String NUMBERTESTS_COMPUTER = "computer_numbertests";
 	public static final String GENERAL_COMPUTER_RESULT = "computer_general_result";
-	
-	
 	
 	
 	//variables salida

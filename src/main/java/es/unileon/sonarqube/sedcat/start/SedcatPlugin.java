@@ -16,7 +16,7 @@ import es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 /**
- * SonarQube 5.3 API
+ * @see SonarQube 5.3 API
  * http://javadocs.sonarsource.org/5.3/apidocs/org/sonar/api/ce/measure/package-summary.html
  * 
  * This class is the entry point for all extensions. It must be referenced from pom.xml.

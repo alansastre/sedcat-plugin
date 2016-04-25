@@ -16,7 +16,7 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
  * conjuntos acciones predefinidos, una vez encontrado el conjunto lo almacena
  * en forma de metrica.
  * 
- * see: org.sonar.api.ce.measure.test.TestMeasure
+ * @see: org.sonar.api.ce.measure.test.TestMeasure
  * 
  * @author alan.sastre
  * @version 1.0
