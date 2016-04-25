@@ -105,7 +105,6 @@ public class ActionsTests {
 				-1,
 				
 		};
-		System.out.println(underTest.crispInference(inputMetricsValues)[0]);
 		Assert.assertEquals(0.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 
 		
@@ -119,9 +118,8 @@ public class ActionsTests {
 		 
 		/*
 		 * outside the boundary of the universe of variables xfuzzy the 
-		 * result is the default value, in this case 50
+		 * result is the default value, in this case 16 (the middle of max value of output)
 		 */
-		 System.out.println(underTest.crispInference(inputMetricsValues)[0]);
 		 Assert.assertEquals(16.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 	}
 	

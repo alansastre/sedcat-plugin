@@ -26,70 +26,61 @@ public class MutationsReportParser {
 
 
 	public double[] parseReport(File reportFile) {
-		
+
 		if (reportFile == null || !reportFile.exists() || reportFile.isDirectory()) {
-			LOG.info("El reporte de mutantes no existe, se considera esta medida como cero.");
+			LOG.warn("El reporte de mutantes no existe, se considera esta medida como cero.");
 			return null;
 		}
-		
+
 		Document doc = new Document("");
-		
+
 		try {
-			
+
 			doc = Jsoup.parse(reportFile, null);
-			
+
 		} catch (IOException e1) {
 
 			e1.printStackTrace();
 			return null;
 		}
-		
+
 		if (!doc.hasText()) {
-			LOG.info("El reporte de mutantes no tiene contenido, se considera esta medida como cero.");
+			LOG.warn("El reporte de mutantes no tiene contenido, se considera esta medida como cero.");
 			return null;
 		}
-		
+
 		Elements content = doc.getElementsByTag("td");
 
-		//FIXME : reorganize cases
-		if(content == null){
-			//tiene que haber al menos 3 td 
-			if (content.size()>2) {
-				LOG.info("hay mutantes");
-
-				//El tercer td es el que contiene la cobertura de mutantes
-				Element td = content.get(2);
-				Elements div = td.getElementsByClass("coverage_ledgend");
-				if (div.size()>0) {
-					//cogemos el div en el que esta el resultado
-					String mutationsResult = div.get(0).ownText();
-					if (mutationsResult.length()>0) {
-						
-						String[] values = mutationsResult.split("/");
-						double[] mutantsValues = new double[2];
-						mutantsValues[0] = Double.parseDouble(values[0]);
-						mutantsValues[1] = Double.parseDouble(values[1]);
-						
-						return mutantsValues;
-					
-					}else{
-						LOG.info("No hay mutantes, se considera esta medida como cero.");
-						return null;
-					}
-				}else{
-					LOG.info("No hay mutantes, se considera esta medida como cero.");
-					return null;
-				}
-			}else{
-				LOG.info("No hay mutantes, se considera esta medida como cero.");
-				return null;
-			}
-		}else{
-			LOG.info("No hay mutantes, se considera esta medida como cero.");
+		// tiene que haber al menos 3 td
+		if (content == null || !(content.size() > 2)) {
+			LOG.warn("El reporte de mutantes no tiene los resultados buscados o se ha cambiado su disposición");
 			return null;
 		}
 
-		
+		// El tercer td es el que contiene la cobertura de mutantes
+		Element td = content.get(2);
+		Elements div = td.getElementsByClass("coverage_ledgend");
+
+		if (!(div.size() > 0)) {
+			LOG.warn("El reporte de mutantes no tiene el elemento coverage_ledgend con el resultado");
+			return null;
+		}
+		// cogemos el div en el que esta el resultado
+		String mutationsResult = div.get(0).ownText();
+
+		if (!(mutationsResult.length() > 0)) {
+			LOG.warn("El elemento coverage_ledgend no tiene texto");
+			return null;
+		}
+
+		//Se ha encontrado el resultado
+		String[] values = mutationsResult.split("/");
+		double[] mutantsValues = new double[2];
+		mutantsValues[0] = Double.parseDouble(values[0]);
+		mutantsValues[1] = Double.parseDouble(values[1]);
+
+		return mutantsValues;
+
 	}
 
 		

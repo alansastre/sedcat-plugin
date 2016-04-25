@@ -109,7 +109,7 @@ public class QualityTests {
 									&& codelines > 25000 && success <= 75 && coverage <= 75 && mutations <= 75
 									&& numbertests <= 4000 && codelines <= 75000) {
 
-								System.out.println(result);
+								
 								Assert.assertTrue(result > 25 && result <= 75);
 
 							} else if (success > 75 && coverage > 75 && mutations > 75 && numbertests > 4000
