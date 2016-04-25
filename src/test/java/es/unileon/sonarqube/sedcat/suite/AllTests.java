@@ -14,8 +14,11 @@ import es.unileon.sonarqube.sedcat.start.GeneralComputerTests;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsTests;
 import es.unileon.sonarqube.sedcat.start.SedcatPluginTests;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests;
+import es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests;
+import es.unileon.sonarqube.sedcat.xfuzzy.ActionsTests;
+import es.unileon.sonarqube.sedcat.xfuzzy.QualityTests;
 
 @RunWith(Suite.class)
 
@@ -37,10 +40,15 @@ import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests;
 	
 	//storage
 	ActionsMeasureStoreTests.class,
+	QualityMeasureStoreTests.class,
 	
 	//strategies
 	ExpertSystemQualityTests.class,
-	ExpertSystemActionsTests.class
+	ExpertSystemActionsTests.class,
+	
+	//xfuzzy
+	QualityTests.class,
+	ActionsTests.class
 	
 })
 /**
