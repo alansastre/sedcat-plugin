@@ -12,6 +12,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
@@ -174,7 +175,8 @@ public class ExpertSystemActionsTests {
 	 * 
 	 * @throws Exception
 	 */
-	// @Test
+	 @Ignore("pending Powermock bug fixes")  
+	 @Test
 	public final void testExpertSystemActions() throws Exception {
 
 		ActionsMeasureStore storerMock = mock(ActionsMeasureStore.class);
@@ -195,7 +197,8 @@ public class ExpertSystemActionsTests {
 	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#xfuzzyProcess()}
 	 * .
 	 */
-	// @Test
+	 @Ignore("pending Powermock bug fixes")  
+	 @Test
 	public final void testXfuzzyProcessBehaviour() throws Exception {
 
 		// test data
@@ -239,7 +242,8 @@ public class ExpertSystemActionsTests {
 	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#xfuzzyProcess()}
 	 * .
 	 */
-	// @Test
+	 @Ignore("pending Powermock bug fixes")  
+	 @Test
 	public final void testXfuzzyProcessState() throws Exception {
 
 		context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 87.75);

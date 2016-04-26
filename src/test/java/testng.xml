@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite" parallel="classes" thread-count="8">
+  <test name="Test" junit="true">
+    <classes>
+
+
+
+<!-- xfuzzy -->
+      <class name="es.unileon.sonarqube.sedcat.xfuzzy.QualityTests"/>
+      <class name="es.unileon.sonarqube.sedcat.xfuzzy.ActionsTests"/>
+      
+<!-- storage -->
+      <class name="es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests"/>
+      <class name="es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests"/>
+      
+<!-- stategies -->
+      <class name="es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests"/>
+      <class name="es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests"/>
+      
+<!-- start -->
+      <class name="es.unileon.sonarqube.sedcat.start.GeneralComputerTests"/>
+      <class name="es.unileon.sonarqube.sedcat.start.SedcatMetricsTests"/>
+      <class name="es.unileon.sonarqube.sedcat.start.SedcatPluginTests"/>
+      
+<!-- scanners -->
+      <class name="es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputerTests"/>
+      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests"/>
+      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests"/>
+      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests"/>
+      <class name="es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputerTests"/>
+      <class name="es.unileon.sonarqube.sedcat.scanners.NumberTestsComputerTests"/>
+      <class name="es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputerTests"/>
+
+    </classes>
+
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

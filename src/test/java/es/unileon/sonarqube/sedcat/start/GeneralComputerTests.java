@@ -8,6 +8,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -28,11 +29,11 @@ import org.powermock.api.mockito.*;
 /**
  * @author alan.sastre
  * @version 1.0
- *
- *          Tests with:
- *          https://github.com/SonarSource/sonarqube/blob/master/sonar-plugin-
- *          api/src/main/java/org/sonar/api/ce/measure/test/
- *          TestMeasureComputerContext.java
+ * @see:
+ * Tests with:
+ * https://github.com/SonarSource/sonarqube/blob/master/sonar-plugin-
+ * api/src/main/java/org/sonar/api/ce/measure/test/
+ * TestMeasureComputerContext.java
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ GeneralComputer.class, ExpertSystemQuality.class, ExpertSystemActions.class })
@@ -81,8 +82,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#define()}.
 	 */
+	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void define_Correct_State() {
+	public final void testdefine_Correct_State() {
 
 		Assert.assertNotNull(def);
 
@@ -119,8 +121,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
+	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void compute_File_noExecution() {
+	public final void testcompute_File_noExecution() {
 
 		FileAttributes mockedFileAttributes = mock(FileAttributes.class);
 		TestComponent component = new TestComponent("", Type.FILE, mockedFileAttributes);
@@ -136,8 +139,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
+	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void compute_View_noExecution() {
+	public final void testcompute_View_noExecution() {
 
 		TestSettings settings = new TestSettings();
 		TestComponent mockedComponent = mock(TestComponent.class);
@@ -153,8 +157,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
+	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void compute_Subview_noExecution() {
+	public final void testcompute_Subview_noExecution() {
 
 		TestSettings settings = new TestSettings();
 		TestComponent mockedComponent = mock(TestComponent.class);
@@ -170,8 +175,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
+	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void compute_Directory_noExecution() {
+	public final void testcompute_Directory_noExecution() {
 
 		TestSettings settings = new TestSettings();
 		TestComponent mockedComponent = mock(TestComponent.class);
@@ -187,8 +193,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
+	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void compute_Module_noExecution() {
+	public final void testcompute_Module_noExecution() {
 
 		TestSettings settings = new TestSettings();
 		TestComponent mockedComponent = mock(TestComponent.class);
@@ -204,8 +211,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
+	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void compute_Project_Execution() {
+	public final void testcompute_Project_Execution() {
 
 		TestComponent mockedComponent = mock(TestComponent.class);
 		TestSettings settings = new TestSettings();
@@ -251,8 +259,9 @@ public class GeneralComputerTests {
 	 * 
 	 * @throws Exception
 	 */
+	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void compute_Project_Behaviour() throws Exception {
+	public final void testcompute_Project_Behaviour() throws Exception {
 
 		TestComponent mockedComponent = mock(TestComponent.class);
 		TestSettings settings = new TestSettings();

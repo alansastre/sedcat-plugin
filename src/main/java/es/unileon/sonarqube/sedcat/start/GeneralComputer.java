@@ -63,11 +63,11 @@ public class GeneralComputer implements MeasureComputer {
 						SedcatMetricsKeys.MUTANTS_KEY)
 
 				// Output metrics must contains at least one metric
-				.setOutputMetrics(SedcatMetricsKeys.QUALITY_MEASURE_KEY, SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
+				.setOutputMetrics(SedcatMetricsKeys.QUALITY_MEASURE_KEY, SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY
 						// for testing purpose
-						SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY,
-						SedcatMetricsKeys.NUMBERTESTS_KEY, SedcatMetricsKeys.CODE_LINES_KEY,
-						SedcatMetricsKeys.MUTANTS_KEY
+//						SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY,
+//						SedcatMetricsKeys.NUMBERTESTS_KEY, SedcatMetricsKeys.CODE_LINES_KEY,
+//						SedcatMetricsKeys.MUTANTS_KEY
 
 		)
 
