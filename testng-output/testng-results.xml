@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="11" failed="9" total="77" passed="57">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="37459" started-at="2016-04-26T16:28:58Z" finished-at="2016-04-26T16:29:35Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="37459" started-at="2016-04-26T16:28:58Z" finished-at="2016-04-26T16:29:35Z">
+      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests">
+        <test-method status="PASS" signature="testAnalyseWithNullReport()[pri:0, instance:testAnalyseWithNullReport(es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests)]" name="testAnalyseWithNullReport" duration-ms="61" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAnalyseWithNullReport -->
+        <test-method status="PASS" signature="testAnalyseWithReportParserNull()[pri:0, instance:testAnalyseWithReportParserNull(es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests)]" name="testAnalyseWithReportParserNull" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAnalyseWithReportParserNull -->
+        <test-method status="PASS" signature="testAnalyseWithMultipleReport()[pri:0, instance:testAnalyseWithMultipleReport(es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests)]" name="testAnalyseWithMultipleReport" duration-ms="209" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAnalyseWithMultipleReport -->
+        <test-method status="PASS" signature="testAnalyseWithReport()[pri:0, instance:testAnalyseWithReport(es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests)]" name="testAnalyseWithReport" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAnalyseWithReport -->
+      </class> <!-- es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests -->
+      <class name="es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputerTests">
+        <test-method status="PASS" signature="compute_notNull_Measure()[pri:0, instance:compute_notNull_Measure(es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputerTests)]" name="compute_notNull_Measure" duration-ms="19" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compute_notNull_Measure -->
+        <test-method status="PASS" signature="compute_Null_Measure()[pri:0, instance:compute_Null_Measure(es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputerTests)]" name="compute_Null_Measure" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compute_Null_Measure -->
+        <test-method status="PASS" signature="define_Correct_State()[pri:0, instance:define_Correct_State(es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputerTests)]" name="define_Correct_State" duration-ms="2" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- define_Correct_State -->
+      </class> <!-- es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputerTests -->
+      <class name="es.unileon.sonarqube.sedcat.start.SedcatMetricsTests">
+        <test-method status="PASS" signature="testGetMetrics()[pri:0, instance:testGetMetrics(es.unileon.sonarqube.sedcat.start.SedcatMetricsTests)]" name="testGetMetrics" duration-ms="2" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetMetrics -->
+      </class> <!-- es.unileon.sonarqube.sedcat.start.SedcatMetricsTests -->
+      <class name="es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests">
+        <test-method status="PASS" signature="testSaveMeasure()[pri:0, instance:testSaveMeasure(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testSaveMeasure" duration-ms="219" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSaveMeasure -->
+        <test-method status="PASS" signature="testOutputMeasureStore()[pri:0, instance:testOutputMeasureStore(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testOutputMeasureStore" duration-ms="67" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testOutputMeasureStore -->
+        <test-method status="PASS" signature="testCheckOutputDataSetOk()[pri:0, instance:testCheckOutputDataSetOk(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testCheckOutputDataSetOk" duration-ms="7" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetOk -->
+        <test-method status="PASS" signature="testCheckOutputDataSetNotAllowedUnder()[pri:0, instance:testCheckOutputDataSetNotAllowedUnder(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testCheckOutputDataSetNotAllowedUnder" duration-ms="7" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetNotAllowedUnder -->
+        <test-method status="PASS" signature="testCheckOutputDataSetNotAllowedAbove()[pri:0, instance:testCheckOutputDataSetNotAllowedAbove(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testCheckOutputDataSetNotAllowedAbove" duration-ms="7" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetNotAllowedAbove -->
+        <test-method status="PASS" signature="testCheckOutputDataSetNull()[pri:0, instance:testCheckOutputDataSetNull(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testCheckOutputDataSetNull" duration-ms="7" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetNull -->
+        <test-method status="PASS" signature="testCheckOutputDataSetEmpty()[pri:0, instance:testCheckOutputDataSetEmpty(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testCheckOutputDataSetEmpty" duration-ms="7" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetEmpty -->
+        <test-method status="PASS" signature="testloadPropertiesOk()[pri:0, instance:testloadPropertiesOk(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testloadPropertiesOk" duration-ms="7" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testloadPropertiesOk -->
+        <test-method status="PASS" signature="testloadPropertiesNull()[pri:0, instance:testloadPropertiesNull(es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests)]" name="testloadPropertiesNull" duration-ms="10" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testloadPropertiesNull -->
+      </class> <!-- es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests -->
+      <class name="es.unileon.sonarqube.sedcat.start.GeneralComputerTests">
+        <test-method status="SKIP" signature="testdefine_Correct_State()[pri:0, instance:testdefine_Correct_State(es.unileon.sonarqube.sedcat.start.GeneralComputerTests)]" name="testdefine_Correct_State" duration-ms="0" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testdefine_Correct_State -->
+        <test-method status="SKIP" signature="testcompute_File_noExecution()[pri:0, instance:testcompute_File_noExecution(es.unileon.sonarqube.sedcat.start.GeneralComputerTests)]" name="testcompute_File_noExecution" duration-ms="0" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcompute_File_noExecution -->
+        <test-method status="SKIP" signature="testcompute_View_noExecution()[pri:0, instance:testcompute_View_noExecution(es.unileon.sonarqube.sedcat.start.GeneralComputerTests)]" name="testcompute_View_noExecution" duration-ms="0" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcompute_View_noExecution -->
+        <test-method status="SKIP" signature="testcompute_Subview_noExecution()[pri:0, instance:testcompute_Subview_noExecution(es.unileon.sonarqube.sedcat.start.GeneralComputerTests)]" name="testcompute_Subview_noExecution" duration-ms="0" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcompute_Subview_noExecution -->
+        <test-method status="SKIP" signature="testcompute_Directory_noExecution()[pri:0, instance:testcompute_Directory_noExecution(es.unileon.sonarqube.sedcat.start.GeneralComputerTests)]" name="testcompute_Directory_noExecution" duration-ms="0" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcompute_Directory_noExecution -->
+        <test-method status="SKIP" signature="testcompute_Module_noExecution()[pri:0, instance:testcompute_Module_noExecution(es.unileon.sonarqube.sedcat.start.GeneralComputerTests)]" name="testcompute_Module_noExecution" duration-ms="0" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcompute_Module_noExecution -->
+        <test-method status="SKIP" signature="testcompute_Project_Execution()[pri:0, instance:testcompute_Project_Execution(es.unileon.sonarqube.sedcat.start.GeneralComputerTests)]" name="testcompute_Project_Execution" duration-ms="0" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcompute_Project_Execution -->
+        <test-method status="SKIP" signature="testcompute_Project_Behaviour()[pri:0, instance:testcompute_Project_Behaviour(es.unileon.sonarqube.sedcat.start.GeneralComputerTests)]" name="testcompute_Project_Behaviour" duration-ms="0" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcompute_Project_Behaviour -->
+      </class> <!-- es.unileon.sonarqube.sedcat.start.GeneralComputerTests -->
+      <class name="es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests">
+        <test-method status="FAIL" signature="testExtractValues()[pri:0, instance:testExtractValues(es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests)]" name="testExtractValues" duration-ms="184" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.
+	at org.sonar.api.internal.google.common.base.Preconditions.checkArgument(Preconditions.java:148)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.validateAddMeasure(TestMeasureComputerContext.java:172)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.addMeasure(TestMeasureComputerContext.java:98)
+	at es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests.testExtractValues(ExpertSystemQualityTests.java:88)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:68)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.runTestMethod(PowerMockJUnit44RunnerDelegateImpl.java:310)
+	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:89)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:97)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.executeTest(PowerMockJUnit44RunnerDelegateImpl.java:294)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.executeTestInSuper(PowerMockJUnit47RunnerDelegateImpl.java:127)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.access$100(PowerMockJUnit47RunnerDelegateImpl.java:59)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner$LastRuleTestExecutorStatement.evaluate(PowerMockJUnit47RunnerDelegateImpl.java:148)
+	at org.junit.contrib.java.lang.system.ExpectedSystemExit$1.evaluate(ExpectedSystemExit.java:130)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.executeTest(PowerMockJUnit47RunnerDelegateImpl.java:91)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.runBeforesThenTestThenAfters(PowerMockJUnit44RunnerDelegateImpl.java:282)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:87)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:50)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.invokeTestMethod(PowerMockJUnit44RunnerDelegateImpl.java:207)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.runMethods(PowerMockJUnit44RunnerDelegateImpl.java:146)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$1.run(PowerMockJUnit44RunnerDelegateImpl.java:120)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:34)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:44)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.run(PowerMockJUnit44RunnerDelegateImpl.java:122)
+	at org.powermock.modules.junit4.common.internal.impl.JUnit4TestSuiteChunkerImpl.run(JUnit4TestSuiteChunkerImpl.java:106)
+	at org.powermock.modules.junit4.common.internal.impl.AbstractCommonPowerMockRunner.run(AbstractCommonPowerMockRunner.java:53)
+	at org.powermock.modules.junit4.PowerMockRunner.run(PowerMockRunner.java:59)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testExtractValues -->
+        <test-method status="FAIL" signature="testCheckNotNullInputMetricsOk()[pri:0, instance:testCheckNotNullInputMetricsOk(es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests)]" name="testCheckNotNullInputMetricsOk" duration-ms="6" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.
+	at org.sonar.api.internal.google.common.base.Preconditions.checkArgument(Preconditions.java:148)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.validateAddMeasure(TestMeasureComputerContext.java:172)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.addMeasure(TestMeasureComputerContext.java:98)
+	at es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests.testCheckNotNullInputMetricsOk(ExpertSystemQualityTests.java:111)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:68)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.runTestMethod(PowerMockJUnit44RunnerDelegateImpl.java:310)
+	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:89)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:97)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.executeTest(PowerMockJUnit44RunnerDelegateImpl.java:294)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.executeTestInSuper(PowerMockJUnit47RunnerDelegateImpl.java:127)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.access$100(PowerMockJUnit47RunnerDelegateImpl.java:59)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner$LastRuleTestExecutorStatement.evaluate(PowerMockJUnit47RunnerDelegateImpl.java:148)
+	at org.junit.contrib.java.lang.system.ExpectedSystemExit$1.evaluate(ExpectedSystemExit.java:130)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.executeTest(PowerMockJUnit47RunnerDelegateImpl.java:91)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.runBeforesThenTestThenAfters(PowerMockJUnit44RunnerDelegateImpl.java:282)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:87)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:50)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.invokeTestMethod(PowerMockJUnit44RunnerDelegateImpl.java:207)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.runMethods(PowerMockJUnit44RunnerDelegateImpl.java:146)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$1.run(PowerMockJUnit44RunnerDelegateImpl.java:120)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:34)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:44)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.run(PowerMockJUnit44RunnerDelegateImpl.java:122)
+	at org.powermock.modules.junit4.common.internal.impl.JUnit4TestSuiteChunkerImpl.run(JUnit4TestSuiteChunkerImpl.java:106)
+	at org.powermock.modules.junit4.common.internal.impl.AbstractCommonPowerMockRunner.run(AbstractCommonPowerMockRunner.java:53)
+	at org.powermock.modules.junit4.PowerMockRunner.run(PowerMockRunner.java:59)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckNotNullInputMetricsOk -->
+        <test-method status="PASS" signature="testCheckNotNullInputMetricsNull()[pri:0, instance:testCheckNotNullInputMetricsNull(es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests)]" name="testCheckNotNullInputMetricsNull" duration-ms="7" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckNotNullInputMetricsNull -->
+        <test-method status="FAIL" signature="testXfuzzyProcessBehaviour()[pri:0, instance:testXfuzzyProcessBehaviour(es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests)]" name="testXfuzzyProcessBehaviour" duration-ms="6" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.
+	at org.sonar.api.internal.google.common.base.Preconditions.checkArgument(Preconditions.java:148)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.validateAddMeasure(TestMeasureComputerContext.java:172)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.addMeasure(TestMeasureComputerContext.java:98)
+	at es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests.testXfuzzyProcessBehaviour(ExpertSystemQualityTests.java:171)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:68)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.runTestMethod(PowerMockJUnit44RunnerDelegateImpl.java:310)
+	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:89)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:97)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.executeTest(PowerMockJUnit44RunnerDelegateImpl.java:294)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.executeTestInSuper(PowerMockJUnit47RunnerDelegateImpl.java:127)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.access$100(PowerMockJUnit47RunnerDelegateImpl.java:59)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner$LastRuleTestExecutorStatement.evaluate(PowerMockJUnit47RunnerDelegateImpl.java:148)
+	at org.junit.contrib.java.lang.system.ExpectedSystemExit$1.evaluate(ExpectedSystemExit.java:130)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.executeTest(PowerMockJUnit47RunnerDelegateImpl.java:91)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.runBeforesThenTestThenAfters(PowerMockJUnit44RunnerDelegateImpl.java:282)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:87)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:50)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.invokeTestMethod(PowerMockJUnit44RunnerDelegateImpl.java:207)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.runMethods(PowerMockJUnit44RunnerDelegateImpl.java:146)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$1.run(PowerMockJUnit44RunnerDelegateImpl.java:120)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:34)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:44)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.run(PowerMockJUnit44RunnerDelegateImpl.java:122)
+	at org.powermock.modules.junit4.common.internal.impl.JUnit4TestSuiteChunkerImpl.run(JUnit4TestSuiteChunkerImpl.java:106)
+	at org.powermock.modules.junit4.common.internal.impl.AbstractCommonPowerMockRunner.run(AbstractCommonPowerMockRunner.java:53)
+	at org.powermock.modules.junit4.PowerMockRunner.run(PowerMockRunner.java:59)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testXfuzzyProcessBehaviour -->
+        <test-method status="FAIL" signature="testXfuzzyProcessState()[pri:0, instance:testXfuzzyProcessState(es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests)]" name="testXfuzzyProcessState" duration-ms="6" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.
+	at org.sonar.api.internal.google.common.base.Preconditions.checkArgument(Preconditions.java:148)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.validateAddMeasure(TestMeasureComputerContext.java:172)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.addMeasure(TestMeasureComputerContext.java:98)
+	at es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests.testXfuzzyProcessState(ExpertSystemQualityTests.java:212)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:68)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.runTestMethod(PowerMockJUnit44RunnerDelegateImpl.java:310)
+	at org.junit.internal.runners.MethodRoadie$2.run(MethodRoadie.java:89)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:97)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.executeTest(PowerMockJUnit44RunnerDelegateImpl.java:294)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.executeTestInSuper(PowerMockJUnit47RunnerDelegateImpl.java:127)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.access$100(PowerMockJUnit47RunnerDelegateImpl.java:59)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner$LastRuleTestExecutorStatement.evaluate(PowerMockJUnit47RunnerDelegateImpl.java:148)
+	at org.junit.contrib.java.lang.system.ExpectedSystemExit$1.evaluate(ExpectedSystemExit.java:130)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit47RunnerDelegateImpl$PowerMockJUnit47MethodRunner.executeTest(PowerMockJUnit47RunnerDelegateImpl.java:91)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$PowerMockJUnit44MethodRunner.runBeforesThenTestThenAfters(PowerMockJUnit44RunnerDelegateImpl.java:282)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:87)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:50)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.invokeTestMethod(PowerMockJUnit44RunnerDelegateImpl.java:207)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.runMethods(PowerMockJUnit44RunnerDelegateImpl.java:146)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl$1.run(PowerMockJUnit44RunnerDelegateImpl.java:120)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:34)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:44)
+	at org.powermock.modules.junit4.internal.impl.PowerMockJUnit44RunnerDelegateImpl.run(PowerMockJUnit44RunnerDelegateImpl.java:122)
+	at org.powermock.modules.junit4.common.internal.impl.JUnit4TestSuiteChunkerImpl.run(JUnit4TestSuiteChunkerImpl.java:106)
+	at org.powermock.modules.junit4.common.internal.impl.AbstractCommonPowerMockRunner.run(AbstractCommonPowerMockRunner.java:53)
+	at org.powermock.modules.junit4.PowerMockRunner.run(PowerMockRunner.java:59)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testXfuzzyProcessState -->
+        <test-method status="PASS" signature="testExpertSystemQuality()[pri:0, instance:testExpertSystemQuality(es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests)]" name="testExpertSystemQuality" duration-ms="75" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testExpertSystemQuality -->
+      </class> <!-- es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests -->
+      <class name="es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputerTests">
+        <test-method status="PASS" signature="compute_notNull_Measure()[pri:0, instance:compute_notNull_Measure(es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputerTests)]" name="compute_notNull_Measure" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compute_notNull_Measure -->
+        <test-method status="PASS" signature="compute_Null_Measure()[pri:0, instance:compute_Null_Measure(es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputerTests)]" name="compute_Null_Measure" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compute_Null_Measure -->
+        <test-method status="PASS" signature="define_Correct_State()[pri:0, instance:define_Correct_State(es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputerTests)]" name="define_Correct_State" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- define_Correct_State -->
+      </class> <!-- es.unileon.sonarqube.sedcat.scanners.SuccessUnitTestsComputerTests -->
+      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests">
+        <test-method status="PASS" signature="parseReportWithNotEnoughTdElements()[pri:0, instance:parseReportWithNotEnoughTdElements(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportWithNotEnoughTdElements" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportWithNotEnoughTdElements -->
+        <test-method status="PASS" signature="parseReportWithCoverageLedgendButNotText()[pri:0, instance:parseReportWithCoverageLedgendButNotText(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportWithCoverageLedgendButNotText" duration-ms="2" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportWithCoverageLedgendButNotText -->
+        <test-method status="FAIL" signature="parseReportOk()[pri:0, instance:parseReportOk(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportOk" duration-ms="5" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <exception class="java.lang.AssertionError">
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:86)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at org.junit.Assert.assertNotNull(Assert.java:712)
+	at org.junit.Assert.assertNotNull(Assert.java:722)
+	at es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests.parseReportOk(MutationsReportParserTests.java:147)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportOk -->
+        <test-method status="PASS" signature="parseReportEmpty()[pri:0, instance:parseReportEmpty(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportEmpty" duration-ms="2" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportEmpty -->
+        <test-method status="PASS" signature="parseReportDirectory()[pri:0, instance:parseReportDirectory(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportDirectory" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportDirectory -->
+        <test-method status="PASS" signature="parseReportWithoutTdElements()[pri:0, instance:parseReportWithoutTdElements(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportWithoutTdElements" duration-ms="2" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportWithoutTdElements -->
+        <test-method status="PASS" signature="parseReportNull()[pri:0, instance:parseReportNull(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportNull" duration-ms="2" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportNull -->
+        <test-method status="PASS" signature="parseReportNotExists()[pri:0, instance:parseReportNotExists(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportNotExists" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportNotExists -->
+        <test-method status="PASS" signature="parseReportWithoutCoverageLedgend()[pri:0, instance:parseReportWithoutCoverageLedgend(es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests)]" name="parseReportWithoutCoverageLedgend" duration-ms="2" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parseReportWithoutCoverageLedgend -->
+      </class> <!-- es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests -->
+      <class name="es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputerTests">
+        <test-method status="PASS" signature="compute_notNull_Measure_File()[pri:0, instance:compute_notNull_Measure_File(es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputerTests)]" name="compute_notNull_Measure_File" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compute_notNull_Measure_File -->
+        <test-method status="PASS" signature="compute_Null_Measure()[pri:0, instance:compute_Null_Measure(es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputerTests)]" name="compute_Null_Measure" duration-ms="5" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compute_Null_Measure -->
+        <test-method status="PASS" signature="define_Correct_State()[pri:0, instance:define_Correct_State(es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputerTests)]" name="define_Correct_State" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- define_Correct_State -->
+      </class> <!-- es.unileon.sonarqube.sedcat.scanners.NumberCodeLinesComputerTests -->
+      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests">
+        <test-method status="PASS" signature="findReportDirectoryWithDirectoriesAndNoReport()[pri:0, instance:findReportDirectoryWithDirectoriesAndNoReport(es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests)]" name="findReportDirectoryWithDirectoriesAndNoReport" duration-ms="2" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findReportDirectoryWithDirectoriesAndNoReport -->
+        <test-method status="PASS" signature="findReportNotDirectory()[pri:0, instance:findReportNotDirectory(es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests)]" name="findReportNotDirectory" duration-ms="17" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findReportNotDirectory -->
+        <test-method status="PASS" signature="findReportNullDirectory()[pri:0, instance:findReportNullDirectory(es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests)]" name="findReportNullDirectory" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findReportNullDirectory -->
+        <test-method status="FAIL" signature="findReportDirectoryWithDirectoriesAndReport()[pri:0, instance:findReportDirectoryWithDirectoriesAndReport(es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests)]" name="findReportDirectoryWithDirectoriesAndReport" duration-ms="5" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <exception class="java.lang.AssertionError">
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:86)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at org.junit.Assert.assertNotNull(Assert.java:712)
+	at org.junit.Assert.assertNotNull(Assert.java:722)
+	at es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests.findReportDirectoryWithDirectoriesAndReport(MutationsReportFinderTests.java:158)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findReportDirectoryWithDirectoriesAndReport -->
+        <test-method status="PASS" signature="findReportDirectoryNotExists()[pri:0, instance:findReportDirectoryNotExists(es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests)]" name="findReportDirectoryNotExists" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findReportDirectoryNotExists -->
+        <test-method status="PASS" signature="findReportEmptyDirectory()[pri:0, instance:findReportEmptyDirectory(es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests)]" name="findReportEmptyDirectory" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findReportEmptyDirectory -->
+        <test-method status="PASS" signature="findReportNull()[pri:0, instance:findReportNull(es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests)]" name="findReportNull" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findReportNull -->
+        <test-method status="FAIL" signature="findReportDirectoryWithDirectoriesAndEmptyReport()[pri:0, instance:findReportDirectoryWithDirectoriesAndEmptyReport(es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests)]" name="findReportDirectoryWithDirectoriesAndEmptyReport" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests.findReportDirectoryWithDirectoriesAndEmptyReport(MutationsReportFinderTests.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findReportDirectoryWithDirectoriesAndEmptyReport -->
+      </class> <!-- es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests -->
+      <class name="es.unileon.sonarqube.sedcat.scanners.NumberTestsComputerTests">
+        <test-method status="PASS" signature="compute_notNull_Measure()[pri:0, instance:compute_notNull_Measure(es.unileon.sonarqube.sedcat.scanners.NumberTestsComputerTests)]" name="compute_notNull_Measure" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compute_notNull_Measure -->
+        <test-method status="PASS" signature="compute_Null_Measure()[pri:0, instance:compute_Null_Measure(es.unileon.sonarqube.sedcat.scanners.NumberTestsComputerTests)]" name="compute_Null_Measure" duration-ms="4" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compute_Null_Measure -->
+        <test-method status="PASS" signature="define_Correct_State()[pri:0, instance:define_Correct_State(es.unileon.sonarqube.sedcat.scanners.NumberTestsComputerTests)]" name="define_Correct_State" duration-ms="3" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- define_Correct_State -->
+      </class> <!-- es.unileon.sonarqube.sedcat.scanners.NumberTestsComputerTests -->
+      <class name="es.unileon.sonarqube.sedcat.start.SedcatPluginTests">
+        <test-method status="PASS" signature="testGetExtensions()[pri:0, instance:testGetExtensions(es.unileon.sonarqube.sedcat.start.SedcatPluginTests)]" name="testGetExtensions" duration-ms="5" started-at="2016-04-26T18:29:35Z" finished-at="2016-04-26T18:29:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetExtensions -->
+      </class> <!-- es.unileon.sonarqube.sedcat.start.SedcatPluginTests -->
+      <class name="es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests">
+        <test-method status="SKIP" signature="testXfuzzyProcessState()[pri:0, instance:testXfuzzyProcessState(es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests)]" name="testXfuzzyProcessState" duration-ms="0" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testXfuzzyProcessState -->
+        <test-method status="PASS" signature="testCheckNotNullInputMetricsNull()[pri:0, instance:testCheckNotNullInputMetricsNull(es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests)]" name="testCheckNotNullInputMetricsNull" duration-ms="32" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckNotNullInputMetricsNull -->
+        <test-method status="FAIL" signature="testCheckNotNullInputMetricsOk()[pri:0, instance:testCheckNotNullInputMetricsOk(es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests)]" name="testCheckNotNullInputMetricsOk" duration-ms="4" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.
+	at org.sonar.api.internal.google.common.base.Preconditions.checkArgument(Preconditions.java:148)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.validateAddMeasure(TestMeasureComputerContext.java:172)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.addMeasure(TestMeasureComputerContext.java:98)
+	at es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests.testCheckNotNullInputMetricsOk(ExpertSystemActionsTests.java:137)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.contrib.java.lang.system.ExpectedSystemExit$1.evaluate(ExpectedSystemExit.java:130)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckNotNullInputMetricsOk -->
+        <test-method status="SKIP" signature="testExpertSystemActions()[pri:0, instance:testExpertSystemActions(es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests)]" name="testExpertSystemActions" duration-ms="0" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testExpertSystemActions -->
+        <test-method status="FAIL" signature="testExtractValues()[pri:0, instance:testExtractValues(es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests)]" name="testExtractValues" duration-ms="2" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Only metrics in [quality_measure, actions_to_realize] can be used to add measures. Metric 'success_unit_tests' is not allowed.
+	at org.sonar.api.internal.google.common.base.Preconditions.checkArgument(Preconditions.java:148)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.validateAddMeasure(TestMeasureComputerContext.java:172)
+	at org.sonar.api.ce.measure.test.TestMeasureComputerContext.addMeasure(TestMeasureComputerContext.java:98)
+	at es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests.testExtractValues(ExpertSystemActionsTests.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.contrib.java.lang.system.ExpectedSystemExit$1.evaluate(ExpectedSystemExit.java:130)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:697)
+	at org.testng.TestRunner.runJUnitWorkers(TestRunner.java:1004)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:728)
+	at org.testng.TestRunner.run(TestRunner.java:629)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:268)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+	at org.testng.TestNG.run(TestNG.java:1064)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testExtractValues -->
+        <test-method status="SKIP" signature="testXfuzzyProcessBehaviour()[pri:0, instance:testXfuzzyProcessBehaviour(es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests)]" name="testXfuzzyProcessBehaviour" duration-ms="0" started-at="2016-04-26T18:29:34Z" finished-at="2016-04-26T18:29:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testXfuzzyProcessBehaviour -->
+      </class> <!-- es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests -->
+      <class name="es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests">
+        <test-method status="PASS" signature="testSaveMeasure()[pri:0, instance:testSaveMeasure(es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests)]" name="testSaveMeasure" duration-ms="340" started-at="2016-04-26T18:29:32Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSaveMeasure -->
+        <test-method status="PASS" signature="testOutputMeasureStore()[pri:0, instance:testOutputMeasureStore(es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests)]" name="testOutputMeasureStore" duration-ms="78" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testOutputMeasureStore -->
+        <test-method status="PASS" signature="testCheckOutputDataSetOk()[pri:0, instance:testCheckOutputDataSetOk(es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests)]" name="testCheckOutputDataSetOk" duration-ms="11" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetOk -->
+        <test-method status="PASS" signature="testCheckOutputDataSetNotAllowedUnder()[pri:0, instance:testCheckOutputDataSetNotAllowedUnder(es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests)]" name="testCheckOutputDataSetNotAllowedUnder" duration-ms="8" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetNotAllowedUnder -->
+        <test-method status="PASS" signature="testCheckOutputDataSetNotAllowedAbove()[pri:0, instance:testCheckOutputDataSetNotAllowedAbove(es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests)]" name="testCheckOutputDataSetNotAllowedAbove" duration-ms="23" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetNotAllowedAbove -->
+        <test-method status="PASS" signature="testCheckOutputDataSetNull()[pri:0, instance:testCheckOutputDataSetNull(es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests)]" name="testCheckOutputDataSetNull" duration-ms="7" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetNull -->
+        <test-method status="PASS" signature="testCheckOutputDataSetEmpty()[pri:0, instance:testCheckOutputDataSetEmpty(es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests)]" name="testCheckOutputDataSetEmpty" duration-ms="7" started-at="2016-04-26T18:29:33Z" finished-at="2016-04-26T18:29:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckOutputDataSetEmpty -->
+      </class> <!-- es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests -->
+      <class name="es.unileon.sonarqube.sedcat.xfuzzy.QualityTests">
+        <test-method status="PASS" signature="testCrispInferenceDoubleArrayOnLimits_Above()[pri:0, instance:testCrispInferenceDoubleArrayOnLimits_Above(es.unileon.sonarqube.sedcat.xfuzzy.QualityTests)]" name="testCrispInferenceDoubleArrayOnLimits_Above" duration-ms="25" started-at="2016-04-26T18:28:58Z" finished-at="2016-04-26T18:28:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCrispInferenceDoubleArrayOnLimits_Above -->
+        <test-method status="PASS" signature="testCrispInferenceDoubleArrayOnLimits_Under()[pri:0, instance:testCrispInferenceDoubleArrayOnLimits_Under(es.unileon.sonarqube.sedcat.xfuzzy.QualityTests)]" name="testCrispInferenceDoubleArrayOnLimits_Under" duration-ms="16" started-at="2016-04-26T18:28:58Z" finished-at="2016-04-26T18:28:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCrispInferenceDoubleArrayOnLimits_Under -->
+        <test-method status="PASS" signature="testCrispInferenceDoubleArray()[pri:0, instance:testCrispInferenceDoubleArray(es.unileon.sonarqube.sedcat.xfuzzy.QualityTests)]" name="testCrispInferenceDoubleArray" duration-ms="34107" started-at="2016-04-26T18:28:58Z" finished-at="2016-04-26T18:29:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCrispInferenceDoubleArray -->
+      </class> <!-- es.unileon.sonarqube.sedcat.xfuzzy.QualityTests -->
+      <class name="es.unileon.sonarqube.sedcat.xfuzzy.ActionsTests">
+        <test-method status="PASS" signature="testCrispInferenceDoubleArrayOnLimits_Above()[pri:0, instance:testCrispInferenceDoubleArrayOnLimits_Above(es.unileon.sonarqube.sedcat.xfuzzy.ActionsTests)]" name="testCrispInferenceDoubleArrayOnLimits_Above" duration-ms="26" started-at="2016-04-26T18:29:32Z" finished-at="2016-04-26T18:29:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCrispInferenceDoubleArrayOnLimits_Above -->
+        <test-method status="PASS" signature="testCrispInferenceDoubleArrayOnLimits_Under()[pri:0, instance:testCrispInferenceDoubleArrayOnLimits_Under(es.unileon.sonarqube.sedcat.xfuzzy.ActionsTests)]" name="testCrispInferenceDoubleArrayOnLimits_Under" duration-ms="9" started-at="2016-04-26T18:29:32Z" finished-at="2016-04-26T18:29:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCrispInferenceDoubleArrayOnLimits_Under -->
+        <test-method status="PASS" signature="testCrispInferenceDoubleArray()[pri:0, instance:testCrispInferenceDoubleArray(es.unileon.sonarqube.sedcat.xfuzzy.ActionsTests)]" name="testCrispInferenceDoubleArray" duration-ms="8" started-at="2016-04-26T18:29:32Z" finished-at="2016-04-26T18:29:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCrispInferenceDoubleArray -->
+      </class> <!-- es.unileon.sonarqube.sedcat.xfuzzy.ActionsTests -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
