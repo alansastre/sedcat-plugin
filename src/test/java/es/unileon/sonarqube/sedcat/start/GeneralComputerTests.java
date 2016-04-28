@@ -8,7 +8,6 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -22,6 +21,7 @@ import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 import java.util.Set;
 import org.sonar.api.ce.measure.Component.FileAttributes;
 import org.sonar.api.ce.measure.Component.Type;
+import org.sonar.api.ce.measure.Measure;
 import static org.mockito.Mockito.*;
 import org.sonar.api.ce.measure.test.*;
 import org.powermock.api.mockito.*;
@@ -42,6 +42,8 @@ public class GeneralComputerTests {
 	private GeneralComputer underTest = new GeneralComputer();
 	private TestMeasureComputerDefinitionContext defContext;
 	private MeasureComputerDefinition def;
+	private TestComponent mockedComponent;
+	private TestSettings settings;
 
 	/**
 	 * @throws java.lang.Exception
@@ -65,6 +67,8 @@ public class GeneralComputerTests {
 
 		defContext = new TestMeasureComputerDefinitionContext();
 		def = underTest.define(defContext);
+		mockedComponent = mock(TestComponent.class);
+		settings = new TestSettings();
 	}
 
 	/**
@@ -82,7 +86,7 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#define()}.
 	 */
-	@Ignore("pending sonarqube check unique outputs")  
+
 	@Test
 	public final void testdefine_Correct_State() {
 
@@ -100,15 +104,10 @@ public class GeneralComputerTests {
 
 		// Probar metricas de salida
 		Set<String> ouputMetrics = def.getOutputMetrics();
-		Assert.assertEquals(7, ouputMetrics.size());
+		Assert.assertEquals(2, ouputMetrics.size());
 
 		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.QUALITY_MEASURE_KEY));
 		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY));
-		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY));
-		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY));
-		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.NUMBERTESTS_KEY));
-		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.CODE_LINES_KEY));
-		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.MUTANTS_KEY));
 
 	}
 
@@ -121,13 +120,11 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
-	@Ignore("pending sonarqube check unique outputs")  
 	@Test
 	public final void testcompute_File_noExecution() {
 
 		FileAttributes mockedFileAttributes = mock(FileAttributes.class);
 		TestComponent component = new TestComponent("", Type.FILE, mockedFileAttributes);
-		TestSettings settings = new TestSettings();
 
 		TestMeasureComputerContext context = new TestMeasureComputerContext(component, settings, def);
 		underTest.compute(context);
@@ -139,12 +136,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
-	@Ignore("pending sonarqube check unique outputs")  
 	@Test
 	public final void testcompute_View_noExecution() {
 
-		TestSettings settings = new TestSettings();
-		TestComponent mockedComponent = mock(TestComponent.class);
 		when(mockedComponent.getType()).thenReturn(Type.VIEW);
 
 		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
@@ -157,12 +151,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
-	@Ignore("pending sonarqube check unique outputs")  
 	@Test
 	public final void testcompute_Subview_noExecution() {
 
-		TestSettings settings = new TestSettings();
-		TestComponent mockedComponent = mock(TestComponent.class);
 		when(mockedComponent.getType()).thenReturn(Type.SUBVIEW);
 
 		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
@@ -175,12 +166,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
-	@Ignore("pending sonarqube check unique outputs")  
 	@Test
 	public final void testcompute_Directory_noExecution() {
 
-		TestSettings settings = new TestSettings();
-		TestComponent mockedComponent = mock(TestComponent.class);
 		when(mockedComponent.getType()).thenReturn(Type.DIRECTORY);
 
 		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
@@ -193,12 +181,9 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
-	@Ignore("pending sonarqube check unique outputs")  
 	@Test
 	public final void testcompute_Module_noExecution() {
 
-		TestSettings settings = new TestSettings();
-		TestComponent mockedComponent = mock(TestComponent.class);
 		when(mockedComponent.getType()).thenReturn(Type.MODULE);
 
 		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
@@ -206,65 +191,56 @@ public class GeneralComputerTests {
 
 		Assert.assertFalse(underTest.isProject());
 	}
-
+	/*
+	 * Tests for behaviour with mocks
+	 */
 	/**
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
-	@Ignore("pending sonarqube check unique outputs")  
 	@Test
-	public final void testcompute_Project_Execution() {
+	public final void testcompute_Project_TotalBehaviour() {
 
-		TestComponent mockedComponent = mock(TestComponent.class);
-		TestSettings settings = new TestSettings();
-
-		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
-
+		//mocks creation
+		TestMeasureComputerContext contextMocked = mock(TestMeasureComputerContext.class);
+		Measure measureMocked = mock(Measure.class);
+		
+		//mocks setup
 		when(mockedComponent.getType()).thenReturn(Type.PROJECT);
+		when(contextMocked.getComponent()).thenReturn(mockedComponent);
+		when(contextMocked.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(SedcatMetricsKeys.MUTANTS_KEY)).thenReturn(measureMocked);
+		when(measureMocked.getDoubleValue()).thenReturn(100.0);
+		when(measureMocked.getIntValue()).thenReturn(100);
 
-		// añadir valores a las metricas de entrada para el test:
-		context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 100.0);
-		context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 100.0);
-		context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 100);
-		context.addMeasure(SedcatMetricsKeys.CODE_LINES_KEY, 100);
-		context.addMeasure(SedcatMetricsKeys.MUTANTS_KEY, 100.0);
-
-		underTest.compute(context);
+		//execute 
+		underTest.compute(contextMocked);
 
 		Assert.assertTrue(underTest.isProject());
 
-		// Comprobamos la integridad de las metricas de entrada
-		Assert.assertEquals(100.0, context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(), 0.00);
-		Assert.assertEquals(100.0, context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
-				0.00);
-		Assert.assertEquals(100, context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(), 0.00);
-		Assert.assertEquals(100, context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(), 0.00);
-		Assert.assertEquals(100.0, context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(), 0.00);
+		//verify methods executions
+		verify(mockedComponent, times(1)).getType();
+		verify(contextMocked, times(1)).getComponent();
+		
+		verify(measureMocked, times(6)).getDoubleValue();
+		verify(measureMocked, times(4)).getIntValue();
 
-		// Comprobamos metricas de salida
-		Assert.assertEquals(73.55144775847887,
-				context.getMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY).getDoubleValue(), 0.00);
-		Assert.assertEquals("Improve the following parameters in order: Number Of Tests",
-				context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue());
-
+		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, "Improve the following parameters in order: Number Of Tests");
+		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, 73.55144775847887);
 	}
-
-	/*
-	 * Tests for behaviour with mocks
-	 */
-
 	/**
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 * 
 	 * @throws Exception
 	 */
-	@Ignore("pending sonarqube check unique outputs")  
+
 	@Test
 	public final void testcompute_Project_Behaviour() throws Exception {
 
-		TestComponent mockedComponent = mock(TestComponent.class);
-		TestSettings settings = new TestSettings();
 		when(mockedComponent.getType()).thenReturn(Type.PROJECT);
 
 		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
