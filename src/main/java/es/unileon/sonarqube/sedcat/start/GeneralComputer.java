@@ -1,6 +1,3 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.start;
 
 import org.slf4j.Logger;
@@ -31,7 +28,7 @@ public class GeneralComputer implements MeasureComputer {
 	}
 
 	/**
-	 * This compute only executes experts systems at project level
+	 * This compute method only executes experts systems at project level
 	 */
 	public void compute(MeasureComputerContext context) {
 
@@ -41,6 +38,7 @@ public class GeneralComputer implements MeasureComputer {
 			isProject = false;
 		} else {
 
+			LOG.info("Ejecutando sistemas expertos");
 			// Ejecutar sistemas expertos
 
 			ExpertSystemQuality expertSystemQuality = new ExpertSystemQuality(context);
@@ -58,18 +56,18 @@ public class GeneralComputer implements MeasureComputer {
 
 				// Input metrics can be empty, for instance if only issues will
 				// be read
-				.setInputMetrics(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY,
-						SedcatMetricsKeys.NUMBERTESTS_KEY, SedcatMetricsKeys.CODE_LINES_KEY,
-						SedcatMetricsKeys.MUTANTS_KEY)
+				.setInputMetrics(
+						SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY,
+						SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY,
+						SedcatMetricsKeys.NUMBERTESTS_KEY,
+						SedcatMetricsKeys.CODE_LINES_KEY,
+						SedcatMetricsKeys.MUTANTS_KEY,
+						SedcatMetricsKeys.COMPLEXITY_FUNCTION_KEY
+						
+						)
 
 				// Output metrics must contains at least one metric
-				.setOutputMetrics(SedcatMetricsKeys.QUALITY_MEASURE_KEY, SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY
-						// for testing purpose
-//						SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY,
-//						SedcatMetricsKeys.NUMBERTESTS_KEY, SedcatMetricsKeys.CODE_LINES_KEY,
-//						SedcatMetricsKeys.MUTANTS_KEY
-
-		)
+				.setOutputMetrics(SedcatMetricsKeys.QUALITY_MEASURE_KEY, SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY)
 
 				.build();
 

@@ -88,6 +88,7 @@ public class MutationsCoverageSensor implements Sensor {
      * @param project       the project being analysed
      * @param sensorContext the sensor context
      */
+    @Override
     public void analyse(Project project, SensorContext sensorContext) {
 
     	//1 - Encontrar el reporte de mutantes
@@ -133,6 +134,7 @@ public class MutationsCoverageSensor implements Sensor {
      *
      * @return the name of the sensor
      */
+    @Override
     public String toString() {
         return "MutationsSensor";
     }

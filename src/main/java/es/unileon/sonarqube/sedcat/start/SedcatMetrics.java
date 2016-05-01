@@ -5,26 +5,22 @@ import java.util.Arrays;
 import java.util.List;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Metric;
-import org.sonar.api.measures.Metric.Builder;
-import org.sonar.api.measures.Metric.ValueType;
 import org.sonar.api.measures.Metrics;
-
-
 
 /**
  * Metrics for the sonar SEDCAT plugin.
  * 
  * @author alan.sastre
+ * @version 1.0
  */
 public class SedcatMetrics implements Metrics {
 
-//	private static final List<Metric> METRICS = new ArrayList<Metric>();
-//	private static final List<Metric> QUANTITATIVE_METRICS = new ArrayList<Metric>();
-//	public static final String DOMAIN_SEDCAT = "Quality Testing Measuring";
-	//METRICAS ENTRADA
+/*
+ * metricas de entrada utilizadas
+ */
 	//Metrica EXITO
 	public static final Metric UNIT_TESTS_SUCCESS = new Metric.Builder(SUCCESS_UNIT_TESTS_KEY, "Exito", Metric.ValueType.PERCENT)
-		    .setDescription("Exito en porcentaje de los test")
+		    .setDescription("Porcentaje de éxito de los test unitarios")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
@@ -32,16 +28,15 @@ public class SedcatMetrics implements Metrics {
 	
 	//Metrica COBERTURA
 	public static final Metric UNIT_TESTS_COVERAGE = new Metric.Builder(COVERAGE_UNIT_TESTS_KEY, "Cobertura", Metric.ValueType.PERCENT)
-		    .setDescription("Cobertura en porcentaje de los test")
+		    .setDescription("Porcentaje de cobertura o código alcanzado por los test unitarios")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
-	//Metricas para  MUTANTES
-		//cobertura mutantes
+	//Metrica para  MUTANTES
 	public static final Metric MUTANTS = new Metric.Builder(MUTANTS_KEY, "Cobertura Mutantes", Metric.ValueType.PERCENT)
-		    .setDescription("Mutantes en porcentaje de los test")
+		    .setDescription("Porcentaje de cobertura por mutantes reportada por la herramienta Pitest")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
@@ -63,23 +58,32 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
+	//Metrica COMPLEJIDAD / MÉTODO
+	public static final Metric COMPLEXITY_FUNCTIONS = new Metric.Builder(COMPLEXITY_FUNCTION_KEY, "Complejidad media por funcion", Metric.ValueType.FLOAT)
+		    .setDescription("Complejidad media por función")
+		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setQualitative(false)
+		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .create();
 	
-	//METRICAS SALIDA
+	
+/*
+ * metricas de salida generadas
+ */
 		//MEDIDA CALIDAD
-	public static final Metric QUALITY_MEASURE = new Metric.Builder(QUALITY_MEASURE_KEY, "Medida Calidad", Metric.ValueType.PERCENT)
-		    .setDescription("Métrica de salida: calidad para las pruebas de testing")
+	public static final Metric QUALITY_MEASURE = new Metric.Builder(QUALITY_MEASURE_KEY, "Calidad de las pruebas unitarias", Metric.ValueType.PERCENT)
+		    .setDescription("Calidad de las pruebas unitarias")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
-		//ACCIONES
+		//ACCIONES RECOMENDADAS
 	public static final Metric<String> ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Acciones para mejora", Metric.ValueType.STRING)
-		    .setDescription("Métrica de salida: Acciones a realizar para mejorar la metrica de calidad")
+		    .setDescription("Acciones a realizar para mejorar la calidad de las pruebas unitarias")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
-	
 	
 	
 	
@@ -130,6 +134,8 @@ public class SedcatMetrics implements Metrics {
 				MUTANTS,
 				NUMBER_TESTS,
 				CODE_LINES,
+				COMPLEXITY_FUNCTIONS,
+				
 				QUALITY_MEASURE,
 				ACTIONS_TO_PERFORM
 				
@@ -138,47 +144,4 @@ public class SedcatMetrics implements Metrics {
 
 	  }
 	
-//	private static Metric buildMetric(String key, String name, String description, ValueType valueType, Integer direction, Boolean qualitative, String domain) {
-//		return buildMetric(instanceBuilder(key, name, description, valueType, direction, qualitative, domain), qualitative);
-//	}
-//	
-//	private static Metric buildMetric(String key, String name, String description, ValueType valueType, Integer direction, Boolean qualitative, String domain, Double best, Double worst) {
-//		Builder builder = instanceBuilder(key, name, description, valueType, direction, qualitative, domain);
-//		builder.setBestValue(best);
-//		builder.setWorstValue(worst);
-//		return buildMetric(builder, qualitative);
-//	}
-//	
-//	private static Metric buildMetric(Builder builder, boolean qualitative) {
-//		Metric metric = builder.create();
-//		METRICS.add(metric);
-//		if (!qualitative) {
-//			QUANTITATIVE_METRICS.add(metric);
-//		}
-//		return metric;
-//	}
-	
-//	private static Builder instanceBuilder(String key, String name, String description, ValueType valueType, Integer direction, Boolean quailitative, String domain) {
-//		Builder builder = new Builder(key, name, valueType);
-//		builder.setDescription(description);
-//		builder.setDirection(direction);
-//		builder.setQualitative(quailitative);
-//		builder.setDomain(domain);
-//		return builder;
-//	}
-//
-////	/**
-////	 * @see Metrics#getMetrics()
-////	 */
-////	public List<Metric> getMetrics() {
-////		return METRICS;
-////	}
-//
-//	/**
-//	 * Returns the sedcat quantitative metrics list.
-//	 * @return {@link List<Metric>} The sedcat quantitative metrics list.
-//	 */
-//	public static List<Metric> getQuantitativeMetrics() {
-//		return QUANTITATIVE_METRICS;
-//	}
 }

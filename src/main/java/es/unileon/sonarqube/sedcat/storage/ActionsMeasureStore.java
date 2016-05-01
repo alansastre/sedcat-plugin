@@ -1,6 +1,3 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.storage;
 
 import java.io.FileInputStream;
