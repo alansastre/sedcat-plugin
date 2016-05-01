@@ -1,10 +1,6 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.start;
 
 import static org.junit.Assert.*;
-
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,6 +18,7 @@ public class SedcatMetricsTests {
 
 	
 	private SedcatMetrics underTest; 
+	
 	/**
 	 * @throws java.lang.Exception
 	 */

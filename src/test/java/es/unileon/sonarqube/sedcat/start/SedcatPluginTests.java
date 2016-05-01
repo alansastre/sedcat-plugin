@@ -1,6 +1,3 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.start;
 
 import static org.junit.Assert.*;

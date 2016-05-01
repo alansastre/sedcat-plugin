@@ -1,24 +1,13 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.scanners;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.BatchSide;
-import org.sonar.api.config.Settings;
-import org.sonar.api.internal.apachecommons.io.filefilter.FileFilterUtils;
-
-import es.unileon.sonarqube.sedcat.start.SedcatConstants;
-
 
 /**
  *	@author alan.sastre

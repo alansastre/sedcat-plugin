@@ -260,6 +260,7 @@ public class GeneralComputerTests {
 
 		Mockito.verify(expertSystemQuality, times(1)).xfuzzyProcess();
 		Mockito.verify(expertSystemActions, times(1)).xfuzzyProcess();
+		
 
 	}
 }

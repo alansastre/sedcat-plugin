@@ -1,9 +1,4 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.xfuzzy;
-
-import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -14,27 +9,26 @@ import org.junit.Assert;
 
 import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
 
-
 /**
- *	@author alan.sastre
- *	@version 1.0
+ * @author alan.sastre
+ * @version 1.0
  */
 public class QualityTests {
 
-	//max value for success, coverage, mutations
+	// max value for success, coverage, mutations
 	private static final double PERCENTAGE_MAX = 100;
-	
-	//numbertest
+
+	// numbertest
 	private static final int NUMBERTEST_MAX = 5000;
-	
-	//number code lines
+
+	// number code lines
 	private static final int CODELINES_MAX = 100000;
 
-	//number of input metrics 
+	// number of input metrics
 	private static final int NUMBER_METRICS = 5;
-	
+
 	private Calidad_1 underTest;
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -54,9 +48,9 @@ public class QualityTests {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		
+
 		underTest = new Calidad_1();
-		
+
 	}
 
 	/**
@@ -66,30 +60,31 @@ public class QualityTests {
 	public void tearDown() throws Exception {
 	}
 
-	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}.
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}
+	 * .
 	 */
 	@Test
 	public final void testCrispInferenceDoubleArray() {
 
 		double[] inputMetricsValues = new double[NUMBER_METRICS];
-		
+
 		double result = 0;
-		
-		for (int success = 0; success <= PERCENTAGE_MAX; success+=25) {
+
+		for (int success = 0; success <= PERCENTAGE_MAX; success += 25) {
 			inputMetricsValues[0] = success;
-			
-			for (int coverage = 0; coverage <= PERCENTAGE_MAX; coverage+=25) {
+
+			for (int coverage = 0; coverage <= PERCENTAGE_MAX; coverage += 25) {
 				inputMetricsValues[1] = coverage;
-				
-				for (int mutations = 0; mutations <= PERCENTAGE_MAX; mutations+=25) {
+
+				for (int mutations = 0; mutations <= PERCENTAGE_MAX; mutations += 25) {
 					inputMetricsValues[2] = mutations;
-					
-					for (int numbertests = 0; numbertests <= NUMBERTEST_MAX; numbertests+=200) {
+
+					for (int numbertests = 0; numbertests <= NUMBERTEST_MAX; numbertests += 200) {
 						inputMetricsValues[3] = numbertests;
-						
-						for (int codelines = 0; codelines <= CODELINES_MAX; codelines+=6000) {
+
+						for (int codelines = 0; codelines <= CODELINES_MAX; codelines += 6000) {
 							inputMetricsValues[4] = codelines;
 
 							result = underTest.crispInference(inputMetricsValues)[0];
@@ -109,7 +104,6 @@ public class QualityTests {
 									&& codelines > 25000 && success <= 75 && coverage <= 75 && mutations <= 75
 									&& numbertests <= 4000 && codelines <= 75000) {
 
-								
 								Assert.assertTrue(result > 25 && result <= 75);
 
 							} else if (success > 75 && coverage > 75 && mutations > 75 && numbertests > 4000
@@ -129,75 +123,53 @@ public class QualityTests {
 			}
 		}
 
-		
 	}
-	
-	
+
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}.
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}
+	 * .
 	 */
 	@Test
 	public final void testCrispInferenceDoubleArrayOnLimits_Under() {
-		
-		double[] inputMetricsValues = new double[]{
-				-1,
-				-1,
-				-1,
-				-1,
-				-1,
-				
+
+		double[] inputMetricsValues = new double[] { -1, -1, -1, -1, -1,
+
 		};
-		
+
 		Assert.assertEquals(0.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 
-		
-		 inputMetricsValues = new double[]{
-					-11111,
-					-11111,
-					-11111,
-					-111111,
-					-111111,
-			};
-		 
+		inputMetricsValues = new double[] { -11111, -11111, -11111, -111111, -111111, };
+
 		/*
-		 * outside the boundary of the universe of variables xfuzzy the 
-		 * result is the default value, in this case 50
+		 * outside the boundary of the universe of variables xfuzzy the result
+		 * is the default value, in this case 50
 		 */
-		 Assert.assertEquals(50.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
+		Assert.assertEquals(50.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 	}
 
-	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}.
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}
+	 * .
 	 */
 	@Test
 	public final void testCrispInferenceDoubleArrayOnLimits_Above() {
-		
-		double[] inputMetricsValues = new double[]{
-				101,
-				101,
-				101,
-				5001,
-				100001,
-				
+
+		double[] inputMetricsValues = new double[] { 101, 101, 101, 5001, 100001,
+
 		};
 
 		Assert.assertEquals(50.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 
-		
-		 inputMetricsValues = new double[]{
-					1000,
-					1000,
-					1000,
-					7000,
-					1000000
-			};
-		 
+		inputMetricsValues = new double[] { 1000, 1000, 1000, 7000, 1000000 };
+
 		/*
-		 * outside the boundary of the universe of variables xfuzzy the 
-		 * result is the default value, in this case 50 (the middle of max value of output)
+		 * outside the boundary of the universe of variables xfuzzy the result
+		 * is the default value, in this case 50 (the middle of max value of
+		 * output)
 		 */
-		 Assert.assertEquals(50.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
+		Assert.assertEquals(50.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 	}
-	
+
 }

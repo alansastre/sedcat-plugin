@@ -1,12 +1,7 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.storage;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -28,14 +23,13 @@ import es.unileon.sonarqube.sedcat.start.GeneralComputer;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 
 /**
- *	@author alan.sastre
- *	@version 1.0
+ * @author alan.sastre
+ * @version 1.0
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ QualityMeasureStore.class })
 public class QualityMeasureStoreTests {
 
-	
 	private QualityMeasureStore underTest;
 
 	// data
@@ -45,10 +39,10 @@ public class QualityMeasureStoreTests {
 	private TestSettings settings;
 	private GeneralComputer computerForData;
 	private TestMeasureComputerContext context;
-	
+
 	@Rule
 	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -68,7 +62,7 @@ public class QualityMeasureStoreTests {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		
+
 		mockedComponent = mock(TestComponent.class);
 		settings = new TestSettings();
 		defContext = new TestMeasureComputerDefinitionContext();
@@ -77,7 +71,7 @@ public class QualityMeasureStoreTests {
 		context = new TestMeasureComputerContext(mockedComponent, settings, def);
 
 		underTest = new QualityMeasureStore();
-		
+
 	}
 
 	/**
@@ -99,7 +93,7 @@ public class QualityMeasureStoreTests {
 		underTest.saveMeasure(result, context);
 
 		double quality = context.getMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY).getDoubleValue();
-		Assert.assertEquals(23.56 ,quality, 0.0);
+		Assert.assertEquals(23.56, quality, 0.0);
 
 	}
 
@@ -121,8 +115,7 @@ public class QualityMeasureStoreTests {
 		Mockito.verify(spy, times(1)).saveMeasure(result, context);
 
 	}
-	
-	
+
 	/**
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.storage.AbstractOutputMeasureStore#checkOutputDataSet(double[])}
@@ -187,6 +180,5 @@ public class QualityMeasureStoreTests {
 		underTest.checkOutputDataSet(new double[] {});
 
 	}
-
 
 }

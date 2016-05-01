@@ -1,26 +1,24 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.scanners;
 
-import static org.junit.Assert.*;
 import java.io.File;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- *  Unit testing for es.unileon.sonarqube.sedcat.scanners.MutationsReportParser#parseReport
- *	@author alan.sastre
- *	@version 1.0
+ * Unit testing for
+ * es.unileon.sonarqube.sedcat.scanners.MutationsReportParser#parseReport
+ * 
+ * @author alan.sastre
+ * @version 1.0
  */
 public class MutationsReportParserTests {
 
-	private MutationsReportParser underTest; 
+	private MutationsReportParser underTest;
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -40,7 +38,7 @@ public class MutationsReportParserTests {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		
+
 		underTest = new MutationsReportParser();
 	}
 
@@ -51,105 +49,112 @@ public class MutationsReportParserTests {
 	public void tearDown() throws Exception {
 	}
 
-	
 	@Test
-	public final void parseReportNull() {
-		
+	public final void testparseReportNull() {
+
 		Assert.assertNull(underTest.parseReport(null));
 	}
-	
 
 	@Test
-	public final void parseReportNotExists() {
+	public final void testparseReportNotExists() {
 
-		File report = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports3/20160417536/index.html");
+		File report = new File(
+				"/root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources/reports3/201604111543/index.html");
 		Assert.assertNull(underTest.parseReport(report));
 	}
 
 	@Test
-	public final void parseReportDirectory() {
+	public final void testparseReportDirectory() {
 
-		File report = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports3/20160417536");
+		File report = new File(
+				"/root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources/reports3/201604111543");
 		Assert.assertNull(underTest.parseReport(report));
-	}
-	
-
-	@Test
-	public final void parseReportEmpty() {
-
-		
-		File report = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports2/20160417536/index.html");
-		Assert.assertNull(underTest.parseReport(report));
-
 	}
 
 	@Test
-	public final void parseReportWithoutTdElements() {
-	/*
-	 * /root/workspace/sonar-sedcat-plugin/target/pit-reports4/index.html
-	 * is a report with plain text without expected td elements 
-	 */
-		
-		File report = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports4/index.html");
-		Assert.assertNull(underTest.parseReport(report));
+	public final void testparseReportEmpty() {
 
-	}
-	
-
-	@Test
-	public final void parseReportWithNotEnoughTdElements() {
-
-		
-		File report = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports4/index2.html");
+		File report = new File(
+				"/root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources/reports2/201604111543/index.html");
 		Assert.assertNull(underTest.parseReport(report));
 
 	}
 
-	
 	@Test
-	public final void parseReportWithoutCoverageLedgend() {
+	public final void testparseReportWithoutTdElements() {
+		/*
+		 * /root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources
+		 * /reports4/201604111543/index.html is a report with plain text without
+		 * td elements
+		 */
+
+		File report = new File(
+				"/root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources/reports4/201604111543/index.html");
+		Assert.assertNull(underTest.parseReport(report));
+
+	}
+
+	@Test
+	public final void testparseReportWithNotEnoughTdElements() {
+		/*
+		 * /root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources
+		 * /reports4/201604111543/index2.html is a report with plain text
+		 * without EXPECTED td elements
+		 */
+
+		File report = new File(
+				"/root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources/reports4/201604111543/index2.html");
+		Assert.assertNull(underTest.parseReport(report));
+
+	}
+
+	@Test
+	public final void testparseReportWithoutCoverageLedgend() {
 
 		/*
-		 * /root/workspace/sonar-sedcat-plugin/target/pit-reports4/index3.html
-		 * is a real report but not has the wanted values
+		 * /root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources
+		 * /reports4/201604111543/index4.html is a report with plain text
+		 * without coverage ledgend elements
 		 */
-		
-		File report = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports4/index3.html");
+
+		File report = new File(
+				"/root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources/reports4/201604111543/index4.html");
 		Assert.assertNull(underTest.parseReport(report));
 
 	}
-	
+
 	@Test
-	public final void parseReportWithCoverageLedgendButNotText() {
+	public final void testparseReportWithCoverageLedgendButNotText() {
 
 		/*
-		 * /root/workspace/sonar-sedcat-plugin/target/pit-reports4/index3.html
-		 * is a real report but not has the wanted values
+		 * /root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources
+		 * /reports4/201604111543/index3.html is a report with plain text
+		 * without text in coverage ledgend elements
 		 */
-		
-		File report = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports4/index4.html");
+
+		File report = new File(
+				"/root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources/reports4/201604111543/index3.html");
 		Assert.assertNull(underTest.parseReport(report));
 
 	}
-	
-	
-	@Ignore("")
-	@Test
-	public final void parseReportOk() {
 
-		/* OPTIMAL CASE
-		 * /root/workspace/sonar-sedcat-plugin/target/pit-reports/20160417536/index.html
-		 * is a real report
+	@Test
+	public final void testparseReportOk() {
+
+		/*
+		 * OPTIMAL CASE
+		 * /root/workspace/sonar-sedcat-plugin/target/pit-reports/20160417536/
+		 * index.html is a real report
 		 */
-		
-		File report = new File("/root/workspace/sonar-sedcat-plugin/target/pit-reports/20160417536/index.html");
+
+		File report = new File(
+				"/root/workspace/sonar-sedcat-plugin/src/main/resources/test-resources/reports1/201604111543/index.html");
 		double[] result = underTest.parseReport(report);
-		
+
 		Assert.assertNotNull(result);
 		Assert.assertEquals(134.0, result[0], 0.0);
 		Assert.assertEquals(469.0, result[1], 0.0);
 
 	}
-	
 
 }
