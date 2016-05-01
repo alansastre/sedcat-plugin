@@ -44,6 +44,7 @@ public class SedcatMetricsTests {
 				SedcatMetricsKeys.CODE_LINES_KEY,
 				SedcatMetricsKeys.QUALITY_MEASURE_KEY,
 				SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
+				SedcatMetricsKeys.COMPLEXITY_FUNCTION_KEY
 		};
 		
 		boolean checker = false;

@@ -59,6 +59,7 @@ public class SedcatPluginTests {
 					"NumberTestsComputer",
 					"SuccessUnitTestsComputer",
 					"CoverageUnitTestsComputer",
+					"ComplexityFunctionsComputer",
 					"GeneralComputer",
 					"ExampleSedcatHtml",
 					"SedcatDashboardWidget",

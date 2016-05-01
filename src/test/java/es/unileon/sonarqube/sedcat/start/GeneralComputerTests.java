@@ -94,14 +94,15 @@ public class GeneralComputerTests {
 
 		// Probar metricas de entrada
 		Set<String> inputMetrics = def.getInputMetrics();
-		Assert.assertEquals(5, inputMetrics.size());
+		Assert.assertEquals(6, inputMetrics.size());
 
 		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY));
 		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY));
 		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.NUMBERTESTS_KEY));
 		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.CODE_LINES_KEY));
 		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.MUTANTS_KEY));
-
+		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.COMPLEXITY_FUNCTION_KEY));
+		
 		// Probar metricas de salida
 		Set<String> ouputMetrics = def.getOutputMetrics();
 		Assert.assertEquals(2, ouputMetrics.size());
