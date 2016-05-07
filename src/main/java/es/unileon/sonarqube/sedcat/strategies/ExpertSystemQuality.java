@@ -6,6 +6,8 @@ package es.unileon.sonarqube.sedcat.strategies;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
+import org.sonar.api.measures.CoreMetrics;
+
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
 import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
@@ -38,29 +40,27 @@ public class ExpertSystemQuality extends AbstractInferenceProcess {
 	@Override
 	double[] extractValues() {
 
-		Measure[] qualityInputMetrics = new Measure[] {
+		Measure[] actionsInputMetrics = new Measure[] {
 
-				this.context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY),
-				this.context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY),
+				this.context.getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY),
+				this.context.getMeasure(CoreMetrics.COVERAGE_KEY),
 				this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY),
-				this.context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY),
-				this.context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY),
+				this.context.getMeasure(CoreMetrics.TESTS_KEY),
+				this.context.getMeasure(CoreMetrics.NCLOC_KEY),	
 
 		};
 
-		this.checkNotNullInputMetrics(qualityInputMetrics);
+		this.checkNotNullInputMetrics(actionsInputMetrics);
 
-		double[] qualityInputMetricsValues = new double[] {
-
-				this.context.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY).getDoubleValue(),
-				this.context.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY).getDoubleValue(),
+		return new double[] {
+				
+				this.context.getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY).getDoubleValue(),
+				this.context.getMeasure(CoreMetrics.COVERAGE_KEY).getDoubleValue(),
 				this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
-				this.context.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY).getIntValue(),
-				this.context.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY).getIntValue(),
-
+				this.context.getMeasure(CoreMetrics.TESTS_KEY).getIntValue(),
+				this.context.getMeasure(CoreMetrics.NCLOC_KEY).getIntValue(), 
+				
 		};
-
-		return qualityInputMetricsValues;
 	}
 
 }

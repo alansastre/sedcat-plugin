@@ -1,6 +1,3 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.scanners;
 import java.io.File;
 
@@ -8,15 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
-/*
- *XXX
- * Testing
- */
-//import org.sonar.api.batch.sensor.SensorContext;
-//import org.sonar.api.batch.sensor.SensorDescriptor;
-//import org.sonar.api.batch.sensor.Sensor;
-//----------------------------
-
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.resources.Project;
 import es.unileon.sonarqube.sedcat.start.SedcatConstants;
@@ -44,18 +32,12 @@ public class MutationsCoverageSensor implements Sensor {
 
 
 	private static final Logger LOG = LoggerFactory.getLogger(MutationsCoverageSensor.class);
-	
 	private Settings settings;
     private final FileSystem fileSystem;
     private final MutationsReportFinder mutationsFinder;
     private final MutationsReportParser mutationsParser;
     private double mutationsValueFound;
-    
-
-
-    public double getMutationsValueFound() {
-		return mutationsValueFound;
-	}
+ 
 
 	/**
      * Constructor that sets the file system object for the
@@ -71,6 +53,10 @@ public class MutationsCoverageSensor implements Sensor {
         this.mutationsParser = mutationsParser;
         this.mutationsValueFound = 0.0;
     }
+    
+    public double getMutationsValueFound() {
+		return mutationsValueFound;
+	}
 
     /**
      * Determines whether the sensor should run or not for the given project.
@@ -91,9 +77,11 @@ public class MutationsCoverageSensor implements Sensor {
     @Override
     public void analyse(Project project, SensorContext sensorContext) {
 
+    	LOG.info("MutationsCoverageSensor entrada");
+    	
     	//1 - Encontrar el reporte de mutantes
 		File projectDirectory = fileSystem.baseDir();
-	    File reportDirectory = new File(projectDirectory, settings.getString(SedcatConstants.REPORT_DIRECTORY_DEF));
+	    File reportDirectory = new File(projectDirectory, settings.getString(SedcatConstants.PITEST_REPORT_DIRECTORY_KEY));
 	    LOG.info("ruta absoluta del directorio donde esta el reporte: "+reportDirectory);
 	    File htmlReport = this.mutationsFinder.findReport(reportDirectory);
 	    
@@ -106,9 +94,9 @@ public class MutationsCoverageSensor implements Sensor {
 	    } else {
 	    	
 	    	LOG.info("HTML REPORTE ENCONTRADO: "+htmlReport);
-	    	double[] mutationsCoverage = null;
-			mutationsCoverage = this.mutationsParser.parseReport(htmlReport);
-			
+	    	
+	    	double[] mutationsCoverage = this.mutationsParser.parseReport(htmlReport);
+	    	
 			if (mutationsCoverage != null) {
 				
 				LOG.info("VALOR MUTANTES EXTRAIDO: "+mutationsCoverage[0]+" / "+mutationsCoverage[1]);
@@ -136,7 +124,7 @@ public class MutationsCoverageSensor implements Sensor {
      */
     @Override
     public String toString() {
-        return "MutationsSensor";
+        return "MutationsCoverageSensor";
     }
 
 }

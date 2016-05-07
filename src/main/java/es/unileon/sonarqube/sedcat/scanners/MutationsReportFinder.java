@@ -41,7 +41,7 @@ public class MutationsReportFinder{
 		LOG.info("total report directories: "+directoriesPaths.length);
 		
 		for (int i = 0; i < directoriesPaths.length; i++) {
-			LOG.info("directory : "+directoriesPaths[i].toString());
+			LOG.info("directory : "+directoriesPaths[i]);
 		}
 		
 		ArrayList<File> directories  = new ArrayList<File>();

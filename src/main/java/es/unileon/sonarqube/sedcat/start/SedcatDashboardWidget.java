@@ -58,8 +58,7 @@ public class SedcatDashboardWidget extends AbstractRubyTemplate implements RubyR
 
 
         // uncomment next line to enable change reloading during development
-        String templatePath = TEMPLATE_PATH + TEMPLATE_PATH_FILE;
-        return templatePath;
+        return TEMPLATE_PATH + TEMPLATE_PATH_FILE;
 
 	}
 

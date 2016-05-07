@@ -27,25 +27,26 @@
 		    		<p class="widget-measure widget-measure-main">
 						<span class="widget-label">Input Metrics used</span>
 					</p>
-					<br>
+					<br>					
 					<tr>
-					  <td>Unit Test Success: <%= format_measure('success_unit_tests', :url => url_for_drilldown('')) %></td>
+					  <td>Unit Test Success: <%= format_measure('test_success_density', :url => url_for_drilldown('')) %></td>
 					</tr>
 					<tr>
-					  <td>Unit Test Coverage: <%= format_measure('coverage_unit_tests', :url => url_for_drilldown('')) %></td>
+					  <td>Unit Test Coverage: <%= format_measure('coverage', :url => url_for_drilldown('')) %></td>
 					</tr>
 					<tr>
 					  <td>Mutations Coverage: <%= format_measure('mutations_coverage_tests', :url => url_for_drilldown('')) %></td>
 					</tr>
 					<tr>
-					  <td>Number Of Tests: <%= format_measure('number_tests', :url => url_for_drilldown('')) %></td>
+					  <td>Number Of Tests: <%= format_measure('tests', :url => url_for_drilldown('')) %></td>
 					</tr>
 					<tr>
-					  <td>Lines Of Code: <%= format_measure('number_code_lines', :url => url_for_drilldown('')) %></td>
+					  <td>Lines Of Code: <%= format_measure('ncloc', :url => url_for_drilldown('')) %></td>
 					</tr>
 					<tr>
-					  <td>Complexity average in functions: <%= format_measure('complexity_average_functions', :url => url_for_drilldown('')) %></td>
+					  <td>Complexity Average Class: <%= format_measure('class_complexity', :url => url_for_drilldown('')) %></td>
 					</tr>
+					
 				</table>
 				<br>
 		    </div>

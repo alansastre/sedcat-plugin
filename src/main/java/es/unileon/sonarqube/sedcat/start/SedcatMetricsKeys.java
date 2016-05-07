@@ -13,7 +13,7 @@ public class SedcatMetricsKeys {
 
 
 	private SedcatMetricsKeys() {
-		// Hide utility class constructor
+//		throw new AssertionError("Can not instantiate constants class");
 	}
 
 	//variables entrada
@@ -22,7 +22,9 @@ public class SedcatMetricsKeys {
 	public static final String MUTANTS_KEY = "mutations_coverage_tests";
 	public static final String NUMBERTESTS_KEY = "number_tests";
 	public static final String CODE_LINES_KEY = "number_code_lines";
-	public static final String COMPLEXITY_FUNCTION_KEY = "complexity_average_functions";
+	
+	public static final String COMPLEXITY_CLASS_KEY = "complexity_sedcat_average_class";
+	public static final String COMPLEXITY_THRESOLD_KEY = "complexity_sedcat_thresold";
 	
 	//variables salida
 	public static final String QUALITY_MEASURE_KEY = "quality_measure";

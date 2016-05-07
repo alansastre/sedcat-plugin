@@ -18,21 +18,6 @@ public class SedcatMetrics implements Metrics {
 /*
  * metricas de entrada utilizadas
  */
-	//Metrica EXITO
-	public static final Metric UNIT_TESTS_SUCCESS = new Metric.Builder(SUCCESS_UNIT_TESTS_KEY, "Exito", Metric.ValueType.PERCENT)
-		    .setDescription("Porcentaje de éxito de los test unitarios")
-		    .setDirection(Metric.DIRECTION_BETTER)
-		    .setQualitative(false)
-		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
-		    .create();
-	
-	//Metrica COBERTURA
-	public static final Metric UNIT_TESTS_COVERAGE = new Metric.Builder(COVERAGE_UNIT_TESTS_KEY, "Cobertura", Metric.ValueType.PERCENT)
-		    .setDescription("Porcentaje de cobertura o código alcanzado por los test unitarios")
-		    .setDirection(Metric.DIRECTION_BETTER)
-		    .setQualitative(false)
-		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
-		    .create();
 	
 	//Metrica para  MUTANTES
 	public static final Metric MUTANTS = new Metric.Builder(MUTANTS_KEY, "Cobertura Mutantes", Metric.ValueType.PERCENT)
@@ -42,29 +27,22 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
-	//Metrica NUMEROTESTS
-	public static final Metric NUMBER_TESTS = new Metric.Builder(NUMBERTESTS_KEY, "Numero de tests", Metric.ValueType.INT)
-		    .setDescription("Numero total de tests unitarios en el proyecto")
+	//Metrica COMPLEJIDAD / CLASE
+	public static final Metric COMPLEXITY_AVERAGE_CLASS = new Metric.Builder(COMPLEXITY_CLASS_KEY, "Complejidad media por clase", Metric.ValueType.FLOAT)
+		    .setDescription("Complejidad media por clase")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
-	//Metrica CODELINES
-	public static final Metric CODE_LINES = new Metric.Builder(CODE_LINES_KEY, "Numero de lineas de codigo", Metric.ValueType.INT)
-		    .setDescription("Numero total de lineas de codigo en el proyecto (sin contar los test)")
+	//Metrica COMPLEJIDAD UMBRAL
+	public static final Metric COMPLEXITY_THRESOLD = new Metric.Builder(COMPLEXITY_THRESOLD_KEY, "Umbral complejidad", Metric.ValueType.FLOAT)
+		    .setDescription("Umbral complejidad")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
 		    .create();
 	
-	//Metrica COMPLEJIDAD / MÉTODO
-	public static final Metric COMPLEXITY_FUNCTIONS = new Metric.Builder(COMPLEXITY_FUNCTION_KEY, "Complejidad media por funcion", Metric.ValueType.FLOAT)
-		    .setDescription("Complejidad media por función")
-		    .setDirection(Metric.DIRECTION_BETTER)
-		    .setQualitative(false)
-		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
-		    .create();
 	
 	
 /*
@@ -128,13 +106,11 @@ public class SedcatMetrics implements Metrics {
 	  public List<Metric> getMetrics() {
 		  
 		return Arrays.<Metric>asList(
+
 				
-				UNIT_TESTS_SUCCESS,
-				UNIT_TESTS_COVERAGE,
 				MUTANTS,
-				NUMBER_TESTS,
-				CODE_LINES,
-				COMPLEXITY_FUNCTIONS,
+				COMPLEXITY_AVERAGE_CLASS,
+				COMPLEXITY_THRESOLD,
 				
 				QUALITY_MEASURE,
 				ACTIONS_TO_PERFORM

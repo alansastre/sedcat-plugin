@@ -9,26 +9,25 @@ public class SedcatConstants {
 
 
   private SedcatConstants() {
-
+//	  throw new AssertionError("Can not instantiate constants class");
   }
-
-  //setting constants
-  public static final String SUCCESS_KEY = "success";
-  public static final String COVERAGE_KEY = "coverage";
-  public static final String MUTANTS_KEY = "mutations";
-  public static final String NUMBER_TESTS_KEY = "numbertests";
-  public static final String NUMBER_CODE_LINES_KEY = "numbercodelines";
-  
   /*
    * variables utilizadas para calcular la cobertura de mutantes en un proyecto
    * no se pueden utilizar en el sensor porque se reinician en cada ejecución
    */
   public static int mutationsTotal = 0;
   public static int mutationsDetected = 0;
-  //directorio reporte mutantes
-  public static final String REPORT_DIRECTORY_KEY = "sonar.pitest.reportsDirectory";
-  public static final String REPORT_DIRECTORY_DEF = "target/pit-reports";
   
+  
+//setting constants keys 
+  //directorio reporte mutantes
+  public static final String PITEST_REPORT_DIRECTORY_KEY = "sonar.sedcat.pitestReportsDirectory";
+  public static final String PITEST_REPORT_DIRECTORY_DEFAULT =  "target/pit-reports";
+ 
+  
+  //umbral complejidad
+  public static final String COMPLEXITY_THRESOLD_KEY = "sonar.sedcat.complexityThresold";
+  public static final String COMPLEXITY_THRESOLD_DEFAULT = "30";
  
 
 }

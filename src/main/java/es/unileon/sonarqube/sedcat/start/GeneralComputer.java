@@ -3,6 +3,8 @@ package es.unileon.sonarqube.sedcat.start;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.MeasureComputer;
+import org.sonar.api.measures.CoreMetrics;
+
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 
@@ -17,7 +19,7 @@ import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
  *          This interface replaces the deprecated class
  *          org.sonar.api.batch.Decorator.
  */
-// @InstantiationStrategy(InstantiationStrategy.PER_PROJECT)
+// @InstantiationStrategy(InstantiationStrategy.PER_BATCH)
 public class GeneralComputer implements MeasureComputer {
 
 	private static final Logger LOG = LoggerFactory.getLogger(GeneralComputer.class);
@@ -34,13 +36,14 @@ public class GeneralComputer implements MeasureComputer {
 
 		isProject = true;
 
-		if (!context.getComponent().getType().toString().equalsIgnoreCase("PROJECT")) {
+		if (!("PROJECT").equalsIgnoreCase(context.getComponent().getType().toString())) {
 			isProject = false;
 		} else {
-
+			
+			LOG.info("Entrada GeneralComputer");
 			LOG.info("Ejecutando sistemas expertos");
+			
 			// Ejecutar sistemas expertos
-
 			ExpertSystemQuality expertSystemQuality = new ExpertSystemQuality(context);
 			expertSystemQuality.xfuzzyProcess();
 
@@ -57,12 +60,12 @@ public class GeneralComputer implements MeasureComputer {
 				// Input metrics can be empty, for instance if only issues will
 				// be read
 				.setInputMetrics(
-						SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY,
-						SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY,
-						SedcatMetricsKeys.NUMBERTESTS_KEY,
-						SedcatMetricsKeys.CODE_LINES_KEY,
-						SedcatMetricsKeys.MUTANTS_KEY,
-						SedcatMetricsKeys.COMPLEXITY_FUNCTION_KEY
+						CoreMetrics.TEST_SUCCESS_DENSITY_KEY,
+						CoreMetrics.COVERAGE_KEY,
+						CoreMetrics.TESTS_KEY,
+						CoreMetrics.NCLOC_KEY,
+						SedcatMetricsKeys.MUTANTS_KEY
+//						CoreMetrics.CLASS_COMPLEXITY_KEY
 						
 						)
 
