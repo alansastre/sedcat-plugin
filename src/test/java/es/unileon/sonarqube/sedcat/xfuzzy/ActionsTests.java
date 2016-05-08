@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
+import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
 
 /**
  * @author alan.sastre
@@ -15,7 +15,7 @@ import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
  */
 public class ActionsTests {
 
-	private Acciones_1 underTest;
+	private Acciones underTest;
 
 	/**
 	 * @throws java.lang.Exception
@@ -37,7 +37,7 @@ public class ActionsTests {
 	@Before
 	public void setUp() throws Exception {
 
-		underTest = new Acciones_1();
+		underTest = new Acciones();
 
 	}
 

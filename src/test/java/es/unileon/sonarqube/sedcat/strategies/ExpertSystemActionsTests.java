@@ -27,7 +27,7 @@ import org.sonar.api.ce.measure.test.TestSettings;
 import es.unileon.sonarqube.sedcat.start.GeneralComputer;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
+import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
 //import es.unileon.sonarqube.sedcat.xfuzzy.actions.*;
 import org.junit.Assert;
 import org.powermock.api.mockito.*;
@@ -219,8 +219,8 @@ public class ExpertSystemActionsTests {
 		ActionsMeasureStore storerMock = mock(ActionsMeasureStore.class);
 		PowerMockito.whenNew(ActionsMeasureStore.class).withNoArguments().thenReturn(storerMock);
 
-		Acciones_1 expertSystemMock = mock(Acciones_1.class);
-		PowerMockito.whenNew(Acciones_1.class).withNoArguments().thenReturn(expertSystemMock);
+		Acciones expertSystemMock = mock(Acciones.class);
+		PowerMockito.whenNew(Acciones.class).withNoArguments().thenReturn(expertSystemMock);
 
 		PowerMockito.when(expertSystemMock.crispInference(actionsInputMetrics)).thenReturn(actionsOutputMetrics);
 

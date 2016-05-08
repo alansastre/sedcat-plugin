@@ -28,7 +28,8 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 
 		this.LOG = LoggerFactory.getLogger(ActionsMeasureStore.class);
 		this.MIN_VALUE = 0;
-		this.MAX_VALUE = 32;
+		//number of action sets
+		this.MAX_VALUE = 65;
 		this.MEASURE_KEY = SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY;
 		this.ERROR_MESSAGE = "Error, el conjunto de acciones obtenido esta fuera del rango permitido";
 

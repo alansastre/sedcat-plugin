@@ -7,7 +7,7 @@ import org.sonar.api.measures.CoreMetrics;
 
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1;
+import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
 
 /**
  * Sistema experto que obtiene las acciones a realizar buscadas
@@ -30,7 +30,7 @@ public class ExpertSystemActions extends AbstractInferenceProcess {
 		this.measureStorer = new ActionsMeasureStore();
 
 		// sistema experto concreto
-		this.expertSystem = new Acciones_1();
+		this.expertSystem = new Acciones();
 
 	}
 
@@ -44,6 +44,7 @@ public class ExpertSystemActions extends AbstractInferenceProcess {
 				this.context.getMeasure(CoreMetrics.TESTS_KEY),
 				this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY),
 				this.context.getMeasure(CoreMetrics.NCLOC_KEY),
+				this.context.getMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY),
 	
 		};
 
@@ -56,6 +57,7 @@ public class ExpertSystemActions extends AbstractInferenceProcess {
 				this.context.getMeasure(CoreMetrics.TESTS_KEY).getIntValue(),
 				this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
 				this.context.getMeasure(CoreMetrics.NCLOC_KEY).getIntValue(), 
+				this.context.getMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY).getDoubleValue(),
 
 		};
 

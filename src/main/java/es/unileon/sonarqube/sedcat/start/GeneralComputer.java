@@ -60,12 +60,13 @@ public class GeneralComputer implements MeasureComputer {
 				// Input metrics can be empty, for instance if only issues will
 				// be read
 				.setInputMetrics(
+						
 						CoreMetrics.TEST_SUCCESS_DENSITY_KEY,
 						CoreMetrics.COVERAGE_KEY,
 						CoreMetrics.TESTS_KEY,
 						CoreMetrics.NCLOC_KEY,
-						SedcatMetricsKeys.MUTANTS_KEY
-//						CoreMetrics.CLASS_COMPLEXITY_KEY
+						SedcatMetricsKeys.MUTANTS_KEY,
+						SedcatMetricsKeys.COMPLEXITY_CLASS_KEY
 						
 						)
 
