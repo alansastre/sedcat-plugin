@@ -16,6 +16,23 @@ import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
 public class ActionsTests {
 
 	private Acciones underTest;
+	double[] inputMetricsValues;
+	
+	//datos para los posibles casos
+	private double[] INPUT_METRIC_VALUES_0 = new double[] { 0, 0, 0, 0, 0, 0 };
+	private double[] INPUT_METRIC_VALUES_12 = new double[] { 100, 100, 5000, 100, 10000, 15 };
+	private double[] INPUT_METRIC_VALUES_45 = new double[] { 100, 100, 5000, 100, 10000, 35 };
+
+	private double[] INPUT_METRIC_VALUES_10 = new double[] { 100, 65, 46, 0.0, 516, 15 };
+	private double[] INPUT_METRIC_VALUES_20 = new double[] { 100, 72.7, 46, 0.0, 516, 15 };
+
+	private double[] INPUT_METRIC_VALUES_32 = new double[] { 50, 50, 3000, 100, 100000, 30 };
+	private double[] INPUT_METRIC_VALUES_65 = new double[] { 50, 50, 3000, 100, 100000, 30.6 };
+
+	private double[] INPUT_METRIC_VALUES_0_297 = new double[] { 70, 94, 600, 82, 14000, 13.8 };
+	private double[] INPUT_METRIC_VALUES_23_298 = new double[] { 71, 94, 600, 82, 14000, 13.8 };
+
+	private double[] INPUT_METRIC_VALUES_30 = new double[] { 100, 65, 5000, 100, 10000, 15 };
 
 	/**
 	 * @throws java.lang.Exception
@@ -38,6 +55,7 @@ public class ActionsTests {
 	public void setUp() throws Exception {
 
 		underTest = new Acciones();
+		
 
 	}
 
@@ -48,71 +66,95 @@ public class ActionsTests {
 	public void tearDown() throws Exception {
 	}
 
-	/**
-	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones_1#crispInference(double[])}
-	 * .
-	 */
+	
+
 	@Test
-	public final void testCrispInferenceDoubleArray() {
-
-		// OPTIMAL CASE
-		double[] inputMetricsValues = new double[] { 100, 100, 5000, 100, 10000, };
-		Assert.assertEquals(12.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
-
-		inputMetricsValues = new double[] { 0, 0, 0, 0, 0, };
-		Assert.assertEquals(0.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
-
-		inputMetricsValues = new double[] { 50, 50, 3000, 100, 100000, };
-		Assert.assertEquals(32.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
-
+	public final void testActionSet_0() {
+		
+//		sedcat.actions.set0=Unit Test Success > Unit Test Coverage > Mutations coverage > Number Of Tests
+		Assert.assertEquals(0.0, underTest.crispInference(INPUT_METRIC_VALUES_0)[0], 0.0);
+		
+	}
+	
+	
+	@Test
+	public final void testActionSet_12() {
+		
+		//OPTIMAL CASE 
+		
+		//sedcat.actions.set12=Maximum quality reached, no possible improvements
+		Assert.assertEquals(12.0, underTest.crispInference(INPUT_METRIC_VALUES_12)[0], 0.0);
+		
+	}
+	
+	@Test
+	public final void testActionSet_45() {
+		
+		//sedcat.actions.set45=Complexity
+		Assert.assertEquals(45.0, underTest.crispInference(INPUT_METRIC_VALUES_45)[0], 0.0);
+		
+	}
+	
+	@Test
+	public final void testActionSet_10() {
+		
+//		sedcat.actions.set10=Unit Test Coverage > Mutations coverage >  Number Of Tests
+		Assert.assertEquals(10.0, underTest.crispInference(INPUT_METRIC_VALUES_10)[0], 0.0);
+		
+	}
+	
+	@Test
+	public final void testActionSet_20() {
+		
+//		sedcat.actions.set20=Mutations coverage > Unit Test Coverage > Number Of Tests
+		Assert.assertEquals(20.0, underTest.crispInference(INPUT_METRIC_VALUES_20)[0], 0.0);
+		
 	}
 
-	/**
-	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}
-	 * .
-	 */
 	@Test
-	public final void testCrispInferenceDoubleArrayOnLimits_Under() {
+	public final void testActionSet_32() {
 
-		double[] inputMetricsValues = new double[] { -1, -1, -1, -1, -1,
 
-		};
-		Assert.assertEquals(0.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
+//		sedcat.actions.set32=Unit Test Success > Unit Test Coverage > Number Of Tests
+		Assert.assertEquals(32.0, underTest.crispInference(INPUT_METRIC_VALUES_32)[0], 0.0);
 
-		inputMetricsValues = new double[] { -11111, -11111, -11111, -111111, -111111, };
-
-		/*
-		 * outside the boundary of the universe of variables xfuzzy the result
-		 * is the default value, in this case 16 (the middle of max value of
-		 * output)
-		 */
-		Assert.assertEquals(16.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 	}
-
-	/**
-	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}
-	 * .
-	 */
+	
 	@Test
-	public final void testCrispInferenceDoubleArrayOnLimits_Above() {
+	public final void testActionSet_65() {
 
-		double[] inputMetricsValues = new double[] { 101, 101, 101, 5001, 100001,
 
-		};
+//		sedcat.actions.set65=Complexity > Unit Test Success > Unit Test Coverage > Number Of Tests
+		Assert.assertEquals(65.0, underTest.crispInference(INPUT_METRIC_VALUES_65)[0], 0.0);
 
-		Assert.assertEquals(16.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
-
-		inputMetricsValues = new double[] { 1000, 1000, 1000, 7000, 1000000 };
-
-		/*
-		 * outside the boundary of the universe of variables xfuzzy the result
-		 * is the default value, in this case 16 (the middle of max value of
-		 * output)
-		 */
-		Assert.assertEquals(16.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 	}
+	
+	@Test
+	public final void testActionSet_0_Rule297() {
+		
+//		sedcat.actions.set0=Unit Test Success > Unit Test Coverage > Mutations coverage > Number Of Tests
+		Assert.assertEquals(0.0, underTest.crispInference(INPUT_METRIC_VALUES_0_297)[0], 0.0);
+		
+	}
+	
+	@Test
+	public final void testActionSet_23_Rule298() {
+		
+//		sedcat.actions.set23=Mutations coverage > Unit Test Success > Unit Test Coverage > Number Of Tests
+		Assert.assertEquals(23.0, underTest.crispInference(INPUT_METRIC_VALUES_23_298)[0], 0.0);
+		
+	}
+	
+	
+	@Test
+	public final void testActionSet_30() {
+		
+//		sedcat.actions.set30=Unit Test Coverage
+		Assert.assertEquals(30.0, underTest.crispInference(INPUT_METRIC_VALUES_30)[0], 0.0);
+		
+	}
+	
+	
+
 
 }

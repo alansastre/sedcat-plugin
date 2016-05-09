@@ -43,7 +43,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 
 		// Redondeamos para obtener un conjunto discreto
 		long actionSet = Math.round(measureValue);
-
+		LOG.info("Set acciones numero: " +actionSet);
 		// cargamos propiedades
 		Properties propiedades = this.loadProperties(ACTIONS_PROPERTIES_PATH);
 
@@ -54,6 +54,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 			}
 		}
 
+		LOG.info("Set acciones resultado: " +actionsValueProperty);
 		String actionValue = propiedades.getProperty(actionsValueProperty);
 		LOG.info("Resultado acciones: " + actionValue);
 

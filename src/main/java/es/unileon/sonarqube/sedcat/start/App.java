@@ -10,7 +10,7 @@ public class App{
 //    	System.out.println(ComplexitySingleton.INSTANCE.calculateComplexity());
 //    	System.out.println(ComplexitySingleton.INSTANCE.calculateComplexity());
 //    	System.out.println(ComplexitySingleton.INSTANCE.calculateComplexity());
-    	
+
 }
 
 }

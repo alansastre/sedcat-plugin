@@ -14,7 +14,7 @@ public class TP_Acciones_Complejidad {
  private double min = 0.0;
  private double max = 60.0;
  private double step = 1.0;
- double _ps_Ideal[] = { 0.0,10.0,20.0,30.0001 };
+ double _ps_Ideal[] = { -1.0,10.0,20.0,30.0001 };
  double _pl_Ideal[] = {  };
  double _ps_Alto[] = { 30.0001,33.3333,36.6666,39.9999 };
  double _pl_Alto[] = {  };
