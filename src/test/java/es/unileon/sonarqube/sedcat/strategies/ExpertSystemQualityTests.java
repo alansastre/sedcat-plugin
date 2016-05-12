@@ -20,7 +20,7 @@ import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
+import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad;
 import org.junit.Assert;
 import org.powermock.api.mockito.*;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -34,7 +34,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ QualityMeasureStore.class, ExpertSystemQuality.class, TestMeasureComputerContext.class,
-		Calidad_1.class, Measure.class, TestComponent.class,
+		Calidad.class, Measure.class, TestComponent.class,
 		})
 public class ExpertSystemQualityTests {
 
@@ -135,13 +135,13 @@ public class ExpertSystemQualityTests {
 		QualityMeasureStore storerMock = mock(QualityMeasureStore.class);
 		PowerMockito.whenNew(QualityMeasureStore.class).withNoArguments().thenReturn(storerMock);
 
-		Calidad_1 expertSystemMock = mock(Calidad_1.class);
-		PowerMockito.whenNew(Calidad_1.class).withNoArguments().thenReturn(expertSystemMock);
+		Calidad expertSystemMock = mock(Calidad.class);
+		PowerMockito.whenNew(Calidad.class).withNoArguments().thenReturn(expertSystemMock);
 
 		ExpertSystemQuality underTest2 = new ExpertSystemQuality(contextMocked);
 
 		PowerMockito.verifyNew(QualityMeasureStore.class, times(1)).withNoArguments();
-		PowerMockito.verifyNew(Calidad_1.class, times(1)).withNoArguments();
+		PowerMockito.verifyNew(Calidad.class, times(1)).withNoArguments();
 		Assert.assertEquals(contextMocked, underTest2.context);
 
 	}
@@ -161,8 +161,8 @@ public class ExpertSystemQualityTests {
 		QualityMeasureStore storerMock = mock(QualityMeasureStore.class);
 		PowerMockito.whenNew(QualityMeasureStore.class).withNoArguments().thenReturn(storerMock);
 
-		Calidad_1 expertSystemMock = mock(Calidad_1.class);
-		PowerMockito.whenNew(Calidad_1.class).withNoArguments().thenReturn(expertSystemMock);
+		Calidad expertSystemMock = mock(Calidad.class);
+		PowerMockito.whenNew(Calidad.class).withNoArguments().thenReturn(expertSystemMock);
 
 		PowerMockito.when(expertSystemMock.crispInference(qualityInputMetrics)).thenReturn(qualityOutputMetrics);
 

@@ -4,12 +4,23 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Assert;
 
-import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
+import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad;
 
 /**
+ *  Test unitarios para la clase es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad
+ *  Las variables de entrada que recibe son:
+ *  
+ *  	-Porcentaje de Éxito de los casos de test unitarios
+ *  	-Porcentaje de cobertura de los casos de test unitarios
+ *  	-Porcentaje de cobertura por mutantes de los casos de test unitarios
+ *  	-Número de casos de test unitarios	
+ *  	-Número de líneas de código que tiene el proyecto
+ *  	-Complejidad media por clase 
+ *  
  * @author alan.sastre
  * @version 1.0
  */
@@ -19,15 +30,20 @@ public class QualityTests {
 	private static final double PERCENTAGE_MAX = 100;
 
 	// numbertest
-	private static final int NUMBERTEST_MAX = 5000;
+	private static final int NUMBERTEST_MAX = 15000;
 
 	// number code lines
-	private static final int CODELINES_MAX = 100000;
+	private static final int CODELINES_MAX = 5000000;
 
+	// Complexity max
+	private static final int COMPLEXITY_MAX = 60;
+	
 	// number of input metrics
-	private static final int NUMBER_METRICS = 5;
+	private static final int NUMBER_METRICS = 6;
 
-	private Calidad_1 underTest;
+	private Calidad underTest;
+	
+	double[] inputMetricsValues;
 
 	/**
 	 * @throws java.lang.Exception
@@ -49,7 +65,7 @@ public class QualityTests {
 	@Before
 	public void setUp() throws Exception {
 
-		underTest = new Calidad_1();
+		underTest = new Calidad();
 
 	}
 
@@ -62,9 +78,10 @@ public class QualityTests {
 
 	/**
 	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}
+	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad#crispInference(double[])}
 	 * .
 	 */
+	@Ignore("")
 	@Test
 	public final void testCrispInferenceDoubleArray() {
 
@@ -86,37 +103,40 @@ public class QualityTests {
 
 						for (int codelines = 0; codelines <= CODELINES_MAX; codelines += 6000) {
 							inputMetricsValues[4] = codelines;
+							
 
-							result = underTest.crispInference(inputMetricsValues)[0];
+								result = underTest.crispInference(inputMetricsValues)[0];
+	
+								if (success <= 25 && coverage <= 25 && mutations <= 25 && numbertests <= 200
+										&& codelines <= 6000 && success != 0 && coverage != 0) {
+	
+									Assert.assertTrue(result > 0 && result <= 53);
+	
+								} else if (success > 25 && coverage > 25 && mutations > 25 && numbertests > 200
+										&& codelines > 6000 && success <= 50 && coverage <= 50 && mutations <= 50
+										&& numbertests <= 2000 && codelines <= 25000) {
+	
+									Assert.assertTrue(result > 0 && result <= 53);
+	
+								} else if (success > 50 && coverage > 50 && mutations > 50 && numbertests > 2000
+										&& codelines > 25000 && success <= 75 && coverage <= 75 && mutations <= 75
+										&& numbertests <= 4000 && codelines <= 75000) {
+	
+									Assert.assertTrue(result > 25 && result <= 75);
+	
+								} else if (success > 75 && coverage > 75 && mutations > 75 && numbertests > 4000
+										&& codelines > 75000) {
+	
+									Assert.assertTrue(result > 69.971);
+	
+								} else if (success == 0 || coverage == 0) {
+	
+									Assert.assertEquals(0.0, result, 0.0);
+	
+								}
 
-							if (success <= 25 && coverage <= 25 && mutations <= 25 && numbertests <= 200
-									&& codelines <= 6000 && success != 0 && coverage != 0) {
-
-								Assert.assertTrue(result > 0 && result <= 53);
-
-							} else if (success > 25 && coverage > 25 && mutations > 25 && numbertests > 200
-									&& codelines > 6000 && success <= 50 && coverage <= 50 && mutations <= 50
-									&& numbertests <= 2000 && codelines <= 25000) {
-
-								Assert.assertTrue(result > 0 && result <= 53);
-
-							} else if (success > 50 && coverage > 50 && mutations > 50 && numbertests > 2000
-									&& codelines > 25000 && success <= 75 && coverage <= 75 && mutations <= 75
-									&& numbertests <= 4000 && codelines <= 75000) {
-
-								Assert.assertTrue(result > 25 && result <= 75);
-
-							} else if (success > 75 && coverage > 75 && mutations > 75 && numbertests > 4000
-									&& codelines > 75000) {
-
-								Assert.assertTrue(result > 69.971);
-
-							} else if (success == 0 || coverage == 0) {
-
-								Assert.assertEquals(0.0, result, 0.0);
-
-							}
-
+						
+							
 						}
 					}
 				}
@@ -124,52 +144,70 @@ public class QualityTests {
 		}
 
 	}
-
+	
+	
 	/**
 	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}
+	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad#crispInference(double[])}
 	 * .
 	 */
 	@Test
-	public final void testCrispInferenceDoubleArrayOnLimits_Under() {
+	public final void testOptimalCase() {
 
-		double[] inputMetricsValues = new double[] { -1, -1, -1, -1, -1,
-
+		inputMetricsValues = new double[]{
+			100,
+			100,
+			100,
+			15000,
+			250000,
+			30.0
 		};
+		
+		Assert.assertEquals(100.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 
+	}
+	
+	/**
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad#crispInference(double[])}
+	 * .
+	 */
+	@Test
+	public final void testNullSuccess() {
+
+		inputMetricsValues = new double[]{
+			0,
+			100,
+			100,
+			15000,
+			250000,
+			30.0
+		};
+		
 		Assert.assertEquals(0.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 
-		inputMetricsValues = new double[] { -11111, -11111, -11111, -111111, -111111, };
-
-		/*
-		 * outside the boundary of the universe of variables xfuzzy the result
-		 * is the default value, in this case 50
-		 */
-		Assert.assertEquals(50.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 	}
-
+	
 	/**
 	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1#crispInference(double[])}
+	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad#crispInference(double[])}
 	 * .
 	 */
 	@Test
-	public final void testCrispInferenceDoubleArrayOnLimits_Above() {
+	public final void testNullCoverage() {
 
-		double[] inputMetricsValues = new double[] { 101, 101, 101, 5001, 100001,
-
+		inputMetricsValues = new double[]{
+			100,
+			0,
+			100,
+			15000,
+			250000,
+			30.0
 		};
+		
+		Assert.assertEquals(0.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 
-		Assert.assertEquals(50.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
-
-		inputMetricsValues = new double[] { 1000, 1000, 1000, 7000, 1000000 };
-
-		/*
-		 * outside the boundary of the universe of variables xfuzzy the result
-		 * is the default value, in this case 50 (the middle of max value of
-		 * output)
-		 */
-		Assert.assertEquals(50.0, underTest.crispInference(inputMetricsValues)[0], 0.0);
 	}
+
 
 }

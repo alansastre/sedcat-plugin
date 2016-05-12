@@ -10,7 +10,7 @@ import org.sonar.api.measures.CoreMetrics;
 
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad_1;
+import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad;
 
 /**
  * Sistema experto que obtiene la metrica de calidad buscada
@@ -33,7 +33,7 @@ public class ExpertSystemQuality extends AbstractInferenceProcess {
 		this.measureStorer = new QualityMeasureStore();
 
 		// sistema experto concreto
-		this.expertSystem = new Calidad_1();
+		this.expertSystem = new Calidad();
 
 	}
 
@@ -47,6 +47,7 @@ public class ExpertSystemQuality extends AbstractInferenceProcess {
 				this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY),
 				this.context.getMeasure(CoreMetrics.TESTS_KEY),
 				this.context.getMeasure(CoreMetrics.NCLOC_KEY),	
+				this.context.getMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY),
 
 		};
 
@@ -59,6 +60,7 @@ public class ExpertSystemQuality extends AbstractInferenceProcess {
 				this.context.getMeasure(SedcatMetricsKeys.MUTANTS_KEY).getDoubleValue(),
 				this.context.getMeasure(CoreMetrics.TESTS_KEY).getIntValue(),
 				this.context.getMeasure(CoreMetrics.NCLOC_KEY).getIntValue(), 
+				this.context.getMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY).getDoubleValue(),
 				
 		};
 	}
