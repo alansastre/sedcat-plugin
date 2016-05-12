@@ -105,8 +105,8 @@ public class QualityTests {
 						for (int codelines = 0; codelines <= CODELINES_MAX; codelines += 6000) {
 							inputMetricsValues[4] = codelines;
 							
-								System.out.println(result = underTest.crispInference(inputMetricsValues)[0]);
-//								result = underTest.crispInference(inputMetricsValues)[0];
+//								System.out.println(result = underTest.crispInference(inputMetricsValues)[0]);
+								result = underTest.crispInference(inputMetricsValues)[0];
 	
 								if (success <= 25 && coverage <= 25 && mutations <= 25 && numbertests <= 200
 										&& codelines <= 6000 && success != 0 && coverage != 0) {
