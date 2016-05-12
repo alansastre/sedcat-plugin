@@ -17,6 +17,8 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
+import org.sonar.api.measures.CoreMetrics;
+
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 import java.util.Set;
@@ -87,7 +89,7 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#define()}.
 	 */
-	@Ignore("")
+
 	@Test
 	public final void testdefine_Correct_State() {
 
@@ -96,11 +98,11 @@ public class GeneralComputerTests {
 		// Probar metricas de entrada
 		Set<String> inputMetrics = def.getInputMetrics();
 		Assert.assertEquals(6, inputMetrics.size());
-
-		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY));
-		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY));
-		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.NUMBERTESTS_KEY));
-		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.CODE_LINES_KEY));
+		
+		Assert.assertTrue(inputMetrics.contains(CoreMetrics.TEST_SUCCESS_DENSITY_KEY));
+		Assert.assertTrue(inputMetrics.contains(CoreMetrics.COVERAGE_KEY));
+		Assert.assertTrue(inputMetrics.contains(CoreMetrics.TESTS_KEY));
+		Assert.assertTrue(inputMetrics.contains(CoreMetrics.NCLOC_KEY));
 		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.MUTANTS_KEY));
 		Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY));
 		
@@ -200,7 +202,7 @@ public class GeneralComputerTests {
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
 	 */
-	@Ignore("")
+
 	@Test
 	public final void testcompute_Project_TotalBehaviour() {
 
@@ -211,12 +213,16 @@ public class GeneralComputerTests {
 		//mocks setup
 		when(mockedComponent.getType()).thenReturn(Type.PROJECT);
 		when(contextMocked.getComponent()).thenReturn(mockedComponent);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY)).thenReturn(measureMocked);
+	
+		
+		when(contextMocked.getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(CoreMetrics.COVERAGE_KEY)).thenReturn(measureMocked);
 		when(contextMocked.getMeasure(SedcatMetricsKeys.MUTANTS_KEY)).thenReturn(measureMocked);
-		when(measureMocked.getDoubleValue()).thenReturn(100.0);
+		when(contextMocked.getMeasure(CoreMetrics.TESTS_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(CoreMetrics.NCLOC_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY)).thenReturn(measureMocked);
+		
+		when(measureMocked.getDoubleValue()).thenReturn(50.0);
 		when(measureMocked.getIntValue()).thenReturn(100);
 
 		//execute 
@@ -228,11 +234,12 @@ public class GeneralComputerTests {
 		verify(mockedComponent, times(1)).getType();
 		verify(contextMocked, times(1)).getComponent();
 		
-		verify(measureMocked, times(6)).getDoubleValue();
+		verify(measureMocked, times(8)).getDoubleValue();
 		verify(measureMocked, times(4)).getIntValue();
 
-		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, "Improve the following parameters in order: Number Of Tests");
-		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, 73.55144775847887);
+		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, "Complexity > Unit Test Success"
+				+ " > Unit Test Coverage > Mutations coverage > Number Of Tests");
+		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, 5.5);
 	}
 	/**
 	 * Test method for
