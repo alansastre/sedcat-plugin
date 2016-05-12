@@ -94,9 +94,7 @@ public class ActionsMeasureStoreTests {
 		underTest.saveMeasure(result, context);
 
 		String action = context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue();
-		Assert.assertEquals(
-				"Improve the following parameters in order: Mutations coverage > Unit Test Success > Unit Test Coverage > Number Of Tests",
-				action);
+		Assert.assertEquals("Mutations coverage > Unit Test Success > Unit Test Coverage > Number Of Tests", action);
 
 	}
 
@@ -154,7 +152,7 @@ public class ActionsMeasureStoreTests {
 	public final void testCheckOutputDataSetNotAllowedAbove() {
 
 		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(new double[] { 33.0001 });
+		underTest.checkOutputDataSet(new double[] { 65.0001 });
 
 	}
 
@@ -199,7 +197,7 @@ public class ActionsMeasureStoreTests {
 
 		Assert.assertNotNull(testProperties);
 		Assert.assertFalse(testProperties.isEmpty());
-		Assert.assertEquals(33, testProperties.size());
+		Assert.assertEquals(66, testProperties.size());
 
 	}
 

@@ -37,14 +37,13 @@ public class SedcatMetricsTests {
 		
 		String[] expectedMetricsKeys = new String[]{
 				
-				SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY,
-				SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY,
 				SedcatMetricsKeys.MUTANTS_KEY,
-				SedcatMetricsKeys.NUMBERTESTS_KEY,
-				SedcatMetricsKeys.CODE_LINES_KEY,
+				SedcatMetricsKeys.COMPLEXITY_CLASS_KEY,
+				SedcatMetricsKeys.COMPLEXITY_THRESOLD_KEY,
+
 				SedcatMetricsKeys.QUALITY_MEASURE_KEY,
 				SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
-				SedcatMetricsKeys.COMPLEXITY_CLASS_KEY
+
 		};
 		
 		boolean checker = false;

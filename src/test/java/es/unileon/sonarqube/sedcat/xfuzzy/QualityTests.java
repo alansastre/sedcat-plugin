@@ -30,10 +30,10 @@ public class QualityTests {
 	private static final double PERCENTAGE_MAX = 100;
 
 	// numbertest
-	private static final int NUMBERTEST_MAX = 15000;
+	private static final int NUMBERTEST_MAX = 5000;
 
 	// number code lines
-	private static final int CODELINES_MAX = 5000000;
+	private static final int CODELINES_MAX = 100000;
 
 	// Complexity max
 	private static final int COMPLEXITY_MAX = 60;
@@ -81,13 +81,14 @@ public class QualityTests {
 	 * {@link es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad#crispInference(double[])}
 	 * .
 	 */
-	@Ignore("")
+
 	@Test
 	public final void testCrispInferenceDoubleArray() {
 
 		double[] inputMetricsValues = new double[NUMBER_METRICS];
 
 		double result = 0;
+		inputMetricsValues[5] = 30.0;
 
 		for (int success = 0; success <= PERCENTAGE_MAX; success += 25) {
 			inputMetricsValues[0] = success;
@@ -104,8 +105,8 @@ public class QualityTests {
 						for (int codelines = 0; codelines <= CODELINES_MAX; codelines += 6000) {
 							inputMetricsValues[4] = codelines;
 							
-
-								result = underTest.crispInference(inputMetricsValues)[0];
+								System.out.println(result = underTest.crispInference(inputMetricsValues)[0]);
+//								result = underTest.crispInference(inputMetricsValues)[0];
 	
 								if (success <= 25 && coverage <= 25 && mutations <= 25 && numbertests <= 200
 										&& codelines <= 6000 && success != 0 && coverage != 0) {

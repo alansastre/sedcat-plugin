@@ -24,6 +24,8 @@ import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.ce.measure.test.TestSettings;
+import org.sonar.api.measures.CoreMetrics;
+
 import es.unileon.sonarqube.sedcat.start.GeneralComputer;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
@@ -101,12 +103,15 @@ public class ExpertSystemActionsTests {
 
 		// mocks setup
 		when(contextMocked.getComponent()).thenReturn(mockedComponent);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY)).thenReturn(measureMocked);
+		
+		when(contextMocked.getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(CoreMetrics.COVERAGE_KEY)).thenReturn(measureMocked);
 		when(contextMocked.getMeasure(SedcatMetricsKeys.MUTANTS_KEY)).thenReturn(measureMocked);
-		when(measureMocked.getDoubleValue()).thenReturn(100.0);
+		when(contextMocked.getMeasure(CoreMetrics.TESTS_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(CoreMetrics.NCLOC_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY)).thenReturn(measureMocked);
+
+		when(measureMocked.getDoubleValue()).thenReturn(59.0);
 		when(measureMocked.getIntValue()).thenReturn(100);
 
 		underTest = new ExpertSystemActions(contextMocked);
@@ -124,7 +129,7 @@ public class ExpertSystemActionsTests {
 	 * {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions#extractValues()}
 	 * .
 	 */
-	@Ignore("")
+
 	@Test
 	public final void testExtractValues() {
 
@@ -134,7 +139,7 @@ public class ExpertSystemActionsTests {
 		Assert.assertFalse(result.length == 0);
 
 		// verify methods executions
-		verify(measureMocked, times(3)).getDoubleValue();
+		verify(measureMocked, times(4)).getDoubleValue();
 		verify(measureMocked, times(2)).getIntValue();
 
 	}
@@ -149,7 +154,7 @@ public class ExpertSystemActionsTests {
 
 		Measure[] actionsInputMetrics = new Measure[] {
 
-				measureMocked, measureMocked, measureMocked, measureMocked, measureMocked,
+				measureMocked, measureMocked, measureMocked, measureMocked, measureMocked, measureMocked
 
 		};
 
@@ -164,7 +169,7 @@ public class ExpertSystemActionsTests {
 	@Test
 	public final void testCheckNotNullInputMetricsNull() {
 
-		Measure[] actionsInputMetrics = new Measure[] { null, null, null, null, null, };
+		Measure[] actionsInputMetrics = new Measure[] { null, null, null, null, null, null };
 
 		exit.expectSystemExitWithStatus(-1);
 		underTest.checkNotNullInputMetrics(actionsInputMetrics);

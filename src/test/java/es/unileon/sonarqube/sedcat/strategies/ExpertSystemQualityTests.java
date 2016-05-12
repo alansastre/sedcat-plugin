@@ -18,6 +18,8 @@ import org.mockito.Mockito;
 import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
+import org.sonar.api.measures.CoreMetrics;
+
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
 import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad;
@@ -60,13 +62,16 @@ public class ExpertSystemQualityTests {
 		measureMocked = mock(Measure.class);
 		
 		//mocks setup
-		when(measureMocked.getDoubleValue()).thenReturn(100.0);
+		when(measureMocked.getDoubleValue()).thenReturn(50.0);
 		when(measureMocked.getIntValue()).thenReturn(200);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY)).thenReturn(measureMocked);
+		
+		when(contextMocked.getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(CoreMetrics.COVERAGE_KEY)).thenReturn(measureMocked);
 		when(contextMocked.getMeasure(SedcatMetricsKeys.MUTANTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY)).thenReturn(measureMocked);
-		when(contextMocked.getMeasure(SedcatMetricsKeys.CODE_LINES_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(CoreMetrics.TESTS_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(CoreMetrics.NCLOC_KEY)).thenReturn(measureMocked);
+		when(contextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY)).thenReturn(measureMocked);
+		
 
 		underTest = new ExpertSystemQuality(contextMocked);
 
@@ -79,7 +84,6 @@ public class ExpertSystemQualityTests {
 	/**
 	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality#extractValues()}.
 	 */
-	@Ignore("")
 	@Test
 	public final void testExtractValues() {
 
@@ -89,7 +93,7 @@ public class ExpertSystemQualityTests {
 		Assert.assertFalse(result.length == 0);
 		
 		//verify methods executions
-		verify(measureMocked, times(3)).getDoubleValue();
+		verify(measureMocked, times(4)).getDoubleValue();
 		verify(measureMocked, times(2)).getIntValue();
 	}
 
@@ -101,6 +105,7 @@ public class ExpertSystemQualityTests {
 
 		Measure[] qualityInputMetrics = new Measure[] {
 
+				measureMocked,
 				measureMocked,
 				measureMocked,
 				measureMocked,
@@ -119,7 +124,7 @@ public class ExpertSystemQualityTests {
 	@Test
 	public final void testCheckNotNullInputMetricsNull() {
 
-		Measure[] qualityInputMetrics = new Measure[] { null, null, null, null, null, };
+		Measure[] qualityInputMetrics = new Measure[] { null, null, null, null, null, null };
 
 		exit.expectSystemExitWithStatus(-1);
 		underTest.checkNotNullInputMetrics(qualityInputMetrics);
@@ -154,7 +159,7 @@ public class ExpertSystemQualityTests {
 	public final void testXfuzzyProcessBehaviour() throws Exception {
 
 		// test data
-		double[] qualityInputMetrics = new double[] { 100.0, 100.0, 100.0, 100.0, 100.0};
+		double[] qualityInputMetrics = new double[] { 100.0, 100.0, 100.0, 100.0, 100.0, 30.0};
 		double[] qualityOutputMetrics = new double[] { 100, 100, 100, 100, 100, };
 
 		// mocks: creation and configuration
@@ -185,12 +190,11 @@ public class ExpertSystemQualityTests {
 	/**
 	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#xfuzzyProcess()}.
 	 */
-	@Ignore("")
 	@Test
 	public final void testXfuzzyProcessState() throws Exception {
 
 		underTest.xfuzzyProcess();
-		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, 73.55144775847887);
+		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, 5.5);
 
 	}
 
