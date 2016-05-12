@@ -238,6 +238,25 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
+			
+<!-- 			Pitest Mutation Tool -->
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.1.9</version>
+				<configuration>
+					<targetClasses>
+<!-- 						<param>es.unileon.sonarqube.sedcat.*</param> -->
+							<param>es.unileon.sonarqube.sedcat.strategies*</param>
+							<param>es.unileon.sonarqube.sedcat.storage*</param>
+							<param>es.unileon.sonarqube.sedcat.start*</param>
+							<param>es.unileon.sonarqube.sedcat.scanners*</param>
+					</targetClasses>
+					<outputFormats>
+						<outputFormat>HTML</outputFormat>
+					</outputFormats>
+				</configuration>
+			</plugin>
 
 		    
         </plugins>
