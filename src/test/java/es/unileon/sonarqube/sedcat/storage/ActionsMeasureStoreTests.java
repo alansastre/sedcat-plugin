@@ -211,7 +211,6 @@ public class ActionsMeasureStoreTests {
 	@Test
 	public final void testloadPropertiesNull() throws Exception {
 
-		exit.expectSystemExitWithStatus(-1);
 		Properties testProperties = underTest
 				.loadProperties("/root/workspace/sonar-sedcat-plugin/src/main/resources/org/sonar/l10n/expertSy");
 		Assert.assertTrue(testProperties.isEmpty());

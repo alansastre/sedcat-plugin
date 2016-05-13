@@ -32,6 +32,7 @@ public class GeneralComputer implements MeasureComputer {
 	/**
 	 * This compute method only executes experts systems at project level
 	 */
+	@Override
 	public void compute(MeasureComputerContext context) {
 
 		isProject = true;
@@ -53,6 +54,7 @@ public class GeneralComputer implements MeasureComputer {
 
 	}
 
+	@Override
 	public MeasureComputerDefinition define(MeasureComputerDefinitionContext defContext) {
 
 		return defContext.newDefinitionBuilder()

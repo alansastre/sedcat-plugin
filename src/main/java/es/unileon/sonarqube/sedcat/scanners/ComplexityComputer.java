@@ -41,45 +41,50 @@ public class ComplexityComputer implements MeasureComputer {
 	public void compute(MeasureComputerContext context) {
 
 		if (("PROJECT").equalsIgnoreCase(context.getComponent().getType().toString())) {
-			
-			LOG.info("Entrada ComplexityComputer");
-			
-			double complexity = context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY).getDoubleValue();
-			double complexityThresold = context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESOLD_KEY).getDoubleValue();
-			
-				LOG.info("Calculating complexity based on threshold");
-				
-				//Establecer umbral dentro de los limites
-				if (complexityThresold > 60) {
-					complexityThresold = 60;
-					LOG.warn("Suggested complexity threshold is greater"
-							+ " than permitted. The value considered in this case is 60");
-				}else if(complexityThresold < 0){
-					LOG.warn("Suggested complexity threshold " + complexityThresold
-							+ " is less than 0, it will be considered default value (30)");
-					complexityThresold = 30;
-				}
-				
-				//Adaptar complejidad dentro de los limites
-				if(complexity > 60){
-					complexity = 60;
-				}
-				
-				//Calcular complejidad en funcion de umbral
-				if(complexity <= complexityThresold){
-					//Caso 1
-					complexity = ideal;
-				}else{
-					//Resto de casos
-					complexity = (complexity - complexityThresold) + 30;
-				}
 
-				LOG.info("complexity: "+complexity);
-				LOG.info("complexityThresold: "+complexityThresold);
-				
-				context.addMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY, complexity);
+			double complexity = 0;
+			double complexityThresold = 0;
+			
+			if (context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY) != null) {
+				complexity = context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY).getDoubleValue();
+			}
+			if (context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESOLD_KEY) != null) {
+				complexityThresold = context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESOLD_KEY).getDoubleValue();
+			}
 
-		} 
+			LOG.info("Calculating complexity based on threshold");
+
+			// Establecer umbral dentro de los limites
+			if (complexityThresold > 60) {
+				complexityThresold = 60;
+				LOG.warn("Suggested complexity threshold is greater"
+						+ " than permitted. The value considered in this case is 60");
+			} else if (complexityThresold < 0) {
+				LOG.warn("Suggested complexity threshold " + complexityThresold
+						+ " is less than 0, it will be considered default value (30)");
+				complexityThresold = 30;
+			}
+
+			// Adaptar complejidad dentro de los limites
+			if (complexity > 60) {
+				complexity = 60;
+			}
+
+			// Calcular complejidad en funcion de umbral
+			if (complexity <= complexityThresold) {
+				// Caso 1
+				complexity = ideal;
+			} else {
+				// Resto de casos
+				complexity = (complexity - complexityThresold) + 30;
+			}
+
+			LOG.info("complexity: " + complexity);
+			LOG.info("complexityThresold: " + complexityThresold);
+
+			context.addMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY, complexity);
+
+		}
 
 	}
 

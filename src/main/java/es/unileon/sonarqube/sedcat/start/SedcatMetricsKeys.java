@@ -13,7 +13,7 @@ public class SedcatMetricsKeys {
 
 
 	private SedcatMetricsKeys() {
-//		throw new AssertionError("Can not instantiate constants class");
+		throw new AssertionError("Can not instantiate constants class");
 	}
 
 	//variables entrada

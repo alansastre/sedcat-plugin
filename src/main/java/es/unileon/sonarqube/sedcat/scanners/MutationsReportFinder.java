@@ -28,6 +28,7 @@ public class MutationsReportFinder{
 		LOG.info("target pit reports path has been found: "+reportDirectory.getAbsolutePath());
 
 		String[] directoriesPaths = reportDirectory.list(new FilenameFilter() {
+			@Override
 			  public boolean accept(File current, String name) {
 			    return new File(current, name).isDirectory();
 			  }
@@ -44,7 +45,7 @@ public class MutationsReportFinder{
 			LOG.info("directory : "+directoriesPaths[i]);
 		}
 		
-		ArrayList<File> directories  = new ArrayList<File>();
+		ArrayList<File> directories  = new ArrayList<>();
 		
 		for (int i = 0; i < directoriesPaths.length; i++) {
 			//Creamos rutas a cada directorio de reportes
@@ -58,6 +59,10 @@ public class MutationsReportFinder{
 			    latestReportDirectory = directoryToExamine;
 			  }
 		}
+		if (latestReportDirectory == null) {
+			return null;
+		}
+		
 		LOG.info("latest directory: "+latestReportDirectory.getAbsolutePath());
 		
 		//Extraemos el archivo index.html del directorio (es el que contiene los reportes totales del modulo)

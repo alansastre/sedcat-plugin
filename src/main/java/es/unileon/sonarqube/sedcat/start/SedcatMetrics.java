@@ -103,21 +103,17 @@ public class SedcatMetrics implements Metrics {
 		    .create();
 	
 	// getMetrics() method is defined in the Metrics interface and is used by
-	  public List<Metric> getMetrics() {
-		  
+	@Override
+	public List<Metric> getMetrics() {
+
 		return Arrays.<Metric>asList(
 
-				
-				MUTANTS,
-				COMPLEXITY_AVERAGE_CLASS,
-				COMPLEXITY_THRESOLD,
-				
-				QUALITY_MEASURE,
-				ACTIONS_TO_PERFORM
-				
-				
-				);
+				MUTANTS, COMPLEXITY_AVERAGE_CLASS, COMPLEXITY_THRESOLD,
 
-	  }
+				QUALITY_MEASURE, ACTIONS_TO_PERFORM
+
+		);
+
+	}
 	
 }

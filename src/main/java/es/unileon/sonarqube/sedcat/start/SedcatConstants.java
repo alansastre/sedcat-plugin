@@ -9,7 +9,7 @@ public class SedcatConstants {
 
 
   private SedcatConstants() {
-//	  throw new AssertionError("Can not instantiate constants class");
+	  throw new AssertionError("Can not instantiate constants class");
   }
   /*
    * variables utilizadas para calcular la cobertura de mutantes en un proyecto

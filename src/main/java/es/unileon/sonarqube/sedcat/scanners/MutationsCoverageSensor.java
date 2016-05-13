@@ -64,6 +64,7 @@ public class MutationsCoverageSensor implements Sensor {
      * @param project the project being analysed
      * @return always true
      */
+    @Override
     public boolean shouldExecuteOnProject(Project project) {
         return true;
     }
@@ -101,8 +102,8 @@ public class MutationsCoverageSensor implements Sensor {
 				
 				LOG.info("VALOR MUTANTES EXTRAIDO: "+mutationsCoverage[0]+" / "+mutationsCoverage[1]);
 				//acumulamos valores
-				SedcatConstants.mutationsDetected+=mutationsCoverage[0];
-				SedcatConstants.mutationsTotal+=mutationsCoverage[1];
+				MutationsCoverageSensor.addValueDetectedMutations(mutationsCoverage[0]);
+				MutationsCoverageSensor.addValueTotalMutations(mutationsCoverage[1]);
 				
 				LOG.info("mutationsDetected: "+SedcatConstants.mutationsDetected);
 				LOG.info("mutationsTotal: "+SedcatConstants.mutationsTotal);
@@ -127,6 +128,12 @@ public class MutationsCoverageSensor implements Sensor {
         return "MutationsCoverageSensor";
     }
 
+    public static synchronized void addValueDetectedMutations(double value){
+		SedcatConstants.mutationsDetected+=value;
+    }
+    public static synchronized void addValueTotalMutations(double value){
+		SedcatConstants.mutationsTotal+=value;
+    }
 }
 
 

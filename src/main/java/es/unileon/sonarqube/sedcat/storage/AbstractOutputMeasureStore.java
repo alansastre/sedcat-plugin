@@ -43,7 +43,7 @@ public abstract class AbstractOutputMeasureStore {
 	 * @param measureValue
 	 * @param context
 	 */
-	abstract protected void saveMeasure(double[] outputMeasureValues, MeasureComputerContext context);
+	protected abstract void saveMeasure(double[] outputMeasureValues, MeasureComputerContext context);
 
 	/**
 	 * Checkea que el valor obtenido esta dentro de los limites

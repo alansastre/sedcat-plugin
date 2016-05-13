@@ -41,13 +41,14 @@ public class SedcatDashboardWidget extends AbstractRubyTemplate implements RubyR
 
 	private static final String TEMPLATE_PATH = "/root/workspace/sonar-sedcat-plugin/src/main/resources";
 	private static final String TEMPLATE_PATH_FILE = "/sedcat_widget.html.erb";
-	
 
+	@Override
 	public String getId() {
 
 		return "sedcatPlugin";
 	}
 
+	@Override
 	public String getTitle() {
 
 		return "Sedcat Plugin";
@@ -56,9 +57,8 @@ public class SedcatDashboardWidget extends AbstractRubyTemplate implements RubyR
 	@Override
 	protected String getTemplatePath() {
 
-
-        // uncomment next line to enable change reloading during development
-        return TEMPLATE_PATH + TEMPLATE_PATH_FILE;
+		// uncomment next line to enable change reloading during development
+		return TEMPLATE_PATH + TEMPLATE_PATH_FILE;
 
 	}
 

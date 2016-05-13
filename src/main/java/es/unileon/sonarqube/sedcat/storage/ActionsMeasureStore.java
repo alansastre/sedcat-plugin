@@ -23,7 +23,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 	// variable que almacena la ruta donde se encuentran las propiedades que
 	// definen los conjuntos de acciones
 	private static final String ACTIONS_PROPERTIES_PATH = "/root/workspace/sonar-sedcat-plugin/src/main/resources/org/sonar/l10n/expertSystemActions.properties";
-
+	
 	public ActionsMeasureStore() {
 
 		this.LOG = LoggerFactory.getLogger(ActionsMeasureStore.class);
@@ -58,13 +58,15 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 		String actionValue = propiedades.getProperty(actionsValueProperty);
 		LOG.info("Resultado acciones: " + actionValue);
 
+		if (actionValue == null) {
+			actionValue = "No se han encontrado posibles soluciones.";
+		}
 		// Almacenar el mensaje del conjunto de acciones en forma de String
 		context.addMeasure(this.MEASURE_KEY, actionValue);
 
 		LOG.info("Conjunto de acciones almacenado correctamente");
 	}
 
-	// TODO will move to a utility class
 	/**
 	 * carga las propiedades a partir de la ruta especificada
 	 * 
@@ -82,26 +84,22 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 			// cargamos el archivo de propiedades
 			propiedades.load(entrada);
 
-		} catch (FileNotFoundException ex) {
-			LOG.error("fallo al obtener las propiedades de los conjuntos de acciones");
-			ex.printStackTrace();
-			System.exit(-1);
-		} catch (IOException ex) {
-			LOG.error("fallo al obtener las propiedades de los conjuntos de acciones");
-			ex.printStackTrace();
-			System.exit(-1);
+		} catch (Exception ex) {
+			LOG.warn("fallo al obtener las propiedades de los conjuntos de acciones");
+			LOG.warn(ex.getMessage());
 
 		} finally {
-			if (entrada != null) {
-				try {
+			try {
+				if (entrada != null) {
 					entrada.close();
-				} catch (IOException e) {
-					LOG.error("fallo al cerrar la ruta propiedades de los conjuntos de acciones");
-					e.printStackTrace();
-					System.exit(-1);
 				}
 
+			} catch (Exception ex) {
+				LOG.error("fallo al cerrar la ruta propiedades de los conjuntos de acciones");
+				LOG.warn(ex.getMessage());
+
 			}
+
 		}
 
 		return propiedades;
