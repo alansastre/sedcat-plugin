@@ -2,6 +2,7 @@ package es.unileon.sonarqube.sedcat.scanners;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.ce.measure.Component;
 import org.sonar.api.ce.measure.MeasureComputer;
 import org.sonar.api.measures.CoreMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
@@ -40,8 +41,8 @@ public class ComplexityComputer implements MeasureComputer {
 	@Override
 	public void compute(MeasureComputerContext context) {
 
-		if (("PROJECT").equalsIgnoreCase(context.getComponent().getType().toString())) {
-
+		if (Component.Type.PROJECT == context.getComponent().getType()) {
+			
 			double complexity = 0;
 			double complexityThresold = 0;
 			

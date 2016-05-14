@@ -5,7 +5,7 @@
 		  	<div class="widget-measure-container">
 		    	<p class="widget-measure widget-measure-main">
 					<span class="widget-label">Overall Testing Quality</span>
-					<p><span class="big"><%= format_measure('quality_measure', :url => url_for_drilldown('')) %></span></p>
+					<p><span class="big"><%= format_measure('quality_measure', :url => url_for_drilldown('quality_measure')) -%><%= tendency_icon(measure('quality_measure')) %></span></p>
 					<br>
 				</p>
 			</div>
@@ -16,7 +16,7 @@
 					<span class="widget-label">Recommended Actions</span>
 				</p>
 
-				<span><%= format_measure('actions_to_realize', :url => url_for_drilldown('')) %></span>
+				<span><%= format_measure('actions_to_realize', :url => url_for_drilldown('actions_to_realize')) %></span>
 
 		    </div>
 	  	</div>
@@ -29,22 +29,22 @@
 					</p>
 					<br>					
 					<tr>
-					  <td>Unit Test Success: <%= format_measure('test_success_density', :url => url_for_drilldown('')) %></td>
+					  <td>Unit Test Success: <%= format_measure('test_success_density', :url => url_for_drilldown('test_success_density')) %></td>
 					</tr>
 					<tr>
-					  <td>Unit Test Coverage: <%= format_measure('coverage', :url => url_for_drilldown('')) %></td>
+					  <td>Unit Test Coverage: <%= format_measure('coverage', :url => url_for_drilldown('coverage')) %></td>
 					</tr>
 					<tr>
-					  <td>Mutations Coverage: <%= format_measure('mutations_coverage_tests', :url => url_for_drilldown('')) %></td>
+					  <td>Mutations Coverage: <%= format_measure('mutations_coverage_tests', :url => url_for_drilldown('mutations_coverage_tests')) %></td>
 					</tr>
 					<tr>
-					  <td>Number Of Tests: <%= format_measure('tests', :url => url_for_drilldown('')) %></td>
+					  <td>Number Of Tests: <%= format_measure('tests', :url => url_for_drilldown('tests')) %></td>
 					</tr>
 					<tr>
-					  <td>Lines Of Code: <%= format_measure('ncloc', :url => url_for_drilldown('')) %></td>
+					  <td>Lines Of Code: <%= format_measure('ncloc', :url => url_for_drilldown('ncloc')) %></td>
 					</tr>
 					<tr>
-					  <td>Complexity Average Class: <%= format_measure('class_complexity', :url => url_for_drilldown('')) %></td>
+					  <td>Complexity Average Class: <%= format_measure('class_complexity', :url => url_for_drilldown('class_complexity')) %></td>
 					</tr>
 					
 				</table>

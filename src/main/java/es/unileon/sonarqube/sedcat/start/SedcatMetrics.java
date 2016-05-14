@@ -15,6 +15,7 @@ import org.sonar.api.measures.Metrics;
  */
 public class SedcatMetrics implements Metrics {
 
+	public static final String SEDCAT_DOMAIN = "Testing Quality";
 /*
  * metricas de entrada utilizadas
  */
@@ -24,23 +25,27 @@ public class SedcatMetrics implements Metrics {
 		    .setDescription("Porcentaje de cobertura por mutantes reportada por la herramienta Pitest")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
-		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .setDomain(SEDCAT_DOMAIN)
+		    .setWorstValue(0.0)
+		    .setBestValue(100.0)
 		    .create();
 	
 	//Metrica COMPLEJIDAD / CLASE
 	public static final Metric COMPLEXITY_AVERAGE_CLASS = new Metric.Builder(COMPLEXITY_CLASS_KEY, "Complejidad media por clase", Metric.ValueType.FLOAT)
 		    .setDescription("Complejidad media por clase")
-		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setDirection(Metric.DIRECTION_WORST)
 		    .setQualitative(false)
-		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .setDomain(SEDCAT_DOMAIN)
+		    .setWorstValue(0.0)
 		    .create();
 	
 	//Metrica COMPLEJIDAD UMBRAL
 	public static final Metric COMPLEXITY_THRESOLD = new Metric.Builder(COMPLEXITY_THRESOLD_KEY, "Umbral complejidad", Metric.ValueType.FLOAT)
 		    .setDescription("Umbral complejidad")
-		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setDirection(Metric.DIRECTION_NONE)
 		    .setQualitative(false)
-		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .setDomain(SEDCAT_DOMAIN)
+		    .setWorstValue(0.0)
 		    .create();
 	
 	
@@ -53,14 +58,17 @@ public class SedcatMetrics implements Metrics {
 		    .setDescription("Calidad de las pruebas unitarias")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
-		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .setDomain(SEDCAT_DOMAIN)
+		    .setWorstValue(0.0)
+		    .setBestValue(100.0)
 		    .create();
 		//ACCIONES RECOMENDADAS
 	public static final Metric<String> ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Acciones para mejora", Metric.ValueType.STRING)
 		    .setDescription("Acciones a realizar para mejorar la calidad de las pruebas unitarias")
-		    .setDirection(Metric.DIRECTION_BETTER)
+		    .setDirection(Metric.DIRECTION_NONE)
 		    .setQualitative(false)
-		    .setDomain(CoreMetrics.DOMAIN_GENERAL)
+		    .setDomain(SEDCAT_DOMAIN)
+		    .setWorstValue(0.0)
 		    .create();
 	
 	

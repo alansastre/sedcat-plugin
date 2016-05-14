@@ -2,6 +2,7 @@ package es.unileon.sonarqube.sedcat.start;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonar.api.ce.measure.Component;
 import org.sonar.api.ce.measure.MeasureComputer;
 import org.sonar.api.measures.CoreMetrics;
 
@@ -37,7 +38,7 @@ public class GeneralComputer implements MeasureComputer {
 
 		isProject = true;
 
-		if (!("PROJECT").equalsIgnoreCase(context.getComponent().getType().toString())) {
+		if (!(Component.Type.PROJECT == context.getComponent().getType())) {
 			isProject = false;
 		} else {
 			
