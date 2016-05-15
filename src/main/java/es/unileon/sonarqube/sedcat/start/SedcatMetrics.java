@@ -66,6 +66,13 @@ public class SedcatMetrics implements Metrics {
 		    .setQualitative(false)
 		    .setDomain(SEDCAT_DOMAIN)
 		    .create();
+	//ACCIONES RECOMENDADAS - MENSAJE
+public static final Metric<String> ACTIONS_MESSAGE = new Metric.Builder(ACTION_MESSAGE_KEY, "Actions to improve unit test quality", Metric.ValueType.STRING)
+	    .setDescription("Improvement actions to take to improve the quality of unit testing")
+	    .setDirection(Metric.DIRECTION_NONE)
+	    .setQualitative(false)
+	    .setDomain(SEDCAT_DOMAIN)
+	    .create();
 	
 	
 	
@@ -114,7 +121,7 @@ public class SedcatMetrics implements Metrics {
 
 				MUTANTS, COMPLEXITY_AVERAGE_CLASS, COMPLEXITY_THRESHOLD,
 
-				QUALITY_MEASURE, ACTIONS_TO_PERFORM
+				QUALITY_MEASURE, ACTIONS_TO_PERFORM, ACTIONS_MESSAGE
 
 		);
 

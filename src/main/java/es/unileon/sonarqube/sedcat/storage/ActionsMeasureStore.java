@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Properties;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
+
+import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 
 /**
@@ -63,7 +65,16 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 		}
 		// Almacenar el mensaje del conjunto de acciones en forma de String
 		context.addMeasure(this.MEASURE_KEY, actionValue);
+		//Obtener mensaje descriptivo para las acciones y almacenarlo en otra medida
+		try {
 
+				context.addMeasure(SedcatMetricsKeys.ACTION_MESSAGE_KEY, (String) ActionsMessageConstants.class.getField("MESSAGE_SET"+actionSet).get(this));
+
+		} catch (Exception e) {
+			LOG.warn(e.getMessage());
+		}
+		
+		
 		LOG.info("Conjunto de acciones almacenado correctamente");
 	}
 

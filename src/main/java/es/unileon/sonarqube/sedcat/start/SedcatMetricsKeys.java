@@ -24,6 +24,7 @@ public class SedcatMetricsKeys {
 	//variables salida
 	public static final String QUALITY_MEASURE_KEY = "quality_measure";
 	public static final String ACTIONS_TO_PERFORM_KEY = "actions_to_realize";	
+	public static final String ACTION_MESSAGE_KEY = "action_to_realize_message";	
 	
 	//variables de prueba
 	public static final String MESSAGE_KEY_1 = "message_key_1";

@@ -74,7 +74,11 @@ public class GeneralComputer implements MeasureComputer {
 						)
 
 				// Output metrics must contains at least one metric
-				.setOutputMetrics(SedcatMetricsKeys.QUALITY_MEASURE_KEY, SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY)
+				.setOutputMetrics(
+						SedcatMetricsKeys.QUALITY_MEASURE_KEY,
+						SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
+						SedcatMetricsKeys.ACTION_MESSAGE_KEY
+						)
 
 				.build();
 
