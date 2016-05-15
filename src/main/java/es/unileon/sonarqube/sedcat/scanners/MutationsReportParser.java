@@ -38,9 +38,9 @@ public class MutationsReportParser {
 
 			doc = Jsoup.parse(reportFile, null);
 
-		} catch (IOException e1) {
-
-			e1.printStackTrace();
+		} catch (Exception e1) {
+			LOG.warn("Error al parsear reporte mutantes");
+			LOG.warn(e1.getMessage());
 			return null;
 		}
 

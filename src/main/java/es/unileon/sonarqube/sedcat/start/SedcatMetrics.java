@@ -21,8 +21,8 @@ public class SedcatMetrics implements Metrics {
  */
 	
 	//Metrica para  MUTANTES
-	public static final Metric MUTANTS = new Metric.Builder(MUTANTS_KEY, "Cobertura Mutantes", Metric.ValueType.PERCENT)
-		    .setDescription("Porcentaje de cobertura por mutantes reportada por la herramienta Pitest")
+	public static final Metric MUTANTS = new Metric.Builder(MUTANTS_KEY, "Mutations Coverage", Metric.ValueType.PERCENT)
+		    .setDescription("Mutations coverage percentage obtained from the Pitest tool")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(SEDCAT_DOMAIN)
@@ -31,31 +31,28 @@ public class SedcatMetrics implements Metrics {
 		    .create();
 	
 	//Metrica COMPLEJIDAD / CLASE
-	public static final Metric COMPLEXITY_AVERAGE_CLASS = new Metric.Builder(COMPLEXITY_CLASS_KEY, "Complejidad media por clase", Metric.ValueType.FLOAT)
-		    .setDescription("Complejidad media por clase")
+	public static final Metric COMPLEXITY_AVERAGE_CLASS = new Metric.Builder(COMPLEXITY_CLASS_KEY, "Complexity by threshold /class", Metric.ValueType.FLOAT)
+		    .setDescription("Complexity average by class based on threshold")
 		    .setDirection(Metric.DIRECTION_WORST)
 		    .setQualitative(false)
 		    .setDomain(SEDCAT_DOMAIN)
-		    .setWorstValue(0.0)
 		    .create();
 	
 	//Metrica COMPLEJIDAD UMBRAL
-	public static final Metric COMPLEXITY_THRESOLD = new Metric.Builder(COMPLEXITY_THRESOLD_KEY, "Umbral complejidad", Metric.ValueType.FLOAT)
-		    .setDescription("Umbral complejidad")
+	public static final Metric COMPLEXITY_THRESHOLD = new Metric.Builder(COMPLEXITY_THRESHOLD_KEY, "Complexity Threshold", Metric.ValueType.FLOAT)
+		    .setDescription("Maximum allowed threshold of complexity average by class")
 		    .setDirection(Metric.DIRECTION_NONE)
 		    .setQualitative(false)
 		    .setDomain(SEDCAT_DOMAIN)
-		    .setWorstValue(0.0)
 		    .create();
 	
-	
-	
+
 /*
  * metricas de salida generadas
  */
 		//MEDIDA CALIDAD
-	public static final Metric QUALITY_MEASURE = new Metric.Builder(QUALITY_MEASURE_KEY, "Calidad de las pruebas unitarias", Metric.ValueType.PERCENT)
-		    .setDescription("Calidad de las pruebas unitarias")
+	public static final Metric QUALITY_MEASURE = new Metric.Builder(QUALITY_MEASURE_KEY, "Quality of unit testing", Metric.ValueType.PERCENT)
+		    .setDescription("Quality of unit testing based on input metrics project")
 		    .setDirection(Metric.DIRECTION_BETTER)
 		    .setQualitative(false)
 		    .setDomain(SEDCAT_DOMAIN)
@@ -63,12 +60,11 @@ public class SedcatMetrics implements Metrics {
 		    .setBestValue(100.0)
 		    .create();
 		//ACCIONES RECOMENDADAS
-	public static final Metric<String> ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Acciones para mejora", Metric.ValueType.STRING)
-		    .setDescription("Acciones a realizar para mejorar la calidad de las pruebas unitarias")
+	public static final Metric<String> ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Improvement actions", Metric.ValueType.STRING)
+		    .setDescription("Improvement actions to take to improve the quality of unit testing")
 		    .setDirection(Metric.DIRECTION_NONE)
 		    .setQualitative(false)
 		    .setDomain(SEDCAT_DOMAIN)
-		    .setWorstValue(0.0)
 		    .create();
 	
 	
@@ -116,7 +112,7 @@ public class SedcatMetrics implements Metrics {
 
 		return Arrays.<Metric>asList(
 
-				MUTANTS, COMPLEXITY_AVERAGE_CLASS, COMPLEXITY_THRESOLD,
+				MUTANTS, COMPLEXITY_AVERAGE_CLASS, COMPLEXITY_THRESHOLD,
 
 				QUALITY_MEASURE, ACTIONS_TO_PERFORM
 

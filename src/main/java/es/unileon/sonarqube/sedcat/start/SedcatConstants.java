@@ -8,9 +8,6 @@ package es.unileon.sonarqube.sedcat.start;
 public class SedcatConstants {
 
 
-  private SedcatConstants() {
-	  throw new AssertionError("Can not instantiate constants class");
-  }
   /*
    * variables utilizadas para calcular la cobertura de mutantes en un proyecto
    * no se pueden utilizar en el sensor porque se reinician en cada ejecución
@@ -26,8 +23,13 @@ public class SedcatConstants {
  
   
   //umbral complejidad
-  public static final String COMPLEXITY_THRESOLD_KEY = "sonar.sedcat.complexityThresold";
-  public static final String COMPLEXITY_THRESOLD_DEFAULT = "30";
+  public static final String COMPLEXITY_THRESHOLD_KEY = "sonar.sedcat.complexityThreshold";
+  public static final String COMPLEXITY_THRESHOLD_DEFAULT = "30";
  
 
+  
+  private SedcatConstants() {
+	  throw new AssertionError("Can not instantiate constants class");
+  }
+  
 }

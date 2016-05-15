@@ -40,9 +40,9 @@ public class ComplexityThresoldSensor implements Sensor {
 		// de no ser así se considerará el valor por defecto
 		
 		LOG.info("Entrada ComplexityThresoldSensor");
-		double thresold = Double.parseDouble(settings.getString(SedcatConstants.COMPLEXITY_THRESOLD_KEY));
+		double thresold = Double.parseDouble(settings.getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY));
 		LOG.info("Umbral extraido: "+thresold);
-		context.saveMeasure(SedcatMetrics.COMPLEXITY_THRESOLD, thresold);
+		context.saveMeasure(SedcatMetrics.COMPLEXITY_THRESHOLD, thresold);
 
 	}
 	

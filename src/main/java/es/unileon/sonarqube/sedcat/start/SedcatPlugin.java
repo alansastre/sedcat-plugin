@@ -22,7 +22,7 @@ import es.unileon.sonarqube.sedcat.scanners.MutationsReportParser;
   @Property(key = SedcatConstants.PITEST_REPORT_DIRECTORY_KEY, defaultValue = SedcatConstants.PITEST_REPORT_DIRECTORY_DEFAULT,
   name = "Mutations Testing Tool Report", description = "Indicate relative path to mutation testing report like default value.", global = true,
   project = true),
-  @Property(key = SedcatConstants.COMPLEXITY_THRESOLD_KEY, defaultValue = SedcatConstants.COMPLEXITY_THRESOLD_DEFAULT,
+  @Property(key = SedcatConstants.COMPLEXITY_THRESHOLD_KEY, defaultValue = SedcatConstants.COMPLEXITY_THRESHOLD_DEFAULT,
   name = "Complexity Thresold", description = "Suggest threshold average complexity by class to be considered for calculations in a range of 0 to 60", global = true,
   project = true),
   

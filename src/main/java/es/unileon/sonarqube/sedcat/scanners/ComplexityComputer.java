@@ -49,8 +49,8 @@ public class ComplexityComputer implements MeasureComputer {
 			if (context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY) != null) {
 				complexity = context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY).getDoubleValue();
 			}
-			if (context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESOLD_KEY) != null) {
-				complexityThresold = context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESOLD_KEY).getDoubleValue();
+			if (context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY) != null) {
+				complexityThresold = context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY).getDoubleValue();
 			}
 
 			LOG.info("Calculating complexity based on threshold");
@@ -101,7 +101,7 @@ public class ComplexityComputer implements MeasureComputer {
 				// Input metrics can be empty, for instance if only issues will
 				// be read
 				.setInputMetrics(CoreMetrics.CLASS_COMPLEXITY_KEY,
-						SedcatMetricsKeys.COMPLEXITY_THRESOLD_KEY)
+						SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY)
 
 				// Output metrics must contains at least one metric
 				.setOutputMetrics(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY)

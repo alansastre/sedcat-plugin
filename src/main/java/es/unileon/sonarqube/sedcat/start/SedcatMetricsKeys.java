@@ -11,11 +11,6 @@ package es.unileon.sonarqube.sedcat.start;
 
 public class SedcatMetricsKeys {
 
-
-	private SedcatMetricsKeys() {
-		throw new AssertionError("Can not instantiate constants class");
-	}
-
 	//variables entrada
 	public static final String SUCCESS_UNIT_TESTS_KEY = "success_unit_tests";
 	public static final String COVERAGE_UNIT_TESTS_KEY = "coverage_unit_tests";
@@ -24,7 +19,7 @@ public class SedcatMetricsKeys {
 	public static final String CODE_LINES_KEY = "number_code_lines";
 	
 	public static final String COMPLEXITY_CLASS_KEY = "complexity_sedcat_average_class";
-	public static final String COMPLEXITY_THRESOLD_KEY = "complexity_sedcat_thresold";
+	public static final String COMPLEXITY_THRESHOLD_KEY = "complexity_sedcat_threshold";
 	
 	//variables salida
 	public static final String QUALITY_MEASURE_KEY = "quality_measure";
@@ -37,4 +32,8 @@ public class SedcatMetricsKeys {
 	public static final String NUMBERTESTS_COMPUTER = "computer_numbertests";
 	public static final String GENERAL_COMPUTER_RESULT = "computer_general_result";
 	
+	
+	private SedcatMetricsKeys() {
+		throw new AssertionError("Can not instantiate constants class");
+	}
 }

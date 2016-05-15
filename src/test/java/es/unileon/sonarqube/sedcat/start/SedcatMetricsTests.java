@@ -39,7 +39,7 @@ public class SedcatMetricsTests {
 				
 				SedcatMetricsKeys.MUTANTS_KEY,
 				SedcatMetricsKeys.COMPLEXITY_CLASS_KEY,
-				SedcatMetricsKeys.COMPLEXITY_THRESOLD_KEY,
+				SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY,
 
 				SedcatMetricsKeys.QUALITY_MEASURE_KEY,
 				SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
