@@ -65,10 +65,16 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 		}
 		// Almacenar el mensaje del conjunto de acciones en forma de String
 		context.addMeasure(this.MEASURE_KEY, actionValue);
-		//Obtener mensaje descriptivo para las acciones y almacenarlo en otra medida
+		
+		/*
+		 * Obtener mensaje descriptivo para las acciones y almacenarlo en otra medida
+		 * para su representacion en la pantalla detalle (drill-down) de la métrica acciones
+		 */
 		try {
 
-				context.addMeasure(SedcatMetricsKeys.ACTION_MESSAGE_KEY, (String) ActionsMessageConstants.class.getField("MESSAGE_SET"+actionSet).get(this));
+			context.addMeasure(SedcatMetricsKeys.ACTION_MESSAGE_KEY,
+					(String) ActionsMessageConstants.class.getField("MESSAGE_SET" + actionSet).get(this)
+							+ ActionsMessageConstants.MESSAGE_ALERT_HACK);
 
 		} catch (Exception e) {
 			LOG.warn(e.getMessage());
