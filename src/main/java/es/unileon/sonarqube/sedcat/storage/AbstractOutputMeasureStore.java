@@ -21,8 +21,11 @@ public abstract class AbstractOutputMeasureStore {
 	protected String ERROR_MESSAGE;
 	//output metric value
 	protected String MEASURE_KEY;
-	//putput metric message
+	//output metric message
 	protected String MESSAGE_KEY;
+	//Message to disable alert "Not gound Items"
+	public static final String MESSAGE_ALERT_HACK = "<style type='text/css'>.alert-info{visibility:hidden;}</style>";
+	
 
 	/**
 	 * Template method - realiza el proceso de almacenamiento de los resultados.

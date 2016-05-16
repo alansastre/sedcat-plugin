@@ -42,6 +42,7 @@ public class SedcatMetricsTests {
 				SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY,
 
 				SedcatMetricsKeys.QUALITY_MEASURE_KEY,
+				SedcatMetricsKeys.QUALITY_MESSAGE_KEY,
 				SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
 				SedcatMetricsKeys.ACTION_MESSAGE_KEY,
 

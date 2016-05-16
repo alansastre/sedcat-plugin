@@ -82,7 +82,7 @@ public class QualityTests {
 	 * .
 	 */
 
-	@Test
+//	@Test
 	public final void testCrispInferenceDoubleArray() {
 
 		double[] inputMetricsValues = new double[NUMBER_METRICS];

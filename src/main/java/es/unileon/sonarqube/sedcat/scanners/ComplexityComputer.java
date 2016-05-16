@@ -48,9 +48,18 @@ public class ComplexityComputer implements MeasureComputer {
 			
 			if (context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY) != null) {
 				complexity = context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY).getDoubleValue();
+			}else{
+				//La metrica es nula
+				LOG.warn("Metric Complexity average by class is null, it is considered zero" 
+						+"so that does not influence in the final result.");
 			}
+			
 			if (context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY) != null) {
 				complexityThresold = context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY).getDoubleValue();
+			}else {
+				//La metrica es nula
+				LOG.warn("Metric Complexity average by class Threshold is null, it is considered zero" 
+						+"so that does not influence in the final result.");
 			}
 
 			LOG.info("Calculating complexity based on threshold");
@@ -66,11 +75,6 @@ public class ComplexityComputer implements MeasureComputer {
 				complexityThresold = 30;
 			}
 
-			// Adaptar complejidad dentro de los limites
-			if (complexity > 60) {
-				complexity = 60;
-			}
-
 			// Calcular complejidad en funcion de umbral
 			if (complexity <= complexityThresold) {
 				// Caso 1
@@ -80,6 +84,12 @@ public class ComplexityComputer implements MeasureComputer {
 				complexity = (complexity - complexityThresold) + 30;
 			}
 
+			// Adaptar complejidad dentro de los limites superiores
+			//si pasa de 60 la consideramos 60 por ser el valor mas alto
+			//afectará negativamente igual sea 60 o superior
+			if (complexity > 60) {
+				complexity = 60;
+			}
 			LOG.info("complexity: " + complexity);
 			LOG.info("complexityThresold: " + complexityThresold);
 

@@ -9,8 +9,6 @@ package es.unileon.sonarqube.sedcat.storage;
  */
 public class ActionsMessageConstants {
 
-	public static final String MESSAGE_ALERT_HACK = "<style type='text/css'>.alert-info{visibility:hidden;}</style>";
-	
 	//metrics
 	public static final String UNIT_TEST_SUCCESS = "Unit Test Success";
 	public static final String UNIT_TEST_COVERAGE= "Unit Test Coverage";

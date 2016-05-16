@@ -1,13 +1,9 @@
 package es.unileon.sonarqube.sedcat.storage;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
-
-import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 
 /**
@@ -75,7 +71,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 
 			context.addMeasure(this.MESSAGE_KEY,
 					(String) ActionsMessageConstants.class.getField("MESSAGE_SET" + actionSet).get(this)
-							+ ActionsMessageConstants.MESSAGE_ALERT_HACK);
+							+ MESSAGE_ALERT_HACK);
 
 		} catch (Exception e) {
 			LOG.warn(e.getMessage());

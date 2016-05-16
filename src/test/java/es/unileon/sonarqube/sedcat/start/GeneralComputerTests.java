@@ -108,9 +108,10 @@ public class GeneralComputerTests {
 		
 		// Probar metricas de salida
 		Set<String> ouputMetrics = def.getOutputMetrics();
-		Assert.assertEquals(3, ouputMetrics.size());
+		Assert.assertEquals(4, ouputMetrics.size());
 
 		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.QUALITY_MEASURE_KEY));
+		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.QUALITY_MESSAGE_KEY));
 		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY));
 		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.ACTION_MESSAGE_KEY));
 
