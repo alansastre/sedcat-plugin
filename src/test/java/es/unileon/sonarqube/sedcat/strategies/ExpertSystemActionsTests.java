@@ -211,11 +211,11 @@ public class ExpertSystemActionsTests {
 	public final void testXfuzzyProcessBehaviour() throws Exception {
 
 		// test data
-		context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 87.75);
-		context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 43.25);
-		context.addMeasure(SedcatMetricsKeys.MUTANTS_KEY, 67.214);
-		context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 3245);
-		context.addMeasure(SedcatMetricsKeys.CODE_LINES_KEY, 50000);
+//		context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 87.75);
+//		context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 43.25);
+//		context.addMeasure(SedcatMetricsKeys.MUTANTS_KEY, 67.214);
+//		context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 3245);
+//		context.addMeasure(SedcatMetricsKeys.CODE_LINES_KEY, 50000);
 
 		double[] actionsInputMetrics = new double[] { 100, 100, 100, 100, 100, };
 		double[] actionsOutputMetrics = new double[] { 100, 100, 100, 100, 100, };

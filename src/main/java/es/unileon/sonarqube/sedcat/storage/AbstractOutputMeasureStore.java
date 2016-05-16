@@ -13,10 +13,16 @@ import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 public abstract class AbstractOutputMeasureStore {
 
 	protected Logger LOG;
+	//minimum value for output metric
 	protected double MIN_VALUE;
+	//maximum value for output metric 
 	protected double MAX_VALUE;
-	protected String MEASURE_KEY;
+	//message in case of error
 	protected String ERROR_MESSAGE;
+	//output metric value
+	protected String MEASURE_KEY;
+	//putput metric message
+	protected String MESSAGE_KEY;
 
 	/**
 	 * Template method - realiza el proceso de almacenamiento de los resultados.

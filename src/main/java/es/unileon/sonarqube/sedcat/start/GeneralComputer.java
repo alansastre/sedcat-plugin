@@ -20,7 +20,6 @@ import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
  *          This interface replaces the deprecated class
  *          org.sonar.api.batch.Decorator.
  */
-// @InstantiationStrategy(InstantiationStrategy.PER_BATCH)
 public class GeneralComputer implements MeasureComputer {
 
 	private static final Logger LOG = LoggerFactory.getLogger(GeneralComputer.class);
@@ -75,9 +74,13 @@ public class GeneralComputer implements MeasureComputer {
 
 				// Output metrics must contains at least one metric
 				.setOutputMetrics(
+						//quality
 						SedcatMetricsKeys.QUALITY_MEASURE_KEY,
+						SedcatMetricsKeys.QUALITY_MESSAGE_KEY,
+						//actions
 						SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
 						SedcatMetricsKeys.ACTION_MESSAGE_KEY
+						
 						)
 
 				.build();

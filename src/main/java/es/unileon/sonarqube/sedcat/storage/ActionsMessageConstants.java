@@ -16,6 +16,7 @@ public class ActionsMessageConstants {
 	public static final String UNIT_TEST_COVERAGE= "Unit Test Coverage";
 	public static final String MUTATIONS_COVERAGE = "Mutations Coverage";
 	public static final String NUMBER_OF_TESTS = "Number Of Tests";
+	public static final String COMPLEXITY = "Number Of Tests";
 	
 	//Common parts
 	public static final String MENU_HEADER = "</br>Improve the following project parameters in the following order of priority:</br></br>";
@@ -23,6 +24,7 @@ public class ActionsMessageConstants {
 	public static final String STRONG_2 = "<strong>2. ";
 	public static final String STRONG_3 = "<strong>3. ";
 	public static final String STRONG_4 = "<strong>4. ";
+	public static final String STRONG_5 = "<strong>5. ";
 	public static final String STRONG_BR = "</strong></br>";
 	public static final String STRONG_BR_BR = "</strong></br></br>";
 
@@ -142,11 +144,56 @@ public class ActionsMessageConstants {
 			
 	
 	
-	public static final String MESSAGE_SET11 = "prueba";
-	public static final String MESSAGE_SET12 = "prueba";
-	public static final String MESSAGE_SET13 = "prueba";
-	public static final String MESSAGE_SET14 = "prueba";
-	public static final String MESSAGE_SET15 = "prueba";
+	public static final String MESSAGE_SET11 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR
+			+ "In this case the level of coverage percentage is maximum which means that all code in project has been reached. "
+			+ "So it's more priority to fix success, this means there are test cases that are failing.</br>"
+			+ "Second increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+	
+	
+	public static final String MESSAGE_SET12 = "This is the optimal case in which project metrics cannot be improved "
+			+ "by have the maximum values. It means that your project has:</br></br>"
+			+ STRONG_1 + "Maximum" + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_2 + "Maximum" + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_3 + "Maximum" + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_4 + "High level of" + NUMBER_OF_TESTS + STRONG_BR
+			+ STRONG_5 + COMPLEXITY +"ideal or below the threshold of allowed complexity."+ STRONG_BR;
+	
+	
+	public static final String MESSAGE_SET13 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ "In this case the level of coverage percentage is maximum which means that all code in project has been reached and "
+			+ "in addition, the number of test is hight.</br>"
+			+ "So it's more priority to fix success, this means there are test cases that are failing.</br>"
+			+ "Second increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>";
+
+	
+	
+	public static final String MESSAGE_SET14 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ "In this case the level of unit test success is maximum and number of test is hight. "
+			+ "In this situation is more priority to fix coverage this means that successful tests are covering "
+			+ "little code  or not enough.</br>"
+			+ "Second increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>";
+
+	
+	public static final String MESSAGE_SET15 = MENU_HEADER
+			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ "In this case the level of unit test success is maximum and number of test is hight. "
+			+ "Coverage value is high, so its more priority increase mutations coverage which helps verify"
+			+ " that code coverage achieved has actually been tested.</br>"
+			+ "Lastly the priority is fix coverage value, this means that successful tests are covering "
+			+ "little code  or not enough.</br>";
+
+	
+	
+	
 	public static final String MESSAGE_SET16 = "prueba";
 	public static final String MESSAGE_SET17 = "prueba";
 	public static final String MESSAGE_SET18 = "prueba";

@@ -33,6 +33,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 		//number of action sets
 		this.MAX_VALUE = 65;
 		this.MEASURE_KEY = SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY;
+		this.MESSAGE_KEY = SedcatMetricsKeys.ACTION_MESSAGE_KEY;
 		this.ERROR_MESSAGE = "Error, el conjunto de acciones obtenido esta fuera del rango permitido";
 
 	}
@@ -72,7 +73,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 		 */
 		try {
 
-			context.addMeasure(SedcatMetricsKeys.ACTION_MESSAGE_KEY,
+			context.addMeasure(this.MESSAGE_KEY,
 					(String) ActionsMessageConstants.class.getField("MESSAGE_SET" + actionSet).get(this)
 							+ ActionsMessageConstants.MESSAGE_ALERT_HACK);
 

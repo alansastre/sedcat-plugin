@@ -5,7 +5,7 @@
 		  	<div class="widget-measure-container">
 		    	<p class="widget-measure widget-measure-main">
 					<span class="widget-label">Unit Test Quality</span>
-					<p><span class="big"><%= format_measure('quality_measure', :url => url_for_drilldown('quality_measure')) -%><%= tendency_icon(measure('quality_measure')) %></span></p>
+					<p><span class="big"><%= format_measure('quality_measure', :url => url_for_drilldown('quality_drilldown_message')) -%></span></p>
 					<br>
 				</p>
 			</div>
@@ -16,7 +16,7 @@
 					<span class="widget-label">Recommended Actions</span>
 				</p>
 
-				<span><%= format_measure('actions_to_realize', :url => url_for_drilldown('action_to_realize_message')) %></span>
+				<span><%= format_measure('actions_to_realize', :url => url_for_drilldown('actions_drilldown_message')) %></span>
 
 		    </div>
 	  	</div>
