@@ -25,6 +25,9 @@ public class ActionsMessageConstants {
 	public static final String STRONG_5 = "<strong>5. ";
 	public static final String STRONG_BR = "</strong></br>";
 	public static final String STRONG_BR_BR = "</strong></br></br>";
+	
+	public static final String COMPLEXITY_MESSAGE = "The first thing is to fix the complexity average by class "
+			+ "which affects the parameters of the test cases making tests more laborious and difficult to maintain.</br>";
 
 	//messages
 	public static final String MESSAGE_SET0 = MENU_HEADER
@@ -94,7 +97,7 @@ public class ActionsMessageConstants {
 	
 	public static final String MESSAGE_SET6 = MENU_HEADER
 			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR
-			+ STRONG_2 + NUMBER_OF_TESTS + STRONG_BR
+			+ STRONG_2 + NUMBER_OF_TESTS + STRONG_BR_BR
 			+ "In this case the level of coverage and success is maximum. "
 			+ "Increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
 			+ "Lastly increase is coverage, will allow successful tests achieve greater amount of code.</br>";
@@ -104,7 +107,7 @@ public class ActionsMessageConstants {
 	public static final String MESSAGE_SET7 = MENU_HEADER
 			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
 			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
-			+ STRONG_3 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_3 + MUTATIONS_COVERAGE + STRONG_BR_BR
 			+ "First priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
 			+ "Second increase is coverage, will allow successful tests achieve greater amount of code.</br>"
 			+ "Thirdly increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>";
@@ -114,7 +117,7 @@ public class ActionsMessageConstants {
 	public static final String MESSAGE_SET8 =  MENU_HEADER
 			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR
 			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
-			+ STRONG_3 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_3 + MUTATIONS_COVERAGE + STRONG_BR_BR
 			+ "In this situation is more priority to fix coverage before success, this means that successful tests are covering"
 			+ " little code or not enough.</br>"
 			+ "Second priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
@@ -123,7 +126,7 @@ public class ActionsMessageConstants {
 	public static final String MESSAGE_SET9 = MENU_HEADER
 			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR
 			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
-			+ STRONG_3 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_SUCCESS + STRONG_BR_BR
 			+ "In this situation is more priority to fix coverage before success, this means that successful tests are covering "
 			+ "little code  or not enough.</br>"
 			+ "Second increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
@@ -133,7 +136,7 @@ public class ActionsMessageConstants {
 	public static final String MESSAGE_SET10 = MENU_HEADER
 			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR
 			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
-			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR_BR
 			+ "In this case the level of unit test success is maximum. "
 			+ "So it's more priority to fix coverage, this means that successful tests are covering little code or not enough.</br>"
 			+ "Second increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
@@ -145,7 +148,7 @@ public class ActionsMessageConstants {
 	public static final String MESSAGE_SET11 = MENU_HEADER
 			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
 			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
-			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR_BR
 			+ "In this case the level of coverage percentage is maximum which means that all code in project has been reached. "
 			+ "So it's more priority to fix success, this means there are test cases that are failing.</br>"
 			+ "Second increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
@@ -163,7 +166,7 @@ public class ActionsMessageConstants {
 	
 	public static final String MESSAGE_SET13 = MENU_HEADER
 			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
-			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR_BR
 			+ "In this case the level of coverage percentage is maximum which means that all code in project has been reached and "
 			+ "in addition, the number of test is hight.</br>"
 			+ "So it's more priority to fix success, this means there are test cases that are failing.</br>"
@@ -173,7 +176,7 @@ public class ActionsMessageConstants {
 	
 	public static final String MESSAGE_SET14 = MENU_HEADER
 			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR
-			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR_BR
 			+ "In this case the level of unit test success is maximum and number of test is hight. "
 			+ "In this situation is more priority to fix coverage this means that successful tests are covering "
 			+ "little code  or not enough.</br>"
@@ -182,45 +185,312 @@ public class ActionsMessageConstants {
 	
 	public static final String MESSAGE_SET15 = MENU_HEADER
 			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR
-			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR_BR
 			+ "In this case the level of unit test success is maximum and number of test is hight. "
 			+ "Coverage value is high, so its more priority increase mutations coverage which helps verify"
 			+ " that code coverage achieved has actually been tested.</br>"
 			+ "Lastly the priority is fix coverage value, this means that successful tests are covering "
 			+ "little code  or not enough.</br>";
 
+	public static final String MESSAGE_SET16 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_COVERAGE + STRONG_BR_BR
+			+ "In this case the level of coverage percentage is high which means that has been reached much of code in project. "
+			+ "So it's more priority to fix success, this means there are test cases that are failing.</br>"
+			+ "Second increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Finally, you should improve coverage to finish covering all the code.</br>";
+	
+	
+	public static final String MESSAGE_SET17 = MENU_HEADER
+			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_COVERAGE + STRONG_BR_BR
+			+ "In this case the level of coverage percentage is high which means that has been reached much of code in project. "
+			+ "First increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Second it's priority to fix success, this means there are test cases that are failing.</br>"
+			+ "Finally, you should improve coverage to finish covering all the code.</br>";
 	
 	
 	
-	public static final String MESSAGE_SET16 = "prueba";
-	public static final String MESSAGE_SET17 = "prueba";
-	public static final String MESSAGE_SET18 = "prueba";
-	public static final String MESSAGE_SET19 = "prueba";
-	public static final String MESSAGE_SET20 = "prueba";
-	public static final String MESSAGE_SET21 = "prueba";
-	public static final String MESSAGE_SET22 = "prueba";
-	public static final String MESSAGE_SET23 = "prueba";
-	public static final String MESSAGE_SET24 = "prueba";
-	public static final String MESSAGE_SET25 = "prueba";
-	public static final String MESSAGE_SET26 = "prueba";
-	public static final String MESSAGE_SET27 = "prueba";
-	public static final String MESSAGE_SET28 = "prueba";
-	public static final String MESSAGE_SET29 = "prueba";
-	public static final String MESSAGE_SET30 = "prueba";
-	public static final String MESSAGE_SET31 = "prueba";
-	public static final String MESSAGE_SET32 = "prueba";
-	public static final String MESSAGE_SET33 = "prueba";
-	public static final String MESSAGE_SET34 = "prueba";
-	public static final String MESSAGE_SET35 = "prueba";
-	public static final String MESSAGE_SET36 = "prueba";
-	public static final String MESSAGE_SET37 = "prueba";
-	public static final String MESSAGE_SET38 = "prueba";
-	public static final String MESSAGE_SET39 = "prueba";
-	public static final String MESSAGE_SET40 = "prueba";
-	public static final String MESSAGE_SET41 = "prueba";
-	public static final String MESSAGE_SET42 = "prueba";
-	public static final String MESSAGE_SET43 = "prueba";
-	public static final String MESSAGE_SET44 = "prueba";
+	public static final String MESSAGE_SET18 = MENU_HEADER
+			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR_BR
+			+ "In this case the level of coverage percentage is maximum which means that all code in project has been reached and "
+			+ "in addition, the number of test is hight.</br>"
+			+ "First increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Second it's priority to fix success, this means there are test cases that are failing.</br>";
+
+	
+	public static final String MESSAGE_SET19 = MENU_HEADER
+			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR_BR
+			+ "In this case the level of coverage percentage and unit test success are maximum which means that all code in"
+			+ "project has been reached and all test pass. In addition, the number of test is hight.</br>"
+			+ "Only it needs to increase mutations coverage, this helps verify that the code coverage achieved has actually been tested.</br>";
+	
+	
+	
+	public static final String MESSAGE_SET20 = MENU_HEADER
+			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "In this case the level of unit test success is maximum.</br>"
+			+ "First increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Second you should improve coverage to finish covering all the code.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+			
+	
+	
+	
+	public static final String MESSAGE_SET21 = MENU_HEADER
+			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "In this case the level of coverage percentage is maximum which means that all code in project has been reached.</br>"
+			+ "First increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Second it's priority to fix success, this means there are test cases that are failing.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+
+	
+	
+	public static final String MESSAGE_SET22 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_4 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "First priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "In this case the level of coverage is high, so it is recommended to fix after the other parameters.</br>"
+			+ "Second increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Thirdly increase is coverage, will allow successful tests achieve greater amount of code.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+	
+	public static final String MESSAGE_SET23 = MENU_HEADER
+			+ STRONG_1 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_4 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "First increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Second it's priority to fix success, this means there are test cases that are failing.</br>"
+			+ "Thirdly increase is coverage, will allow successful tests achieve greater amount of code.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+	
+	
+	
+	public static final String MESSAGE_SET24 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "In this situation is more priority to fix coverage before success, this means that successful tests are covering"
+			+ " little code or not enough.</br>"
+			+ "Second priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";	
+	
+	
+	
+	public static final String MESSAGE_SET25 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_2 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "In this case the level of unit test success is maximum.</br>"
+			+ "First you should improve coverage to finish covering all the code.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";	
+	
+	
+	
+	
+	public static final String MESSAGE_SET26 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_2 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "First priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";	
+	
+	public static final String MESSAGE_SET27 = MENU_HEADER
+			+ STRONG_1 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "In this case the level of coverage, success, mutations are maximum and complexity is in threshold allowed.</br>"
+			+ "is only necessary to increase the number of test cases, so that there is balance with the size of the project.</br>";	
+	
+	
+	
+	public static final String MESSAGE_SET28 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR_BR
+			+ "First priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Second increase is coverage, will allow successful tests achieve greater amount of code.</br>";
+	
+	
+	public static final String MESSAGE_SET29 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR_BR
+			+ "First increase is coverage, will allow successful tests achieve greater amount of code.</br>"
+			+ "Second priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>";
+	
+	
+	
+	public static final String MESSAGE_SET30 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_COVERAGE + STRONG_BR_BR
+			+ "In this case the level of success and mutations are maximum and complexity is in threshold allowed.</br>"
+			+ "Only it needs to increase coverage, will allow successful tests achieve greater amount of code.</br>";
+
+	public static final String MESSAGE_SET31 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR_BR
+			+ "In this case the level of coverage and mutations are maximum and complexity is in threshold allowed.</br>"
+			+ "Only it needs to fix those tests that are failing to raise the percentage of test cases that pass.</br>";
+	
+	
+	public static final String MESSAGE_SET32 = MENU_HEADER
+			+ STRONG_1 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ "First priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Second increase is coverage, will allow successful tests achieve greater amount of code.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";	
+	
+	
+	public static final String MESSAGE_SET33 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_4 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_5 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "Second priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Thirdly increase is coverage, will allow successful tests achieve greater amount of code.</br>"
+			+ "Later increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+
+	
+	public static final String MESSAGE_SET34 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_4 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_5 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "Second is more priority to fix coverage before success, this means that successful tests are covering "
+			+ "little code or not enough.</br>"
+			+ "Later, increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+
+
+	public static final String MESSAGE_SET35 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_4 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "Second priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Thirdly increase is coverage, will allow successful tests achieve greater amount of code.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+	
+	
+	public static final String MESSAGE_SET36 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_4 + NUMBER_OF_TESTS + STRONG_BR
+			+ STRONG_5 + UNIT_TEST_COVERAGE + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "Second priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Thirdly increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Later, it is recommendable add more test cases to finish cover the project code.</br>"
+			+ "Lastly increase is coverage, will allow successful tests achieve greater amount of code.</br>";
+
+
+	public static final String MESSAGE_SET37 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_4 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_5 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "In this case the level of coverage and success is high, so it is recommended to fix mutations coverage before. "
+			+ "Mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Thirdly increase is coverage, will allow successful tests achieve greater amount of code.</br>"
+			+ "Later, priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+	
+	
+	public static final String MESSAGE_SET38 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR
+			+ STRONG_4 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_5 + UNIT_TEST_COVERAGE + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "In this case the level of coverage and success is high, so it is recommended to fix mutations coverage before. "
+			+ "Mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Thirdly it is recommendable add more test cases to finish cover the project code.</br>"
+			+ "Later, priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Lastly increase is coverage, will allow successful tests achieve greater amount of code.</br>";
+	
+	public static final String MESSAGE_SET39 =  MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_3 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "In this case the level of coverage and success is maximum. "
+			+ "Increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Lastly increase is coverage, will allow successful tests achieve greater amount of code.</br>";
+	
+	
+	
+	public static final String MESSAGE_SET40 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_4 + MUTATIONS_COVERAGE + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "Second priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Thirdly increase is coverage, will allow successful tests achieve greater amount of code.</br>"
+			+ "Lastly increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>";
+	
+	
+	public static final String MESSAGE_SET41 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_3 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_4 + MUTATIONS_COVERAGE + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "In this situation is more priority to fix coverage before success, this means that successful tests are covering"
+			+ " little code or not enough.</br>"
+			+ "Thirdly priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>"
+			+ "Lastly increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>";
+	
+	
+	
+	public static final String MESSAGE_SET42 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_3 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_4 + UNIT_TEST_SUCCESS + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "In this situation is more priority to fix coverage before success, this means that successful tests are covering "
+			+ "little code  or not enough.</br>"
+			+ "Thirdly increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Lastly priority is to fix those tests that are failing to raise the percentage of test cases that pass.</br>";
+	
+	
+	public static final String MESSAGE_SET43 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_COVERAGE + STRONG_BR
+			+ STRONG_3 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_4 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "In this case the level of unit test success is maximum. "
+			+ "So it's more priority to fix coverage, this means that successful tests are covering little code or not enough.</br>"
+			+ "Thirdly increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+	
+	public static final String MESSAGE_SET44 = MENU_HEADER
+			+ STRONG_1 + COMPLEXITY + STRONG_BR
+			+ STRONG_2 + UNIT_TEST_SUCCESS + STRONG_BR
+			+ STRONG_3 + MUTATIONS_COVERAGE + STRONG_BR
+			+ STRONG_4 + NUMBER_OF_TESTS + STRONG_BR_BR
+			+ COMPLEXITY_MESSAGE
+			+ "In this case the level of coverage percentage is maximum which means that all code in project has been reached. "
+			+ "So it's more priority to fix success, this means there are test cases that are failing.</br>"
+			+ "Thirdly increase mutations coverage helps verify that the code coverage achieved has actually been tested.</br>"
+			+ "Lastly it is recommendable add more test cases to finish cover the project code.</br>";
+
 	public static final String MESSAGE_SET45 = "prueba";
 	public static final String MESSAGE_SET46 = "prueba";
 	public static final String MESSAGE_SET47 = "prueba";

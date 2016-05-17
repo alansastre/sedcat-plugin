@@ -38,11 +38,28 @@ public class ComplexityThresoldSensor implements Sensor {
 		// Comprobar que el valor umbral introducido esté en los límites
 		// permitidos [0, 60]
 		// de no ser así se considerará el valor por defecto
+
+		double complexityThresold = 30.0;
+		try {
+			complexityThresold = Double.parseDouble(settings.getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY));
+		} catch (Exception e) {
+			LOG.warn("Value must be a number, in range of 0 to 60.");
+			LOG.warn("In this case, it considered default value (30).");
+			LOG.warn(e.getMessage());
+		}
+		LOG.info("Umbral extraido: "+complexityThresold);
 		
-		LOG.info("Entrada ComplexityThresoldSensor");
-		double thresold = Double.parseDouble(settings.getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY));
-		LOG.info("Umbral extraido: "+thresold);
-		context.saveMeasure(SedcatMetrics.COMPLEXITY_THRESHOLD, thresold);
+		// Establecer umbral dentro de los limites
+		if (complexityThresold > 60) {
+			complexityThresold = 60;
+			LOG.warn("Suggested complexity threshold is greater"
+					+ " than permitted. The value considered in this case is 60");
+		} else if (complexityThresold < 0) {
+			LOG.warn("Suggested complexity threshold " + complexityThresold
+					+ " is less than 0, it will be considered default value (30)");
+			complexityThresold = 30;
+		}
+		context.saveMeasure(SedcatMetrics.COMPLEXITY_THRESHOLD, complexityThresold);
 
 	}
 	

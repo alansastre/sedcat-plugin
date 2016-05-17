@@ -35,15 +35,26 @@ import org.powermock.api.mockito.*;
  *	@version 1.0
  */
 public class ComplexityComputerTests {
-
-	ComplexityComputer underTest = new ComplexityComputer();
-
+	
+	private ComplexityComputer underTest;
+	
+	private TestMeasureComputerContext computerContextMocked;
+	private TestComponent componentMocked;
+	private Measure measureMockedComplexity;
+	private Measure measureMockedComplexitythreshold;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		
+		computerContextMocked = mock(TestMeasureComputerContext.class);
+		componentMocked = mock(TestComponent.class);
+		measureMockedComplexity = mock(Measure.class);
+		measureMockedComplexitythreshold = mock(Measure.class);
+		
+		underTest = new ComplexityComputer();
 	}
 
 
@@ -82,9 +93,6 @@ public class ComplexityComputerTests {
 
 		//Comprobar que el scanner no se ejecuta a un nivel que no sea PROJECT
 		
-	     TestMeasureComputerContext computerContextMocked = mock(TestMeasureComputerContext.class);
-	     TestComponent componentMocked = mock(TestComponent.class);
-
 	     when(computerContextMocked.getComponent()).thenReturn(componentMocked);
 	     
 	     //******** DIRECTORY ************
@@ -140,15 +148,12 @@ public class ComplexityComputerTests {
 	
 	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
 	 */
 	@Test
 	public final void testComputeProjectNullMetrics() {
 
-
-	     TestMeasureComputerContext computerContextMocked = mock(TestMeasureComputerContext.class);
-	     TestComponent componentMocked = mock(TestComponent.class);
-	     
+		
 	     when(computerContextMocked.getComponent()).thenReturn(componentMocked);
 	     when(componentMocked.getType()).thenReturn(Type.PROJECT);
 
@@ -168,15 +173,11 @@ public class ComplexityComputerTests {
 
 	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
 	 */
 	@Test
 	public final void testComputeProjectMetricsWithinRanges() {
-		
-		TestMeasureComputerContext computerContextMocked = mock(TestMeasureComputerContext.class);
-		TestComponent componentMocked = mock(TestComponent.class);
-		Measure measureMockedComplexity = mock(Measure.class);
-		Measure measureMockedComplexitythreshold = mock(Measure.class);
+
 
 		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
 		when(componentMocked.getType()).thenReturn(Type.PROJECT);
@@ -200,15 +201,10 @@ public class ComplexityComputerTests {
 	
 	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
 	 */
 	@Test
-	public final void testComputeProjectThresoldEqualsTo60() {
-		
-		TestMeasureComputerContext computerContextMocked = mock(TestMeasureComputerContext.class);
-		TestComponent componentMocked = mock(TestComponent.class);
-		Measure measureMockedComplexity = mock(Measure.class);
-		Measure measureMockedComplexitythreshold = mock(Measure.class);
+	public final void testComputeProjectThresoldGreaterThan60() {
 
 		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
 		when(componentMocked.getType()).thenReturn(Type.PROJECT);
@@ -229,15 +225,11 @@ public class ComplexityComputerTests {
 	
 	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.CoverageUnitTestsComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
 	 */
 	@Test
-	public final void testComputeProjectThresoldGreaterThan60() {
+	public final void testComputeProjectComplexityGreaterThan60() {
 		
-		TestMeasureComputerContext computerContextMocked = mock(TestMeasureComputerContext.class);
-		TestComponent componentMocked = mock(TestComponent.class);
-		Measure measureMockedComplexity = mock(Measure.class);
-		Measure measureMockedComplexitythreshold = mock(Measure.class);
 
 		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
 		when(componentMocked.getType()).thenReturn(Type.PROJECT);
@@ -272,5 +264,27 @@ public class ComplexityComputerTests {
 	}
 	
 
+	/**
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 */
+	@Test
+	public final void testComputeProjectThresoldLessThan0() {
+		
+		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
+		when(componentMocked.getType()).thenReturn(Type.PROJECT);
+		when(measureMockedComplexity.getDoubleValue()).thenReturn(60.0);
+		when(measureMockedComplexitythreshold.getDoubleValue()).thenReturn(-5.0);
+
+		when(computerContextMocked.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY)).thenReturn(measureMockedComplexity);
+		when(computerContextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY))
+				.thenReturn(measureMockedComplexitythreshold);
+
+		underTest.compute(computerContextMocked);
+
+		Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY, 60.0);
+		
+	}
+		
+		
 
 }
