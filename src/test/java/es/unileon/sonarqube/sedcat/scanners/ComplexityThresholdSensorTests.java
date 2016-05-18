@@ -16,12 +16,12 @@ import es.unileon.sonarqube.sedcat.start.SedcatMetrics;
  *	@author alan.sastre
  *	@version 1.0
  */
-public class ComplexityThresoldSensorTests {
+public class ComplexityThresholdSensorTests {
 
 	private Settings settings;
 	private Project mockedProject;
 	private SensorContext mockedcontext;
-	private ComplexityThresoldSensor underTest;
+	private ComplexityThresholdSensor underTest;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -33,12 +33,12 @@ public class ComplexityThresoldSensorTests {
 		mockedProject = mock(Project.class);
 		mockedcontext = mock(SensorContext.class);
 		
-		underTest = new ComplexityThresoldSensor(settings);
+		underTest = new ComplexityThresholdSensor(settings);
 		
 	}
 
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresoldSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresholdSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
 	 */
 	@Test
 	public final void testAnalyse() {
@@ -51,7 +51,7 @@ public class ComplexityThresoldSensorTests {
 	}
 	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresoldSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresholdSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
 	 */
 	@Test
 	public final void testAnalyseException() {
@@ -65,7 +65,7 @@ public class ComplexityThresoldSensorTests {
 
 	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresoldSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresholdSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
 	 */
 	@Test
 	public final void testAnalyseGreatherThan60() {
@@ -78,7 +78,7 @@ public class ComplexityThresoldSensorTests {
 	}
 	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresoldSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresholdSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
 	 */
 	@Test
 	public final void testAnalyseEquals60() {
@@ -91,7 +91,7 @@ public class ComplexityThresoldSensorTests {
 	}
 	
 	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresoldSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
+	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityThresholdSensor#analyse(org.sonar.api.resources.Project, org.sonar.api.batch.SensorContext)}.
 	 */
 	@Test
 	public final void testAnalyseLessThan0() {

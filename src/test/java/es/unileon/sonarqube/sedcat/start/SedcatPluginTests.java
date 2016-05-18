@@ -55,7 +55,7 @@ public class SedcatPluginTests {
 					"MutationsReportFinder",
 					"MutationsReportParser",
 					"MutationsCoverageSensor",
-					"ComplexityThresoldSensor",
+					"ComplexityThresholdSensor",
 					"ComplexityComputer",
 					"GeneralComputer",
 					"ExampleSedcatHtml",

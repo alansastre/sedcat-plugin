@@ -47,20 +47,6 @@ public class ActionsMeasureStoreTests {
 	/**
 	 * @throws java.lang.Exception
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 
@@ -73,13 +59,6 @@ public class ActionsMeasureStoreTests {
 
 		underTest = new ActionsMeasureStore();
 
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
 	}
 
 	/**
@@ -216,5 +195,45 @@ public class ActionsMeasureStoreTests {
 		Assert.assertTrue(testProperties.isEmpty());
 
 	}
+	
+	
+	/**
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore#saveMeasure(double, org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}
+	 * .
+	 */
+	@Test
+	public final void testSaveMeasureNull() {
+		
+		TestMeasureComputerContext contextMocked1 = mock (TestMeasureComputerContext.class);
 
+		double[] result = new double[] { 89 };
+
+		underTest.saveMeasure(result, contextMocked1);
+		// verificate behaviour
+		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, "No se han encontrado posibles soluciones.");
+		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.ACTION_MESSAGE_KEY, "No se han encontrado posibles soluciones.");
+
+		
+	}
+
+	
+	
+	/**
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore#saveMeasure(double, org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}
+	 * .
+	 */
+	@Test
+	public final void testSaveMeasureMessageSet() {
+		
+		
+		TestMeasureComputerContext contextMocked1 = mock (TestMeasureComputerContext.class);
+
+		double[] result = new double[] { 25 };
+
+		underTest.saveMeasure(result, contextMocked1);
+		
+		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.ACTION_MESSAGE_KEY, ActionsMessageConstants.MESSAGE_SET25 + AbstractOutputMeasureStore.MESSAGE_ALERT_HACK);
+	}
 }

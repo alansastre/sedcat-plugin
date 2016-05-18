@@ -7,7 +7,7 @@ import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
 
 import es.unileon.sonarqube.sedcat.scanners.ComplexityComputer;
-import es.unileon.sonarqube.sedcat.scanners.ComplexityThresoldSensor;
+import es.unileon.sonarqube.sedcat.scanners.ComplexityThresholdSensor;
 import es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensor;
 import es.unileon.sonarqube.sedcat.scanners.MutationsReportFinder;
 import es.unileon.sonarqube.sedcat.scanners.MutationsReportParser;
@@ -45,7 +45,7 @@ public class SedcatPlugin extends SonarPlugin {
     	    		MutationsReportFinder.class,
     	    		MutationsReportParser.class,
     	    		MutationsCoverageSensor.class,
-    	    		ComplexityThresoldSensor.class));
+    	    		ComplexityThresholdSensor.class));
     	    
     	    // Computer Scanners: second level operations
     	    extensions.addAll(asList(ComplexityComputer.class));

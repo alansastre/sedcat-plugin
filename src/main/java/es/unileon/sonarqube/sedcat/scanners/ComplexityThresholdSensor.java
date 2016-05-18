@@ -17,12 +17,12 @@ import org.sonar.api.config.Settings;
  * @author alan.sastre
  * @version 1.0
  */
-public class ComplexityThresoldSensor implements Sensor {
+public class ComplexityThresholdSensor implements Sensor {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ComplexityThresoldSensor.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ComplexityThresholdSensor.class);
 	private final Settings settings;
 
-	public ComplexityThresoldSensor(Settings settings) {
+	public ComplexityThresholdSensor(Settings settings) {
 		this.settings = settings;
 	}
 

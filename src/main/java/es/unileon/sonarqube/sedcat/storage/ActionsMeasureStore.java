@@ -55,6 +55,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 
 		LOG.info("Set acciones resultado: " +actionsValueProperty);
 		String actionValue = propiedades.getProperty(actionsValueProperty);
+
 		LOG.info("Resultado acciones: " + actionValue);
 
 		if (actionValue == null) {
@@ -75,6 +76,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 
 		} catch (Exception e) {
 			LOG.warn(e.getMessage());
+			context.addMeasure(this.MESSAGE_KEY, "No se han encontrado posibles soluciones.");
 		}
 		
 		
