@@ -73,20 +73,6 @@ public class ExpertSystemActionsTests {
 	/**
 	 * @throws java.lang.Exception
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 
@@ -118,18 +104,10 @@ public class ExpertSystemActionsTests {
 	}
 
 	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	/**
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions#extractValues()}
 	 * .
 	 */
-
 	@Test
 	public final void testExtractValues() {
 
@@ -144,37 +122,6 @@ public class ExpertSystemActionsTests {
 
 	}
 
-	/**
-	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#checkNotNullInputMetrics(org.sonar.api.ce.measure.Measure[])}
-	 * .
-	 */
-	@Test
-	public final void testCheckNotNullInputMetricsOk() {
-
-		Measure[] actionsInputMetrics = new Measure[] {
-
-				measureMocked, measureMocked, measureMocked, measureMocked, measureMocked, measureMocked
-
-		};
-
-		underTest.checkNotNullInputMetrics(actionsInputMetrics);
-
-	}
-
-	/**
-	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#checkNotNullInputMetrics(org.sonar.api.ce.measure.Measure[])}
-	 */
-	@Test
-	public final void testCheckNotNullInputMetricsNull() {
-
-		Measure[] actionsInputMetrics = new Measure[] { null, null, null, null, null, null };
-
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkNotNullInputMetrics(actionsInputMetrics);
-
-	}
 
 	/**
 	 * Test method for

@@ -71,9 +71,9 @@ public class ActionsMeasureStoreTests {
 
 		double[] result = new double[] { 23 };
 		underTest.saveMeasure(result, context);
-
-		String action = context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue();
-		Assert.assertEquals("Mutations coverage > Unit Test Success > Unit Test Coverage > Number Of Tests", action);
+		
+		Assert.assertEquals("Mutations coverage > Unit Test Success > Unit Test Coverage > Number Of Tests",
+				context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue());
 
 	}
 

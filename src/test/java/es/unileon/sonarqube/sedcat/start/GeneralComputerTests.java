@@ -1,14 +1,7 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.start;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -18,7 +11,6 @@ import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.measures.CoreMetrics;
-
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 import java.util.Set;
@@ -48,19 +40,6 @@ public class GeneralComputerTests {
 	private TestComponent mockedComponent;
 	private TestSettings settings;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
 
 	/**
 	 * @throws java.lang.Exception
@@ -72,13 +51,6 @@ public class GeneralComputerTests {
 		def = underTest.define(defContext);
 		mockedComponent = mock(TestComponent.class);
 		settings = new TestSettings();
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
 	}
 
 	/*
@@ -138,6 +110,7 @@ public class GeneralComputerTests {
 		Assert.assertFalse(underTest.isProject());
 	}
 
+	
 	/**
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.

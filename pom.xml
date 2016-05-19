@@ -11,7 +11,7 @@
   <name>sonar-sedcat-plugin</name>
   <description>Plugin to measure the quality of software testing</description>
   
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/alansastre/sedcat-plugin</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

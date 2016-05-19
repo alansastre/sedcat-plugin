@@ -1,6 +1,3 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.storage;
 
 import org.slf4j.Logger;
@@ -25,6 +22,9 @@ public abstract class AbstractOutputMeasureStore {
 	protected String MESSAGE_KEY;
 	//Message to disable alert "Not gound Items"
 	public static final String MESSAGE_ALERT_HACK = "<style type='text/css'>.alert-info{visibility:hidden;}</style>";
+	//Message in case of no actions
+	protected static final String MESSAGE_NO_ACTIONS = "No se han encontrado posibles soluciones.";
+
 	
 
 	/**
@@ -38,32 +38,33 @@ public abstract class AbstractOutputMeasureStore {
 	 */
 	public final void outputMeasureStore(double[] outputMeasureValues, MeasureComputerContext context) {
 
-		// Invariant Part
-		this.checkOutputDataSet(outputMeasureValues);
-
 		// Variant Part
-		this.saveMeasure(outputMeasureValues, context);
+		this.saveMeasure(this.checkOutputDataSet(outputMeasureValues), context);
 
 	}
 
 	/**
-	 * interpretar el valor y almacenarlo segun el tipo de la medida a almacenar
-	 * 
-	 * @param measureValue
-	 * @param context
+	 * Almacena los resultados de forma particular en cada sistema experto
+	 * @param outputMeasureValues array con los resultados
+	 * @param context contexto para almacenar los resultados
 	 */
 	protected abstract void saveMeasure(double[] outputMeasureValues, MeasureComputerContext context);
 
+
 	/**
-	 * Checkea que el valor obtenido esta dentro de los limites
-	 * 
-	 * @param measureValue
+	 * Comprueba array de resultados, de devuelve si es correcto o devuelve uno vacío 
+	 * si no encaja en las especificaciones.
+	 * @param outputMeasureValues - array con los resultados a comprobar
+	 * @return array de resultados en caso de que sea correcto o 
+	 * array vacío en caso de que sea nulo o los resultados no estén en los rangos permitidos
 	 */
-	protected void checkOutputDataSet(double[] outputMeasureValues) {
+	protected double[] checkOutputDataSet(double[] outputMeasureValues) {
+
+		double[] dataSet = new double[0];
 
 		if (outputMeasureValues == null || !(outputMeasureValues.length > 0)) {
-			LOG.error("No hay resultados");
-			System.exit(-1);
+			LOG.warn("No hay resultados.");
+			return dataSet;
 		}
 
 		for (int i = 0; i < outputMeasureValues.length; i++) {
@@ -71,10 +72,14 @@ public abstract class AbstractOutputMeasureStore {
 			if (outputMeasureValues[i] < this.MIN_VALUE || outputMeasureValues[i] > this.MAX_VALUE) {
 
 				LOG.error(this.ERROR_MESSAGE);
-				System.exit(-1);
+				return dataSet;
 			}
 
 		}
+
+		// llegados a este punto el array de valores contiene unb valor y está
+		// en los rangos permitidos
+		return outputMeasureValues;
 
 	}
 

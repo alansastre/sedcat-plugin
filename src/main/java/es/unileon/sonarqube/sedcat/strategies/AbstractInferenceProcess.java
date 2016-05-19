@@ -1,15 +1,13 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.strategies;
 
 import org.slf4j.Logger;
-import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import es.unileon.sonarqube.sedcat.storage.AbstractOutputMeasureStore;
 
-
 /**
+ *  Define el proceso que tiene que seguir un sistema experto
+ *  con xfuzzyProcess() y metodos para la extraccion de las metricas
+ *  requeridas por los mismos.
  *	@author alan.sastre
  *	@version 1.0
  */
@@ -49,26 +47,49 @@ public abstract class AbstractInferenceProcess {
 	}
 	
 	/**
-	 *  Metodo para extraer los valores de entrada, particulares en cada sistema experto
+	 *  Metodo para extraer los valores de entrada en orden particular
+	 *  en cada sistema experto.
+	 *  
 	 * @param context
-	 * @return
+	 * @return array de double con los valores requeridos por el sistema experto
 	 */
 	abstract double[] extractValues();
+
+	/*
+	 * Metodos para devolver los valores de las metricas de entrada
+	 */
+	/**
+	 * Devuelve el valor de una métrica de tipo double o 0.0 en caso de que dicha métrica 
+	 * sea nula.
+	 * @param inputMetric String con la métrica de tipo double a obtener su valor
+	 * Ejemplo: CoreMetrics.TEST_SUCCESS_DENSITY_KEY
+	 * @return valor de la métrica a la que pertene la key
+	 */
+	protected double getMeasureDoubleChecked(String inputMetricKey){
+
+		double resultado = 0.0;
+		if (this.context.getMeasure(inputMetricKey) != null) {
+			resultado = this.context.getMeasure(inputMetricKey).getDoubleValue();
+		}
+		return resultado;
+	}
 	
 	/**
-	 *  Comprueba que las metricas de entrada no sean nulas antes de extraer sus valores.
-	 * @param inputMetrics
+	 * Devuelve el valor de una métrica de tipo int o 0 en caso de que dicha métrica 
+	 * sea nula.
+	 * @param inputMetric String con la métrica de tipo int a obtener su valor
+	 * Ejemplo: CoreMetrics.TESTS_KEY
+	 * @return valor de la métrica a la que pertene la key 
 	 */
-	protected void checkNotNullInputMetrics(Measure[] inputMetrics){
-		
-		for (int i = 0; i < inputMetrics.length; i++) {
-			
-			if (inputMetrics[i]==null) {
-				LOG.error("Input metrics can not be null.");
-				System.exit(-1);
-				
-			}
-}
+	protected int getMeasureIntChecked(String inputMetricKey){
+
+		int resultado = 0;
+		if (this.context.getMeasure(inputMetricKey) != null) {
+			resultado = this.context.getMeasure(inputMetricKey).getIntValue();
+		}
+		return resultado;
 	}
+
+	
 	
 }

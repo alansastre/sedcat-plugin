@@ -22,13 +22,17 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 	// definen los conjuntos de acciones
 	private static final String ACTIONS_PROPERTIES_PATH = "/root/workspace/sonar-sedcat-plugin/src/main/resources/org/sonar/l10n/expertSystemActions.properties";
 	
+	
+	
 	public ActionsMeasureStore() {
 
 		this.LOG = LoggerFactory.getLogger(ActionsMeasureStore.class);
 		this.MIN_VALUE = 0;
 		//number of action sets
 		this.MAX_VALUE = 65;
+		//metrica acciones con el mensaje que aparecerá en el widget
 		this.MEASURE_KEY = SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY;
+		//metrica acciones con el mensaje que aparecera en la pantalla de detalle
 		this.MESSAGE_KEY = SedcatMetricsKeys.ACTION_MESSAGE_KEY;
 		this.ERROR_MESSAGE = "Error, el conjunto de acciones obtenido esta fuera del rango permitido";
 
@@ -37,48 +41,60 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 	@Override
 	protected void saveMeasure(double[] outputMeasureValues, MeasureComputerContext context) {
 
-		// Extraemos el resultado, en este caso esta en la primera posicion
-		double measureValue = outputMeasureValues[0];
-
-		// Redondeamos para obtener un conjunto discreto
-		long actionSet = Math.round(measureValue);
-		LOG.info("Set acciones numero: " +actionSet);
-		// cargamos propiedades
-		Properties propiedades = this.loadProperties(ACTIONS_PROPERTIES_PATH);
-
-		String actionsValueProperty = "";
-		for (int i = 0; i <= this.MAX_VALUE; i++) {
-			if (actionSet == i) {
-				actionsValueProperty = "sedcat.actions.set" + i;
+		//comprobamos array de resultados
+		if (outputMeasureValues.length == 0) {
+			
+			context.addMeasure(this.MEASURE_KEY, MESSAGE_NO_ACTIONS);
+			context.addMeasure(this.MESSAGE_KEY, MESSAGE_NO_ACTIONS);
+			
+		}else{
+			
+			// Extrae el resultado, en este caso esta en la primera posicion
+			double measureValue = outputMeasureValues[0];
+	
+			// Redondea para obtener un conjunto discreto
+			long actionSet = Math.round(measureValue);
+			LOG.info("Set acciones numero: " +actionSet);
+			
+			//Carga fichero de propiedades con las soluciones
+			Properties propiedades = this.loadProperties(ACTIONS_PROPERTIES_PATH);
+	
+			//Encuentra la propiedad que coincide con el set resultado
+			String actionsValueProperty = "";
+			for (int i = 0; i <= this.MAX_VALUE; i++) {
+				if (actionSet == i) {
+					actionsValueProperty = "sedcat.actions.set" + i;
+				}
+			}
+			LOG.info("Set acciones resultado: " +actionsValueProperty);
+			
+			//Obtiene el valor de la propiedad encontrada
+			String actionValue = propiedades.getProperty(actionsValueProperty);
+			LOG.info("Resultado acciones: " + actionValue);
+	
+			//Verifica que se ha encontrado un resultado
+			if (actionValue == null) {
+				actionValue = MESSAGE_NO_ACTIONS;
+			}
+			
+			// Almacena el mensaje del conjunto de acciones en forma de String
+			context.addMeasure(this.MEASURE_KEY, actionValue);
+			
+			/*
+			 * Obtener mensaje descriptivo para las acciones y almacenarlo en otra medida
+			 * para su representacion en la pantalla detalle (drill-down) de la métrica acciones
+			 */
+			try {
+	
+				context.addMeasure(this.MESSAGE_KEY,
+						(String) ActionsMessageConstants.class.getField("MESSAGE_SET" + actionSet).get(this)
+								+ MESSAGE_ALERT_HACK);
+	
+			} catch (Exception e) {
+				LOG.warn(e.getMessage());
+				context.addMeasure(this.MESSAGE_KEY, MESSAGE_NO_ACTIONS);
 			}
 		}
-
-		LOG.info("Set acciones resultado: " +actionsValueProperty);
-		String actionValue = propiedades.getProperty(actionsValueProperty);
-
-		LOG.info("Resultado acciones: " + actionValue);
-
-		if (actionValue == null) {
-			actionValue = "No se han encontrado posibles soluciones.";
-		}
-		// Almacenar el mensaje del conjunto de acciones en forma de String
-		context.addMeasure(this.MEASURE_KEY, actionValue);
-		
-		/*
-		 * Obtener mensaje descriptivo para las acciones y almacenarlo en otra medida
-		 * para su representacion en la pantalla detalle (drill-down) de la métrica acciones
-		 */
-		try {
-
-			context.addMeasure(this.MESSAGE_KEY,
-					(String) ActionsMessageConstants.class.getField("MESSAGE_SET" + actionSet).get(this)
-							+ MESSAGE_ALERT_HACK);
-
-		} catch (Exception e) {
-			LOG.warn(e.getMessage());
-			context.addMeasure(this.MESSAGE_KEY, "No se han encontrado posibles soluciones.");
-		}
-		
 		
 		LOG.info("Conjunto de acciones almacenado correctamente");
 	}

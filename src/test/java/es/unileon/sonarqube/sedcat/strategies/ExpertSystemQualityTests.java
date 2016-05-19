@@ -5,11 +5,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
@@ -47,14 +43,6 @@ public class ExpertSystemQualityTests {
 	@Rule
 	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
 	@Before
 	public void setUp() throws Exception {
 
@@ -77,9 +65,6 @@ public class ExpertSystemQualityTests {
 
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	/**
 	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality#extractValues()}.
@@ -95,40 +80,6 @@ public class ExpertSystemQualityTests {
 		//verify methods executions
 		verify(measureMocked, times(4)).getDoubleValue();
 		verify(measureMocked, times(2)).getIntValue();
-	}
-
-	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#checkNotNullInputMetrics(org.sonar.api.ce.measure.Measure[])}.
-	 */
-	@Test
-	public final void testCheckNotNullInputMetricsOk() {
-
-		Measure[] qualityInputMetrics = new Measure[] {
-
-				measureMocked,
-				measureMocked,
-				measureMocked,
-				measureMocked,
-				measureMocked,
-				measureMocked,
-
-		};
-
-		underTest.checkNotNullInputMetrics(qualityInputMetrics);
-
-	}
-
-	/**
-	 * Test method for {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#checkNotNullInputMetrics(org.sonar.api.ce.measure.Measure[])}.
-	 */
-	@Test
-	public final void testCheckNotNullInputMetricsNull() {
-
-		Measure[] qualityInputMetrics = new Measure[] { null, null, null, null, null, null };
-
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkNotNullInputMetrics(qualityInputMetrics);
-
 	}
 
 	/**
