@@ -42,7 +42,7 @@ public class QualityMeasureStore extends AbstractOutputMeasureStore {
 		
 		//Almacenar mensaje especifico a mostrar en la pantalla de detalle de la calidad
 		context.addMeasure(this.MESSAGE_KEY,
-				"Quality of unit tests is "+measureValue +" %</br></br>" + qualityMessage + MESSAGE_ALERT_HACK);
+				"</br>Quality of unit tests is "+measureValue +" %</br></br>" + qualityMessage + MESSAGE_ALERT_HACK);
 
 		LOG.info("Metrica calidad almacenada correctamente, ha sido: " + measureValue);
 
