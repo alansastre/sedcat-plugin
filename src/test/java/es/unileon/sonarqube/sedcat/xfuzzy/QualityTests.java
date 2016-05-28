@@ -1,10 +1,6 @@
 package es.unileon.sonarqube.sedcat.xfuzzy;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -45,19 +41,6 @@ public class QualityTests {
 	
 	double[] inputMetricsValues;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
 
 	/**
 	 * @throws java.lang.Exception
@@ -69,12 +52,6 @@ public class QualityTests {
 
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	/**
 	 * Test method for
@@ -82,7 +59,7 @@ public class QualityTests {
 	 * .
 	 */
 
-	@Test
+//	@Test
 	public final void testCrispInferenceDoubleArray() {
 
 		double[] inputMetricsValues = new double[NUMBER_METRICS];

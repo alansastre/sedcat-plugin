@@ -1,36 +1,20 @@
-/**
- * 
- */
 package es.unileon.sonarqube.sedcat.strategies;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.Rule;
-import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.sonar.api.ce.measure.Measure;
-import org.sonar.api.ce.measure.Component.Type;
-import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
-import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
-import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.api.measures.CoreMetrics;
-
-import es.unileon.sonarqube.sedcat.start.GeneralComputer;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
 import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
-//import es.unileon.sonarqube.sedcat.xfuzzy.actions.*;
 import org.junit.Assert;
 import org.powermock.api.mockito.*;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -49,40 +33,21 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ ActionsMeasureStore.class, ExpertSystemActions.class, TestMeasureComputerContext.class,
-		// Acciones_1.class
+@PrepareForTest({ ActionsMeasureStore.class, ExpertSystemActions.class, TestMeasureComputerContext.class
 })
 public class ExpertSystemActionsTests {
 
 	private ExpertSystemActions underTest;
-
-	// data
-	// private TestMeasureComputerDefinitionContext defContext;
-	// private MeasureComputerDefinition def;
-	// private TestSettings settings;
-	// private GeneralComputer computerForData;
 	private TestMeasureComputerContext context;
-
 	private TestComponent mockedComponent;
 	private TestMeasureComputerContext contextMocked;
 	private Measure measureMocked;
-
-	@Rule
-	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-
-		// mockedComponent = mock(TestComponent.class);
-		// settings = new TestSettings();
-		// defContext = new TestMeasureComputerDefinitionContext();
-		// computerForData = new GeneralComputer();
-		// def = computerForData.define(defContext);
-		// context = new TestMeasureComputerContext(mockedComponent, settings,
-		// def);
 
 		contextMocked = mock(TestMeasureComputerContext.class);
 		measureMocked = mock(Measure.class);
@@ -121,6 +86,28 @@ public class ExpertSystemActionsTests {
 		verify(measureMocked, times(2)).getIntValue();
 
 	}
+	
+	/**
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions#extractValues()}
+	 * .
+	 */
+	@Test
+	public final void testExtractValuesGetCheckMeasure() {
+
+		ExpertSystemActions spy = Mockito.spy(underTest);
+		// execute
+		spy.extractValues();
+
+		// verify methods executions
+		verify(spy, times(1)).getMeasureDoubleChecked(CoreMetrics.TEST_SUCCESS_DENSITY_KEY);
+		verify(spy, times(1)).getMeasureDoubleChecked(CoreMetrics.COVERAGE_KEY);
+		verify(spy, times(1)).getMeasureDoubleChecked(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY);
+		verify(spy, times(1)).getMeasureDoubleChecked(SedcatMetricsKeys.MUTANTS_KEY);
+
+		verify(spy, times(1)).getMeasureIntChecked(CoreMetrics.TESTS_KEY);
+		verify(spy, times(1)).getMeasureIntChecked(CoreMetrics.NCLOC_KEY);
+	}
 
 
 	/**
@@ -135,37 +122,31 @@ public class ExpertSystemActionsTests {
 	public final void testExpertSystemActions() throws Exception {
 
 		ActionsMeasureStore storerMock = mock(ActionsMeasureStore.class);
+		Acciones actionsMock = mock(Acciones.class);
+		
 		PowerMockito.whenNew(ActionsMeasureStore.class).withNoArguments().thenReturn(storerMock);
-
-		// FIXME (powermock bug)
-		// Acciones_1 expertSystemMock = mock(Acciones_1.class);
-		// PowerMockito.whenNew(Acciones_1.class).withNoArguments().thenReturn(expertSystemMock);
-
+		PowerMockito.whenNew(Acciones.class).withNoArguments().thenReturn(actionsMock);
+		
 		ExpertSystemActions underTest2 = new ExpertSystemActions(context);
 
 		PowerMockito.verifyNew(ActionsMeasureStore.class, times(1)).withNoArguments();
-		// PowerMockito.verifyNew(Acciones_1.class, times(1)).withNoArguments();
+		PowerMockito.verifyNew(Acciones.class, times(1)).withNoArguments();
+
 		Assert.assertEquals(context, underTest2.context);
 	}
 
+	
 	/**
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.strategies.AbstractInferenceProcess#xfuzzyProcess()}
 	 * .
 	 */
-	@Ignore("pending Powermock bug fixes")
+
 	@Test
 	public final void testXfuzzyProcessBehaviour() throws Exception {
 
-		// test data
-//		context.addMeasure(SedcatMetricsKeys.SUCCESS_UNIT_TESTS_KEY, 87.75);
-//		context.addMeasure(SedcatMetricsKeys.COVERAGE_UNIT_TESTS_KEY, 43.25);
-//		context.addMeasure(SedcatMetricsKeys.MUTANTS_KEY, 67.214);
-//		context.addMeasure(SedcatMetricsKeys.NUMBERTESTS_KEY, 3245);
-//		context.addMeasure(SedcatMetricsKeys.CODE_LINES_KEY, 50000);
-
-		double[] actionsInputMetrics = new double[] { 100, 100, 100, 100, 100, };
-		double[] actionsOutputMetrics = new double[] { 100, 100, 100, 100, 100, };
+		double[] actionsInputMetrics = new double[] { 59.0, 59.0, 100.0, 59.0, 100.0, 59.0 };
+		double[] actionsOutputMetrics = new double[] { 1 };
 
 		// mocks: creation and configuration
 		ActionsMeasureStore storerMock = mock(ActionsMeasureStore.class);
@@ -177,24 +158,18 @@ public class ExpertSystemActionsTests {
 		PowerMockito.when(expertSystemMock.crispInference(actionsInputMetrics)).thenReturn(actionsOutputMetrics);
 
 		// partial mocking with spies
-		ExpertSystemActions underTest2 = new ExpertSystemActions(context);
+		ExpertSystemActions underTest2 = new ExpertSystemActions(contextMocked);
 		ExpertSystemActions spy = Mockito.spy(underTest2);
 
-		when(spy.extractValues()).thenReturn(actionsInputMetrics);
-
+		Mockito.doReturn(actionsInputMetrics).when(spy).extractValues();
 		// real method
 		spy.xfuzzyProcess();
 
 		// verificate behaviour
-		// 2 = 1 from xfuzzyProcess + 1 from when setup
-		Mockito.verify(spy, times(2)).extractValues();
+		Mockito.verify(spy, times(1)).extractValues();
 		Mockito.verify(expertSystemMock, times(1)).crispInference(actionsInputMetrics);
-		Mockito.verify(storerMock, times(1)).outputMeasureStore(actionsOutputMetrics, context);
-		/*
-		 * TODO - verify result is stored verify(contextMocked,
-		 * times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
-		 * "Improve the following parameters in order: Number Of Tests");
-		 */
+		Mockito.verify(storerMock, times(1)).outputMeasureStore(actionsOutputMetrics, contextMocked);
+
 
 	}
 
