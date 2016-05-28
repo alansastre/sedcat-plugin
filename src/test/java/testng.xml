@@ -27,7 +27,6 @@
       <class name="es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests"/>
       <class name="es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests"/>
       <class name="es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests"/>
-      <class name="es.unileon.sonarqube.sedcat.scanners.ComplexityThresholdSensorTests"/>
       <class name="es.unileon.sonarqube.sedcat.scanners.ComplexityComputerTests"/>
 
 
