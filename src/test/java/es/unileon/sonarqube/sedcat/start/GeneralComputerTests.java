@@ -14,7 +14,6 @@ import org.sonar.api.measures.CoreMetrics;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
 import java.util.Set;
-import org.sonar.api.ce.measure.Component.FileAttributes;
 import org.sonar.api.ce.measure.Component.Type;
 import org.sonar.api.ce.measure.Measure;
 import static org.mockito.Mockito.*;
@@ -38,7 +37,9 @@ public class GeneralComputerTests {
 	private TestMeasureComputerDefinitionContext defContext;
 	private MeasureComputerDefinition def;
 	private TestComponent mockedComponent;
-	private TestSettings settings;
+	private TestSettings settingsMocked;
+	private String TRUE_EXECUTION = "true";
+	private String FALSE_EXECUTION = "false";
 
 
 	/**
@@ -50,7 +51,7 @@ public class GeneralComputerTests {
 		defContext = new TestMeasureComputerDefinitionContext();
 		def = underTest.define(defContext);
 		mockedComponent = mock(TestComponent.class);
-		settings = new TestSettings();
+		settingsMocked = mock(TestSettings.class);
 	}
 
 	/*
@@ -101,10 +102,10 @@ public class GeneralComputerTests {
 	@Test
 	public final void testcompute_File_noExecution() {
 
-		FileAttributes mockedFileAttributes = mock(FileAttributes.class);
-		TestComponent component = new TestComponent("", Type.FILE, mockedFileAttributes);
-
-		TestMeasureComputerContext context = new TestMeasureComputerContext(component, settings, def);
+		when(mockedComponent.getType()).thenReturn(Type.FILE);
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(TRUE_EXECUTION);
+		
+		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settingsMocked, def);
 		underTest.compute(context);
 
 		Assert.assertFalse(underTest.isProject());
@@ -119,8 +120,9 @@ public class GeneralComputerTests {
 	public final void testcompute_View_noExecution() {
 
 		when(mockedComponent.getType()).thenReturn(Type.VIEW);
-
-		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(TRUE_EXECUTION);
+		
+		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settingsMocked, def);
 		underTest.compute(context);
 
 		Assert.assertFalse(underTest.isProject());
@@ -134,8 +136,9 @@ public class GeneralComputerTests {
 	public final void testcompute_Subview_noExecution() {
 
 		when(mockedComponent.getType()).thenReturn(Type.SUBVIEW);
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(TRUE_EXECUTION);
 
-		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settingsMocked, def);
 		underTest.compute(context);
 
 		Assert.assertFalse(underTest.isProject());
@@ -149,8 +152,9 @@ public class GeneralComputerTests {
 	public final void testcompute_Directory_noExecution() {
 
 		when(mockedComponent.getType()).thenReturn(Type.DIRECTORY);
-
-		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(TRUE_EXECUTION);
+		
+		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settingsMocked, def);
 		underTest.compute(context);
 
 		Assert.assertFalse(underTest.isProject());
@@ -164,18 +168,76 @@ public class GeneralComputerTests {
 	public final void testcompute_Module_noExecution() {
 
 		when(mockedComponent.getType()).thenReturn(Type.MODULE);
-
-		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(TRUE_EXECUTION);
+		
+		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settingsMocked, def);
 		underTest.compute(context);
 
 		Assert.assertFalse(underTest.isProject());
 	}
-	/*
-	 * Tests for behaviour with mocks
-	 */
+	
 	/**
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
+	 */
+	@Test
+	public final void testcompute_ModeSedcatDeactivated() {
+
+		when(mockedComponent.getType()).thenReturn(Type.PROJECT);
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(FALSE_EXECUTION);
+		
+		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settingsMocked, def);
+		underTest.compute(context);
+
+		Assert.assertFalse(underTest.isProject());
+	}
+	
+	/*
+	 * Tests for behaviour with mocks
+	 */
+
+	/**
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
+	 * 
+	 * Prueba que GeneralComputer hace las llamadas a los sistemas expertos 
+	 * @throws Exception
+	 */
+
+	@Test
+	public final void testcompute_Project_Behaviour() throws Exception {
+
+		when(mockedComponent.getType()).thenReturn(Type.PROJECT);
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(TRUE_EXECUTION);
+		
+		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settingsMocked, def);
+
+		ExpertSystemQuality expertSystemQuality = mock(ExpertSystemQuality.class);
+		PowerMockito.whenNew(ExpertSystemQuality.class).withArguments(context).thenReturn(expertSystemQuality);
+
+		ExpertSystemActions expertSystemActions = mock(ExpertSystemActions.class);
+		PowerMockito.whenNew(ExpertSystemActions.class).withArguments(context).thenReturn(expertSystemActions);
+
+		underTest.compute(context);
+
+		Assert.assertTrue(underTest.isProject());
+
+		PowerMockito.verifyNew(ExpertSystemQuality.class, times(1)).withArguments(context);
+		PowerMockito.verifyNew(ExpertSystemActions.class, times(1)).withArguments(context);
+
+		Mockito.verify(expertSystemQuality, times(1)).xfuzzyProcess();
+		Mockito.verify(expertSystemActions, times(1)).xfuzzyProcess();
+		
+
+	}
+	
+	
+	/**
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
+	 * 
+	 * Prueba las llamadas a los sistemas expertos y a mayores las veces que se ha operado 
+	 * con el contexto en el flujo de ejecución total, además de las métricas almacenadas con el mismo
 	 */
 
 	@Test
@@ -186,9 +248,14 @@ public class GeneralComputerTests {
 		Measure measureMocked = mock(Measure.class);
 		
 		//mocks setup
+		
+		//emular nivel de proyecto
 		when(mockedComponent.getType()).thenReturn(Type.PROJECT);
 		when(contextMocked.getComponent()).thenReturn(mockedComponent);
-	
+		
+		//habilitar ejecucion sedcat
+		when(contextMocked.getSettings()).thenReturn(settingsMocked);
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(TRUE_EXECUTION);
 		
 		when(contextMocked.getMeasure(CoreMetrics.TEST_SUCCESS_DENSITY_KEY)).thenReturn(measureMocked);
 		when(contextMocked.getMeasure(CoreMetrics.COVERAGE_KEY)).thenReturn(measureMocked);
@@ -212,40 +279,9 @@ public class GeneralComputerTests {
 		verify(measureMocked, times(8)).getDoubleValue();
 		verify(measureMocked, times(4)).getIntValue();
 
-		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, "Complexity > Unit Test Success"
-				+ " > Unit Test Coverage > Mutations coverage > Number Of Tests");
+		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, "1. Complexity</br>2. Unit Test Success</br>3. Unit Test Coverage"
+				+ "</br>4. Mutations coverage</br>5. Number Of Tests");
 		verify(contextMocked, times(1)).addMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY, 5.5);
 	}
-	/**
-	 * Test method for
-	 * {@link es.unileon.sonarqube.sedcat.start.GeneralComputer#compute()}.
-	 * 
-	 * @throws Exception
-	 */
-
-	@Test
-	public final void testcompute_Project_Behaviour() throws Exception {
-
-		when(mockedComponent.getType()).thenReturn(Type.PROJECT);
-
-		TestMeasureComputerContext context = new TestMeasureComputerContext(mockedComponent, settings, def);
-
-		ExpertSystemQuality expertSystemQuality = mock(ExpertSystemQuality.class);
-		PowerMockito.whenNew(ExpertSystemQuality.class).withArguments(context).thenReturn(expertSystemQuality);
-
-		ExpertSystemActions expertSystemActions = mock(ExpertSystemActions.class);
-		PowerMockito.whenNew(ExpertSystemActions.class).withArguments(context).thenReturn(expertSystemActions);
-
-		underTest.compute(context);
-
-		Assert.assertTrue(underTest.isProject());
-
-		PowerMockito.verifyNew(ExpertSystemQuality.class, times(1)).withArguments(context);
-		PowerMockito.verifyNew(ExpertSystemActions.class, times(1)).withArguments(context);
-
-		Mockito.verify(expertSystemQuality, times(1)).xfuzzyProcess();
-		Mockito.verify(expertSystemActions, times(1)).xfuzzyProcess();
-		
-
-	}
+	
 }

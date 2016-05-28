@@ -14,10 +14,9 @@ import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
-import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
-import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.measures.CoreMetrics;
 
+import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemActions;
 import es.unileon.sonarqube.sedcat.strategies.ExpertSystemQuality;
@@ -41,7 +40,10 @@ public class ComplexityComputerTests {
 	private TestMeasureComputerContext computerContextMocked;
 	private TestComponent componentMocked;
 	private Measure measureMockedComplexity;
-	private Measure measureMockedComplexitythreshold;
+
+	private TestSettings settingsMocked;
+	private String TRUE_EXECUTION = "true";
+	private String FALSE_EXECUTION = "false";
 
 	/**
 	 * @throws java.lang.Exception
@@ -49,10 +51,19 @@ public class ComplexityComputerTests {
 	@Before
 	public void setUp() throws Exception {
 		
+		
 		computerContextMocked = mock(TestMeasureComputerContext.class);
 		componentMocked = mock(TestComponent.class);
 		measureMockedComplexity = mock(Measure.class);
-		measureMockedComplexitythreshold = mock(Measure.class);
+
+		settingsMocked = mock(TestSettings.class);
+		
+		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
+		when(componentMocked.getType()).thenReturn(Type.PROJECT);
+		
+		//habilitar ejecucion sedcat
+		when(settingsMocked.getString(SedcatConstants.ACTIVE_MODE_KEY)).thenReturn(TRUE_EXECUTION);
+		when(computerContextMocked.getSettings()).thenReturn(settingsMocked);
 		
 		underTest = new ComplexityComputer();
 	}
@@ -71,10 +82,9 @@ public class ComplexityComputerTests {
 	     
 	     //Probar metricas de entrada
 	     Set<String> inputMetrics = def.getInputMetrics();
-	     Assert.assertEquals(inputMetrics.size(), 2);
+	     Assert.assertEquals(inputMetrics.size(), 1);
 	     
 	     Assert.assertTrue(inputMetrics.contains(CoreMetrics.CLASS_COMPLEXITY_KEY));
-	     Assert.assertTrue(inputMetrics.contains(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY));
 
 	     //Probar metricas de salida
 	     Set<String> ouputMetrics = def.getOutputMetrics();
@@ -83,17 +93,20 @@ public class ComplexityComputerTests {
 	     Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY));
 
 	}
-	
+
 	
 	/**
 	 * Test method for {@link es.unileon.sonarqube.sedcat.scanners.ComplexityComputer#compute(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 * Prueba que el computer no se ejecuta en los niveles que no sean proyecto
 	 */
 	@Test
 	public final void testComputeNoProject() {
 
-		//Comprobar que el scanner no se ejecuta a un nivel que no sea PROJECT
+		//Comprobar que el computer no se ejecuta a un nivel que no sea PROJECT
 		
 	     when(computerContextMocked.getComponent()).thenReturn(componentMocked);
+	    
+
 	     
 	     //******** DIRECTORY ************
 	     when(componentMocked.getType()).thenReturn(Type.DIRECTORY);
@@ -102,7 +115,7 @@ public class ComplexityComputerTests {
 	     
 	     //verificamos que no se ha ejecutado comprobando que no se ha llamado al metodo getMeasure
 	     Mockito.verify(computerContextMocked, times(0)).getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY);
-	     Mockito.verify(computerContextMocked, times(0)).getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY);
+
 
 	     
 	     //******** FILE ************
@@ -112,7 +125,7 @@ public class ComplexityComputerTests {
 	     
 	     //verificamos que no se ha ejecutado comprobando que no se ha llamado al metodo getMeasure
 	     Mockito.verify(computerContextMocked, times(0)).getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY);
-	     Mockito.verify(computerContextMocked, times(0)).getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY);
+
 	     
 	     
 	     //******** MODULE ************
@@ -122,7 +135,6 @@ public class ComplexityComputerTests {
 	     
 	     //verificamos que no se ha ejecutado comprobando que no se ha llamado al metodo getMeasure
 	     Mockito.verify(computerContextMocked, times(0)).getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY);
-	     Mockito.verify(computerContextMocked, times(0)).getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY);
 	     
 	     
 	     //******** VIEW ************
@@ -132,7 +144,6 @@ public class ComplexityComputerTests {
 	     
 	     //verificamos que no se ha ejecutado comprobando que no se ha llamado al metodo getMeasure
 	     Mockito.verify(computerContextMocked, times(0)).getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY);
-	     Mockito.verify(computerContextMocked, times(0)).getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY);
 	     
 	     
 	     //******** SUBVIEW ************
@@ -142,7 +153,6 @@ public class ComplexityComputerTests {
 	     
 	     //verificamos que no se ha ejecutado comprobando que no se ha llamado al metodo getMeasure
 	     Mockito.verify(computerContextMocked, times(0)).getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY);
-	     Mockito.verify(computerContextMocked, times(0)).getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY);
 	     
 	}
 	
@@ -154,17 +164,13 @@ public class ComplexityComputerTests {
 	public final void testComputeProjectNullMetrics() {
 
 		
-	     when(computerContextMocked.getComponent()).thenReturn(componentMocked);
-	     when(componentMocked.getType()).thenReturn(Type.PROJECT);
-
 	     when(computerContextMocked.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY)).thenReturn(null);
-	     when(computerContextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY)).thenReturn(null);
 	     
 	     underTest.compute(computerContextMocked);
 	     
 	     //verificamos que no se ha ejecutado comprobando que solo se ha llamado al metodo getMeasure una vez
 	     Mockito.verify(computerContextMocked, times(1)).getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY);
-	     Mockito.verify(computerContextMocked, times(1)).getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY);
+
 	     //En este caso al ser las metricas nulas se pasa como parametro una complejidad de 15 por defecto
 	     Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY, 15.0);
 	     
@@ -178,21 +184,16 @@ public class ComplexityComputerTests {
 	@Test
 	public final void testComputeProjectMetricsWithinRanges() {
 
-
-		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
-		when(componentMocked.getType()).thenReturn(Type.PROJECT);
+		when(settingsMocked.getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY)).thenReturn("30.0");
 		when(measureMockedComplexity.getDoubleValue()).thenReturn(18.0);
-		when(measureMockedComplexitythreshold.getDoubleValue()).thenReturn(30.0);
 		when(computerContextMocked.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY)).thenReturn(measureMockedComplexity);
-		when(computerContextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY))
-				.thenReturn(measureMockedComplexitythreshold);
+
 
 		underTest.compute(computerContextMocked);
 
 		// verificamos que no se ha ejecutado comprobando que solo se ha llamado
 		// al metodo getMeasure una vez
 		Mockito.verify(computerContextMocked, times(2)).getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY);
-		Mockito.verify(computerContextMocked, times(2)).getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY);
 		// En este caso al ser la complejidad menor que el umbral se considera
 		// 15, es decir ideal ya que tiene un valor permitido
 		Mockito.verify(computerContextMocked, times(1)).addMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY, 15.0);
@@ -206,14 +207,11 @@ public class ComplexityComputerTests {
 	@Test
 	public final void testComputeProjectThresoldGreaterThan60() {
 
-		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
-		when(componentMocked.getType()).thenReturn(Type.PROJECT);
+		when(settingsMocked.getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY)).thenReturn("89.0");
+		
 		when(measureMockedComplexity.getDoubleValue()).thenReturn(60.0);
-		when(measureMockedComplexitythreshold.getDoubleValue()).thenReturn(89.0);
 
 		when(computerContextMocked.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY)).thenReturn(measureMockedComplexity);
-		when(computerContextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY))
-				.thenReturn(measureMockedComplexitythreshold);
 
 		underTest.compute(computerContextMocked);
 
@@ -231,17 +229,13 @@ public class ComplexityComputerTests {
 	public final void testComputeProjectComplexityGreaterThan60() {
 		
 
-		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
-		when(componentMocked.getType()).thenReturn(Type.PROJECT);
+		when(settingsMocked.getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY)).thenReturn("89.0");
 		/*
 		 * Caso superior, resultado complejidad < 60 
 		 */
 		when(measureMockedComplexity.getDoubleValue()).thenReturn(80.0);
-		when(measureMockedComplexitythreshold.getDoubleValue()).thenReturn(89.0);
-
 		when(computerContextMocked.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY)).thenReturn(measureMockedComplexity);
-		when(computerContextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY))
-				.thenReturn(measureMockedComplexitythreshold);
+
 
 		underTest.compute(computerContextMocked);
 
@@ -253,7 +247,6 @@ public class ComplexityComputerTests {
 		 * Caso muy superior, resultado complejidad > 60, se asigna 60
 		 */
 		when(measureMockedComplexity.getDoubleValue()).thenReturn(100.0);
-		when(measureMockedComplexitythreshold.getDoubleValue()).thenReturn(89.0);
 
 		underTest.compute(computerContextMocked);
 
@@ -270,14 +263,11 @@ public class ComplexityComputerTests {
 	@Test
 	public final void testComputeProjectThresoldLessThan0() {
 		
-		when(computerContextMocked.getComponent()).thenReturn(componentMocked);
-		when(componentMocked.getType()).thenReturn(Type.PROJECT);
+		when(settingsMocked.getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY)).thenReturn("-5.0");
+		
 		when(measureMockedComplexity.getDoubleValue()).thenReturn(60.0);
-		when(measureMockedComplexitythreshold.getDoubleValue()).thenReturn(-5.0);
 
 		when(computerContextMocked.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY)).thenReturn(measureMockedComplexity);
-		when(computerContextMocked.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY))
-				.thenReturn(measureMockedComplexitythreshold);
 
 		underTest.compute(computerContextMocked);
 

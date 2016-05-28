@@ -37,20 +37,23 @@ public class GeneralComputer implements MeasureComputer {
 
 		isProject = true;
 		
-		if( ("true").equals(context.getSettings().getString(SedcatConstants.ACTIVE_MODE_KEY))
-				&& Component.Type.PROJECT == context.getComponent().getType()){
-			isProject = false;
-		} else {
-			
+		if (("true").equals(context.getSettings().getString(SedcatConstants.ACTIVE_MODE_KEY))
+				&& Component.Type.PROJECT == context.getComponent().getType()) {
+
 			LOG.info("Entrada GeneralComputer");
 			LOG.info("Ejecutando sistemas expertos");
-			
+
 			// Ejecutar sistemas expertos
 			ExpertSystemQuality expertSystemQuality = new ExpertSystemQuality(context);
 			expertSystemQuality.xfuzzyProcess();
 
 			ExpertSystemActions expertSystemActions = new ExpertSystemActions(context);
 			expertSystemActions.xfuzzyProcess();
+
+		} else {
+			
+			isProject = false;
+
 		}
 
 	}
