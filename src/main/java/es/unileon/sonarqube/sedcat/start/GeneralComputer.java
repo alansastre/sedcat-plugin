@@ -36,8 +36,9 @@ public class GeneralComputer implements MeasureComputer {
 	public void compute(MeasureComputerContext context) {
 
 		isProject = true;
-
-		if (!(Component.Type.PROJECT == context.getComponent().getType())) {
+		
+		if( ("true").equals(context.getSettings().getString(SedcatConstants.ACTIVE_MODE_KEY))
+				&& Component.Type.PROJECT == context.getComponent().getType()){
 			isProject = false;
 		} else {
 			

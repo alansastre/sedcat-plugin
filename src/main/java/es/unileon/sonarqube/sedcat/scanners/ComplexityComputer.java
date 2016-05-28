@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.Component;
 import org.sonar.api.ce.measure.MeasureComputer;
 import org.sonar.api.measures.CoreMetrics;
+
+import es.unileon.sonarqube.sedcat.start.SedcatConstants;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 
 /**
@@ -41,29 +43,24 @@ public class ComplexityComputer implements MeasureComputer {
 	@Override
 	public void compute(MeasureComputerContext context) {
 
-		if (Component.Type.PROJECT == context.getComponent().getType()) {
-			
-			double complexity = 0;
-			double complexityThresold = 0;
-			
-			if (context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY) != null) {
-				complexity = context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY).getDoubleValue();
-			}else{
-				//La metrica es nula
-				LOG.warn("Metric Complexity average by class is null, it is considered zero" 
-						+"so that does not influence in the final result.");
-			}
-			
-			if (context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY) != null) {
-				complexityThresold = context.getMeasure(SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY).getDoubleValue();
-			}else {
-				//La metrica es nula
-				LOG.warn("Metric Complexity average by class Threshold is null, it is considered zero" 
-						+"so that does not influence in the final result.");
-			}
 
-			LOG.info("Calculating complexity based on threshold");
-
+		//ejecutar solo si el modo activo es true y si el componente es el proyecto
+		if( ("true").equals(context.getSettings().getString(SedcatConstants.ACTIVE_MODE_KEY))
+			&& Component.Type.PROJECT == context.getComponent().getType()){
+		
+			/*
+			 * 1 - Obtener umbral de complejidad
+			 */
+			double complexityThresold = 30.0;
+			try {
+				complexityThresold = Double.parseDouble(context.getSettings().getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY));
+			} catch (Exception e) {
+				LOG.warn("Value must be a number, in range of 0 to 60.");
+				LOG.warn("In this case, it considered default value (30).");
+				LOG.warn(e.getMessage());
+			}
+			LOG.info("Umbral extraido: "+complexityThresold);
+			
 			// Establecer umbral dentro de los limites
 			if (complexityThresold > 60) {
 				complexityThresold = 60;
@@ -74,8 +71,27 @@ public class ComplexityComputer implements MeasureComputer {
 						+ " is less than 0, it will be considered default value (30)");
 				complexityThresold = 30;
 			}
+			
+			/*
+			 * 2 - Obtener complejidad media por clase del proyecto
+			 */
+			
+			double complexity = 0;
+			
+			if (context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY) != null) {
+				complexity = context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY).getDoubleValue();
+			}else{
+				//La metrica es nula
+				LOG.warn("Metric Complexity average by class is null, it is considered zero" 
+						+"so that does not influence in the final result.");
+			}
+			
 
-			// Calcular complejidad en funcion de umbral
+			LOG.info("Calculating complexity based on threshold");
+
+			/*
+			 * 3 - Calcular complejidad en funcion de umbral
+			 */
 			if (complexity <= complexityThresold) {
 				// Caso 1
 				complexity = ideal;
@@ -96,6 +112,7 @@ public class ComplexityComputer implements MeasureComputer {
 			context.addMeasure(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY, complexity);
 
 		}
+		
 
 	}
 
@@ -110,8 +127,7 @@ public class ComplexityComputer implements MeasureComputer {
 
 				// Input metrics can be empty, for instance if only issues will
 				// be read
-				.setInputMetrics(CoreMetrics.CLASS_COMPLEXITY_KEY,
-						SedcatMetricsKeys.COMPLEXITY_THRESHOLD_KEY)
+				.setInputMetrics(CoreMetrics.CLASS_COMPLEXITY_KEY)
 
 				// Output metrics must contains at least one metric
 				.setOutputMetrics(SedcatMetricsKeys.COMPLEXITY_CLASS_KEY)

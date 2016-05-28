@@ -1,6 +1,6 @@
 package es.unileon.sonarqube.sedcat.scanners;
-import java.io.File;
 
+import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
@@ -37,6 +37,7 @@ public class MutationsCoverageSensor implements Sensor {
     private final MutationsReportFinder mutationsFinder;
     private final MutationsReportParser mutationsParser;
     private double mutationsValueFound;
+    private final String executionMode;
  
 
 	/**
@@ -52,6 +53,7 @@ public class MutationsCoverageSensor implements Sensor {
         this.mutationsFinder = mutationsFinder;
         this.mutationsParser = mutationsParser;
         this.mutationsValueFound = 0.0;
+        this.executionMode = settings.getString(SedcatConstants.ACTIVE_MODE_KEY);
     }
     
     public double getMutationsValueFound() {
@@ -66,7 +68,7 @@ public class MutationsCoverageSensor implements Sensor {
      */
     @Override
     public boolean shouldExecuteOnProject(Project project) {
-        return true;
+        return ("true").equals(this.executionMode);
     }
 
     /**

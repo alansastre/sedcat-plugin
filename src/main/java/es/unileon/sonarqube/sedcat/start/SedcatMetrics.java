@@ -37,14 +37,6 @@ public class SedcatMetrics implements Metrics {
 		    .setDomain(SEDCAT_DOMAIN)
 		    .create();
 	
-	//Metrica COMPLEJIDAD UMBRAL
-	public static final Metric COMPLEXITY_THRESHOLD = new Metric.Builder(COMPLEXITY_THRESHOLD_KEY, "Complexity Threshold", Metric.ValueType.FLOAT)
-		    .setDescription("Maximum allowed threshold of complexity average by class")
-		    .setDirection(Metric.DIRECTION_NONE)
-		    .setQualitative(false)
-		    .setDomain(SEDCAT_DOMAIN)
-		    .create();
-	
 
 /*
  * metricas de salida generadas
@@ -87,7 +79,7 @@ public static final Metric<String> ACTIONS_MESSAGE = new Metric.Builder(ACTION_M
 
 		return Arrays.<Metric>asList(
 				//input metrics
-				MUTANTS, COMPLEXITY_AVERAGE_CLASS, COMPLEXITY_THRESHOLD,
+				MUTANTS, COMPLEXITY_AVERAGE_CLASS,
 
 				//output metrics
 				QUALITY_MEASURE, QUALITY_MESSAGE, ACTIONS_TO_PERFORM, ACTIONS_MESSAGE

@@ -5,7 +5,6 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import es.unileon.sonarqube.sedcat.scanners.ComplexityComputerTests;
-import es.unileon.sonarqube.sedcat.scanners.ComplexityThresholdSensorTests;
 import es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests;
 import es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests;
 import es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests;
@@ -33,7 +32,6 @@ import es.unileon.sonarqube.sedcat.xfuzzy.QualityTests;
 	MutationsReportFinderTests.class,
 	MutationsReportParserTests.class,
 	ComplexityComputerTests.class,
-	ComplexityThresholdSensorTests.class,
 	
 	//storage
 	ActionsMeasureStoreTests.class,

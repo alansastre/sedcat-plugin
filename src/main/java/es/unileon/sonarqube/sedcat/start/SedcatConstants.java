@@ -17,6 +17,8 @@ public class SedcatConstants {
   
   
 //setting constants keys 
+  //modo -activo-no activo
+  public static final String ACTIVE_MODE_KEY = "sonar.sedcat.activeMode";
   //directorio reporte mutantes
   public static final String PITEST_REPORT_DIRECTORY_KEY = "sonar.sedcat.pitestReportsDirectory";
   public static final String PITEST_REPORT_DIRECTORY_DEFAULT =  "target/pit-reports";
