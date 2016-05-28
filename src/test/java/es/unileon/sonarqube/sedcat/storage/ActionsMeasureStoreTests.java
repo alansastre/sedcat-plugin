@@ -41,8 +41,6 @@ public class ActionsMeasureStoreTests {
 	private GeneralComputer computerForData;
 	private TestMeasureComputerContext context;
 
-	@Rule
-	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
 	/**
 	 * @throws java.lang.Exception
@@ -72,7 +70,7 @@ public class ActionsMeasureStoreTests {
 		double[] result = new double[] { 23 };
 		underTest.saveMeasure(result, context);
 		
-		Assert.assertEquals("Mutations coverage > Unit Test Success > Unit Test Coverage > Number Of Tests",
+		Assert.assertEquals("1. Mutations coverage</br>2. Unit Test Success</br>3. Unit Test Coverage</br>4. Number Of Tests",
 				context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue());
 
 	}
@@ -104,10 +102,13 @@ public class ActionsMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetOk() {
 
-		ActionsMeasureStore underTest = new ActionsMeasureStore();
-		underTest.checkOutputDataSet(new double[] { 25 });
+		double[] resultado = underTest.checkOutputDataSet(new double[] { 25 });
+		Assert.assertTrue(resultado.length == 1);
+		Assert.assertTrue(resultado[0] == 25);
 
 	}
+	
+	
 
 	/**
 	 * Test method for
@@ -117,8 +118,8 @@ public class ActionsMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetNotAllowedUnder() {
 
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(new double[] { -0.0001 });
+		double[] resultado = underTest.checkOutputDataSet(new double[] { -0.0001 });
+		Assert.assertTrue(resultado.length == 0);
 
 	}
 
@@ -130,9 +131,8 @@ public class ActionsMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetNotAllowedAbove() {
 
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(new double[] { 65.0001 });
-
+		double[] resultado = underTest.checkOutputDataSet(new double[] { 65.0001 });
+		Assert.assertTrue(resultado.length == 0);
 	}
 
 	/**
@@ -143,8 +143,9 @@ public class ActionsMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetNull() {
 
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(null);
+		double[] resultado = underTest.checkOutputDataSet(null);
+		Assert.assertTrue(resultado.length == 0);
+
 
 	}
 
@@ -156,8 +157,8 @@ public class ActionsMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetEmpty() {
 
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(new double[] {});
+		double[] resultado = underTest.checkOutputDataSet(new double[] {});
+		Assert.assertTrue(resultado.length == 0);
 
 	}
 

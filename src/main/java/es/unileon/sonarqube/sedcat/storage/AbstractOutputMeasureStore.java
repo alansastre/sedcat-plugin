@@ -52,7 +52,7 @@ public abstract class AbstractOutputMeasureStore {
 
 
 	/**
-	 * Comprueba array de resultados, de devuelve si es correcto o devuelve uno vacío 
+	 * Comprueba array de resultados, lo devuelve tal cual si es correcto o devuelve uno vacío 
 	 * si no encaja en las especificaciones.
 	 * @param outputMeasureValues - array con los resultados a comprobar
 	 * @return array de resultados en caso de que sea correcto o 
@@ -77,7 +77,7 @@ public abstract class AbstractOutputMeasureStore {
 
 		}
 
-		// llegados a este punto el array de valores contiene unb valor y está
+		// llegados a este punto el array de valores contiene un valor y está
 		// en los rangos permitidos
 		return outputMeasureValues;
 

@@ -2,14 +2,9 @@ package es.unileon.sonarqube.sedcat.storage;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -39,23 +34,11 @@ public class QualityMeasureStoreTests {
 	private TestSettings settings;
 	private GeneralComputer computerForData;
 	private TestMeasureComputerContext context;
+	
+	private String qualityMessage = "This quality metric is calculated at project level, so no data at the component"
+			+ " level that can be displayed. This metric is obtained from sets of rules activated to varying"
+			+ " degrees depending on input metrics read about the project in each analysis.";
 
-	@Rule
-	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
 
 	/**
 	 * @throws java.lang.Exception
@@ -74,12 +57,6 @@ public class QualityMeasureStoreTests {
 
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	/**
 	 * Test method for
@@ -97,6 +74,25 @@ public class QualityMeasureStoreTests {
 
 	}
 
+	/**
+	 * Test method for
+	 * {@link es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore#saveMeasure(double, org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}
+	 * .
+	 */
+	@Test
+	public final void testSaveDescriptionMessage() {
+
+		TestMeasureComputerContext contextMocked1 = mock (TestMeasureComputerContext.class);
+
+		double[] result = new double[] { 25 };
+
+		underTest.saveMeasure(result, contextMocked1);
+		
+		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.QUALITY_MESSAGE_KEY,
+				"</br>Quality of unit tests is 25.0 %</br></br>" + qualityMessage + AbstractOutputMeasureStore.MESSAGE_ALERT_HACK);
+
+	}
+	
 	/**
 	 * Test method for
 	 * {@link es.unileon.sonarqube.sedcat.storage.AbstractOutputMeasureStore#outputMeasureStore(double[], org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}
@@ -124,10 +120,13 @@ public class QualityMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetOk() {
 
-		ActionsMeasureStore underTest = new ActionsMeasureStore();
-		underTest.checkOutputDataSet(new double[] { 25 });
+		double[] resultado = underTest.checkOutputDataSet(new double[] { 25 });
+		Assert.assertTrue(resultado.length == 1);
+		Assert.assertTrue(resultado[0] == 25);
 
 	}
+	
+	
 
 	/**
 	 * Test method for
@@ -137,8 +136,8 @@ public class QualityMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetNotAllowedUnder() {
 
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(new double[] { -0.0001 });
+		double[] resultado = underTest.checkOutputDataSet(new double[] { -0.0001 });
+		Assert.assertTrue(resultado.length == 0);
 
 	}
 
@@ -150,9 +149,8 @@ public class QualityMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetNotAllowedAbove() {
 
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(new double[] { 100.0001 });
-
+		double[] resultado = underTest.checkOutputDataSet(new double[] { 100.59 });
+		Assert.assertTrue(resultado.length == 0);
 	}
 
 	/**
@@ -163,8 +161,9 @@ public class QualityMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetNull() {
 
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(null);
+		double[] resultado = underTest.checkOutputDataSet(null);
+		Assert.assertTrue(resultado.length == 0);
+
 
 	}
 
@@ -176,9 +175,10 @@ public class QualityMeasureStoreTests {
 	@Test
 	public final void testCheckOutputDataSetEmpty() {
 
-		exit.expectSystemExitWithStatus(-1);
-		underTest.checkOutputDataSet(new double[] {});
+		double[] resultado = underTest.checkOutputDataSet(new double[] {});
+		Assert.assertTrue(resultado.length == 0);
 
 	}
+
 
 }
