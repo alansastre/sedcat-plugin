@@ -130,11 +130,11 @@ public class MutationsCoverageSensor implements Sensor {
         return "MutationsCoverageSensor";
     }
 
-    public static synchronized void addValueDetectedMutations(double value){
-		SedcatConstants.mutationsDetected+=value;
+    public static synchronized void addValueDetectedMutations(double mutationsDetectedValue){
+		SedcatConstants.mutationsDetected+=mutationsDetectedValue;
     }
-    public static synchronized void addValueTotalMutations(double value){
-		SedcatConstants.mutationsTotal+=value;
+    public static synchronized void addValueTotalMutations(double mutationsTotalValue){
+		SedcatConstants.mutationsTotal+=mutationsTotalValue;
     }
 }
 

@@ -21,7 +21,7 @@ public abstract class AbstractOutputMeasureStore {
 	//output metric message
 	protected String MESSAGE_KEY;
 	//Message to disable alert "Not gound Items"
-	public static final String MESSAGE_ALERT_HACK = "<style type='text/css'>.alert-info{visibility:hidden;}</style>";
+	protected static final String MESSAGE_ALERT_HACK = "<style type='text/css'>.alert-info{visibility:hidden;}</style>";
 	//Message in case of no actions
 	protected static final String MESSAGE_NO_ACTIONS = "No se han encontrado posibles soluciones.";
 

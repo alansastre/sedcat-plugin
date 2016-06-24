@@ -50,28 +50,28 @@ public class SedcatMetrics implements Metrics {
 		    .setWorstValue(0.0)
 		    .setBestValue(100.0)
 		    .create();
-	//ACCIONES RECOMENDADAS - MENSAJE
-public static final Metric<String> QUALITY_MESSAGE = new Metric.Builder(QUALITY_MESSAGE_KEY, "Quality description message", Metric.ValueType.STRING)
-	    .setDescription("Description of quality unit testing based on input metrics project")
-	    .setDirection(Metric.DIRECTION_NONE)
-	    .setQualitative(false)
-	    .setDomain(SEDCAT_DOMAIN)
-	    .create();
+		//ACCIONES RECOMENDADAS - MENSAJE
+	public static final Metric QUALITY_MESSAGE = new Metric.Builder(QUALITY_MESSAGE_KEY, "Quality of unit testing message", Metric.ValueType.STRING)
+		    .setDescription("Description of quality unit testing based on input metrics project")
+		    .setDirection(Metric.DIRECTION_NONE)
+		    .setQualitative(false)
+		    .setDomain(SEDCAT_DOMAIN)
+		    .create();
 
 		//ACCIONES RECOMENDADAS
-	public static final Metric<String> ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Improvement actions", Metric.ValueType.STRING)
+	public static final Metric ACTIONS_TO_PERFORM = new Metric.Builder(ACTIONS_TO_PERFORM_KEY, "Improvement actions", Metric.ValueType.STRING)
 		    .setDescription("Improvement actions to take to improve the quality of unit testing")
 		    .setDirection(Metric.DIRECTION_NONE)
 		    .setQualitative(false)
 		    .setDomain(SEDCAT_DOMAIN)
 		    .create();
-	//ACCIONES RECOMENDADAS - MENSAJE
-public static final Metric<String> ACTIONS_MESSAGE = new Metric.Builder(ACTION_MESSAGE_KEY, "Actions to improve unit test quality", Metric.ValueType.STRING)
-	    .setDescription("Improvement actions to take to improve the quality of unit testing")
-	    .setDirection(Metric.DIRECTION_NONE)
-	    .setQualitative(false)
-	    .setDomain(SEDCAT_DOMAIN)
-	    .create();
+		//ACCIONES RECOMENDADAS - MENSAJE
+	public static final Metric ACTIONS_MESSAGE = new Metric.Builder(ACTIONS_MESSAGE_KEY, "Improvement actions message", Metric.ValueType.STRING)
+		    .setDescription("Message of improvement actions to take to improve the quality of unit testing")
+		    .setDirection(Metric.DIRECTION_NONE)
+		    .setQualitative(false)
+		    .setDomain(SEDCAT_DOMAIN)
+		    .create();
 
 
 	@Override

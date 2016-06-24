@@ -33,7 +33,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 		//metrica acciones con el mensaje que aparecerá en el widget
 		this.MEASURE_KEY = SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY;
 		//metrica acciones con el mensaje que aparecera en la pantalla de detalle
-		this.MESSAGE_KEY = SedcatMetricsKeys.ACTION_MESSAGE_KEY;
+		this.MESSAGE_KEY = SedcatMetricsKeys.ACTIONS_MESSAGE_KEY;
 		this.ERROR_MESSAGE = "Error, el conjunto de acciones obtenido esta fuera del rango permitido";
 
 	}

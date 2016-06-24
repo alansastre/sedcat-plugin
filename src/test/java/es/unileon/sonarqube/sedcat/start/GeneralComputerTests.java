@@ -86,7 +86,7 @@ public class GeneralComputerTests {
 		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.QUALITY_MEASURE_KEY));
 		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.QUALITY_MESSAGE_KEY));
 		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY));
-		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.ACTION_MESSAGE_KEY));
+		Assert.assertTrue(ouputMetrics.contains(SedcatMetricsKeys.ACTIONS_MESSAGE_KEY));
 
 	}
 

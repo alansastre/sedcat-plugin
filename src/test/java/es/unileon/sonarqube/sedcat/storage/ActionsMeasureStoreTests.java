@@ -213,7 +213,7 @@ public class ActionsMeasureStoreTests {
 		underTest.saveMeasure(result, contextMocked1);
 		// verificate behaviour
 		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY, "No se han encontrado posibles soluciones.");
-		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.ACTION_MESSAGE_KEY, "No se han encontrado posibles soluciones.");
+		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_MESSAGE_KEY, "No se han encontrado posibles soluciones.");
 
 		
 	}
@@ -235,6 +235,6 @@ public class ActionsMeasureStoreTests {
 
 		underTest.saveMeasure(result, contextMocked1);
 		
-		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.ACTION_MESSAGE_KEY, ActionsMessageConstants.MESSAGE_SET25 + AbstractOutputMeasureStore.MESSAGE_ALERT_HACK);
+		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.ACTIONS_MESSAGE_KEY, ActionsMessageConstants.MESSAGE_SET25 + AbstractOutputMeasureStore.MESSAGE_ALERT_HACK);
 	}
 }

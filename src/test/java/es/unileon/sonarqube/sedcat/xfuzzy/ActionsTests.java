@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
+import es.unileon.sonarqube.sedcat.xfuzzy.actions.Actions;
 
 /**
  * @author alan.sastre
@@ -15,7 +15,7 @@ import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
  */
 public class ActionsTests {
 
-	private Acciones underTest;
+	private Actions underTest;
 	double[] inputMetricsValues;
 	
 	//datos para los posibles casos
@@ -54,7 +54,7 @@ public class ActionsTests {
 	@Before
 	public void setUp() throws Exception {
 
-		underTest = new Acciones();
+		underTest = new Actions();
 		
 
 	}

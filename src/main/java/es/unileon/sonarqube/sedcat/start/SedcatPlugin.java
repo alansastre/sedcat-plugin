@@ -20,6 +20,20 @@ import org.sonar.api.PropertyType;
 //properties that appear in General Settings -> Sedcat in SonarQube
 @Properties({
 		@Property(
+				key = SedcatConstants.PITEST_REPORT_DIRECTORY_KEY,
+				defaultValue = SedcatConstants.PITEST_REPORT_DIRECTORY_DEFAULT,
+				name = "Mutations Testing Tool Report",
+				description = "Indicate relative path to mutation testing report like default value.",
+				global = true,
+				project = true),
+		@Property(
+				key = SedcatConstants.COMPLEXITY_THRESHOLD_KEY,
+				defaultValue = SedcatConstants.COMPLEXITY_THRESHOLD_DEFAULT,
+				name = "Complexity Threshold",
+				description = "Suggest threshold average complexity by class to be considered for calculations in a range of 0 to 60",
+				global = true,
+				project = true),
+		@Property(
 				key = SedcatConstants.ACTIVE_MODE_KEY,
 				defaultValue = "true",
 				name = "Sedcat active mode",
@@ -27,23 +41,6 @@ import org.sonar.api.PropertyType;
 				project = true,
 				global = true,
 				type = PropertyType.BOOLEAN),
-		
-		@Property(
-				key = SedcatConstants.PITEST_REPORT_DIRECTORY_KEY,
-				defaultValue = SedcatConstants.PITEST_REPORT_DIRECTORY_DEFAULT,
-				name = "Mutations Testing Tool Report",
-				description = "Indicate relative path to mutation testing report like default value.",
-				global = true,
-				project = true),
-		
-		@Property(
-				key = SedcatConstants.COMPLEXITY_THRESHOLD_KEY,
-				defaultValue = SedcatConstants.COMPLEXITY_THRESHOLD_DEFAULT,
-				name = "Complexity Thresold",
-				description = "Suggest threshold average complexity by class to be considered for calculations in a range of 0 to 60",
-				global = true,
-				project = true),
-
 })
 public class SedcatPlugin extends SonarPlugin {
 

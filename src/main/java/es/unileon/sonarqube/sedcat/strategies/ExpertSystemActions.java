@@ -5,7 +5,7 @@ import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import org.sonar.api.measures.CoreMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
+import es.unileon.sonarqube.sedcat.xfuzzy.actions.Actions;
 
 /**
  * Sistema experto que obtiene las acciones a realizar buscadas
@@ -28,7 +28,7 @@ public class ExpertSystemActions extends AbstractInferenceProcess {
 		this.measureStorer = new ActionsMeasureStore();
 
 		// sistema experto concreto
-		this.expertSystem = new Acciones();
+		this.expertSystem = new Actions();
 
 	}
 

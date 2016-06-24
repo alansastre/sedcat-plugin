@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
-import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad;
+import es.unileon.sonarqube.sedcat.xfuzzy.quality.Quality;
 
 /**
  *  Test unitarios para la clase es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad
@@ -37,7 +37,7 @@ public class QualityTests {
 	// number of input metrics
 	private static final int NUMBER_METRICS = 6;
 
-	private Calidad underTest;
+	private Quality underTest;
 	
 	double[] inputMetricsValues;
 
@@ -48,7 +48,7 @@ public class QualityTests {
 	@Before
 	public void setUp() throws Exception {
 
-		underTest = new Calidad();
+		underTest = new Quality();
 
 	}
 
@@ -59,7 +59,7 @@ public class QualityTests {
 	 * .
 	 */
 
-//	@Test
+	@Test
 	public final void testCrispInferenceDoubleArray() {
 
 		double[] inputMetricsValues = new double[NUMBER_METRICS];

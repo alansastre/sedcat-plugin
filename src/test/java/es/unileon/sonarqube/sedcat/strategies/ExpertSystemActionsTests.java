@@ -14,7 +14,7 @@ import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.measures.CoreMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.ActionsMeasureStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.actions.Acciones;
+import es.unileon.sonarqube.sedcat.xfuzzy.actions.Actions;
 import org.junit.Assert;
 import org.powermock.api.mockito.*;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -28,7 +28,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 /*
  * Bug in PowerMockRunner (JVM method size)
- * https://github.com/jayway/powermock/pull/661 It affects Acciones_1.class
+ * https://github.com/jayway/powermock/pull/661 It affects Actions_1.class
  * http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-4.html#jvms-4.7.3
  */
 
@@ -122,15 +122,15 @@ public class ExpertSystemActionsTests {
 	public final void testExpertSystemActions() throws Exception {
 
 		ActionsMeasureStore storerMock = mock(ActionsMeasureStore.class);
-		Acciones actionsMock = mock(Acciones.class);
+		Actions actionsMock = mock(Actions.class);
 		
 		PowerMockito.whenNew(ActionsMeasureStore.class).withNoArguments().thenReturn(storerMock);
-		PowerMockito.whenNew(Acciones.class).withNoArguments().thenReturn(actionsMock);
+		PowerMockito.whenNew(Actions.class).withNoArguments().thenReturn(actionsMock);
 		
 		ExpertSystemActions underTest2 = new ExpertSystemActions(context);
 
 		PowerMockito.verifyNew(ActionsMeasureStore.class, times(1)).withNoArguments();
-		PowerMockito.verifyNew(Acciones.class, times(1)).withNoArguments();
+		PowerMockito.verifyNew(Actions.class, times(1)).withNoArguments();
 
 		Assert.assertEquals(context, underTest2.context);
 	}
@@ -152,8 +152,8 @@ public class ExpertSystemActionsTests {
 		ActionsMeasureStore storerMock = mock(ActionsMeasureStore.class);
 		PowerMockito.whenNew(ActionsMeasureStore.class).withNoArguments().thenReturn(storerMock);
 
-		Acciones expertSystemMock = mock(Acciones.class);
-		PowerMockito.whenNew(Acciones.class).withNoArguments().thenReturn(expertSystemMock);
+		Actions expertSystemMock = mock(Actions.class);
+		PowerMockito.whenNew(Actions.class).withNoArguments().thenReturn(expertSystemMock);
 
 		PowerMockito.when(expertSystemMock.crispInference(actionsInputMetrics)).thenReturn(actionsOutputMetrics);
 

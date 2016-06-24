@@ -5,7 +5,7 @@ import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import org.sonar.api.measures.CoreMetrics;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
 import es.unileon.sonarqube.sedcat.storage.QualityMeasureStore;
-import es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad;
+import es.unileon.sonarqube.sedcat.xfuzzy.quality.Quality;
 
 /**
  * Sistema experto que obtiene la metrica de calidad buscada
@@ -28,7 +28,7 @@ public class ExpertSystemQuality extends AbstractInferenceProcess {
 		this.measureStorer = new QualityMeasureStore();
 
 		// sistema experto concreto
-		this.expertSystem = new Calidad();
+		this.expertSystem = new Quality();
 
 	}
 

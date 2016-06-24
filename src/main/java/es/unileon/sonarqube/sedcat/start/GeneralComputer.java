@@ -83,7 +83,7 @@ public class GeneralComputer implements MeasureComputer {
 						SedcatMetricsKeys.QUALITY_MESSAGE_KEY,
 						//actions
 						SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY,
-						SedcatMetricsKeys.ACTION_MESSAGE_KEY
+						SedcatMetricsKeys.ACTIONS_MESSAGE_KEY
 						
 						)
 

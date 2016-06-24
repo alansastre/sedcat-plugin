@@ -19,7 +19,7 @@ public class SedcatMetricsKeys {
 	//variables salida
 	public static final String QUALITY_MEASURE_KEY = "quality_measure";
 	public static final String ACTIONS_TO_PERFORM_KEY = "actions_to_realize";	
-	public static final String ACTION_MESSAGE_KEY = "actions_drilldown_message";	
+	public static final String ACTIONS_MESSAGE_KEY = "actions_drilldown_message";	
 	public static final String QUALITY_MESSAGE_KEY = "quality_drilldown_message";	
 	
 
