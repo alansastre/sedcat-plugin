@@ -58,7 +58,7 @@ public class SedcatPluginTests {
 					"ComplexityThresholdSensor",
 					"ComplexityComputer",
 					"GeneralComputer",
-					"ExampleSedcatHtml",
+					"SedcatHtmlFooter",
 					"SedcatDashboardWidget",
 
 			};
