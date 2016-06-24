@@ -6,7 +6,7 @@ import org.sonar.api.web.Footer;
  *	@author alan.sastre
  *	@version 1.0
  */
-public class ExampleSedcatHtml implements Footer {
+public class SedcatHtmlFooter implements Footer {
 
 	@Override
 	public String getHtml() {

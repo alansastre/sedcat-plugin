@@ -69,7 +69,7 @@ public class SedcatPlugin extends SonarPlugin {
     	    extensions.add(GeneralComputer.class);
     	    
     	    // UI - dashboard widget 
-    	    extensions.addAll(asList(ExampleSedcatHtml.class, SedcatDashboardWidget.class));
+    	    extensions.addAll(asList(SedcatHtmlFooter.class, SedcatDashboardWidget.class));
     	    
  
     	    return extensions;    
