@@ -111,10 +111,13 @@ public class MutationsCoverageSensor implements Sensor {
 				LOG.info("mutationsTotal: "+SedcatConstants.mutationsTotal);
 			}
 	    }
-	    
+		LOG.info("sumatorios:");
+		LOG.info("mutationsDetected: "+SedcatConstants.mutationsDetected);
+		LOG.info("mutationsTotal: "+SedcatConstants.mutationsTotal);
 	  //3 - Calcular y almacenar la cobertura de mutantes
 	    if (SedcatConstants.mutationsDetected>0 && SedcatConstants.mutationsTotal>0) {
 	    	 mutationsValueFound =  (double) (100*SedcatConstants.mutationsDetected/SedcatConstants.mutationsTotal);
+	    	 LOG.info("valor mutantes calculado:"+mutationsValueFound);
 	    }
 	    sensorContext.saveMeasure(SedcatMetrics.MUTANTS, mutationsValueFound);
 

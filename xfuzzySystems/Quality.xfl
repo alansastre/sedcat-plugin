@@ -1,0 +1,305 @@
+type Exito [0.0,100.0;101] {
+  nulo xfl.trapezoid(-12.5,0.0,0.01,0.02);
+  muybajo xfl.trapezoid(0.02,3.5,5.0,10.01);
+  bajo xfl.trapezoid(10.01,15.0,25.0,35.01);
+  medio xfl.trapezoid(35.01,40.0,45.0,50.01);
+  medioAlto xfl.trapezoid(50.01,57.0,63.0,75.01);
+  alto xfl.trapezoid(75.01,85.0,95.0,99.1);
+  maximo xfl.trapezoid(99.1,99.2,99.5,100.9);
+}
+
+type Cobertura [0.0,100.0;101] {
+  nulo xfl.trapezoid(-12.5,0.0,0.01,0.02);
+  muybajo xfl.trapezoid(0.02,3.5,5.0,10.01);
+  bajo xfl.trapezoid(10.01,15.0,25.0,35.01);
+  medio xfl.trapezoid(35.01,40.0,45.0,50.01);
+  medioAlto xfl.trapezoid(50.01,57.0,63.0,75.01);
+  alto xfl.trapezoid(75.01,85.0,95.0,99.1);
+  maximo xfl.trapezoid(99.1,99.2,99.5,100.9);
+}
+
+type ResultadoIntermedio [0.0,100.0;101] {
+  nulo xfl.trapezoid(-12.5,0.0,0.01,0.02);
+  muybajo xfl.trapezoid(0.02,3.5,5.0,10.01);
+  bajo xfl.trapezoid(10.01,15.0,25.0,30.01);
+  medio xfl.trapezoid(30.01,37.37373737,45.0,60.01);
+  medioAlto xfl.trapezoid(60.01,65.757575,70.0,75.01);
+  alto xfl.trapezoid(75.01,80.0,90.90909,99.001);
+  maximo xfl.trapezoid(99.01,99.99,100.0,109.0909090909091);
+}
+
+type Numerotest [0.0,15000.0;15001] {
+  muybajo xfl.trapezoid(-10.0,0.0,25.0,50.01);
+  bajo xfl.trapezoid(50.01,100.0,250.0,300.01);
+  bajoMedio xfl.trapezoid(300.01,400.0,500.0,600.01);
+  medio xfl.trapezoid(600.01,800.0,1000.0,1100.01);
+  medioAlto xfl.trapezoid(1100.01,2000.0,2500.0,3000.01);
+  alto xfl.trapezoid(3000.01,3887.036,4442.366,5625.01);
+  muyAlto xfl.trapezoid(5625.01,7000.0,12000.0,20000.9);
+}
+
+type Mutantes [0.0,100.0;101] {
+  muybajo xfl.trapezoid(-12.5,0.0,5.0,10.01);
+  bajo xfl.trapezoid(10.01,15.0,25.0,35.01);
+  medio xfl.trapezoid(35.01,40.0,45.0,55.01);
+  medioAlto xfl.trapezoid(55.01,57.0,63.0,75.01);
+  alto xfl.trapezoid(75.01,85.0,95.0,99.1);
+  maximo xfl.trapezoid(99.1,99.2,99.5,100.9);
+}
+
+type NumeroLineasCodigo [0.0,5000000.0;5000001] {
+  muybajo xfl.trapezoid(-1000.0,0.0,500.0,1000.01);
+  bajo xfl.trapezoid(1000.01,1500.0,2000.0,3000.01);
+  bajoMedio xfl.trapezoid(3000.01,5000.0,7000.0,8000.01);
+  medio xfl.trapezoid(8000.01,12000.0,15000.0,18000.01);
+  medioAlto xfl.trapezoid(18000.01,30000.0,40000.0,50000.01);
+  alto xfl.trapezoid(50000.01,100000.0,150000.0,200000.01);
+  muyAlto xfl.trapezoid(200000.01,500000.0,1000000.0,50000000.01);
+}
+
+type Complejidad [0.0,60.0;61] {
+  Ideal xfl.trapezoid(-1.0,10.0,20.0,30.01);
+  Alto xfl.trapezoid(30.01,33.3333,36.6666,40.01);
+  XAlto xfl.trapezoid(40.01,43.3333,46.6666,50.01);
+  XXAlto xfl.trapezoid(50.01,53.3333,56.6666,62.0);
+}
+
+rulebase Rules1 (Exito Exito, Cobertura Cobertura : ResultadoIntermedio Resultado1) {
+  if(Exito == nulo & Cobertura == nulo) -> Resultado1 = nulo;
+  if(Exito == nulo & Cobertura == muybajo) -> Resultado1 = nulo;
+  if(Exito == nulo & Cobertura == bajo) -> Resultado1 = nulo;
+  if(Exito == nulo & Cobertura == medio) -> Resultado1 = nulo;
+  if(Exito == nulo & Cobertura == medioAlto) -> Resultado1 = nulo;
+  if(Exito == nulo & Cobertura == alto) -> Resultado1 = nulo;
+  if(Exito == nulo & Cobertura == maximo) -> Resultado1 = nulo;
+  if(Exito == muybajo & Cobertura == nulo) -> Resultado1 = nulo;
+  if(Exito == muybajo & Cobertura == muybajo) -> Resultado1 = muybajo;
+  if(Exito == muybajo & Cobertura == bajo) -> Resultado1 = muybajo;
+  if(Exito == muybajo & Cobertura == medio) -> Resultado1 = muybajo;
+  if(Exito == muybajo & Cobertura == medioAlto) -> Resultado1 = muybajo;
+  if(Exito == muybajo & Cobertura == alto) -> Resultado1 = muybajo;
+  if(Exito == muybajo & Cobertura == maximo) -> Resultado1 = bajo;
+  if(Exito == bajo & Cobertura == nulo) -> Resultado1 = nulo;
+  if(Exito == bajo & Cobertura == muybajo) -> Resultado1 = muybajo;
+  if(Exito == bajo & Cobertura == bajo) -> Resultado1 = bajo;
+  if(Exito == bajo & Cobertura == medio) -> Resultado1 = bajo;
+  if(Exito == bajo & Cobertura == medioAlto) -> Resultado1 = bajo;
+  if(Exito == bajo & Cobertura == alto) -> Resultado1 = bajo;
+  if(Exito == bajo & Cobertura == maximo) -> Resultado1 = medio;
+  if(Exito == medio & Cobertura == nulo) -> Resultado1 = nulo;
+  if(Exito == medio & Cobertura == muybajo) -> Resultado1 = muybajo;
+  if(Exito == medio & Cobertura == bajo) -> Resultado1 = bajo;
+  if(Exito == medio & Cobertura == medio) -> Resultado1 = medio;
+  if(Exito == medio & Cobertura == medioAlto) -> Resultado1 = medio;
+  if(Exito == medio & Cobertura == alto) -> Resultado1 = medio;
+  if(Exito == medio & Cobertura == maximo) -> Resultado1 = medioAlto;
+  if(Exito == medioAlto & Cobertura == nulo) -> Resultado1 = nulo;
+  if(Exito == medioAlto & Cobertura == muybajo) -> Resultado1 = bajo;
+  if(Exito == medioAlto & Cobertura == bajo) -> Resultado1 = bajo;
+  if(Exito == medioAlto & Cobertura == medio) -> Resultado1 = medio;
+  if(Exito == medioAlto & Cobertura == medioAlto) -> Resultado1 = medioAlto;
+  if(Exito == medioAlto & Cobertura == alto) -> Resultado1 = medioAlto;
+  if(Exito == medioAlto & Cobertura == maximo) -> Resultado1 = alto;
+  if(Exito == alto & Cobertura == nulo) -> Resultado1 = nulo;
+  if(Exito == alto & Cobertura == muybajo) -> Resultado1 = bajo;
+  if(Exito == alto & Cobertura == bajo) -> Resultado1 = bajo;
+  if(Exito == alto & Cobertura == medio) -> Resultado1 = medio;
+  if(Exito == alto & Cobertura == medioAlto) -> Resultado1 = medioAlto;
+  if(Exito == alto & Cobertura == alto) -> Resultado1 = alto;
+  if(Exito == alto & Cobertura == maximo) -> Resultado1 = alto;
+  if(Exito == maximo & Cobertura == nulo) -> Resultado1 = nulo;
+  if(Exito == maximo & Cobertura == muybajo) -> Resultado1 = bajo;
+  if(Exito == maximo & Cobertura == bajo) -> Resultado1 = medio;
+  if(Exito == maximo & Cobertura == medio) -> Resultado1 = medio;
+  if(Exito == maximo & Cobertura == medioAlto) -> Resultado1 = medioAlto;
+  if(Exito == maximo & Cobertura == alto) -> Resultado1 = alto;
+  if(Exito == maximo & Cobertura == maximo) -> Resultado1 = maximo;
+}
+
+rulebase Rules2 (ResultadoIntermedio ExitCober, Mutantes Mutantes : ResultadoIntermedio Resultado2) {
+  if(ExitCober == nulo & Mutantes == muybajo) -> Resultado2 = nulo;
+  if(ExitCober == nulo & Mutantes == bajo) -> Resultado2 = nulo;
+  if(ExitCober == nulo & Mutantes == medio) -> Resultado2 = nulo;
+  if(ExitCober == nulo & Mutantes == medioAlto) -> Resultado2 = nulo;
+  if(ExitCober == nulo & Mutantes == alto) -> Resultado2 = nulo;
+  if(ExitCober == nulo & Mutantes == maximo) -> Resultado2 = nulo;
+  if(ExitCober == muybajo & Mutantes == muybajo) -> Resultado2 = muybajo;
+  if(ExitCober == muybajo & Mutantes == bajo) -> Resultado2 = muybajo;
+  if(ExitCober == muybajo & Mutantes == medio) -> Resultado2 = muybajo;
+  if(ExitCober == muybajo & Mutantes == medioAlto) -> Resultado2 = muybajo;
+  if(ExitCober == muybajo & Mutantes == alto) -> Resultado2 = bajo;
+  if(ExitCober == muybajo & Mutantes == maximo) -> Resultado2 = bajo;
+  if(ExitCober == bajo & Mutantes == muybajo) -> Resultado2 = muybajo;
+  if(ExitCober == bajo & Mutantes == bajo) -> Resultado2 = bajo;
+  if(ExitCober == bajo & Mutantes == medio) -> Resultado2 = bajo;
+  if(ExitCober == bajo & Mutantes == medioAlto) -> Resultado2 = bajo;
+  if(ExitCober == bajo & Mutantes == alto) -> Resultado2 = medio;
+  if(ExitCober == bajo & Mutantes == maximo) -> Resultado2 = medio;
+  if(ExitCober == medio & Mutantes == muybajo) -> Resultado2 = bajo;
+  if(ExitCober == medio & Mutantes == bajo) -> Resultado2 = bajo;
+  if(ExitCober == medio & Mutantes == medio) -> Resultado2 = medio;
+  if(ExitCober == medio & Mutantes == medioAlto) -> Resultado2 = medio;
+  if(ExitCober == medio & Mutantes == alto) -> Resultado2 = medioAlto;
+  if(ExitCober == medio & Mutantes == maximo) -> Resultado2 = medioAlto;
+  if(ExitCober == medioAlto & Mutantes == muybajo) -> Resultado2 = bajo;
+  if(ExitCober == medioAlto & Mutantes == bajo) -> Resultado2 = bajo;
+  if(ExitCober == medioAlto & Mutantes == medio) -> Resultado2 = medio;
+  if(ExitCober == medioAlto & Mutantes == medioAlto) -> Resultado2 = medioAlto;
+  if(ExitCober == medioAlto & Mutantes == alto) -> Resultado2 = medioAlto;
+  if(ExitCober == medioAlto & Mutantes == maximo) -> Resultado2 = alto;
+  if(ExitCober == alto & Mutantes == muybajo) -> Resultado2 = medio;
+  if(ExitCober == alto & Mutantes == bajo) -> Resultado2 = medio;
+  if(ExitCober == alto & Mutantes == medio) -> Resultado2 = medioAlto;
+  if(ExitCober == alto & Mutantes == medioAlto) -> Resultado2 = medioAlto;
+  if(ExitCober == alto & Mutantes == alto) -> Resultado2 = alto;
+  if(ExitCober == alto & Mutantes == maximo) -> Resultado2 = alto;
+  if(ExitCober == maximo & Mutantes == muybajo) -> Resultado2 = medio;
+  if(ExitCober == maximo & Mutantes == bajo) -> Resultado2 = medio;
+  if(ExitCober == maximo & Mutantes == medio) -> Resultado2 = medioAlto;
+  if(ExitCober == maximo & Mutantes == medioAlto) -> Resultado2 = alto;
+  if(ExitCober == maximo & Mutantes == alto) -> Resultado2 = alto;
+  if(ExitCober == maximo & Mutantes == maximo) -> Resultado2 = maximo;
+}
+
+rulebase Rules3 (ResultadoIntermedio ExitCoMut, Numerotest NumeroTest : ResultadoIntermedio Resultado3) {
+  if(ExitCoMut == nulo & NumeroTest == muybajo) -> Resultado3 = nulo;
+  if(ExitCoMut == nulo & NumeroTest == bajo) -> Resultado3 = nulo;
+  if(ExitCoMut == nulo & NumeroTest == bajoMedio) -> Resultado3 = nulo;
+  if(ExitCoMut == nulo & NumeroTest == medio) -> Resultado3 = nulo;
+  if(ExitCoMut == nulo & NumeroTest == medioAlto) -> Resultado3 = nulo;
+  if(ExitCoMut == nulo & NumeroTest == alto) -> Resultado3 = nulo;
+  if(ExitCoMut == nulo & NumeroTest == muyAlto) -> Resultado3 = nulo;
+  if(ExitCoMut == muybajo & NumeroTest == muybajo) -> Resultado3 = muybajo;
+  if(ExitCoMut == muybajo & NumeroTest == bajo) -> Resultado3 = muybajo;
+  if(ExitCoMut == muybajo & NumeroTest == bajoMedio) -> Resultado3 = muybajo;
+  if(ExitCoMut == muybajo & NumeroTest == medio) -> Resultado3 = muybajo;
+  if(ExitCoMut == muybajo & NumeroTest == medioAlto) -> Resultado3 = muybajo;
+  if(ExitCoMut == muybajo & NumeroTest == alto) -> Resultado3 = muybajo;
+  if(ExitCoMut == muybajo & NumeroTest == muyAlto) -> Resultado3 = muybajo;
+  if(ExitCoMut == bajo & NumeroTest == muybajo) -> Resultado3 = muybajo;
+  if(ExitCoMut == bajo & NumeroTest == bajo) -> Resultado3 = muybajo;
+  if(ExitCoMut == bajo & NumeroTest == bajoMedio) -> Resultado3 = bajo;
+  if(ExitCoMut == bajo & NumeroTest == medio) -> Resultado3 = bajo;
+  if(ExitCoMut == bajo & NumeroTest == medioAlto) -> Resultado3 = bajo;
+  if(ExitCoMut == bajo & NumeroTest == alto) -> Resultado3 = bajo;
+  if(ExitCoMut == bajo & NumeroTest == muyAlto) -> Resultado3 = bajo;
+  if(ExitCoMut == medio & NumeroTest == muybajo) -> Resultado3 = bajo;
+  if(ExitCoMut == medio & NumeroTest == bajo) -> Resultado3 = bajo;
+  if(ExitCoMut == medio & NumeroTest == bajoMedio) -> Resultado3 = medio;
+  if(ExitCoMut == medio & NumeroTest == medio) -> Resultado3 = medio;
+  if(ExitCoMut == medio & NumeroTest == medioAlto) -> Resultado3 = medio;
+  if(ExitCoMut == medio & NumeroTest == alto) -> Resultado3 = medio;
+  if(ExitCoMut == medio & NumeroTest == muyAlto) -> Resultado3 = medio;
+  if(ExitCoMut == medioAlto & NumeroTest == muybajo) -> Resultado3 = medio;
+  if(ExitCoMut == medioAlto & NumeroTest == bajo) -> Resultado3 = medio;
+  if(ExitCoMut == medioAlto & NumeroTest == bajoMedio) -> Resultado3 = medioAlto;
+  if(ExitCoMut == medioAlto & NumeroTest == medio) -> Resultado3 = medioAlto;
+  if(ExitCoMut == medioAlto & NumeroTest == medioAlto) -> Resultado3 = medioAlto;
+  if(ExitCoMut == medioAlto & NumeroTest == alto) -> Resultado3 = medioAlto;
+  if(ExitCoMut == medioAlto & NumeroTest == muyAlto) -> Resultado3 = medioAlto;
+  if(ExitCoMut == alto & NumeroTest == muybajo) -> Resultado3 = medioAlto;
+  if(ExitCoMut == alto & NumeroTest == bajo) -> Resultado3 = medioAlto;
+  if(ExitCoMut == alto & NumeroTest == bajoMedio) -> Resultado3 = alto;
+  if(ExitCoMut == alto & NumeroTest == medio) -> Resultado3 = alto;
+  if(ExitCoMut == alto & NumeroTest == medioAlto) -> Resultado3 = alto;
+  if(ExitCoMut == alto & NumeroTest == alto) -> Resultado3 = alto;
+  if(ExitCoMut == alto & NumeroTest == muyAlto) -> Resultado3 = alto;
+  if(ExitCoMut == maximo & NumeroTest == muybajo) -> Resultado3 = alto;
+  if(ExitCoMut == maximo & NumeroTest == bajo) -> Resultado3 = alto;
+  if(ExitCoMut == maximo & NumeroTest == bajoMedio) -> Resultado3 = maximo;
+  if(ExitCoMut == maximo & NumeroTest == medio) -> Resultado3 = maximo;
+  if(ExitCoMut == maximo & NumeroTest == medioAlto) -> Resultado3 = maximo;
+  if(ExitCoMut == maximo & NumeroTest == alto) -> Resultado3 = maximo;
+  if(ExitCoMut == maximo & NumeroTest == muyAlto) -> Resultado3 = maximo;
+}
+
+rulebase Rules4 (ResultadoIntermedio Resultado3, NumeroLineasCodigo NumeroLineasCodigo : ResultadoIntermedio Resultado4) {
+  if(Resultado3 == nulo & NumeroLineasCodigo == muybajo) -> Resultado4 = nulo;
+  if(Resultado3 == nulo & NumeroLineasCodigo == bajo) -> Resultado4 = nulo;
+  if(Resultado3 == nulo & NumeroLineasCodigo == bajoMedio) -> Resultado4 = nulo;
+  if(Resultado3 == nulo & NumeroLineasCodigo == medio) -> Resultado4 = nulo;
+  if(Resultado3 == nulo & NumeroLineasCodigo == medioAlto) -> Resultado4 = nulo;
+  if(Resultado3 == nulo & NumeroLineasCodigo == alto) -> Resultado4 = nulo;
+  if(Resultado3 == nulo & NumeroLineasCodigo == muyAlto) -> Resultado4 = nulo;
+  if(Resultado3 == muybajo & NumeroLineasCodigo == muybajo) -> Resultado4 = bajo;
+  if(Resultado3 == muybajo & NumeroLineasCodigo == bajo) -> Resultado4 = bajo;
+  if(Resultado3 == muybajo & NumeroLineasCodigo == bajoMedio) -> Resultado4 = bajo;
+  if(Resultado3 == muybajo & NumeroLineasCodigo == medio) -> Resultado4 = muybajo;
+  if(Resultado3 == muybajo & NumeroLineasCodigo == medioAlto) -> Resultado4 = muybajo;
+  if(Resultado3 == muybajo & NumeroLineasCodigo == alto) -> Resultado4 = muybajo;
+  if(Resultado3 == muybajo & NumeroLineasCodigo == muyAlto) -> Resultado4 = muybajo;
+  if(Resultado3 == bajo & NumeroLineasCodigo == muybajo) -> Resultado4 = bajo;
+  if(Resultado3 == bajo & NumeroLineasCodigo == bajo) -> Resultado4 = bajo;
+  if(Resultado3 == bajo & NumeroLineasCodigo == bajoMedio) -> Resultado4 = bajo;
+  if(Resultado3 == bajo & NumeroLineasCodigo == medio) -> Resultado4 = muybajo;
+  if(Resultado3 == bajo & NumeroLineasCodigo == medioAlto) -> Resultado4 = muybajo;
+  if(Resultado3 == bajo & NumeroLineasCodigo == alto) -> Resultado4 = muybajo;
+  if(Resultado3 == bajo & NumeroLineasCodigo == muyAlto) -> Resultado4 = muybajo;
+  if(Resultado3 == medio & NumeroLineasCodigo == muybajo) -> Resultado4 = medio;
+  if(Resultado3 == medio & NumeroLineasCodigo == bajo) -> Resultado4 = medio;
+  if(Resultado3 == medio & NumeroLineasCodigo == bajoMedio) -> Resultado4 = medio;
+  if(Resultado3 == medio & NumeroLineasCodigo == medio) -> Resultado4 = bajo;
+  if(Resultado3 == medio & NumeroLineasCodigo == medioAlto) -> Resultado4 = bajo;
+  if(Resultado3 == medio & NumeroLineasCodigo == alto) -> Resultado4 = bajo;
+  if(Resultado3 == medio & NumeroLineasCodigo == muyAlto) -> Resultado4 = bajo;
+  if(Resultado3 == medioAlto & NumeroLineasCodigo == muybajo) -> Resultado4 = medioAlto;
+  if(Resultado3 == medioAlto & NumeroLineasCodigo == bajo) -> Resultado4 = medioAlto;
+  if(Resultado3 == medioAlto & NumeroLineasCodigo == bajoMedio) -> Resultado4 = medioAlto;
+  if(Resultado3 == medioAlto & NumeroLineasCodigo == medio) -> Resultado4 = medio;
+  if(Resultado3 == medioAlto & NumeroLineasCodigo == medioAlto) -> Resultado4 = medio;
+  if(Resultado3 == medioAlto & NumeroLineasCodigo == alto) -> Resultado4 = medio;
+  if(Resultado3 == medioAlto & NumeroLineasCodigo == muyAlto) -> Resultado4 = medio;
+  if(Resultado3 == alto & NumeroLineasCodigo == muybajo) -> Resultado4 = alto;
+  if(Resultado3 == alto & NumeroLineasCodigo == bajo) -> Resultado4 = alto;
+  if(Resultado3 == alto & NumeroLineasCodigo == bajoMedio) -> Resultado4 = alto;
+  if(Resultado3 == alto & NumeroLineasCodigo == medio) -> Resultado4 = alto;
+  if(Resultado3 == alto & NumeroLineasCodigo == medioAlto) -> Resultado4 = alto;
+  if(Resultado3 == alto & NumeroLineasCodigo == alto) -> Resultado4 = alto;
+  if(Resultado3 == alto & NumeroLineasCodigo == muyAlto) -> Resultado4 = alto;
+  if(Resultado3 == maximo & NumeroLineasCodigo == muybajo) -> Resultado4 = maximo;
+  if(Resultado3 == maximo & NumeroLineasCodigo == bajo) -> Resultado4 = maximo;
+  if(Resultado3 == maximo & NumeroLineasCodigo == bajoMedio) -> Resultado4 = maximo;
+  if(Resultado3 == maximo & NumeroLineasCodigo == medio) -> Resultado4 = maximo;
+  if(Resultado3 == maximo & NumeroLineasCodigo == medioAlto) -> Resultado4 = maximo;
+  if(Resultado3 == maximo & NumeroLineasCodigo == alto) -> Resultado4 = maximo;
+  if(Resultado3 == maximo & NumeroLineasCodigo == muyAlto) -> Resultado4 = maximo;
+}
+
+rulebase Rules5 (ResultadoIntermedio Resultado4, Complejidad Complejidad : ResultadoIntermedio Resultado5) {
+  if(Resultado4 == nulo & Complejidad == Ideal) -> Resultado5 = nulo;
+  if(Resultado4 == nulo & Complejidad == Alto) -> Resultado5 = nulo;
+  if(Resultado4 == nulo & Complejidad == XAlto) -> Resultado5 = nulo;
+  if(Resultado4 == nulo & Complejidad == XXAlto) -> Resultado5 = nulo;
+  if(Resultado4 == muybajo & Complejidad == Ideal) -> Resultado5 = muybajo;
+  if(Resultado4 == muybajo & Complejidad == Alto) -> Resultado5 = muybajo;
+  if(Resultado4 == muybajo & Complejidad == XAlto) -> Resultado5 = muybajo;
+  if(Resultado4 == muybajo & Complejidad == XXAlto) -> Resultado5 = muybajo;
+  if(Resultado4 == bajo & Complejidad == Ideal) -> Resultado5 = bajo;
+  if(Resultado4 == bajo & Complejidad == Alto) -> Resultado5 = muybajo;
+  if(Resultado4 == bajo & Complejidad == XAlto) -> Resultado5 = muybajo;
+  if(Resultado4 == bajo & Complejidad == XXAlto) -> Resultado5 = muybajo;
+  if(Resultado4 == medio & Complejidad == Ideal) -> Resultado5 = medio;
+  if(Resultado4 == medio & Complejidad == Alto) -> Resultado5 = bajo;
+  if(Resultado4 == medio & Complejidad == XAlto) -> Resultado5 = muybajo;
+  if(Resultado4 == medio & Complejidad == XXAlto) -> Resultado5 = muybajo;
+  if(Resultado4 == medioAlto & Complejidad == Ideal) -> Resultado5 = medioAlto;
+  if(Resultado4 == medioAlto & Complejidad == Alto) -> Resultado5 = medio;
+  if(Resultado4 == medioAlto & Complejidad == XAlto) -> Resultado5 = bajo;
+  if(Resultado4 == medioAlto & Complejidad == XXAlto) -> Resultado5 = bajo;
+  if(Resultado4 == alto & Complejidad == Ideal) -> Resultado5 = alto;
+  if(Resultado4 == alto & Complejidad == Alto) -> Resultado5 = medioAlto;
+  if(Resultado4 == alto & Complejidad == XAlto) -> Resultado5 = medio;
+  if(Resultado4 == alto & Complejidad == XXAlto) -> Resultado5 = medio;
+  if(Resultado4 == maximo & Complejidad == Ideal) -> Resultado5 = maximo;
+  if(Resultado4 == maximo & Complejidad == Alto) -> Resultado5 = alto;
+  if(Resultado4 == maximo & Complejidad == XAlto) -> Resultado5 = medioAlto;
+  if(Resultado4 == maximo & Complejidad == XXAlto) -> Resultado5 = medioAlto;
+}
+
+system (Exito Exito, Cobertura Cobertura, Mutantes Mutantes, Numerotest NumeroTest, NumeroLineasCodigo NumeroLineasCodigo, Complejidad Complejidad : ResultadoIntermedio CALIDAD) {
+  Rules1(Exito, Cobertura : i0);
+  Rules2(i0, Mutantes : i1);
+  Rules3(i1, NumeroTest : i2);
+  Rules4(i2, NumeroLineasCodigo : i3);
+  Rules5(i3, Complejidad : CALIDAD);
+ }

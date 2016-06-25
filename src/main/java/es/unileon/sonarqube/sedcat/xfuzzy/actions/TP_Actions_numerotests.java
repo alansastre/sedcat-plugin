@@ -14,11 +14,11 @@ public class TP_Actions_numerotests {
  private double min = 0.0;
  private double max = 5000.0;
  private double step = 1.0;
- double _ps_bajo[] = { -625.0,555.333,1110.66,1666.0 };
+ double _ps_bajo[] = { -625.0,50.0,100.0,300.01 };
  double _pl_bajo[] = {  };
- double _ps_medio[] = { 1666.0,2221.343,2776.673,3332.0 };
+ double _ps_medio[] = { 300.01,800.01,1200.01,1300.01 };
  double _pl_medio[] = {  };
- double _ps_alto[] = { 3332.0,3887.036,4442.366,20000.0 };
+ double _ps_alto[] = { 1300.01,3887.036,4442.366,20000.0 };
  double _pl_alto[] = {  };
  MF_xfl_trapezoid bajo = new MF_xfl_trapezoid(min,max,step,_ps_bajo,_pl_bajo);
  MF_xfl_trapezoid medio = new MF_xfl_trapezoid(min,max,step,_ps_medio,_pl_medio);
