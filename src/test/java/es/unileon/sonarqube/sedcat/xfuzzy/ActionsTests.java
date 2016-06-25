@@ -33,6 +33,7 @@ public class ActionsTests {
 	private double[] INPUT_METRIC_VALUES_23_298 = new double[] { 71, 94, 600, 82, 14000, 13.8 };
 
 	private double[] INPUT_METRIC_VALUES_30 = new double[] { 100, 65, 5000, 100, 10000, 15 };
+	private double[] INPUT_METRIC_VALUES_14 = new double[] { 100, 0.7, 16000, 0, 5000000, 15 };
 
 	/**
 	 * @throws java.lang.Exception
@@ -154,7 +155,13 @@ public class ActionsTests {
 		
 	}
 	
-	
+	@Test
+	public final void testActionSet_14() {
+
+//		sedcat.actions.set14=1. Unit Test Coverage</br>2. Mutations coverage
+		Assert.assertEquals(14.0, underTest.crispInference(INPUT_METRIC_VALUES_14)[0], 0.0);
+		
+	}
 
 
 }

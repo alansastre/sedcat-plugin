@@ -26,7 +26,7 @@ public class TP_Quality_Numerotest {
  double _pl_medioAlto[] = {  };
  double _ps_alto[] = { 3000.01,3887.036,4442.366,5625.01 };
  double _pl_alto[] = {  };
- double _ps_muyAlto[] = { 5625.01,7000.0,12000.0,15000.9 };
+ double _ps_muyAlto[] = { 5625.01,7000.0,12000.0,20000.9 };
  double _pl_muyAlto[] = {  };
  MF_xfl_trapezoid muybajo = new MF_xfl_trapezoid(min,max,step,_ps_muybajo,_pl_muybajo);
  MF_xfl_trapezoid bajo = new MF_xfl_trapezoid(min,max,step,_ps_bajo,_pl_bajo);

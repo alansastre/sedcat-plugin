@@ -18,7 +18,7 @@ public class TP_Actions_numerotests {
  double _pl_bajo[] = {  };
  double _ps_medio[] = { 1666.0,2221.343,2776.673,3332.0 };
  double _pl_medio[] = {  };
- double _ps_alto[] = { 3332.0,3887.036,4442.366,5625.0 };
+ double _ps_alto[] = { 3332.0,3887.036,4442.366,20000.0 };
  double _pl_alto[] = {  };
  MF_xfl_trapezoid bajo = new MF_xfl_trapezoid(min,max,step,_ps_bajo,_pl_bajo);
  MF_xfl_trapezoid medio = new MF_xfl_trapezoid(min,max,step,_ps_medio,_pl_medio);

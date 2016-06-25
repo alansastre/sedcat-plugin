@@ -26,7 +26,7 @@ public class TP_Quality_NumeroLineasCodigo {
  double _pl_medioAlto[] = {  };
  double _ps_alto[] = { 50000.01,100000.0,150000.0,200000.01 };
  double _pl_alto[] = {  };
- double _ps_muyAlto[] = { 200000.01,500000.0,1000000.0,5000000.01 };
+ double _ps_muyAlto[] = { 200000.01,500000.0,1000000.0,50000000.01 };
  double _pl_muyAlto[] = {  };
  MF_xfl_trapezoid muybajo = new MF_xfl_trapezoid(min,max,step,_ps_muybajo,_pl_muybajo);
  MF_xfl_trapezoid bajo = new MF_xfl_trapezoid(min,max,step,_ps_bajo,_pl_bajo);

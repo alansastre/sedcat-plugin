@@ -14,7 +14,7 @@ public class ActionsMessageConstants {
 	public static final String UNIT_TEST_COVERAGE= "Unit Test Coverage";
 	public static final String MUTATIONS_COVERAGE = "Mutations Coverage";
 	public static final String NUMBER_OF_TESTS = "Number Of Tests";
-	public static final String COMPLEXITY = "Number Of Tests";
+	public static final String COMPLEXITY = "Complexity";
 	
 	//Common parts
 	public static final String MENU_HEADER = "</br>Improve the following project parameters in the following order of priority:</br></br>";

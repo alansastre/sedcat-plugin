@@ -18,7 +18,7 @@ public class TP_Actions_numerolineascodigo {
  double _pl_bajo[] = {  };
  double _ps_medio[] = { 33333.01,44444.12,55555.23,66666.0 };
  double _pl_medio[] = {  };
- double _ps_alto[] = { 66666.0,77777.12,88888.23,112500.0 };
+ double _ps_alto[] = { 66666.0,77777.12,88888.23,50000000.0 };
  double _pl_alto[] = {  };
  MF_xfl_trapezoid bajo = new MF_xfl_trapezoid(min,max,step,_ps_bajo,_pl_bajo);
  MF_xfl_trapezoid medio = new MF_xfl_trapezoid(min,max,step,_ps_medio,_pl_medio);
