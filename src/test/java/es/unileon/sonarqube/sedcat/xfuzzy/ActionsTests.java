@@ -26,11 +26,11 @@ public class ActionsTests {
 	private double[] INPUT_METRIC_VALUES_10 = new double[] { 100, 65, 46, 0.0, 516, 15 };
 	private double[] INPUT_METRIC_VALUES_20 = new double[] { 100, 72.7, 46, 0.0, 516, 15 };
 
-	private double[] INPUT_METRIC_VALUES_32 = new double[] { 50, 50, 3000, 100, 100000, 30 };
-	private double[] INPUT_METRIC_VALUES_65 = new double[] { 50, 50, 3000, 100, 100000, 30.6 };
+	private double[] INPUT_METRIC_VALUES_28 = new double[] { 50, 50, 3000, 100, 100000, 30 };
+	private double[] INPUT_METRIC_VALUES_61 = new double[] { 50, 50, 3000, 100, 100000, 30.6 };
 
-	private double[] INPUT_METRIC_VALUES_0_297 = new double[] { 70, 94, 600, 82, 14000, 13.8 };
-	private double[] INPUT_METRIC_VALUES_23_298 = new double[] { 71, 94, 600, 82, 14000, 13.8 };
+	private double[] INPUT_METRIC_VALUES_7_297 = new double[] { 70, 94, 600, 82, 14000, 13.8 };
+	private double[] INPUT_METRIC_VALUES_7_298 = new double[] { 71, 94, 600, 82, 14000, 13.8 };
 
 	private double[] INPUT_METRIC_VALUES_30 = new double[] { 100, 65, 5000, 100, 10000, 15 };
 	private double[] INPUT_METRIC_VALUES_14 = new double[] { 100, 0.7, 16000, 0, 5000000, 15 };
@@ -113,36 +113,36 @@ public class ActionsTests {
 	}
 
 	@Test
-	public final void testActionSet_32() {
+	public final void testActionSet_28() {
 
 
-//		sedcat.actions.set32=Unit Test Success > Unit Test Coverage > Number Of Tests
-		Assert.assertEquals(32.0, underTest.crispInference(INPUT_METRIC_VALUES_32)[0], 0.0);
-
-	}
-	
-	@Test
-	public final void testActionSet_65() {
-
-
-//		sedcat.actions.set65=Complexity > Unit Test Success > Unit Test Coverage > Number Of Tests
-		Assert.assertEquals(65.0, underTest.crispInference(INPUT_METRIC_VALUES_65)[0], 0.0);
+//		sedcat.actions.set28=1. Unit Test Success</br>2. Unit Test Coverage
+		Assert.assertEquals(28.0, underTest.crispInference(INPUT_METRIC_VALUES_28)[0], 0.0);
 
 	}
 	
 	@Test
-	public final void testActionSet_0_Rule297() {
+	public final void testActionSet_61() {
+
+
+//		sedcat.actions.set61=1. Complexity</br>2. Unit Test Success</br>3. Unit Test Coverage
+		Assert.assertEquals(61.0, Math.round(underTest.crispInference(INPUT_METRIC_VALUES_61)[0]), 0.0);
+
+	}
+	
+	@Test
+	public final void testActionSet_7_Rule297() {
 		
 //		sedcat.actions.set0=Unit Test Success > Unit Test Coverage > Mutations coverage > Number Of Tests
-		Assert.assertEquals(0.0, underTest.crispInference(INPUT_METRIC_VALUES_0_297)[0], 0.0);
+		Assert.assertEquals(7.0, underTest.crispInference(INPUT_METRIC_VALUES_7_297)[0], 0.0);
 		
 	}
 	
 	@Test
-	public final void testActionSet_23_Rule298() {
+	public final void testActionSet_7_Rule298() {
 		
-//		sedcat.actions.set23=Mutations coverage > Unit Test Success > Unit Test Coverage > Number Of Tests
-		Assert.assertEquals(23.0, underTest.crispInference(INPUT_METRIC_VALUES_23_298)[0], 0.0);
+//		sedcat.actions.set7=1. Unit Test Success</br>2. Unit Test Coverage</br>3. Mutations coverage
+		Assert.assertEquals(7.0, underTest.crispInference(INPUT_METRIC_VALUES_7_298)[0], 0.0);
 		
 	}
 	
