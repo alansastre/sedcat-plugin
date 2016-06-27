@@ -20,8 +20,11 @@ public abstract class AbstractOutputMeasureStore {
 	protected String MEASURE_KEY;
 	//output metric message
 	protected String MESSAGE_KEY;
-	//Message to disable alert "Not gound Items"
+	//Css to disable alert "Not found Items"
 	protected static final String MESSAGE_ALERT_HACK = "<style type='text/css'>.alert-info{visibility:hidden;}</style>";
+	//Css to adapt test a screen resolution
+	protected static final String MESSAGE_RESOLUTION = "<link type='text/css' rel='stylesheet' media='screen and (max-width: 1199px)' href='css/style.css'>"
+			+ "<link type='text/css' rel='stylesheet' media='screen and (min-width: 1200px)' href='css/big.css'>";
 	//Message in case of no actions
 	protected static final String MESSAGE_NO_ACTIONS = "No se han encontrado posibles soluciones.";
 

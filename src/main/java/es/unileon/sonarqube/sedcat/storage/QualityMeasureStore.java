@@ -3,6 +3,9 @@
  */
 package es.unileon.sonarqube.sedcat.storage;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import es.unileon.sonarqube.sedcat.start.SedcatMetricsKeys;
@@ -27,7 +30,7 @@ public class QualityMeasureStore extends AbstractOutputMeasureStore {
 		this.ERROR_MESSAGE = "Error, la metrica calidad obtenida esta fuera del limite permitido";
 		
 		this.qualityMessage = "This quality metric is calculated at project level, so no data at the component"
-				+ " level that can be displayed. This metric is obtained from sets of rules activated to varying"
+				+ " level that can be displayed.</br>This metric is obtained from sets of rules activated to varying"
 				+ " degrees depending on input metrics read about the project in each analysis.";
 	}
 
@@ -40,9 +43,13 @@ public class QualityMeasureStore extends AbstractOutputMeasureStore {
 		// Almacenar el mensaje del conjunto de acciones en forma de double
 		context.addMeasure(this.MEASURE_KEY, measureValue);
 		
+		//Redondear el resultado para la pantalla de detalle:
+		DecimalFormat df = new DecimalFormat("#.##");
+		df.setRoundingMode(RoundingMode.CEILING);
+		
 		//Almacenar mensaje especifico a mostrar en la pantalla de detalle de la calidad
 		context.addMeasure(this.MESSAGE_KEY,
-				"</br>Quality of unit tests is "+measureValue +" %</br></br>" + qualityMessage + MESSAGE_ALERT_HACK);
+				MESSAGE_RESOLUTION + "</br>Quality of unit tests is "+ df.format(measureValue) +" %</br></br>" + qualityMessage + MESSAGE_ALERT_HACK);
 
 		LOG.info("Metrica calidad almacenada correctamente, ha sido: " + measureValue);
 

@@ -17,7 +17,7 @@ import org.sonar.api.PropertyType;
  * 
  * This class is the entry point for all extensions. It must be referenced from pom.xml.
  */
-//properties that appear in General Settings -> Sedcat in SonarQube
+//properties that appears in General Settings -> Sedcat in SonarQube
 @Properties({
 		@Property(
 				key = SedcatConstants.PITEST_REPORT_DIRECTORY_KEY,
