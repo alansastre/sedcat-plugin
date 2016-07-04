@@ -1,29 +1,35 @@
-# README #
+# SonarQube Sedcat Plugin #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Sedcat es un plugin para la plataforma de gestión de calidad [SonarQube](http://www.sonarqube.org/) la cual provee [análisis estático](https://en.wikipedia.org/wiki/Static_program_analysis) del código Java. Este plugin ha sido creado con el objetivo de suplir 
+la escasez de métricas en el ámbito de las pruebas unitarias, para ello proporciona dos métricas: 
 
-### What is this repository for? ###
+* Calidad de las pruebas unitarias, en forma de porcentaje.
+* Acciones recomendadas para mejorar el porcentaje de calidad obtenido. 
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Dichas métricas son obtenidas a partir de operar métricas de entrada procedentes del proyecto sobre el que se ejecuta el análisis mediante sistemas expertos xfuzzy. Las métricas de entrada utilizadas son:
 
-### How do I get set up? ###
+* Porcentaje de Éxito de los tests unitarios.
+* Cobertura de los tests unitarios.
+* Cobertura de mutantes, extraída de los reportes generados por la herramienta [Pitest](http://pitest.org/).
+* Número de líneas de código no comentadas.
+* Número de casos de test unitarios.
+* Complejidad media por clase en base a un umbral por defecto, establecido por el usuario. 
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+# Instalación
 
-### Contribution guidelines ###
+La forma de instalación manual comprende los siguientes pasos:
 
-* Writing tests
-* Code review
-* Other guidelines
+* Descargar archivo zip de sedcat.
+* Generar jar utilizando el comando mvn clean install en el directorio donde se encuentra el archivo pom.xml.
+* Copiar el jar en la carpeta extensions/plugings de la instancia Sonarqube donde se quiera ejecutar Sedcat. 
 
-### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+# version SonarQube Server
+
+sonar.runtimeVersion=5.3
+
+# Dependencias
+
+Para obtener la cobertura de mutantes como métrica de entrada es necesario que el usuario tenga configurada la herramienta
+Pitest en su proyecto. Una vez generados los reportes por la herramienta Pitest, Sedcat los detecta y extrae el valor de cobertura 
+por mutantes. En la pantalla de configuración de sedcat se permite personalizar la ruta donde se deben buscar los reportes.
