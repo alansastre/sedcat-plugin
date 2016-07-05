@@ -6,7 +6,7 @@ la escasez de métricas en el ámbito de las pruebas unitarias, para ello propor
 * Calidad de las pruebas unitarias, en forma de porcentaje.
 * Acciones recomendadas para mejorar el porcentaje de calidad obtenido. 
 
-Dichas métricas son obtenidas a partir de operar métricas de entrada procedentes del proyecto sobre el que se ejecuta el análisis mediante sistemas expertos xfuzzy. Las métricas de entrada utilizadas son:
+Dichas métricas son obtenidas a partir de operar métricas de entrada procedentes del proyecto sobre el que se ejecuta el análisis mediante sistemas expertos [Xfuzzy](http://www2.imse-cnm.csic.es/Xfuzzy/). Las métricas de entrada utilizadas son:
 
 * Porcentaje de Éxito de los tests unitarios.
 * Cobertura de los tests unitarios.
@@ -36,8 +36,14 @@ por mutantes. En la pantalla de configuración de sedcat se permite personalizar
 
 # Carpeta designUML
 
-Contiene el diseño el plugin representado mediante diagramas de clases en lenguaje UML.
+Contiene el diseño del plugin representado mediante diagramas de clases en lenguaje UML.
 
 # Carpeta xfuzzySystems
 
 Contiene el código xfl utilizado por la herramienta xfuzzy para generar los sistemas expertos.
+
+# Licencia
+
+Copyright © 2016 Sonar Sedcat Plugin.
+
+Licenciado bajo GNU Lesser General Public License, Versión 3.0
