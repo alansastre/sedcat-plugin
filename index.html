@@ -101,6 +101,53 @@ El objetivo principal de sedcat es suplir dicha escasez proporcionando nuevas m�
 </p>
 
 
+<h3>
+<a id="Funcionamiento" class="anchor" href="#Funcionamiento" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Funcionamiento
+</h3>
+
+<p>
+El funcionamiento interno de Sedcat viene demarcado por el ciclo de vida que siguen los plugins en la plataforma Sonarqube. A grandes
+rasgos se definen 3 etapas bien diferenciadas: 
+
+ <ul>
+
+  <li><strong>Lectura y adaptación</strong> de las métricas de entrada leídas a partir de la plataforma y herramientas externas:
+    <ul>
+      <li>Porcentaje de <strong>éxito</strong> de las pruebas unitarias.
+      </li>
+      <li>Porcentaje de <strong>cobertura</strong> de las pruebas unitarias.
+      </li>
+      <li>Porcentaje de <strong>cobertura por mutantes</strong> de las pruebas unitarias. Esta métrica se extrae de los 
+      reportes generados por la herramienta <a href="http://pitest.org/">Pitest</a> en el directorio target del proyecto. Básicamente
+      esta métrica consiste en el porcentaje de mutantes que las pruebas han detectado, siendo los mutantes pequeñas variaciones introducidas en el código que se prueba a nivel lógico y condicional. Las pruebas que fallan ante estos cambios quieren decir que realmente lo estaban probando, por tanto al introducir la variación la prueba falla. Cuantos más mutantes encuentren las pruebas mayor calidad tienen éstas.
+      </li>
+      <li>Número de <strong>líneas de código no comentadas</strong> o efectivas.
+      </li>
+      <li>Número de <strong>casos de test unitarios</strong>. Este número se contrasta con el número de líneas de código, para verificar
+      que están razonablemente acorde. Por ejemplo, 100 casos de test difícilmente podrán cubrir 2.000.000 de líneas de código y esto puntuará negativamente. 
+      </li>
+      <li><strong>Complejidad media por clase en base a un umbral</strong>: una complejidad elevada afecta a las pruebas haciendo que éstas deban ser enrevesadas y probar gran número de casos posibles, teniendo en cuenta todas las ramas condicionales que se producen. En caso de sobrepasar el umbral permitido puntuará negativamente sobre la calidad y será la primera opción de mejora por delante de otros parámetros de los tests. El umbral es personalizable por el usuario desde la pantalla de configuración para aquellos programas que sean complejos porque el problema que tratan sea realmente complejo. 
+      </li>
+      </ul>
+  </li>
+  <li><strong>Funcionamiento interno:</strong> una vez leídos los valores para las métricas de entrada necesarias, se adaptan 
+  al universo de discurso de xfuzzy con el objetivo de ser procesables por los sistemas expertos utilizados. Sedcat utiliza dos 
+  sistemas expertos creados con la herramienta de diseño lógico difuso <a href="http://www2.imse-cnm.csic.es/Xfuzzy/">Xfuzzy</a>, siendo el primero de ellos para obtener la métrica de salida calidad y el segundo para obtener la métrica de salida acciones recomendadas. En función del grado de activación que tengan las reglas procedentes de las bases de reglas, los sistemas expertos clasificarán mediante un motor de inferencia la información de entrada para proporcionar las métricas de salida. Después estas métricas son interpretadas y almacenadas de forma que puedan ser leídas desde la plataforma.</li>
+
+  <li><strong>Métricas de salida</strong>: se corresponden al porcentaje de <strong>calidad</strong> obtenido y las <strong>acciones de mejora recomendadas</strong> para elevar ese porcentaje mostradas en orden de prioridad. De esta forma el usuario puede ver cual es el estado de las pruebas unitarias en términos de calidad y saber qué parámetros deberían mejorarse en primer lugar.</li>
+
+</ul> 
+
+
+
+</p>
+
+
+
+
+
+
+
 
 
 
