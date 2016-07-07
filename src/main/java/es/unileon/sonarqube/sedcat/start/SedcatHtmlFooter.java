@@ -10,7 +10,8 @@ public class SedcatHtmlFooter implements Footer {
 
 	@Override
 	public String getHtml() {
-		return "<p>Sedcat Plugin - <em>Sedcat Plugin for Quality Testing &copy; All rights reserved. 2016</em></p>";
+//		return "<p>Sedcat Plugin - <em>Sedcat Plugin for Quality Testing &copy; All rights reserved. 2016</em></p>";
+		return "";
 	}
 }
 
