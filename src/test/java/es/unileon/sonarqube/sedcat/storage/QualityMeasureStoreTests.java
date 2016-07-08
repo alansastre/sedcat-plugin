@@ -36,7 +36,7 @@ public class QualityMeasureStoreTests {
 	private TestMeasureComputerContext context;
 	
 	private String qualityMessage = "This quality metric is calculated at project level, so no data at the component"
-			+ " level that can be displayed. This metric is obtained from sets of rules activated to varying"
+			+ " level that can be displayed.</br>This metric is obtained from sets of rules activated to varying"
 			+ " degrees depending on input metrics read about the project in each analysis.";
 
 
@@ -89,7 +89,7 @@ public class QualityMeasureStoreTests {
 		underTest.saveMeasure(result, contextMocked1);
 		
 		Mockito.verify(contextMocked1, times(1)).addMeasure(SedcatMetricsKeys.QUALITY_MESSAGE_KEY,
-				"</br>Quality of unit tests is 25.0 %</br></br>" + qualityMessage + AbstractOutputMeasureStore.MESSAGE_ALERT_HACK);
+				AbstractOutputMeasureStore.MESSAGE_RESOLUTION + "</br>Quality of unit tests is 25 %</br></br>" + qualityMessage + AbstractOutputMeasureStore.MESSAGE_ALERT_HACK);
 
 	}
 	
