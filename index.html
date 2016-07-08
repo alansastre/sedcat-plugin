@@ -48,6 +48,22 @@
       <section id="main_content">
 
 <h3>
+<a id="Introducción" class="anchor" href="#Introducción" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introducción</h3>
+
+<p>
+Actualmente en las organizaciones de desarrollo software llevan a cabo procesos de medición y análisis que proporcionan gran variedad
+de métricas sobre los productos software que se construyen con el fin de obtener indicadores que faciliten la toma de decisiones.</p>
+
+<p>
+El problema por el cual se ha creado el presente software consiste en la escasez de métricas en las pruebas del producto software. Como solución, se ha creado un software que mide de manera automatizada el estado de las pruebas y proporciona indicadores acerca de su calidad y posible mejora. Para obtener dichos indicadores este software cuenta con sistemas expertos que simulan el comportamiento de una persona con el rol de experto en el ámbito de la verificación por pruebas. Este comportamiento consiste en clasificar el estado de calidad de las pruebas a partir de la información que se tiene de las mismas, así como los posibles parámetros a mejorar para elevar su calidad. De esta forma cada vez que se lleve a cabo un análisis se ejecutará dicho comportamiento ahorrando el esfuerzo que supone tener
+a una persona valorando las pruebas cada vez que se realizan modificaciones en el software.
+</p>
+
+<p>
+Este software funciona en forma de plugin bajo la plataforma de gestión de calidad SonarQube que le porporciona la información necesaria para llevar a cabo los análisis y clasificación de las pruebas.
+</p>
+
+<h3>
 <a id="Contexto" class="anchor" href="#Contexto" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contexto</h3>
 
 <p>
@@ -69,7 +85,7 @@ Las <strong>pruebas del software</strong> consisten en otro software creado con 
 </p>
 
 <p>
-La <strong>medición y análisis</strong> consiste en un área de proceso relacionada con la calidad dentro de las organizaciones de desarrollo de software. Trabaja principalmente a 3 niveles, siendo el más general el proceso o conjunto de actividades que se llevan a cabo en la organización, después está el proyecto donde la medición facilita las estimaciones y por último el producto. El producto software hace referencia a los artefactos o entregables generados durante el proceso de desarrollo y para los que existe gran variedad de métricas que aportan información útil. Sedcat trabaja en este último nivel leyendo métricas a nivel de producto para hacer sus cálculos y ofrecer nuevas métricas de salida que aporten mayor información. 
+La <strong>medición y análisis</strong> consiste en un área de proceso relacionada con la calidad dentro de las organizaciones de desarrollo de software. Trabaja principalmente a 3 niveles, siendo el más general el proceso o conjunto de actividades que se llevan a cabo en la organización, otro nivel sería el proyecto donde la medición facilita las estimaciones y por último el producto. El producto software hace referencia a los artefactos o entregables generados durante el proceso de desarrollo y para los que existe gran variedad de métricas que aportan información útil. Sedcat trabaja en este último nivel leyendo métricas a nivel de producto para hacer sus cálculos y ofrecer nuevas métricas de salida que aporten mayor información. 
 </p>
 
 <p>
@@ -136,8 +152,7 @@ rasgos se definen 3 etapas bien diferenciadas:
   sistemas expertos creados con la herramienta de diseño lógico difuso <a href="http://www2.imse-cnm.csic.es/Xfuzzy/">Xfuzzy</a>, siendo el primero de ellos para obtener la métrica de salida calidad y el segundo para obtener la métrica de salida acciones recomendadas. En función del grado de activación que tengan las reglas procedentes de las bases de reglas, los sistemas expertos clasificarán mediante un motor de inferencia la información de entrada para proporcionar las métricas de salida. Después estas métricas son interpretadas y almacenadas de forma que puedan ser leídas desde la plataforma.
   </li>
 
-  <li><strong>Métricas de salida</strong>: se corresponden al porcentaje de <strong>calidad</strong> obtenido y las <strong>acciones de mejora recomendadas</strong> para elevar ese porcentaje mostradas en orden de prioridad. De esta forma el usuario puede ver cual es el estado de las pruebas unitarias en términos de calidad y saber qué parámetros deberían mejorarse en primer lugar. </br>
-  Estas métricas de salida pueden observarse a través de la interfaz gráfica de la plataforma desde el widget de sedcat y desde los filtros de métricas, cada una de ellas hace referencia a una pantalla de detalle en la se muestra un texto explicativo para cada métrica.
+  <li><strong>Métricas de salida</strong>: se corresponden al porcentaje de <strong>calidad</strong> obtenido y las <strong>acciones de mejora recomendadas</strong> para elevar ese porcentaje mostradas en orden de prioridad. De esta forma el usuario puede ver cual es el estado de las pruebas unitarias en términos de calidad y saber qué parámetros deberían mejorarse en primer lugar. Estas métricas de salida pueden observarse a través de la interfaz gráfica de la plataforma desde el widget de sedcat y desde los filtros de métricas, cada una de ellas hace referencia a una pantalla de detalle en la se muestra un texto explicativo para cada métrica.
   </li>
 
 </ul> 
