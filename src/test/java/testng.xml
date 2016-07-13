@@ -7,27 +7,27 @@
 
 
 <!-- xfuzzy -->
-      <class name="es.unileon.sonarqube.sedcat.xfuzzy.QualityTests"/>
-      <class name="es.unileon.sonarqube.sedcat.xfuzzy.ActionsTests"/>
+      <class name="org.sonar.plugins.sedcat.xfuzzy.QualityTests"/>
+      <class name="org.sonar.plugins.sedcat.xfuzzy.ActionsTests"/>
       
 <!-- storage -->
-      <class name="es.unileon.sonarqube.sedcat.storage.QualityMeasureStoreTests"/>
-      <class name="es.unileon.sonarqube.sedcat.storage.ActionsMeasureStoreTests"/>
+      <class name="org.sonar.plugins.sedcat.storage.QualityMeasureStoreTests"/>
+      <class name="org.sonar.plugins.sedcat.storage.ActionsMeasureStoreTests"/>
       
 <!-- stategies -->
-      <class name="es.unileon.sonarqube.sedcat.strategies.ExpertSystemActionsTests"/>
-      <class name="es.unileon.sonarqube.sedcat.strategies.ExpertSystemQualityTests"/>
+      <class name="org.sonar.plugins.sedcat.strategies.ExpertSystemActionsTests"/>
+      <class name="org.sonar.plugins.sedcat.strategies.ExpertSystemQualityTests"/>
       
 <!-- start -->
-      <class name="es.unileon.sonarqube.sedcat.start.GeneralComputerTests"/>
-      <class name="es.unileon.sonarqube.sedcat.start.SedcatMetricsTests"/>
-      <class name="es.unileon.sonarqube.sedcat.start.SedcatPluginTests"/>
+      <class name="org.sonar.plugins.sedcat.start.GeneralComputerTests"/>
+      <class name="org.sonar.plugins.sedcat.start.SedcatMetricsTests"/>
+      <class name="org.sonar.plugins.sedcat.start.SedcatPluginTests"/>
       
 <!-- scanners -->
-      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsCoverageSensorTests"/>
-      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsReportFinderTests"/>
-      <class name="es.unileon.sonarqube.sedcat.scanners.MutationsReportParserTests"/>
-      <class name="es.unileon.sonarqube.sedcat.scanners.ComplexityComputerTests"/>
+      <class name="org.sonar.plugins.sedcat.scanners.MutationsCoverageSensorTests"/>
+      <class name="org.sonar.plugins.sedcat.scanners.MutationsReportFinderTests"/>
+      <class name="org.sonar.plugins.sedcat.scanners.MutationsReportParserTests"/>
+      <class name="org.sonar.plugins.sedcat.scanners.ComplexityComputerTests"/>
 
 
     </classes>
