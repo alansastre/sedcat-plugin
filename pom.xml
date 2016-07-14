@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>es.unileon.sonarqube.sedcat</groupId>
+	<groupId>org.sonar.plugins.sedcat</groupId>
 	<artifactId>sonar-sedcat-plugin</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>sonar-plugin</packaging>
@@ -40,7 +40,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<sonar.buildVersion>5.3</sonar.buildVersion>
 		<jdk.min.version>1.7</jdk.min.version>
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.8</jdk.version>
 		<powermock.version>1.6.4</powermock.version>
 
 		<!-- Jacoco Properties -->
