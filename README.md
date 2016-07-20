@@ -31,7 +31,7 @@ sonar.runtimeVersion=5.3
 # Dependencias
 
 Para obtener la cobertura de mutantes como métrica de entrada es necesario que el usuario tenga configurada la herramienta
-Pitest en su proyecto. Una vez generados los reportes por la herramienta Pitest, Sedcat los detecta y extrae el valor de cobertura 
+Pitest en su proyecto. Una vez generados los reportes por la herramienta Pitest .html, Sedcat los detecta y extrae el valor de cobertura 
 por mutantes. En la pantalla de configuración de sedcat se permite personalizar la ruta donde se deben buscar los reportes.
 
 # Carpeta designUML
