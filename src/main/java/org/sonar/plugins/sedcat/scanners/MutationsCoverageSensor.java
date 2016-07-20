@@ -79,49 +79,55 @@ public class MutationsCoverageSensor implements Sensor {
      */
     @Override
     public void analyse(Project project, SensorContext sensorContext) {
-
-    	LOG.info("MutationsCoverageSensor entrada");
     	
-    	//1 - Encontrar el reporte de mutantes
+		// 1 - Encontrar el reporte de mutantes
+
 		File projectDirectory = fileSystem.baseDir();
-	    File reportDirectory = new File(projectDirectory, settings.getString(SedcatConstants.PITEST_REPORT_DIRECTORY_KEY));
-	    LOG.info("ruta absoluta del directorio donde esta el reporte: "+reportDirectory);
-	    File htmlReport = this.mutationsFinder.findReport(reportDirectory);
-	    
-      //2 - Obtener la cobertura de mutantes (si existe el reporte)
-	    if (htmlReport == null) {
-	    	
-	      LOG.warn("No HTML PIT report found in directory {} !", reportDirectory);
-	      LOG.warn("Mutation Metric is considered zero.");
-  
-	    } else {
-	    	
-	    	LOG.info("HTML REPORTE ENCONTRADO: "+htmlReport);
-	    	
-	    	double[] mutationsCoverage = this.mutationsParser.parseReport(htmlReport);
-	    	
+		File reportDirectory = new File(projectDirectory,
+				settings.getString(SedcatConstants.PITEST_REPORT_DIRECTORY_KEY));
+		LOG.info("Absolute path to report directory: " + reportDirectory);
+
+		File htmlReport = this.mutationsFinder.findReport(reportDirectory);
+
+		// 2 - Obtener la cobertura de mutantes (si existe el reporte)
+
+		if (htmlReport == null) {
+
+			LOG.warn("No HTML PIT report found in directory {} !", reportDirectory);
+			LOG.warn("Mutation Metric is considered zero.");
+
+		} else {
+
+			LOG.info("HTML report found: " + htmlReport);
+
+			double[] mutationsCoverage = this.mutationsParser.parseReport(htmlReport);
+
 			if (mutationsCoverage != null) {
+
+				LOG.info("Mutations value extracted: " + mutationsCoverage[0] + " / " + mutationsCoverage[1]);
 				
-				LOG.info("VALOR MUTANTES EXTRAIDO: "+mutationsCoverage[0]+" / "+mutationsCoverage[1]);
-				//acumulamos valores
+				// acumulamos valores
 				MutationsCoverageSensor.addValueDetectedMutations(mutationsCoverage[0]);
 				MutationsCoverageSensor.addValueTotalMutations(mutationsCoverage[1]);
-				
-				LOG.info("mutationsDetected: "+SedcatConstants.mutationsDetected);
-				LOG.info("mutationsTotal: "+SedcatConstants.mutationsTotal);
-			}
-	    }
-		LOG.info("sumatorios:");
-		LOG.info("mutationsDetected: "+SedcatConstants.mutationsDetected);
-		LOG.info("mutationsTotal: "+SedcatConstants.mutationsTotal);
-	  //3 - Calcular y almacenar la cobertura de mutantes
-	    if (SedcatConstants.mutationsDetected>0 && SedcatConstants.mutationsTotal>0) {
-	    	 mutationsValueFound =  (double) (100*SedcatConstants.mutationsDetected/SedcatConstants.mutationsTotal);
-	    	 LOG.info("valor mutantes calculado:"+mutationsValueFound);
-	    }
-	    sensorContext.saveMeasure(SedcatMetrics.MUTANTS, mutationsValueFound);
 
-    }
+				LOG.info("mutationsDetected: " + SedcatConstants.mutationsDetected);
+				LOG.info("mutationsTotal: " + SedcatConstants.mutationsTotal);
+			}
+		}
+
+		LOG.info("sumators:");
+		LOG.info("mutationsDetected: " + SedcatConstants.mutationsDetected);
+		LOG.info("mutationsTotal: " + SedcatConstants.mutationsTotal);
+
+		// 3 - Calcular y almacenar la cobertura de mutantes
+
+		if (SedcatConstants.mutationsDetected > 0 && SedcatConstants.mutationsTotal > 0) {
+			mutationsValueFound = (double) (100 * SedcatConstants.mutationsDetected / SedcatConstants.mutationsTotal);
+			LOG.info("mutants coverage value:" + mutationsValueFound);
+		}
+		sensorContext.saveMeasure(SedcatMetrics.MUTANTS, mutationsValueFound);
+
+	}
 
 	/**
      * Returns the name of the sensor as it will be used in logs during analysis.
@@ -133,9 +139,18 @@ public class MutationsCoverageSensor implements Sensor {
         return "MutationsCoverageSensor";
     }
 
+    /**
+     * suma el numero de mutantes detectados en cada modulo
+     * @param mutationsDetectedValue
+     */
     public static synchronized void addValueDetectedMutations(double mutationsDetectedValue){
 		SedcatConstants.mutationsDetected+=mutationsDetectedValue;
     }
+    
+	/**
+	 * suma el numero de mutantes totales en cada modulo
+	 * @param mutationsTotalValue
+	 */
     public static synchronized void addValueTotalMutations(double mutationsTotalValue){
 		SedcatConstants.mutationsTotal+=mutationsTotalValue;
     }

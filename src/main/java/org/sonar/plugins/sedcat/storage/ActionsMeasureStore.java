@@ -34,7 +34,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 		this.MEASURE_KEY = SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY;
 		//metrica acciones con el mensaje que aparecera en la pantalla de detalle
 		this.MESSAGE_KEY = SedcatMetricsKeys.ACTIONS_MESSAGE_KEY;
-		this.ERROR_MESSAGE = "Error, el conjunto de acciones obtenido esta fuera del rango permitido";
+		this.ERROR_MESSAGE = "Error, the set of actions obtained this outside the permitted range";
 
 	}
 
@@ -54,7 +54,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 	
 			// Redondea para obtener un conjunto discreto
 			long actionSet = Math.round(measureValue);
-			LOG.info("Set acciones numero: " +actionSet);
+			LOG.info("Set actions number: " +actionSet);
 			
 			//Carga fichero de propiedades con las soluciones
 			Properties propiedades = this.loadProperties(ACTIONS_PROPERTIES_PATH);
@@ -66,11 +66,11 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 					actionsValueProperty = "sedcat.actions.set" + i;
 				}
 			}
-			LOG.info("Set acciones resultado: " +actionsValueProperty);
+			LOG.info("Set actions result: " +actionsValueProperty);
 			
 			//Obtiene el valor de la propiedad encontrada
 			String actionValue = propiedades.getProperty(actionsValueProperty);
-			LOG.info("Resultado acciones: " + actionValue);
+			LOG.info("Actions result value: " + actionValue);
 	
 			//Verifica que se ha encontrado un resultado
 			if (actionValue == null) {
@@ -96,7 +96,7 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 			}
 		}
 		
-		LOG.info("Conjunto de acciones almacenado correctamente");
+		LOG.info("Set of actions successfully stored");
 	}
 
 	/**
@@ -108,33 +108,24 @@ public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 
 		Properties propiedades = new Properties();
 		FileInputStream entrada = null;
-
+		
 		try {
-
 			entrada = new FileInputStream(propertiesPath);
-
+			
 			// cargamos el archivo de propiedades
 			propiedades.load(entrada);
-
 		} catch (Exception ex) {
-			LOG.warn("fallo al obtener las propiedades de los conjuntos de acciones");
+			LOG.warn("failure to obtain the properties of the sets of actions");
 			LOG.warn(ex.getMessage());
-
 		} finally {
 			try {
-				if (entrada != null) {
+				if (entrada != null) 
 					entrada.close();
-				}
-
 			} catch (Exception ex) {
-				LOG.error("fallo al cerrar la ruta propiedades de los conjuntos de acciones");
+				LOG.error("failure to close the properties route action sets");
 				LOG.warn(ex.getMessage());
-
 			}
-
 		}
-
 		return propiedades;
 	}
-
 }

@@ -8,15 +8,15 @@ package org.sonar.plugins.sedcat.start;
 public class SedcatConstants {
 
 
-  /*
-   * variables utilizadas para calcular la cobertura de mutantes en un proyecto
-   * no se pueden utilizar en el sensor porque se reinician en cada ejecución
-   */
+	/*
+	 * variables utilizadas para calcular la cobertura de mutantes en un
+	 * proyecto multi modulo
+	 */
   public static double mutationsTotal = 0;
   public static double mutationsDetected = 0;
   
   
-//settings screen constants keys:
+  //settings screen constants keys:
   
   //modo activo
   public static final String ACTIVE_MODE_KEY = "sonar.sedcat.activeMode";

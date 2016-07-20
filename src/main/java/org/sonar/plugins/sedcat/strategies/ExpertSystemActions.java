@@ -19,7 +19,7 @@ public class ExpertSystemActions extends AbstractInferenceProcess {
 
 		// logs
 		this.LOG = LoggerFactory.getLogger(ExpertSystemActions.class);
-		this.START_SYSTEM_MESSAGE = "Ejecutando sistema experto para acciones.";
+		this.START_SYSTEM_MESSAGE = "Running actions expert system";
 
 		// contexto para leer medidas
 		this.context = context;

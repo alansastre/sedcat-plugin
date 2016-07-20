@@ -19,7 +19,7 @@ public class ExpertSystemQuality extends AbstractInferenceProcess {
 
 		// logs
 		this.LOG = LoggerFactory.getLogger(ExpertSystemQuality.class);
-		this.START_SYSTEM_MESSAGE = "Ejecutando sistema experto para calidad.";
+		this.START_SYSTEM_MESSAGE = "Running quality expert system";
 
 		// contexto para leer medidas
 		this.context = context;

@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.BatchSide;
 
-/**
+/** Clase encargada de encontrar el ultimo reporte generado por la herramienta pitest
  *	@author alan.sastre
  *	@version 1.0
  */
@@ -21,7 +21,7 @@ public class MutationsReportFinder{
 	public File findReport(File reportDirectory){
 				
 		if (reportDirectory == null || !reportDirectory.exists() || !reportDirectory.isDirectory()) {
-			LOG.warn("Not found the directory specified in the Pitest Report Directory configuration");
+			LOG.warn("Not found the directory specified in the Pitest Report Directory specified in configuration");
 		    return null;
 		}
 		
@@ -34,15 +34,15 @@ public class MutationsReportFinder{
 			  }
 		});
 
-		if(directoriesPaths == null || directoriesPaths.length==0){
+		if (directoriesPaths == null || directoriesPaths.length == 0) {
 			LOG.warn("Pitest Report Directory is empty");
 			return null;
 		}
 		
-		LOG.info("total report directories: "+directoriesPaths.length);
-		
+		LOG.info("total report directories: " + directoriesPaths.length);
+
 		for (int i = 0; i < directoriesPaths.length; i++) {
-			LOG.info("directory : "+directoriesPaths[i]);
+			LOG.info("directory : " + directoriesPaths[i]);
 		}
 		
 		ArrayList<File> directories  = new ArrayList<>();
@@ -55,30 +55,32 @@ public class MutationsReportFinder{
 		//Buscamos el ultimo directorio con reportes
 		File latestReportDirectory = null;
 		for (File directoryToExamine : directories) {
-			if (latestReportDirectory == null || directoryToExamine.lastModified() > latestReportDirectory.lastModified()) {
-			    latestReportDirectory = directoryToExamine;
-			  }
+			if (latestReportDirectory == null
+					|| directoryToExamine.lastModified() > latestReportDirectory.lastModified()) {
+				latestReportDirectory = directoryToExamine;
+			}
 		}
 		if (latestReportDirectory == null) {
 			return null;
 		}
 		
-		LOG.info("latest directory: "+latestReportDirectory.getAbsolutePath());
-		
-		//Extraemos el archivo index.html del directorio (es el que contiene los reportes totales del modulo)
+		LOG.info("latest directory: " + latestReportDirectory.getAbsolutePath());
+
+		// Extraemos el archivo index.html del directorio (es el que contiene
+		// los reportes totales del modulo)
 		File indexReportSearched = null;
-		String indexReportSearchedPath = latestReportDirectory.getAbsolutePath()+"/";
+		String indexReportSearchedPath = latestReportDirectory.getAbsolutePath() + "/";
 		File indexReportDirectory = new File(indexReportSearchedPath);
-		
-		if(indexReportDirectory.list().length>0){
-			
-			Collection<File> indexReport = FileUtils.listFiles(indexReportDirectory, new String[]{"html"}, false);
-			
-			if (indexReport!=null && !indexReport.isEmpty()) {
-				indexReportSearched= (File) indexReport.toArray()[0];
+
+		if (indexReportDirectory.list().length > 0) {
+
+			Collection<File> indexReport = FileUtils.listFiles(indexReportDirectory, new String[] { "html" }, false);
+
+			if (indexReport != null && !indexReport.isEmpty()) {
+				indexReportSearched = (File) indexReport.toArray()[0];
 			}
 		}
-		
+
 		return indexReportSearched;
 	}
 	

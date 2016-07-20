@@ -39,13 +39,14 @@ public class GeneralComputer implements MeasureComputer {
 		if (("true").equals(context.getSettings().getString(SedcatConstants.ACTIVE_MODE_KEY))
 				&& Component.Type.PROJECT == context.getComponent().getType()) {
 
-			LOG.info("Entrada GeneralComputer");
-			LOG.info("Ejecutando sistemas expertos");
+			LOG.info("Running expert systems");
 
-			// Ejecutar sistemas expertos
+			// Ejecutar sistemas expertos:
+			
+			// Sistema experto calidad
 			ExpertSystemQuality expertSystemQuality = new ExpertSystemQuality(context);
 			expertSystemQuality.xfuzzyProcess();
-
+			// Sistema experto acciones
 			ExpertSystemActions expertSystemActions = new ExpertSystemActions(context);
 			expertSystemActions.xfuzzyProcess();
 

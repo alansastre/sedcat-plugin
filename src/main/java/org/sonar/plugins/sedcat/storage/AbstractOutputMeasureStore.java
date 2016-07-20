@@ -66,7 +66,7 @@ public abstract class AbstractOutputMeasureStore {
 		double[] dataSet = new double[0];
 
 		if (outputMeasureValues == null || !(outputMeasureValues.length > 0)) {
-			LOG.warn("No hay resultados.");
+			LOG.warn("No results");
 			return dataSet;
 		}
 

@@ -28,7 +28,7 @@ public class MutationsReportParser {
 	public double[] parseReport(File reportFile) {
 
 		if (reportFile == null || !reportFile.exists() || reportFile.isDirectory()) {
-			LOG.warn("El reporte de mutantes no existe, se considera esta medida como cero.");
+			LOG.warn("he report of mutants does not exist, this measure is considered as zero");
 			return null;
 		}
 
@@ -39,13 +39,13 @@ public class MutationsReportParser {
 			doc = Jsoup.parse(reportFile, null);
 
 		} catch (Exception e1) {
-			LOG.warn("Error al parsear reporte mutantes");
+			LOG.warn("Failed to parse mutants report");
 			LOG.warn(e1.getMessage());
 			return null;
 		}
 
 		if (!doc.hasText()) {
-			LOG.warn("El reporte de mutantes no tiene contenido, se considera esta medida como cero.");
+			LOG.warn("The report mutant has no content, this measure is considered as zero");
 			return null;
 		}
 
@@ -53,7 +53,7 @@ public class MutationsReportParser {
 
 		// tiene que haber al menos 3 td
 		if (content == null || !(content.size() > 2)) {
-			LOG.warn("El reporte de mutantes no tiene los resultados buscados o se ha cambiado su disposición");
+			LOG.warn("The report of mutants does not have the desired results or has changed its structure");
 			return null;
 		}
 
@@ -62,14 +62,14 @@ public class MutationsReportParser {
 		Elements div = td.getElementsByClass("coverage_ledgend");
 
 		if (!(div.size() > 0)) {
-			LOG.warn("El reporte de mutantes no tiene el elemento coverage_ledgend con el resultado");
+			LOG.warn("The report does not have the coverage mutants legend element with the result");
 			return null;
 		}
 		// cogemos el div en el que esta el resultado
 		String mutationsResult = div.get(0).ownText();
 
 		if (!(mutationsResult.length() > 0)) {
-			LOG.warn("El elemento coverage_ledgend no tiene texto");
+			LOG.warn("The element coverage_ledgend has no text");
 			return null;
 		}
 

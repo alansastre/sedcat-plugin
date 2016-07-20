@@ -55,10 +55,10 @@ public class ComplexityComputer implements MeasureComputer {
 				complexityThresold = Double.parseDouble(context.getSettings().getString(SedcatConstants.COMPLEXITY_THRESHOLD_KEY));
 			} catch (Exception e) {
 				LOG.warn("Value must be a number, in range of 0 to 60.");
-				LOG.warn("In this case, it considered default value (30).");
+				LOG.warn("In this case, it's considered default value (30).");
 				LOG.warn(e.getMessage());
 			}
-			LOG.info("Umbral extraido: "+complexityThresold);
+			LOG.info("Extracted threshold: "+complexityThresold);
 			
 			// Establecer umbral dentro de los limites
 			if (complexityThresold > 60) {
@@ -76,7 +76,7 @@ public class ComplexityComputer implements MeasureComputer {
 			 */
 			
 			double complexity = 0;
-			
+
 			if (context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY) != null) {
 				complexity = context.getMeasure(CoreMetrics.CLASS_COMPLEXITY_KEY).getDoubleValue();
 			}else{
@@ -84,9 +84,6 @@ public class ComplexityComputer implements MeasureComputer {
 				LOG.warn("Metric Complexity average by class is null, it is considered zero" 
 						+"so that does not influence in the final result.");
 			}
-			
-
-			LOG.info("Calculating complexity based on threshold");
 
 			/*
 			 * 3 - Calcular complejidad en funcion de umbral

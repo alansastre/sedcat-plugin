@@ -27,7 +27,7 @@ public class QualityMeasureStore extends AbstractOutputMeasureStore {
 		this.MAX_VALUE = 100;
 		this.MEASURE_KEY = SedcatMetricsKeys.QUALITY_MEASURE_KEY;
 		this.MESSAGE_KEY = SedcatMetricsKeys.QUALITY_MESSAGE_KEY;
-		this.ERROR_MESSAGE = "Error, la metrica calidad obtenida esta fuera del limite permitido";
+		this.ERROR_MESSAGE = "Error, the quality metric obtained is outside the permitted limit.";
 		
 		this.qualityMessage = "This quality metric is calculated at project level, so no data at the component"
 				+ " level that can be displayed.</br>This metric is obtained from sets of rules activated to varying"
@@ -51,7 +51,7 @@ public class QualityMeasureStore extends AbstractOutputMeasureStore {
 		context.addMeasure(this.MESSAGE_KEY,
 				MESSAGE_RESOLUTION + "</br>Quality of unit tests is "+ df.format(measureValue) +" %</br></br>" + qualityMessage + MESSAGE_ALERT_HACK);
 
-		LOG.info("Metrica calidad almacenada correctamente, ha sido: " + measureValue);
+		LOG.info("Metrica quality stored successfully: " + measureValue);
 
 	}
 

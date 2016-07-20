@@ -16,23 +16,6 @@ import org.sonar.api.web.WidgetCategory;
 @UserRole(UserRole.USER)
 @Description("Shows Quality of software testing code")
 @WidgetCategory("Sedcat")
-//@WidgetProperties({
-//  @WidgetProperty(key = "param1",
-//    description = "This is a mandatory parameter",
-//    optional = false
-//  ),
-//  @WidgetProperty(key = "max",
-//    description = "max threshold",
-//    type = WidgetPropertyType.INTEGER,
-//    defaultValue = "80"
-//  ),
-//  @WidgetProperty(key = "param2",
-//    description = "This is an optional parameter"
-//  ),
-//  @WidgetProperty(key = "floatprop",
-//    description = "test description"
-//  )
-//})
 public class SedcatDashboardWidget extends AbstractRubyTemplate implements RubyRailsWidget {
 
 
