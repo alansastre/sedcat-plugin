@@ -112,6 +112,28 @@ public class ExpertSystemActionsTests {
 
 
 	/**
+	 * Test method for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality#extractValues()}.
+	 */
+	@Test
+	public final void testExtractValuesArrayLength() {
+		Assert.assertTrue(underTest.extractValues().length>=6);
+	}
+	
+	/**
+	 * Test method for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality#ExpertSystemQuality(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
+	 */
+	@Test
+	public final void testExpertSystemQualityNotNull() throws Exception {
+		
+		underTest = new ExpertSystemActions(contextMocked);
+		
+		Assert.assertNotNull(underTest.context);
+		Assert.assertNotNull(underTest.measureStorer);
+		Assert.assertNotNull(underTest.expertSystem);
+		Assert.assertNotNull(underTest.START_SYSTEM_MESSAGE);
+	}
+	
+	/**
 	 * Test method for
 	 * {@link org.sonar.plugins.sedcat.strategies.ExpertSystemActions#ExpertSystemActions(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}
 	 * .
