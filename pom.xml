@@ -203,15 +203,35 @@
 				</configuration>
 			</plugin>
 		
-			<!-- Normally, we take off the dependency report, saves time. -->
-	<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-project-info-reports-plugin</artifactId>
-		<version>2.7</version>
-		<configuration>
-			<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-		</configuration>
-	</plugin>
+<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <instrumentation>
+            <includes>
+              <include>org/sonar/plugins/sedcat/**/*.class</include>
+            </includes>
+          </instrumentation>
+        </configuration>
+    <executions>
+      <execution>
+        <id>clean</id>
+        <phase>pre-site</phase>
+        <goals>
+          <goal>clean</goal>
+        </goals>
+      </execution>
+      <execution>
+        <id>instrument</id>
+        <phase>site</phase>
+        <goals>
+          <goal>instrument</goal>
+          <goal>cobertura</goal>
+        </goals>
+      </execution>
+    </executions>
+      </plugin>
 
 <!-- 	// integrate maven-cobertura-plugin to project site  -->
 	<plugin>
