@@ -8,7 +8,6 @@ import static org.mockito.Mockito.when;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.sonar.api.ce.measure.Measure;
@@ -21,6 +20,7 @@ import org.sonar.plugins.sedcat.strategies.ExpertSystemQuality;
 import org.sonar.plugins.sedcat.xfuzzy.quality.Quality;
 import org.junit.Assert;
 import org.powermock.api.mockito.*;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -39,9 +39,6 @@ public class ExpertSystemQualityTests {
 	private ExpertSystemQuality underTest;
 	private TestMeasureComputerContext contextMocked;
 	private Measure measureMocked;
-
-	@Rule
-	public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
 	@Before
 	public void setUp() throws Exception {

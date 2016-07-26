@@ -18,6 +18,7 @@ import org.sonar.plugins.sedcat.strategies.ExpertSystemActions;
 import org.sonar.plugins.sedcat.xfuzzy.actions.Actions;
 import org.junit.Assert;
 import org.powermock.api.mockito.*;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -34,8 +35,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ ActionsMeasureStore.class, ExpertSystemActions.class, TestMeasureComputerContext.class
-})
+@PrepareForTest({ ActionsMeasureStore.class, ExpertSystemActions.class, TestMeasureComputerContext.class})
 public class ExpertSystemActionsTests {
 
 	private ExpertSystemActions underTest;
