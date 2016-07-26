@@ -209,9 +209,9 @@
         <version>2.4</version>
         <configuration>
           <instrumentation>
-            <ignores>
-                <ignore>org.slf4j.Logger.*</ignore>		
-            </ignores>
+            <includes>
+              <include>org/sonar/plugins/sedcat/start/*.class</include>
+            </includes>
           </instrumentation>
         </configuration>
     <executions>
