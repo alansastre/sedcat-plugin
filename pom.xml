@@ -210,7 +210,7 @@
         <configuration>
           <instrumentation>
             <includes>
-              <include>org/sonar/plugins/sedcat/start/*.class</include>
+              <include>src/main/java/org/sonar/plugins/sedcat/start/*.class</include>
             </includes>
           </instrumentation>
         </configuration>
