@@ -15,8 +15,6 @@ import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import org.sonar.api.ce.measure.Component.FileAttributes;
-import org.sonar.api.ce.measure.Component.Type;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
@@ -32,6 +30,8 @@ import org.sonar.plugins.sedcat.storage.ActionsMessageConstants;
  * @author alan.sastre
  * @version 1.0
  */
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({ ActionsMeasureStore.class })
 public class ActionsMeasureStoreTests {
 
 	private ActionsMeasureStore underTest;
@@ -39,11 +39,10 @@ public class ActionsMeasureStoreTests {
 	// data
 	private TestMeasureComputerDefinitionContext defContext;
 	private MeasureComputerDefinition def;
-	private TestComponent componentTest;
+	private TestComponent mockedComponent;
 	private TestSettings settings;
 	private GeneralComputer computerForData;
 	private TestMeasureComputerContext context;
-	private FileAttributes fileAttributes;
 
 
 	/**
@@ -52,12 +51,12 @@ public class ActionsMeasureStoreTests {
 	@Before
 	public void setUp() throws Exception {
 
-		componentTest = new TestComponent("prueba.prueba", Type.PROJECT, fileAttributes);
+		mockedComponent = mock(TestComponent.class);
 		settings = new TestSettings();
 		defContext = new TestMeasureComputerDefinitionContext();
 		computerForData = new GeneralComputer();
 		def = computerForData.define(defContext);
-		context = new TestMeasureComputerContext(componentTest, settings, def);
+		context = new TestMeasureComputerContext(mockedComponent, settings, def);
 
 		underTest = new ActionsMeasureStore();
 
