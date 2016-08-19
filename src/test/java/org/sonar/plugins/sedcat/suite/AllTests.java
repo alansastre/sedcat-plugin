@@ -10,6 +10,7 @@ import org.sonar.plugins.sedcat.scanners.MutationsReportParserTests;
 import org.sonar.plugins.sedcat.start.GeneralComputerTests;
 import org.sonar.plugins.sedcat.start.SedcatMetricsTests;
 import org.sonar.plugins.sedcat.start.SedcatPluginTests;
+import org.sonar.plugins.sedcat.storage.ActionsMeasureStoreMocksTests;
 import org.sonar.plugins.sedcat.storage.ActionsMeasureStoreTests;
 import org.sonar.plugins.sedcat.storage.QualityMeasureStoreTests;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemActionsTests;
@@ -34,6 +35,7 @@ import org.sonar.plugins.sedcat.xfuzzy.QualityTests;
 	
 	//storage
 	ActionsMeasureStoreTests.class,
+	ActionsMeasureStoreMocksTests.class,
 	QualityMeasureStoreTests.class,
 	
 	//strategies

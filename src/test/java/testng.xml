@@ -13,6 +13,7 @@
 <!-- storage -->
       <class name="org.sonar.plugins.sedcat.storage.QualityMeasureStoreTests"/>
       <class name="org.sonar.plugins.sedcat.storage.ActionsMeasureStoreTests"/>
+      <class name="org.sonar.plugins.sedcat.storage.ActionsMeasureStoreMocksTests"/>
       
 <!-- stategies -->
       <class name="org.sonar.plugins.sedcat.strategies.ExpertSystemActionsTests"/>
