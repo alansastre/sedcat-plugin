@@ -24,6 +24,7 @@
       <class name="org.sonar.plugins.sedcat.start.GeneralComputerTests"/>
       <class name="org.sonar.plugins.sedcat.start.SedcatMetricsTests"/>
       <class name="org.sonar.plugins.sedcat.start.SedcatPluginTests"/>
+      <class name="org.sonar.plugins.sedcat.start.SedcatDashboardWidgetTests"/>
       
 <!-- scanners -->
       <class name="org.sonar.plugins.sedcat.scanners.MutationsCoverageSensorTests"/>
