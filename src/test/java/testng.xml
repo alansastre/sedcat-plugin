@@ -18,6 +18,7 @@
       <class name="org.sonar.plugins.sedcat.strategies.ExpertSystemActionsTests"/>
       <class name="org.sonar.plugins.sedcat.strategies.ExpertSystemActionsMocksTests"/>
       <class name="org.sonar.plugins.sedcat.strategies.ExpertSystemQualityTests"/>
+      <class name="org.sonar.plugins.sedcat.strategies.ExpertSystemQualityMocksTests"/>
       
 <!-- start -->
       <class name="org.sonar.plugins.sedcat.start.GeneralComputerTests"/>

@@ -14,6 +14,7 @@ import org.sonar.plugins.sedcat.storage.ActionsMeasureStoreTests;
 import org.sonar.plugins.sedcat.storage.QualityMeasureStoreTests;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemActionsMocksTests;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemActionsTests;
+import org.sonar.plugins.sedcat.strategies.ExpertSystemQualityMocksTests;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemQualityTests;
 import org.sonar.plugins.sedcat.xfuzzy.ActionsTests;
 import org.sonar.plugins.sedcat.xfuzzy.QualityTests;
@@ -39,6 +40,7 @@ import org.sonar.plugins.sedcat.xfuzzy.QualityTests;
 	
 	//strategies
 	ExpertSystemQualityTests.class,
+	ExpertSystemQualityMocksTests.class,
 	ExpertSystemActionsTests.class,
 	ExpertSystemActionsMocksTests.class,
 	

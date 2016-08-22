@@ -29,7 +29,6 @@ public class ExpertSystemActionsTests {
 	private TestComponent mockedComponent;
 	private TestSettings settings;
 	private GeneralComputer computerForData;
-	private TestMeasureComputerContext contextMocked;
 	private FileAttributes fileAttributes;
 
 	/**
@@ -78,6 +77,11 @@ public class ExpertSystemActionsTests {
 	@Test
 	public final void testExpertSystemActions() throws Exception {
 
-		underTest = new ExpertSystemActions(contextMocked);
+		underTest = new ExpertSystemActions(context);
+		
+		Assert.assertNotNull(underTest.context);
+		Assert.assertNotNull(underTest.expertSystem);
+		Assert.assertNotNull(underTest.measureStorer);
+		
 	}
 }
