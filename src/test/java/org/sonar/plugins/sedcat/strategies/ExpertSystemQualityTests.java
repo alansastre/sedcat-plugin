@@ -10,6 +10,8 @@ import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.plugins.sedcat.start.GeneralComputer;
+import org.sonar.plugins.sedcat.start.SedcatConstants;
+import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemQuality;
 import org.junit.Assert;
 /**
@@ -25,7 +27,7 @@ public class ExpertSystemQualityTests {
 	private TestMeasureComputerContext context;
 	private TestMeasureComputerDefinitionContext defContext;
 	private MeasureComputerDefinition def;
-	private TestComponent mockedComponent;
+	private TestComponent component;
 	private TestSettings settings;
 	private GeneralComputer computerForData;
 	private FileAttributes fileAttributes;
@@ -36,13 +38,16 @@ public class ExpertSystemQualityTests {
 	@Before
 	public void setUp() throws Exception {
 
-		mockedComponent = new TestComponent("prueba.prueba", Type.PROJECT, fileAttributes);
+		component = new TestComponent("prueba.prueba", Type.PROJECT, fileAttributes);
 
 		settings = new TestSettings();
+		
+		settings.setValue(SedcatConstants.ACTIVE_MODE_KEY, "true");
+		
 		defContext = new TestMeasureComputerDefinitionContext();
 		computerForData = new GeneralComputer();
 		def = computerForData.define(defContext);
-		context = new TestMeasureComputerContext(mockedComponent, settings, def);
+		context = new TestMeasureComputerContext(component, settings, def);
 
 		underTest = new ExpertSystemQuality(context);
 	}
@@ -82,6 +87,28 @@ public class ExpertSystemQualityTests {
 		Assert.assertNotNull(underTest.expertSystem);
 		Assert.assertNotNull(underTest.measureStorer);
 		
+	}
+	
+	@Test
+	public final void testXfuzzyProcess() throws Exception {
+		
+		underTest = new ExpertSystemQuality(context);
+		underTest.xfuzzyProcess();
+		
+		Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY).getDoubleValue(), 0.0, 0);
+		Assert.assertTrue(context.getMeasure(SedcatMetricsKeys.QUALITY_MESSAGE_KEY).getStringValue().length() > 0);
+
+	}
+	
+	@Test
+	public final void testGeneralComputerXfuzzyProcess() throws Exception {
+		
+		computerForData.compute(context);
+		Assert.assertEquals(context.getMeasure(SedcatMetricsKeys.QUALITY_MEASURE_KEY).getDoubleValue(), 0.0, 0);
+		Assert.assertTrue(context.getMeasure(SedcatMetricsKeys.QUALITY_MESSAGE_KEY).getStringValue().length() > 0);
+		Assert.assertTrue(context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue().length() > 0);
+		Assert.assertTrue(context.getMeasure(SedcatMetricsKeys.ACTIONS_MESSAGE_KEY).getStringValue().length() > 0);
+
 	}
 
 }

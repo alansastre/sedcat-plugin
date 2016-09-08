@@ -11,6 +11,7 @@ import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.plugins.sedcat.start.GeneralComputer;
+import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemActions;
 import org.junit.Assert;
 
@@ -83,5 +84,17 @@ public class ExpertSystemActionsTests {
 		Assert.assertNotNull(underTest.expertSystem);
 		Assert.assertNotNull(underTest.measureStorer);
 		
+	}
+	
+	
+	@Test
+	public final void testXfuzzyProcess() throws Exception {
+		
+		underTest = new ExpertSystemActions(context);
+		underTest.xfuzzyProcess();
+		
+		Assert.assertTrue(context.getMeasure(SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY).getStringValue().length() > 0);
+		Assert.assertTrue(context.getMeasure(SedcatMetricsKeys.ACTIONS_MESSAGE_KEY).getStringValue().length() > 0);
+
 	}
 }
