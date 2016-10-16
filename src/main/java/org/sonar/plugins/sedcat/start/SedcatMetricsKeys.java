@@ -8,7 +8,11 @@ package org.sonar.plugins.sedcat.start;
  * @version 1.0
  */
 
-
+/**
+ * Constant class
+ *	@author alan.sastre
+ *	@version 1.0
+ */
 public class SedcatMetricsKeys {
 
 	//variables entrada
@@ -22,8 +26,4 @@ public class SedcatMetricsKeys {
 	public static final String ACTIONS_MESSAGE_KEY = "actions_drilldown_message";	
 	public static final String QUALITY_MESSAGE_KEY = "quality_drilldown_message";	
 	
-
-	private SedcatMetricsKeys() {
-		throw new AssertionError("Can not instantiate constants class");
-	}
 }

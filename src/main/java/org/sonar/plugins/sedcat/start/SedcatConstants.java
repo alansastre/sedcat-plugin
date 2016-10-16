@@ -28,11 +28,5 @@ public class SedcatConstants {
   //umbral complejidad
   public static final String COMPLEXITY_THRESHOLD_KEY = "sonar.sedcat.complexityThreshold";
   public static final String COMPLEXITY_THRESHOLD_DEFAULT = "30";
- 
-
-  
-  private SedcatConstants() {
-	  throw new AssertionError("Can not instantiate constants class");
-  }
   
 }
