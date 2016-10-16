@@ -16,6 +16,8 @@ import org.sonar.plugins.sedcat.strategies.ExpertSystemActionsMocksTests;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemActionsTests;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemQualityMocksTests;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemQualityTests;
+import org.sonar.plugins.sedcat.strategies.FamiliarMembershipFunctionActionTests;
+import org.sonar.plugins.sedcat.strategies.FamiliarMembershipFunctionQualityTests;
 import org.sonar.plugins.sedcat.xfuzzy.ActionsTests;
 import org.sonar.plugins.sedcat.xfuzzy.QualityTests;
 
@@ -43,6 +45,8 @@ import org.sonar.plugins.sedcat.xfuzzy.QualityTests;
 	ExpertSystemQualityMocksTests.class,
 	ExpertSystemActionsTests.class,
 	ExpertSystemActionsMocksTests.class,
+	FamiliarMembershipFunctionQualityTests.class,
+	FamiliarMembershipFunctionActionTests.class,
 	
 	//xfuzzy
 	QualityTests.class,
