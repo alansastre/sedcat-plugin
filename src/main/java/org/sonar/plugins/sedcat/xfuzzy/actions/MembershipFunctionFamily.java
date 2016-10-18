@@ -12,9 +12,9 @@
 package org.sonar.plugins.sedcat.xfuzzy.actions;
 
 public abstract class MembershipFunctionFamily {
- double min;
- double max;
- double step;
+ protected double min;
+ protected double max;
+ protected double step;
 
  public double center(int i) {
   return 0;

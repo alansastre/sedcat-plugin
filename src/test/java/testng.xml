@@ -9,10 +9,13 @@
 <!-- xfuzzy -->
       <class name="org.sonar.plugins.sedcat.xfuzzy.QualityTests"/>
       <class name="org.sonar.plugins.sedcat.xfuzzy.ActionsTests"/>
-      
+       <class name="org.sonar.plugins.sedcat.xfuzzy.MembershipFunctionFamilyActionTests"/>
+        <class name="org.sonar.plugins.sedcat.xfuzzy.MembershipFunctionFamilyQualityTests"/>
+        
 <!-- storage -->
       <class name="org.sonar.plugins.sedcat.storage.QualityMeasureStoreTests"/>
       <class name="org.sonar.plugins.sedcat.storage.ActionsMeasureStoreTests"/>
+      <class name="org.sonar.plugins.sedcat.storage.ActionMessageConstantsTest"/>
       
 <!-- stategies -->
       <class name="org.sonar.plugins.sedcat.strategies.ExpertSystemActionsTests"/>

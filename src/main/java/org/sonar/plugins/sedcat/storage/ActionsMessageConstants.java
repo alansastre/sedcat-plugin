@@ -715,4 +715,7 @@ public class ActionsMessageConstants {
 			+ "Thirdly increase is coverage, will allow successful tests achieve greater amount of code.</br>"
 			+ NUMBER_OF_TESTS_LAST ;	
 
+	private ActionsMessageConstants() {
+		throw new AssertionError("Can not instantiate constants class");
+	}
 }
