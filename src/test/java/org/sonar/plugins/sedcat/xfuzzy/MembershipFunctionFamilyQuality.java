@@ -1,6 +1,6 @@
 package org.sonar.plugins.sedcat.xfuzzy;
 
-import org.sonar.plugins.sedcat.xfuzzy.actions.MembershipFunctionFamily;
+import org.sonar.plugins.sedcat.xfuzzy.quality.MembershipFunctionFamily;
 
 public class MembershipFunctionFamilyQuality extends MembershipFunctionFamily {
 
