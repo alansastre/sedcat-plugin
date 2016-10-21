@@ -4,23 +4,22 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 import org.sonar.plugins.sedcat.storage.ActionsMeasureStore;
-import org.sonar.plugins.sedcat.strategies.ExpertSystemActions;
 import org.sonar.plugins.sedcat.xfuzzy.actions.Actions;
-import org.junit.Assert;
-import org.powermock.api.mockito.*;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemActions}.
@@ -110,7 +109,25 @@ public class ExpertSystemActionsMocksTests {
 		verify(spy, times(1)).getMeasureIntChecked(CoreMetrics.NCLOC_KEY);
 	}
 
-
+	/**
+	 * Test method for {@link org.sonar.plugins.sedcat.strategies.AbstractInferenceProcess#getMeasureDoubleChecked()}.
+	 */
+	@Test
+	public final void testGetMeasureDoubleChecked() {
+		double result = underTest.getMeasureDoubleChecked(CoreMetrics.TEST_SUCCESS_DENSITY_KEY);
+		Assert.assertEquals(59.0, result, 0.0);
+	}
+	
+	/**
+	 * Test method for {@link org.sonar.plugins.sedcat.strategies.AbstractInferenceProcess#getMeasureDoubleChecked()}.
+	 */
+	@Test
+	public final void testGetMeasureIntChecked() {
+		int result = underTest.getMeasureIntChecked(CoreMetrics.TEST_SUCCESS_DENSITY_KEY);
+		Assert.assertEquals(100.0, result, 0.0);
+	}
+	
+	
 	/**
 	 * Test method for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality#extractValues()}.
 	 */

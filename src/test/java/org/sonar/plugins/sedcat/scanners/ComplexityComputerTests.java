@@ -1,33 +1,25 @@
 package org.sonar.plugins.sedcat.scanners;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
-import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
-import org.sonar.api.measures.CoreMetrics;
-import org.sonar.plugins.sedcat.scanners.ComplexityComputer;
-import org.sonar.plugins.sedcat.start.SedcatConstants;
-import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
-import org.sonar.plugins.sedcat.strategies.ExpertSystemActions;
-import org.sonar.plugins.sedcat.strategies.ExpertSystemQuality;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 import java.util.Set;
-import org.sonar.api.ce.measure.Component.FileAttributes;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mockito;
 import org.sonar.api.ce.measure.Component.Type;
 import org.sonar.api.ce.measure.Measure;
-import static org.mockito.Mockito.*;
-import org.sonar.api.ce.measure.test.*;
-import org.powermock.api.mockito.*;
+import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
+import org.sonar.api.ce.measure.test.TestComponent;
+import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
+import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
+import org.sonar.api.ce.measure.test.TestSettings;
+import org.sonar.api.measures.CoreMetrics;
+import org.sonar.plugins.sedcat.start.SedcatConstants;
+import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 
 
 /** Tests para la clase scanner ComplexityComputer

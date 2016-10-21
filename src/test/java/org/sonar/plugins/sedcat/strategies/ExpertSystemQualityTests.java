@@ -13,6 +13,7 @@ import org.sonar.plugins.sedcat.start.GeneralComputer;
 import org.sonar.plugins.sedcat.start.SedcatConstants;
 import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemQuality;
+import org.sonar.plugins.sedcat.xfuzzy.quality.MF_xfl_trapezoid;
 import org.junit.Assert;
 /**
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality}.
@@ -69,6 +70,23 @@ public class ExpertSystemQualityTests {
 
 	}
 
+	
+	@Test
+	public final void testMF_xfl_trapezoid() throws Exception {
+
+		MF_xfl_trapezoid trap = new MF_xfl_trapezoid(5.0, 10.0, 20.0, new double[]{ 2.0, 3.0, 4.0, 5.0}, new double[]{ 2.0, 2.0});
+		
+		Assert.assertTrue(trap.param(0) == 2.0);
+		Assert.assertTrue(trap.param(1) == 3.0);
+		Assert.assertTrue(trap.param(2) == 4.0);
+		Assert.assertTrue(trap.param(3) == 5.0);
+		
+		Assert.assertEquals(0.0, trap.isGreaterOrEqual(2.0), 0.0);
+		Assert.assertEquals(1.0, trap.isSmallerOrEqual(2.0), 0.0);
+		Assert.assertEquals(3.5, trap.center(), 0.0);
+		Assert.assertEquals(3.0, trap.basis(), 0.0);
+		
+	}
 	
 	/**
 	 * Test method for

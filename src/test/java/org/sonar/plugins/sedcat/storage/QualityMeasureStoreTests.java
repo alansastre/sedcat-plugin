@@ -24,8 +24,8 @@ import org.sonar.plugins.sedcat.storage.QualityMeasureStore;
  * @author alan.sastre
  * @version 1.0
  */
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ QualityMeasureStore.class })
+//@RunWith(PowerMockRunner.class)
+//@PrepareForTest({ QualityMeasureStore.class })
 public class QualityMeasureStoreTests {
 
 	private QualityMeasureStore underTest;

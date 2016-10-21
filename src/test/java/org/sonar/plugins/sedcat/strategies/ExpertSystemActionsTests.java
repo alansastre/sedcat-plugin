@@ -1,8 +1,8 @@
 package org.sonar.plugins.sedcat.strategies;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.Component.FileAttributes;
 import org.sonar.api.ce.measure.Component.Type;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
@@ -12,8 +12,7 @@ import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.plugins.sedcat.start.GeneralComputer;
 import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
-import org.sonar.plugins.sedcat.strategies.ExpertSystemActions;
-import org.junit.Assert;
+import org.sonar.plugins.sedcat.xfuzzy.actions.MF_xfl_trapezoid;
 
 /**
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemActions}.
@@ -67,6 +66,24 @@ public class ExpertSystemActionsTests {
 	}
 
 	
+	
+	
+	@Test
+	public final void testMF_xfl_trapezoid() throws Exception {
+
+		MF_xfl_trapezoid trap = new MF_xfl_trapezoid(5.0, 10.0, 20.0, new double[]{ 2.0, 3.0, 4.0, 5.0}, new double[]{ 2.0, 2.0});
+		
+		Assert.assertTrue(trap.param(0) == 2.0);
+		Assert.assertTrue(trap.param(1) == 3.0);
+		Assert.assertTrue(trap.param(2) == 4.0);
+		Assert.assertTrue(trap.param(3) == 5.0);
+		
+		Assert.assertEquals(0.0, trap.isGreaterOrEqual(2.0), 0.0);
+		Assert.assertEquals(1.0, trap.isSmallerOrEqual(2.0), 0.0);
+		Assert.assertEquals(3.5, trap.center(), 0.0);
+		Assert.assertEquals(3.0, trap.basis(), 0.0);
+		
+	}
 	/**
 	 * Test method for
 	 * {@link org.sonar.plugins.sedcat.strategies.ExpertSystemActions#ExpertSystemActions(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}

@@ -1,13 +1,11 @@
 package org.sonar.plugins.sedcat.start;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+
+import org.junit.Assert;
 import org.junit.Test;
-import org.sonar.plugins.sedcat.start.SedcatPlugin;
 
 /**
  *	@author alan.sastre
@@ -15,35 +13,6 @@ import org.sonar.plugins.sedcat.start.SedcatPlugin;
  */
 public class SedcatPluginTests {
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		
-	}
-
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	/**
 	 * Test method for {@link org.sonar.plugins.sedcat.start.SedcatPlugin#getExtensions()}.
@@ -86,8 +55,14 @@ public class SedcatPluginTests {
 			}
 
 		}
-
-
 	}
 
+	/**
+	 * Test method for {@link org.sonar.plugins.sedcat.start.SedcatPlugin#getExtensions()}.
+	 */
+	@Test
+	public final void testSedcatHtmlFooter() {
+		SedcatHtmlFooter footer = new SedcatHtmlFooter();
+		Assert.assertTrue(footer.getHtml().length() == 0);
+	}
 }

@@ -2,17 +2,14 @@ package org.sonar.plugins.sedcat.storage;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
+
 import java.util.Properties;
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
@@ -22,16 +19,13 @@ import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.plugins.sedcat.start.GeneralComputer;
 import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
-import org.sonar.plugins.sedcat.storage.AbstractOutputMeasureStore;
-import org.sonar.plugins.sedcat.storage.ActionsMeasureStore;
-import org.sonar.plugins.sedcat.storage.ActionsMessageConstants;
 
 /**
  * @author alan.sastre
  * @version 1.0
  */
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ ActionsMeasureStore.class })
+//@RunWith(PowerMockRunner.class)
+//@PrepareForTest({ ActionsMeasureStore.class })
 public class ActionsMeasureStoreTests {
 
 	private ActionsMeasureStore underTest;

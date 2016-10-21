@@ -5,24 +5,21 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 import org.sonar.plugins.sedcat.storage.QualityMeasureStore;
-import org.sonar.plugins.sedcat.strategies.ExpertSystemQuality;
 import org.sonar.plugins.sedcat.xfuzzy.quality.Quality;
-import org.junit.Assert;
-import org.powermock.api.mockito.*;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality}.
@@ -87,6 +84,24 @@ public class ExpertSystemQualityMocksTests {
 		Assert.assertTrue(underTest.extractValues().length>=6);
 	}
 	
+	
+	/**
+	 * Test method for {@link org.sonar.plugins.sedcat.strategies.AbstractInferenceProcess#getMeasureDoubleChecked()}.
+	 */
+	@Test
+	public final void testGetMeasureDoubleChecked() {
+		double result = underTest.getMeasureDoubleChecked(CoreMetrics.TEST_SUCCESS_DENSITY_KEY);
+		Assert.assertEquals(50.0, result, 0.0);
+	}
+	
+	/**
+	 * Test method for {@link org.sonar.plugins.sedcat.strategies.AbstractInferenceProcess#getMeasureDoubleChecked()}.
+	 */
+	@Test
+	public final void testGetMeasureIntChecked() {
+		int result = underTest.getMeasureIntChecked(CoreMetrics.TEST_SUCCESS_DENSITY_KEY);
+		Assert.assertEquals(200.0, result, 0.0);
+	}
 	/**
 	 * Test method for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality#ExpertSystemQuality(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}.
 	 */
