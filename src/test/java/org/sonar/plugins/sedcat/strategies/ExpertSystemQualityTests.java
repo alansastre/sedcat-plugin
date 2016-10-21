@@ -1,5 +1,6 @@
 package org.sonar.plugins.sedcat.strategies;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.ce.measure.Component.FileAttributes;
@@ -12,9 +13,8 @@ import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.plugins.sedcat.start.GeneralComputer;
 import org.sonar.plugins.sedcat.start.SedcatConstants;
 import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
-import org.sonar.plugins.sedcat.strategies.ExpertSystemQuality;
+import org.sonar.plugins.sedcat.xfuzzy.quality.FuzzySingleton;
 import org.sonar.plugins.sedcat.xfuzzy.quality.MF_xfl_trapezoid;
-import org.junit.Assert;
 /**
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality}.
  * 
@@ -88,6 +88,13 @@ public class ExpertSystemQualityTests {
 		
 	}
 	
+	@Test
+	public final void testFuzzySingleton() throws Exception {
+
+		FuzzySingleton fzs = new FuzzySingleton(2.0);
+		Assert.assertEquals(0.0, fzs.compute(3.0), 0.0);
+		Assert.assertEquals(0.0, fzs.compute(2.0), 1.0);
+	}
 	/**
 	 * Test method for
 	 * {@link org.sonar.plugins.sedcat.strategies.ExpertSystemActions#ExpertSystemActions(org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext)}

@@ -1,9 +1,9 @@
 package org.sonar.plugins.sedcat.xfuzzy;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.plugins.sedcat.xfuzzy.quality.Quality;
-import org.junit.Assert;
 
 /**
  *  Test unitarios para la clase es.unileon.sonarqube.sedcat.xfuzzy.quality.Calidad
