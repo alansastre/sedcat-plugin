@@ -46,7 +46,7 @@ Contiene el código xfl utilizado por la herramienta xfuzzy para generar los sis
 
 # Resultados
 
-![Sedcat Widget](sedcat-screenshot1.png)
+![Sedcat Widget](sedcat-screenshot1.jpg)
 
 # Licencia
 
