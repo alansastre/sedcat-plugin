@@ -44,6 +44,10 @@ Contiene el diseño del plugin representado mediante diagramas de clases en leng
 
 Contiene el código xfl utilizado por la herramienta xfuzzy para generar los sistemas expertos.
 
+# Resultados
+
+![Sedcat Widget](sedcat-screenshot1.png)
+
 # Licencia
 
 Copyright © 2016 Sonar Sedcat Plugin.
