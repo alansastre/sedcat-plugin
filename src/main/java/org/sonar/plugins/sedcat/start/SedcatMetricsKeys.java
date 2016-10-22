@@ -5,13 +5,13 @@ package org.sonar.plugins.sedcat.start;
  * Clase que contiene las claves para cada tipo de variable usada en la aplicacion
  * estas claves son las que se referencian desde el widget para obtener tales metricas
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 
 /**
  * Constant class
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class SedcatMetricsKeys {
 

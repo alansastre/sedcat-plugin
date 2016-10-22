@@ -10,7 +10,7 @@ import org.sonar.plugins.sedcat.strategies.ExpertSystemQuality;
 
 /**
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  *
  *          Define how to compute new measures on some metrics declared by
  *          http://javadocs.sonarsource.org/5.3/apidocs/org/sonar/api/measures/

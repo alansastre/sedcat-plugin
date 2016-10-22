@@ -1,33 +1,34 @@
 package org.sonar.plugins.sedcat.start;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.Set;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.sonar.api.ce.measure.Component.Type;
+import org.sonar.api.ce.measure.Measure;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
+import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
 import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
+import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.api.measures.CoreMetrics;
-import org.sonar.plugins.sedcat.start.GeneralComputer;
-import org.sonar.plugins.sedcat.start.SedcatConstants;
-import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemActions;
 import org.sonar.plugins.sedcat.strategies.ExpertSystemQuality;
 
-import java.util.Set;
-import org.sonar.api.ce.measure.Component.Type;
-import org.sonar.api.ce.measure.Measure;
-import static org.mockito.Mockito.*;
-import org.sonar.api.ce.measure.test.*;
-import org.powermock.api.mockito.*;
-
 /**
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  * @see:
  * Tests with:
  * https://github.com/SonarSource/sonarqube/blob/master/sonar-plugin-

@@ -20,13 +20,15 @@ Dichas métricas son obtenidas a partir de operar métricas de entrada procedent
 La forma de instalación manual comprende los siguientes pasos:
 
 * Descargar archivo zip de sedcat.
-* Generar jar utilizando el comando mvn clean install en el directorio donde se encuentra el archivo pom.xml.
+* Generar jar utilizando el comando mvn clean install en el directorio donde se encuentra el archivo pom.xml
 * Copiar el jar en la carpeta extensions/plugings de la instancia Sonarqube donde se quiera ejecutar Sedcat. 
 
 
 # Versiones de SonarQube compatibles
 
 sonar.runtimeVersion=5.3
+sonar.runtimeVersion=5.4
+sonar.runtimeVersion=5.5
 
 # Dependencias
 

@@ -5,6 +5,6 @@
  *  Computers: clases de 2o nivel que recogen metricas de la plataforma sonarqube
  *  
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 package org.sonar.plugins.sedcat.scanners;

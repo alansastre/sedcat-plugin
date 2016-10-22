@@ -8,10 +8,7 @@ import java.util.Properties;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
@@ -22,7 +19,7 @@ import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 
 /**
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 //@RunWith(PowerMockRunner.class)
 //@PrepareForTest({ ActionsMeasureStore.class })

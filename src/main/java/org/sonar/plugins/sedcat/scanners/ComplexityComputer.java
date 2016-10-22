@@ -14,7 +14,7 @@ import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
  *  ser establecido recibe el umbral por defecto. Calcula la complejidad 
  *  derivada de considerar el umbral. 
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class ComplexityComputer implements MeasureComputer {
 

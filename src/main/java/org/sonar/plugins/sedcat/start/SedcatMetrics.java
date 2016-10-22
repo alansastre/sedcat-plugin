@@ -1,9 +1,15 @@
 package org.sonar.plugins.sedcat.start;
 
-import static org.sonar.plugins.sedcat.start.SedcatMetricsKeys.*;
+import static org.sonar.plugins.sedcat.start.SedcatMetricsKeys.ACTIONS_MESSAGE_KEY;
+import static org.sonar.plugins.sedcat.start.SedcatMetricsKeys.ACTIONS_TO_PERFORM_KEY;
+import static org.sonar.plugins.sedcat.start.SedcatMetricsKeys.COMPLEXITY_CLASS_KEY;
+import static org.sonar.plugins.sedcat.start.SedcatMetricsKeys.MUTANTS_KEY;
+import static org.sonar.plugins.sedcat.start.SedcatMetricsKeys.QUALITY_MEASURE_KEY;
+import static org.sonar.plugins.sedcat.start.SedcatMetricsKeys.QUALITY_MESSAGE_KEY;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
 
@@ -11,7 +17,7 @@ import org.sonar.api.measures.Metrics;
  * Metrics for the sonar SEDCAT plugin.
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public class SedcatMetrics implements Metrics {
 

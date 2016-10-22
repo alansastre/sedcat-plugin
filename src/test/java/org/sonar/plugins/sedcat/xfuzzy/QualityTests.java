@@ -17,7 +17,7 @@ import org.sonar.plugins.sedcat.xfuzzy.quality.Quality;
  *  	-Complejidad media por clase 
  *  
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public class QualityTests {
 

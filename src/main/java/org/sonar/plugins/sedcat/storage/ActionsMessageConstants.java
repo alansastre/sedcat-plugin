@@ -5,7 +5,7 @@ package org.sonar.plugins.sedcat.storage;
  *  en la pantalla drill-down de la métrica acciones en función del set que haya salido
  *  
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class ActionsMessageConstants {
 

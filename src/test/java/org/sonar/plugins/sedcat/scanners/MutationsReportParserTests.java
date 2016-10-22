@@ -1,20 +1,20 @@
 package org.sonar.plugins.sedcat.scanners;
 
 import java.io.File;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.sonar.plugins.sedcat.scanners.MutationsReportParser;
 
 /**
  * Unit testing for
  * es.unileon.sonarqube.sedcat.scanners.MutationsReportParser#parseReport
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public class MutationsReportParserTests {
 

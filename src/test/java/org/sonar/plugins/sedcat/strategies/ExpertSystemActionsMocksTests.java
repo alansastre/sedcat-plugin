@@ -25,7 +25,7 @@ import org.sonar.plugins.sedcat.xfuzzy.actions.Actions;
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemActions}.
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 /*
  * Bug in PowerMockRunner (JVM method size)

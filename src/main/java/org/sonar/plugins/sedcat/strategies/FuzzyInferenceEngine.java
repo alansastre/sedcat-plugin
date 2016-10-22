@@ -8,7 +8,7 @@ package org.sonar.plugins.sedcat.strategies;
  * 	Interfaz que declara los métodos principales de procesamiento xfuzzy, común a todos
  * los sistemas expertos.
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public interface FuzzyInferenceEngine {
 	 public double[] crispInference(double[] input);

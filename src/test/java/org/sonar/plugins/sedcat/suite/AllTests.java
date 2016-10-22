@@ -69,7 +69,7 @@ import org.sonar.plugins.sedcat.xfuzzy.QualityTests;
  * - Timely
  * 
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class AllTests {
 	 // the class remains empty,

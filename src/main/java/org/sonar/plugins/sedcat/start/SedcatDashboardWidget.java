@@ -11,7 +11,7 @@ import org.sonar.api.web.WidgetCategory;
  * Sedcat plugin widget definition.
  *
  * @author alan.sastre	
- * @version 1.0
+ * @version 1.0.0
  */
 @UserRole(UserRole.USER)
 @Description("Shows Quality of software testing code")

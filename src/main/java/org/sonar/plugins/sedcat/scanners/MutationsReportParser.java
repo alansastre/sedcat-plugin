@@ -4,7 +4,7 @@
 package org.sonar.plugins.sedcat.scanners;
 
 import java.io.File;
-import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,7 +17,7 @@ import org.sonar.api.batch.BatchSide;
 /**
  *  Clase que parsea un html y encuentra el numero total de mutantes y el numero de mutantes detectados
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 @BatchSide
 public class MutationsReportParser {

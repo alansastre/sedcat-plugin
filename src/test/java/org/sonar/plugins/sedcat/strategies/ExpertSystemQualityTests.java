@@ -19,7 +19,7 @@ import org.sonar.plugins.sedcat.xfuzzy.quality.MF_xfl_trapezoid;
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality}.
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 
 public class ExpertSystemQualityTests {

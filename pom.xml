@@ -4,17 +4,27 @@
 
 	<groupId>org.sonar.plugins.sedcat</groupId>
 	<artifactId>sonar-sedcat-plugin</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>sonar-plugin</packaging>
 	<name>Sonar Sedcat Plugin</name>
-	<description>Plugin for quality measurement in unit testing</description>
+	<description>Plugin for quality measurement in unit testing.</description>
 
 	<url>https://github.com/alansastre/sedcat-plugin</url>
 
-	<organization>
-		<name>Alan Sastre</name>
-	</organization>
+	<developers>
+		<developer>
+			<email>alanjsastre@gmail.com</email>
+			<name>Alan Sastre</name>
+			<url>https://github.com/alansastre</url>
+			<id>alansastre</id>
+		</developer>
+	</developers>
 
+  <organization>
+    <name>Alan Sastre</name>
+    <url>https://github.com/alansastre</url>
+  </organization>
+  
 	<scm>
 		<connection>scm:git:git://github.com/alansastre/sedcat-plugin</connection>
 		<developerConnection>scm:git:git@github.com:alansastre/sedcat-plugin</developerConnection>

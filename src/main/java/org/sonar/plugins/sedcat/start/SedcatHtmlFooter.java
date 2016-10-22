@@ -4,7 +4,7 @@ import org.sonar.api.web.Footer;
 /**
  * Clase que muestra un pie de pagina personalizado en el centro de configuracion sonarqube
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class SedcatHtmlFooter implements Footer {
 

@@ -2,6 +2,11 @@ package org.sonar.plugins.sedcat.xfuzzy;
 
 import org.sonar.plugins.sedcat.xfuzzy.quality.MembershipFunctionFamily;
 
+/**
+ * Class for test MembershipFunctionFamily
+ *	@author alan.sastre
+ *	@version 1.0.0
+ */
 public class MembershipFunctionFamilyQuality extends MembershipFunctionFamily {
 
 	@Override

@@ -3,7 +3,7 @@ package org.sonar.plugins.sedcat.start;
 /**
  * Clase de constantes para el plugin Sedcat. 
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class SedcatConstants {
 

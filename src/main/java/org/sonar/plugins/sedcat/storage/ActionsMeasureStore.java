@@ -2,6 +2,7 @@ package org.sonar.plugins.sedcat.storage;
 
 import java.io.FileInputStream;
 import java.util.Properties;
+
 import org.slf4j.LoggerFactory;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
@@ -14,7 +15,7 @@ import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
  * @see: org.sonar.api.ce.measure.test.TestMeasure
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public class ActionsMeasureStore extends AbstractOutputMeasureStore {
 

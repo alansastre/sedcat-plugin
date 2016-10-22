@@ -20,7 +20,7 @@ import org.sonar.plugins.sedcat.xfuzzy.actions.MF_xfl_trapezoid;
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemActions}.
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public class ExpertSystemActionsTests {
 

@@ -9,7 +9,7 @@ import org.sonar.plugins.sedcat.storage.AbstractOutputMeasureStore;
  *  con xfuzzyProcess() y metodos para la extraccion de las metricas
  *  requeridas por los mismos.
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public abstract class AbstractInferenceProcess {
 	

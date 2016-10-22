@@ -14,7 +14,7 @@ import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
  * Clase encargada de almacenar el resultado calidad en forma de metrica.
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public class QualityMeasureStore extends AbstractOutputMeasureStore {
 

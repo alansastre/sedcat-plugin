@@ -11,7 +11,7 @@ import org.sonar.plugins.sedcat.xfuzzy.actions.Actions;
  * Sistema experto que obtiene las acciones a realizar buscadas
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public class ExpertSystemActions extends AbstractInferenceProcess {
 

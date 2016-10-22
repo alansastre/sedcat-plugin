@@ -1,7 +1,5 @@
 package org.sonar.plugins.sedcat.start;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.testng.Assert;

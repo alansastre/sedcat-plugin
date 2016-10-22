@@ -2,14 +2,11 @@ package org.sonar.plugins.sedcat.storage;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerDefinition;
 import org.sonar.api.ce.measure.test.TestComponent;
 import org.sonar.api.ce.measure.test.TestMeasureComputerContext;
@@ -17,12 +14,10 @@ import org.sonar.api.ce.measure.test.TestMeasureComputerDefinitionContext;
 import org.sonar.api.ce.measure.test.TestSettings;
 import org.sonar.plugins.sedcat.start.GeneralComputer;
 import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
-import org.sonar.plugins.sedcat.storage.AbstractOutputMeasureStore;
-import org.sonar.plugins.sedcat.storage.QualityMeasureStore;
 
 /**
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 //@RunWith(PowerMockRunner.class)
 //@PrepareForTest({ QualityMeasureStore.class })

@@ -5,7 +5,7 @@ import org.sonar.api.ce.measure.MeasureComputer.MeasureComputerContext;
 
 /**
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public abstract class AbstractOutputMeasureStore {
 

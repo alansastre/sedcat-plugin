@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Collection;
+
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,7 @@ import org.sonar.api.batch.BatchSide;
 
 /** Clase encargada de encontrar el ultimo reporte generado por la herramienta pitest
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 @BatchSide
 public class MutationsReportFinder{

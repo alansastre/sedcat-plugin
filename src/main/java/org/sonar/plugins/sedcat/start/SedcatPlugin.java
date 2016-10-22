@@ -10,11 +10,15 @@ import org.sonar.plugins.sedcat.scanners.MutationsCoverageSensor;
 import org.sonar.plugins.sedcat.scanners.MutationsReportFinder;
 import org.sonar.plugins.sedcat.scanners.MutationsReportParser;
 import org.sonar.api.PropertyType;
+
 /**
+ * @author alan.sastre
+ * @version 1.0.0
  * @see SonarQube 5.3 API
- * http://javadocs.sonarsource.org/5.3/apidocs/org/sonar/api/ce/measure/package-summary.html
+ *      http://javadocs.sonarsource.org/5.3/apidocs/org/sonar/api/ce/measure/package-summary.html
  * 
- * This class is the entry point for all extensions. It must be referenced from pom.xml.
+ *      This class is the entry point for all extensions. It must be referenced
+ *      from pom.xml.
  */
 //properties that appears in General Settings -> Sedcat in SonarQube
 @Properties({

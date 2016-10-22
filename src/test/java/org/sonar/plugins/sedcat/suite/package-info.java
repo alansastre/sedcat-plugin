@@ -3,6 +3,6 @@
  */
 /**
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 package org.sonar.plugins.sedcat.suite;

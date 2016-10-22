@@ -4,7 +4,7 @@ import org.sonar.plugins.sedcat.xfuzzy.actions.MembershipFunctionFamily;
 /**
  * Class for test MembershipFunctionFamily
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class MembershipFunctionFamilyAction extends MembershipFunctionFamily {
 

@@ -1,23 +1,23 @@
 package org.sonar.plugins.sedcat.scanners;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.sonar.plugins.sedcat.scanners.MutationsReportFinder;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /**
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 public class MutationsReportFinderTests {
 

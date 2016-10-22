@@ -25,7 +25,7 @@ import org.sonar.plugins.sedcat.xfuzzy.quality.Quality;
  * Tests for {@link org.sonar.plugins.sedcat.strategies.ExpertSystemQuality}.
  * 
  * @author alan.sastre
- * @version 1.0
+ * @version 1.0.0
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ QualityMeasureStore.class, ExpertSystemQuality.class, TestMeasureComputerContext.class,

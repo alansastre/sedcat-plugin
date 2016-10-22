@@ -24,7 +24,7 @@ import org.sonar.plugins.sedcat.start.SedcatMetricsKeys;
 
 /** Tests para la clase scanner ComplexityComputer
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class ComplexityComputerTests {
 	

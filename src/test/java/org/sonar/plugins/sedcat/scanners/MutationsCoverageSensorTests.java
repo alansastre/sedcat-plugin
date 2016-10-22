@@ -3,7 +3,12 @@
  */
 package org.sonar.plugins.sedcat.scanners;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
+
 import java.io.File;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -11,24 +16,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.sonar.api.batch.fs.internal.DefaultFileSystem;
 import org.sonar.api.batch.SensorContext;
+import org.sonar.api.batch.fs.internal.DefaultFileSystem;
 import org.sonar.api.config.PropertyDefinitions;
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Project;
-import org.sonar.plugins.sedcat.scanners.MutationsCoverageSensor;
-import org.sonar.plugins.sedcat.scanners.MutationsReportFinder;
-import org.sonar.plugins.sedcat.scanners.MutationsReportParser;
 import org.sonar.plugins.sedcat.start.SedcatConstants;
 import org.sonar.plugins.sedcat.start.SedcatPlugin;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
-
 /**
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  */
 public class MutationsCoverageSensorTests {
 

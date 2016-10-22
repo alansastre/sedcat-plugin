@@ -1,19 +1,20 @@
 package org.sonar.plugins.sedcat.scanners;
 
 import java.io.File;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
+import org.sonar.api.config.Settings;
 import org.sonar.api.resources.Project;
 import org.sonar.plugins.sedcat.start.SedcatConstants;
 import org.sonar.plugins.sedcat.start.SedcatMetrics;
-import org.sonar.api.config.Settings;
 
 /**
  *	@author alan.sastre
- *	@version 1.0
+ *	@version 1.0.0
  *
  *API:
  *
