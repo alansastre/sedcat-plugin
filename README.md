@@ -7,28 +7,30 @@ The Sedcat plugin for [SonarQube](http://www.sonarqube.org/) allows developers g
 
 This plugin has expert systems for classifying uncertainty involved in assessing the quality of unit testing. Currently [SonarQube](http://www.sonarqube.org/) has metrics for unit testing such as success and coverage. Sedcat uses the values of these metrics and others to provide new project-level metrics such as quality of unit tests and recommended actions to improve it.
 
-Thus, a developer user can see on the sedcat widget the percentage of quality corresponding to unit testing and which parameters needs to fix to improve that percentage and in what order of priority.
+Thus, a developer user can see on sedcat widget the percentage of quality corresponding to unit testing and which parameters needs to fix to improve that percentage and in what order of priority.
 
 ## How does it works
 
-The operation of Sedcat is divided into three parts:
+The operations of Sedcat are divided into three parts:
 
 1. Reading input data. Internal and external metrics to the platform are read:
-    1. Unit Test Success.
-    2. Unit Test Coverage.
-    3. Unit Test Mutations Coverage (calculated with external [Pitest Mutation Tool](https://github.com/hcoles/pitest)).
-    4. Number of Unit Test.
-    5. Total Lines of Code.
-    6. Complexity Average Class.
+     - Unit Test Success.
+     - Unit Test Coverage.
+     - Unit Test Mutations Coverage (calculated with external [Pitest Mutation Tool](https://github.com/hcoles/pitest)).
+     - Number of Unit Test.
+     - Total Lines of Code.
+     - Complexity Average Class.
 
 2. Operations:
-- Adapt input data to expert systems.
-- Run expert systems. An expert system for quality metric and another system to get the set of improvement actions.
-- Process results.
+    - Adapt input data to expert systems.
+    - Run expert systems. An expert system for quality metric and another system to get the set of improvement actions.
+    - Process results.
+
+3. Send output data to the SonarQube platform for visual representation in the widget.
 
 Expert systems have been developed with the fuzzy system development environment [Xfuzzy](http://www2.imse-cnm.csic.es/Xfuzzy/index.html) in XFL3 language, synthesized in java language and have been integrated in plugin lifecycle.
 
-3. Send output data to the SonarQube platform for visual representation in the widget.
+More details in [Sedcat Wiki](https://github.com/alansastre/sedcat-plugin/wiki/Example-Results).
 
 ## Usage
 
