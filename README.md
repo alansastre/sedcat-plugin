@@ -2,6 +2,7 @@
 
 The Sedcat plugin for [SonarQube](http://www.sonarqube.org/) allows developers get an overview on the state of quality in unit testing of a software project.
 
+[![Quality Gate](https://sonarqube.com/api/badges/gate?key=org.sonar.plugins.sedcat:sonar-sedcat-plugin)](https://sonarqube.com/dashboard/index/org.sonar.plugins.sedcat:sonar-sedcat-plugin)
 
 ## Rationale
 
