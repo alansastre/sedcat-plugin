@@ -1,55 +1,75 @@
-# SonarQube Sedcat Plugin #
+# Sedcat plugin for SonarQube
 
-Sedcat es un plugin para la plataforma de gestión de calidad [SonarQube](http://www.sonarqube.org/) la cual provee [análisis estático](https://en.wikipedia.org/wiki/Static_program_analysis) del código Java. Este plugin ha sido creado con el objetivo de suplir 
-la escasez de métricas en el ámbito de las pruebas unitarias, para ello proporciona dos métricas: 
-
-* Calidad de las pruebas unitarias, en forma de porcentaje.
-* Acciones recomendadas para mejorar el porcentaje de calidad obtenido. 
-
-Dichas métricas son obtenidas a partir de operar métricas de entrada procedentes del proyecto sobre el que se ejecuta el análisis mediante sistemas expertos [Xfuzzy](http://www2.imse-cnm.csic.es/Xfuzzy/). Las métricas de entrada utilizadas son:
-
-* Porcentaje de Éxito de los tests unitarios.
-* Cobertura de los tests unitarios.
-* Cobertura de mutantes, extraída de los reportes generados por la herramienta [Pitest](http://pitest.org/).
-* Número de líneas de código no comentadas.
-* Número de casos de test unitarios.
-* Complejidad media por clase en base a un umbral por defecto, establecido por el usuario. 
-
-# Instalación
-
-La forma de instalación manual comprende los siguientes pasos:
-
-* Descargar archivo zip de sedcat.
-* Generar jar utilizando el comando mvn clean install en el directorio donde se encuentra el archivo pom.xml
-* Copiar el jar en la carpeta extensions/plugings de la instancia Sonarqube donde se quiera ejecutar Sedcat. 
+The Sedcat plugin for [SonarQube](http://www.sonarqube.org/) allows developers get an overview on the state of quality in unit testing of a software project.
 
 
-# Versiones de SonarQube compatibles
+## Rationale
 
-sonar.runtimeVersion=5.3
-sonar.runtimeVersion=5.4
-sonar.runtimeVersion=5.5
+This plugin has expert systems for classifying uncertainty involved in assessing the quality of unit testing. Currently [SonarQube](http://www.sonarqube.org/) has metrics for unit testing such as success and coverage. Sedcat uses the values of these metrics and others to provide new project-level metrics such as quality of unit tests and recommended actions to improve it.
 
-# Dependencias
+Thus, a developer user can see on the sedcat widget the percentage of quality corresponding to unit testing and which parameters needs to fix to improve that percentage and in what order of priority.
 
-Para obtener la cobertura de mutantes como métrica de entrada es necesario que el usuario tenga configurada la herramienta
-Pitest en su proyecto. Una vez generados los reportes por la herramienta Pitest .html, Sedcat los detecta y extrae el valor de cobertura 
-por mutantes. En la pantalla de configuración de sedcat se permite personalizar la ruta donde se deben buscar los reportes.
+## How does it works
 
-# Carpeta designUML
+The operation of Sedcat is divided into three parts:
 
-Contiene el diseño del plugin representado mediante diagramas de clases en lenguaje UML.
+1. Reading input data. Internal and external metrics to the platform are read:
+    1. Unit Test Success.
+    2. Unit Test Coverage.
+    3. Unit Test Mutations Coverage (calculated with external [Pitest Mutation Tool](https://github.com/hcoles/pitest)).
+    4. Number of Unit Test.
+    5. Total Lines of Code.
+    6. Complexity Average Class.
 
-# Carpeta xfuzzySystems
+2. Operations:
+- Adapt input data to expert systems.
+- Run expert systems. An expert system for quality metric and another system to get the set of improvement actions.
+- Process results.
 
-Contiene el código xfl utilizado por la herramienta xfuzzy para generar los sistemas expertos.
+Expert systems have been developed with the fuzzy system development environment [Xfuzzy](http://www2.imse-cnm.csic.es/Xfuzzy/index.html) in XFL3 language, synthesized in java language and have been integrated in plugin lifecycle.
 
-# Resultados
+3. Send output data to the SonarQube platform for visual representation in the widget.
 
+## Usage
+
+### Requirements and Compatibility Matrix
+
+| Sedcat Plugin     | SonarQube         | [Pitest Mutation Tool](https://github.com/hcoles/pitest) |
+|-------------------|-------------------|-----------------------| 
+| 1.0.0             | 5.3 up to 5.5     | 1.1.4 and above       |
+
+
+### Plugin installation
+
+The plugin can be directly [downloaded from GitHub releases](https://github.com/alansastre/sedcat-plugin/releases).
+
+After having placed the plugin's jar in `{SONARQUBE_INSTALL_DIRECTORY}/extensions/plugins` you need to restart your SonarQube instance.
+
+You have then to add the `Sedcat Plugin` widget to your project or view dashboard.
+
+
+### Plugin settings
+
+The plugin have three options in General Settings:
+
+1. `Complexity Threshold`: allows set the threshold for acceptable complexity /class. If complexity of project is above this value, it negatively affects the quality metric and complexity will be an essential parameter to fix. Complexity is not a direct measure of the test, but it is an indirect measure. At more complexity, more complicated are unit tests and therefore more efforts must invest in developing them and keep them. The default value is 30.
+2. `Pitest reports directory path`: specifies the directory path with reports generated by the Pitest mutation tool from where sedcat extracts mutations coverage.
+3. `Sedcat active mode`: enable or disable the plugin on the analysis.
+
+## Design 
+
+The software design of this project was carried out by UML language and is in the `designUML` folder.
+
+## Example results
+
+Here is the widget:
 ![Sedcat Widget](sedcat-screenshot1.jpg)
 
-# Licencia
+Another examples in: [Sedcat Wiki](https://github.com/alansastre/sedcat-plugin/wiki/Example-Results).
+
+
+# License
 
 Copyright © 2016 Sonar Sedcat Plugin.
 
-Licenciado bajo GNU Lesser General Public License, Versión 3.0
+Licensed under GNU Lesser General Public License, Version 3.0
